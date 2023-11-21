@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import 'package:lxp_mobile/core/error/failure/failure.dart';
+import 'package:quisku_pintar/core/error/failure/failure.dart';
 
-import 'package:lxp_mobile/features/authentication/data/models/token/token_model.dart';
+import 'package:quisku_pintar/features/authentication/data/models/token/token_model.dart';
 
 import '../../../../core/error/exeption/exception.dart';
 import '../../domain/repositories/authentication_repository.dart';

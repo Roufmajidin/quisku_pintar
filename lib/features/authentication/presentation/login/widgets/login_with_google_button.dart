@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lxp_mobile/common/extensions/status.dart';
+import 'package:quisku_pintar/common/extensions/status.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import '../../../../../common/gen/assets.gen.dart';

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:lxp_mobile/core/navigation/app_router.gr.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 
 class LoginEmailPasswordButton extends StatelessWidget {
   const LoginEmailPasswordButton({super.key});

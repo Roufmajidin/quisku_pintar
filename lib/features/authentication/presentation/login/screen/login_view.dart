@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lxp_mobile/common/extensions/extensions.dart';
-import 'package:lxp_mobile/common/shared/independent/text_field.dart';
-import 'package:lxp_mobile/features/authentication/presentation/login/widgets/forgot_password_button.dart';
+import 'package:quisku_pintar/common/extensions/extensions.dart';
+import 'package:quisku_pintar/common/shared/independent/text_field.dart';
+import 'package:quisku_pintar/features/authentication/presentation/login/widgets/forgot_password_button.dart';
 
 import '../../../../../common/themes/themes.dart';
 import '../controllers/bloc/login_bloc.dart';

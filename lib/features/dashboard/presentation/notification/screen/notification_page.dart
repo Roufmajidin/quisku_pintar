@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:lxp_mobile/features/dashboard/presentation/notification/screen/notification_view.dart';
+import 'package:quisku_pintar/features/dashboard/presentation/notification/screen/notification_view.dart';
 
 @RoutePage()
 class NotificationPage extends StatelessWidget {

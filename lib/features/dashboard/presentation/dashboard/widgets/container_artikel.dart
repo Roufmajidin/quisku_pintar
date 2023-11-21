@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lxp_mobile/common/extensions/extensions.dart';
-import 'package:lxp_mobile/common/themes/themes.dart';
+import 'package:quisku_pintar/common/extensions/extensions.dart';
+import 'package:quisku_pintar/common/themes/themes.dart';
 
 class ContainerArtikel extends StatelessWidget {
   final String image;

@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:lxp_mobile/common/gen/assets.gen.dart';
-import 'package:lxp_mobile/common/themes/themes.dart';
+import 'package:quisku_pintar/common/gen/assets.gen.dart';
+import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:lxp_mobile/features/dashboard/presentation/dashboard/screen/dashboard_page.dart';
-import 'package:lxp_mobile/features/penugasan/screen/penugasan_page.dart';
-import 'package:lxp_mobile/features/rencana_pelatihan/presentation/rencana_pelatihan/screen/rencana_pelatihan_page.dart';
+import 'package:quisku_pintar/features/dashboard/presentation/dashboard/screen/dashboard_page.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -81,8 +79,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: <Widget>[
         const DashboardPage(),
-        const RencanaPelatihanPage(),
-        const PenugasanPage(),
+        const SizedBox(),
+        const SizedBox(),
         Container(
           color: AppColors.neutral.ne05,
           alignment: Alignment.center,

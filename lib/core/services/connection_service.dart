@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:lxp_mobile/common/extensions/connectivity_result.dart';
+import 'package:quisku_pintar/common/extensions/connectivity_result.dart';
 
 abstract class ConnectionService {
   Future<bool> get isConnected;
