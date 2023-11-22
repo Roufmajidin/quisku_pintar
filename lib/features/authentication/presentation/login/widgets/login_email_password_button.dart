@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 
 class LoginEmailPasswordButton extends StatelessWidget {
   const LoginEmailPasswordButton({super.key});
@@ -8,9 +6,10 @@ class LoginEmailPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton(
+      style: const ButtonStyle(),
       onPressed: () {
         FocusScope.of(context).unfocus();
-        context.pushRoute(const HomeRoute());
+        // context.pushRoute(const HomeRoute());
 
         // if (!state.isValid) return; // if invalid do nothing
         // if in progress do nothing
@@ -25,7 +24,10 @@ class LoginEmailPasswordButton extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation(Colors.white),
                   ))
               :  */
-          const Text('Masuk'),
+          Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 100),
+        child: const Text('Masuk'),
+      ),
     );
   }
 }
