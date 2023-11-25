@@ -34,7 +34,7 @@ class PasswordInput extends StatelessWidget {
             ),
           ),
           onChanged: (value) {
-            context.read<LoginBloc>().add(EmailChanged(value));
+            context.read<LoginBloc>().add(PasswordChanged(value));
           },
           errorText:
               state.password.invalid ? 'Masukkan password dengan benar' : null,

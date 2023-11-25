@@ -23,7 +23,7 @@ class SplashView extends StatelessWidget {
       listener: (context, state) {
         if (state.authenticated) {
           context.router.pushAndPopUntil(
-            const LoginRoute(),
+            LoginRoute(),
             predicate: (_) => false,
           );
         } else {
