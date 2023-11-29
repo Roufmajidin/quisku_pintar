@@ -8,5 +8,6 @@ class LoginState with _$LoginState {
     required Password password,
     required String errorMessages,
     required bool hidePassword,
+    User? user,
   }) = _Initial;
 }

@@ -1,7 +1,11 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quisku_pintar/features/authentication/presentation/bloc/login_bloc.dart';
 
+import '../../authentication/presentation/data/datasources/auth_datasources.dart';
+import '../../authentication/presentation/data/repositories/auth_repositroy_impl.dart';
+import '../../authentication/presentation/data/usecases/login_usecase.dart';
 import '../splash_cubit/splash_cubit.dart';
 import 'splash_view.dart';
 
@@ -11,8 +15,19 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SplashCubit()..init(),
+    final dataSources = AuthenticationDataSources();
+
+    final authRepository = AuthRepositoryImpl(authDataSources: dataSources);
+    final loginUseCase = LoginUseCase(authRepository);
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SplashCubit(loginUseCase)..init(),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(loginUseCase),
+        ),
+      ],
       child: const SplashView(),
     );
   }

@@ -21,17 +21,16 @@ class SplashView extends StatelessWidget {
     return Scaffold(
         body: BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
-        if (state.authenticated) {
+        if (state.authenticated == true) {
           context.router.pushAndPopUntil(
-            LoginRoute(),
+            const HomeRoute(),
+            predicate: (_) => true,
+          );
+        } else
+          context.router.pushAndPopUntil(
+            const LoginRoute(),
             predicate: (_) => false,
           );
-        } else {
-          // context.router.pushAndPopUntil(
-          //   const LoginRoute(),
-          //   predicate: (_) => false,
-          // );
-        }
       },
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -41,7 +40,6 @@ class SplashView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // empty text to make center image
               Text(
                 '',
                 style: textStyle,

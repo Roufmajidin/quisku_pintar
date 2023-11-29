@@ -7,23 +7,21 @@ import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/user.dart';
+
 abstract class AuthenticationDataS {}
 
 class AuthenticationDataSources implements AuthenticationDataS {
   final Dio dio = Dio();
-  // String apiUrl = 'http://10.0.2.2/api/exam/login';
-  @override
+  String apiUrl = 'http://192.168.20.54:8080/api/exam';
+
   Future<Either<Failure, TokenModels>> loginEmailPassword(
       String email, String password) async {
-    log('panggil dt source $email');
-
-    String apiUrl = 'http://192.168.0.116:8000/api/exam/login';
     try {
-      final response = await http.post(Uri.parse(apiUrl), body: {
+      final response = await http.post(Uri.parse('$apiUrl/login'), body: {
         'email': email,
         'password': password,
       });
-      log('panggil dt source ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body);
@@ -43,7 +41,33 @@ class AuthenticationDataSources implements AuthenticationDataS {
     } catch (e) {
       log('data');
 
-      return Left(const Failure.serverFailure());
+      return const Left(Failure.serverFailure());
+    }
+  }
+
+  Future<Either<Failure, User>> getUseLoginDataSources(String token) async {
+    try {
+      final user = await http.get(
+        Uri.parse(
+          '$apiUrl/user',
+        ),
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      if (user.statusCode == 200) {
+        final Map<String, dynamic> userData = jsonDecode(user.body);
+        final id = userData['id'];
+        final name = userData['name'];
+        final email = userData['email'];
+        final userJson = User(id: id, name: name, email: email);
+        log('user data : $userJson');
+        return right(userJson);
+      } else {
+        return const Left(Failure.parsingFailure());
+      }
+    } catch (e) {
+      return const Left(Failure.parsingFailure());
     }
   }
 }

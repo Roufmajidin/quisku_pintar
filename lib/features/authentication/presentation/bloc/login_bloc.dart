@@ -7,6 +7,8 @@ import 'package:quisku_pintar/common/validation/email.dart';
 import 'package:quisku_pintar/common/validation/password.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/usecases/login_usecase.dart';
 
+import '../data/models/user.dart';
+
 part 'login_event.dart';
 part 'login_state.dart';
 part 'login_bloc.freezed.dart';
@@ -25,24 +27,60 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<HiddenPassword>(_hidePassword);
     on<LoginSubmit>(_loginSubmit);
   }
-  void _loginSubmit(LoginSubmit event, Emitter<LoginState> emit) async {
+  // token
+  _getLoginLocalUser(GetUserData event, Emitter<LoginState> emit) async {
+    final getToken = loginUsesCase.getLocalToken();
+    final res = await loginUsesCase.getLogedUser(getToken.toString());
+  }
+
+  _loginSubmit(LoginSubmit event, Emitter<LoginState> emit) async {
     print("bloc aman");
 
     if (state.status.isValidated) {
       log('sdsd');
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-      final res = await loginUsesCase.loginUseCase(
-          state.email.value, state.password.value);
-      log(res.toString());
+      final loginResult = await loginUsesCase.loginUseCase(
+        state.email.value,
+        state.password.value,
+      );
 
-      res.fold(
-          (failure) =>
-              emit(state.copyWith(status: FormzStatus.submissionFailure)),
-          (user) =>
-              emit(state.copyWith(status: FormzStatus.submissionSuccess)));
+      log('bloc ${loginResult.toString()}');
+
+      await loginResult.fold(
+        (failure) async {
+          emit(state.copyWith(status: FormzStatus.submissionFailure));
+        },
+        (user) async {
+          emit(state.copyWith(status: FormzStatus.submissionSuccess));
+
+          if (user != null && user.accesToken != null) {
+            final userResult =
+                await loginUsesCase.getLogedUser(user.accesToken);
+            log(userResult.toString());
+
+            await userResult.fold(
+              (failure) async {
+                print('Error: $failure');
+              },
+              (user) async {
+                emit(state.copyWith(user: user));
+                log(state.user.toString());
+              },
+            );
+          } else {
+            // Handle the case where user or accessToken is null
+            print('Error: Invalid user or accessToken');
+          }
+        },
+      );
     }
   }
+
+  // void _getLogedUser(GetUserData event, Emitter<LoginState> emit) {
+  //   final token = event.userData;
+  //   emit(state.copyWith(user: s ))
+  // }
 
   void _emailChange(EmailChanged event, Emitter<LoginState> emit) {
     final email = Email.dirty(event.email);

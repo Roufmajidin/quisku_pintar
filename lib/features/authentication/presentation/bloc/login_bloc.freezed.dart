@@ -23,6 +23,7 @@ mixin _$LoginEvent {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$LoginEvent {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$LoginEvent {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$LoginEvent {
     required TResult Function(PasswordChanged value) passwordChange,
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$LoginEvent {
     TResult? Function(PasswordChanged value)? passwordChange,
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$LoginEvent {
     TResult Function(PasswordChanged value)? passwordChange,
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
   }) {
     return started();
   }
@@ -147,6 +154,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
   }) {
     return started?.call();
   }
@@ -159,6 +167,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +184,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(PasswordChanged value) passwordChange,
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
   }) {
     return started(this);
   }
@@ -187,6 +197,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(PasswordChanged value)? passwordChange,
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
   }) {
     return started?.call(this);
   }
@@ -199,6 +210,7 @@ class _$StartedImpl implements _Started {
     TResult Function(PasswordChanged value)? passwordChange,
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -281,6 +293,7 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
   }) {
     return emailChange(email);
   }
@@ -293,6 +306,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
   }) {
     return emailChange?.call(email);
   }
@@ -305,6 +319,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
     required TResult orElse(),
   }) {
     if (emailChange != null) {
@@ -321,6 +336,7 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(PasswordChanged value) passwordChange,
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
   }) {
     return emailChange(this);
   }
@@ -333,6 +349,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(PasswordChanged value)? passwordChange,
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
   }) {
     return emailChange?.call(this);
   }
@@ -345,6 +362,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(PasswordChanged value)? passwordChange,
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
     required TResult orElse(),
   }) {
     if (emailChange != null) {
@@ -434,6 +452,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
   }) {
     return passwordChange(password);
   }
@@ -446,6 +465,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
   }) {
     return passwordChange?.call(password);
   }
@@ -458,6 +478,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
     required TResult orElse(),
   }) {
     if (passwordChange != null) {
@@ -474,6 +495,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(PasswordChanged value) passwordChange,
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
   }) {
     return passwordChange(this);
   }
@@ -486,6 +508,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(PasswordChanged value)? passwordChange,
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
   }) {
     return passwordChange?.call(this);
   }
@@ -498,6 +521,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(PasswordChanged value)? passwordChange,
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
     required TResult orElse(),
   }) {
     if (passwordChange != null) {
@@ -559,6 +583,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
   }) {
     return submit();
   }
@@ -571,6 +596,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
   }) {
     return submit?.call();
   }
@@ -583,6 +609,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -599,6 +626,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     required TResult Function(PasswordChanged value) passwordChange,
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
   }) {
     return submit(this);
   }
@@ -611,6 +639,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult? Function(PasswordChanged value)? passwordChange,
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
   }) {
     return submit?.call(this);
   }
@@ -623,6 +652,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult Function(PasswordChanged value)? passwordChange,
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -679,6 +709,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
   }) {
     return hidePassword();
   }
@@ -691,6 +722,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
   }) {
     return hidePassword?.call();
   }
@@ -703,6 +735,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
     required TResult orElse(),
   }) {
     if (hidePassword != null) {
@@ -719,6 +752,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     required TResult Function(PasswordChanged value) passwordChange,
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
   }) {
     return hidePassword(this);
   }
@@ -731,6 +765,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult? Function(PasswordChanged value)? passwordChange,
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
   }) {
     return hidePassword?.call(this);
   }
@@ -743,6 +778,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult Function(PasswordChanged value)? passwordChange,
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
     required TResult orElse(),
   }) {
     if (hidePassword != null) {
@@ -757,30 +793,201 @@ abstract class HiddenPassword implements LoginEvent {
 }
 
 /// @nodoc
+abstract class _$$GetUserDataImplCopyWith<$Res> {
+  factory _$$GetUserDataImplCopyWith(
+          _$GetUserDataImpl value, $Res Function(_$GetUserDataImpl) then) =
+      __$$GetUserDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> userData});
+}
+
+/// @nodoc
+class __$$GetUserDataImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$GetUserDataImpl>
+    implements _$$GetUserDataImplCopyWith<$Res> {
+  __$$GetUserDataImplCopyWithImpl(
+      _$GetUserDataImpl _value, $Res Function(_$GetUserDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userData = null,
+  }) {
+    return _then(_$GetUserDataImpl(
+      null == userData
+          ? _value._userData
+          : userData // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetUserDataImpl implements GetUserData {
+  const _$GetUserDataImpl(final Map<String, dynamic> userData)
+      : _userData = userData;
+
+  final Map<String, dynamic> _userData;
+  @override
+  Map<String, dynamic> get userData {
+    if (_userData is EqualUnmodifiableMapView) return _userData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_userData);
+  }
+
+  @override
+  String toString() {
+    return 'LoginEvent.getUserData(userData: $userData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetUserDataImpl &&
+            const DeepCollectionEquality().equals(other._userData, _userData));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_userData));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetUserDataImplCopyWith<_$GetUserDataImpl> get copyWith =>
+      __$$GetUserDataImplCopyWithImpl<_$GetUserDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email) emailChange,
+    required TResult Function(String password) passwordChange,
+    required TResult Function() submit,
+    required TResult Function() hidePassword,
+    required TResult Function(Map<String, dynamic> userData) getUserData,
+  }) {
+    return getUserData(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email)? emailChange,
+    TResult? Function(String password)? passwordChange,
+    TResult? Function()? submit,
+    TResult? Function()? hidePassword,
+    TResult? Function(Map<String, dynamic> userData)? getUserData,
+  }) {
+    return getUserData?.call(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email)? emailChange,
+    TResult Function(String password)? passwordChange,
+    TResult Function()? submit,
+    TResult Function()? hidePassword,
+    TResult Function(Map<String, dynamic> userData)? getUserData,
+    required TResult orElse(),
+  }) {
+    if (getUserData != null) {
+      return getUserData(userData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(EmailChanged value) emailChange,
+    required TResult Function(PasswordChanged value) passwordChange,
+    required TResult Function(LoginSubmit value) submit,
+    required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
+  }) {
+    return getUserData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(EmailChanged value)? emailChange,
+    TResult? Function(PasswordChanged value)? passwordChange,
+    TResult? Function(LoginSubmit value)? submit,
+    TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
+  }) {
+    return getUserData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(EmailChanged value)? emailChange,
+    TResult Function(PasswordChanged value)? passwordChange,
+    TResult Function(LoginSubmit value)? submit,
+    TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
+    required TResult orElse(),
+  }) {
+    if (getUserData != null) {
+      return getUserData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetUserData implements LoginEvent {
+  const factory GetUserData(final Map<String, dynamic> userData) =
+      _$GetUserDataImpl;
+
+  Map<String, dynamic> get userData;
+  @JsonKey(ignore: true)
+  _$$GetUserDataImplCopyWith<_$GetUserDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$LoginState {
   FormzStatus get status => throw _privateConstructorUsedError;
   Email get email => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
   String get errorMessages => throw _privateConstructorUsedError;
   bool get hidePassword => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FormzStatus status, Email email,
-            Password password, String errorMessages, bool hidePassword)
+    required TResult Function(
+            FormzStatus status,
+            Email email,
+            Password password,
+            String errorMessages,
+            bool hidePassword,
+            User? user)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword)?
+            String errorMessages, bool hidePassword, User? user)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword)?
+            String errorMessages, bool hidePassword, User? user)?
         initial,
     required TResult orElse(),
   }) =>
@@ -818,7 +1025,8 @@ abstract class $LoginStateCopyWith<$Res> {
       Email email,
       Password password,
       String errorMessages,
-      bool hidePassword});
+      bool hidePassword,
+      User? user});
 }
 
 /// @nodoc
@@ -839,6 +1047,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? password = null,
     Object? errorMessages = null,
     Object? hidePassword = null,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -861,6 +1070,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.hidePassword
           : hidePassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ) as $Val);
   }
 }
@@ -878,7 +1091,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       Email email,
       Password password,
       String errorMessages,
-      bool hidePassword});
+      bool hidePassword,
+      User? user});
 }
 
 /// @nodoc
@@ -897,6 +1111,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? password = null,
     Object? errorMessages = null,
     Object? hidePassword = null,
+    Object? user = freezed,
   }) {
     return _then(_$InitialImpl(
       status: null == status
@@ -919,6 +1134,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.hidePassword
           : hidePassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User?,
     ));
   }
 }
@@ -931,7 +1150,8 @@ class _$InitialImpl implements _Initial {
       required this.email,
       required this.password,
       required this.errorMessages,
-      required this.hidePassword});
+      required this.hidePassword,
+      this.user});
 
   @override
   final FormzStatus status;
@@ -943,10 +1163,12 @@ class _$InitialImpl implements _Initial {
   final String errorMessages;
   @override
   final bool hidePassword;
+  @override
+  final User? user;
 
   @override
   String toString() {
-    return 'LoginState.initial(status: $status, email: $email, password: $password, errorMessages: $errorMessages, hidePassword: $hidePassword)';
+    return 'LoginState.initial(status: $status, email: $email, password: $password, errorMessages: $errorMessages, hidePassword: $hidePassword, user: $user)';
   }
 
   @override
@@ -961,12 +1183,13 @@ class _$InitialImpl implements _Initial {
             (identical(other.errorMessages, errorMessages) ||
                 other.errorMessages == errorMessages) &&
             (identical(other.hidePassword, hidePassword) ||
-                other.hidePassword == hidePassword));
+                other.hidePassword == hidePassword) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, email, password, errorMessages, hidePassword);
+  int get hashCode => Object.hash(runtimeType, status, email, password,
+      errorMessages, hidePassword, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -977,33 +1200,40 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FormzStatus status, Email email,
-            Password password, String errorMessages, bool hidePassword)
+    required TResult Function(
+            FormzStatus status,
+            Email email,
+            Password password,
+            String errorMessages,
+            bool hidePassword,
+            User? user)
         initial,
   }) {
-    return initial(status, email, password, errorMessages, hidePassword);
+    return initial(status, email, password, errorMessages, hidePassword, user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword)?
+            String errorMessages, bool hidePassword, User? user)?
         initial,
   }) {
-    return initial?.call(status, email, password, errorMessages, hidePassword);
+    return initial?.call(
+        status, email, password, errorMessages, hidePassword, user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword)?
+            String errorMessages, bool hidePassword, User? user)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(status, email, password, errorMessages, hidePassword);
+      return initial(
+          status, email, password, errorMessages, hidePassword, user);
     }
     return orElse();
   }
@@ -1043,7 +1273,8 @@ abstract class _Initial implements LoginState {
       required final Email email,
       required final Password password,
       required final String errorMessages,
-      required final bool hidePassword}) = _$InitialImpl;
+      required final bool hidePassword,
+      final User? user}) = _$InitialImpl;
 
   @override
   FormzStatus get status;
@@ -1055,6 +1286,8 @@ abstract class _Initial implements LoginState {
   String get errorMessages;
   @override
   bool get hidePassword;
+  @override
+  User? get user;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

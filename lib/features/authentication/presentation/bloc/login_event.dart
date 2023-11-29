@@ -7,4 +7,6 @@ class LoginEvent with _$LoginEvent {
   const factory LoginEvent.passwordChange(String password) = PasswordChanged;
   const factory LoginEvent.submit() = LoginSubmit;
   const factory LoginEvent.hidePassword() = HiddenPassword;
+  const factory LoginEvent.getUserData(Map<String, dynamic> userData) =
+      GetUserData;
 }
