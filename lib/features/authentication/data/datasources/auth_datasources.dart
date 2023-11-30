@@ -7,14 +7,13 @@ import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../../../core/error/utils/endpoints.dart';
-import '../models/user.dart';
+import '../../presentation/data/models/user.dart';
 
 abstract class AuthenticationDataS {}
 
 class AuthenticationDataSources implements AuthenticationDataS {
   final Dio dio = Dio();
-  final String apiUrl = Endpoints().baseUrl;
+  String apiUrl = 'http://192.168.0.118:8080/api/exam';
 
   Future<Either<Failure, TokenModels>> loginEmailPassword(
       String email, String password) async {
@@ -48,9 +47,11 @@ class AuthenticationDataSources implements AuthenticationDataS {
 
   Future<Either<Failure, User>> getUseLoginDataSources(String token) async {
     try {
+      String apiUrrl = 'http://192.168.0.118:8080/api/exam';
+
       final user = await http.get(
         Uri.parse(
-          '$apiUrl/user',
+          '$apiUrrl/user',
         ),
         headers: {
           'Authorization': 'Bearer $token',

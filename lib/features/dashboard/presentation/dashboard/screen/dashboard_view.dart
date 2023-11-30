@@ -193,7 +193,7 @@ class CustomAppBar extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         if (state.user == null) {
-          context.read<LoginBloc>().add(GetUserData());
+          context.read<LoginBloc>().add(const GetUserData());
           log('pada view ${state.user}');
           // return CircularProgressIndicator();
         }
