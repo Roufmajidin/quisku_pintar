@@ -13,7 +13,7 @@ abstract class AuthenticationDataS {}
 
 class AuthenticationDataSources implements AuthenticationDataS {
   final Dio dio = Dio();
-  String apiUrl = 'http://192.168.20.54:8080/api/exam';
+  String apiUrl = 'http://192.168.0.118:8080/api/exam';
 
   Future<Either<Failure, TokenModels>> loginEmailPassword(
       String email, String password) async {
@@ -47,25 +47,28 @@ class AuthenticationDataSources implements AuthenticationDataS {
 
   Future<Either<Failure, User>> getUseLoginDataSources(String token) async {
     try {
+      String apiUrrl = 'http://192.168.0.118:8080/api/exam';
+
       final user = await http.get(
         Uri.parse(
-          '$apiUrl/user',
+          '$apiUrrl/user',
         ),
         headers: {
           'Authorization': 'Bearer $token',
         },
       );
-      if (user.statusCode == 200) {
-        final Map<String, dynamic> userData = jsonDecode(user.body);
-        final id = userData['id'];
-        final name = userData['name'];
-        final email = userData['email'];
-        final userJson = User(id: id, name: name, email: email);
-        log('user data : $userJson');
-        return right(userJson);
-      } else {
-        return const Left(Failure.parsingFailure());
-      }
+      log('session user ${user.statusCode}');
+      // if (user.statusCode == 200) {
+      final Map<String, dynamic> userData = jsonDecode(user.body);
+      final id = userData['id'];
+      final name = userData['name'];
+      final email = userData['email'];
+      final userJson = User(id: id, name: name, email: email);
+      log('user data : $userJson');
+      return right(userJson);
+      // } else {
+      // return const Left(Failure.parsingFailure());
+      // }
     } catch (e) {
       return const Left(Failure.parsingFailure());
     }

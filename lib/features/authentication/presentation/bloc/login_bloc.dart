@@ -17,20 +17,32 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginUseCase loginUsesCase;
   LoginBloc(this.loginUsesCase)
       : super(const LoginState.initial(
-            status: FormzStatus.pure,
-            email: Email.pure(),
-            password: Password.pure(),
-            errorMessages: '',
-            hidePassword: true)) {
+          status: FormzStatus.pure,
+          email: Email.pure(),
+          password: Password.pure(),
+          errorMessages: '',
+          hidePassword: true,
+        )) {
     on<EmailChanged>(_emailChange);
     on<PasswordChanged>(_passwordChange);
     on<HiddenPassword>(_hidePassword);
     on<LoginSubmit>(_loginSubmit);
+    on<GetUserData>(_getLoginLocalUser);
   }
   // token
   _getLoginLocalUser(GetUserData event, Emitter<LoginState> emit) async {
-    final getToken = loginUsesCase.getLocalToken();
-    final res = await loginUsesCase.getLogedUser(getToken.toString());
+    final getToken = await loginUsesCase.getLocalToken();
+    final res = await loginUsesCase.getLogedUser(getToken);
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    res.fold((l) {
+      emit(state.copyWith(status: FormzStatus.submissionFailure));
+    }, (r) {
+      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+
+      emit(state.copyWith(user: r));
+
+      log('emit ${state.user}');
+    });
   }
 
   _loginSubmit(LoginSubmit event, Emitter<LoginState> emit) async {

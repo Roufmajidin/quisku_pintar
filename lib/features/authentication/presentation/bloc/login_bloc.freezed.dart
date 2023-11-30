@@ -23,7 +23,7 @@ mixin _$LoginEvent {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +33,7 @@ mixin _$LoginEvent {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$LoginEvent {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +141,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) {
     return started();
   }
@@ -154,7 +154,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) {
     return started?.call();
   }
@@ -167,7 +167,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -293,7 +293,7 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) {
     return emailChange(email);
   }
@@ -306,7 +306,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) {
     return emailChange?.call(email);
   }
@@ -319,7 +319,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) {
     if (emailChange != null) {
@@ -452,7 +452,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) {
     return passwordChange(password);
   }
@@ -465,7 +465,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) {
     return passwordChange?.call(password);
   }
@@ -478,7 +478,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) {
     if (passwordChange != null) {
@@ -583,7 +583,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) {
     return submit();
   }
@@ -596,7 +596,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) {
     return submit?.call();
   }
@@ -609,7 +609,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -709,7 +709,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) {
     return hidePassword();
   }
@@ -722,7 +722,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) {
     return hidePassword?.call();
   }
@@ -735,7 +735,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) {
     if (hidePassword != null) {
@@ -797,8 +797,6 @@ abstract class _$$GetUserDataImplCopyWith<$Res> {
   factory _$$GetUserDataImplCopyWith(
           _$GetUserDataImpl value, $Res Function(_$GetUserDataImpl) then) =
       __$$GetUserDataImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Map<String, dynamic> userData});
 }
 
 /// @nodoc
@@ -808,57 +806,26 @@ class __$$GetUserDataImplCopyWithImpl<$Res>
   __$$GetUserDataImplCopyWithImpl(
       _$GetUserDataImpl _value, $Res Function(_$GetUserDataImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userData = null,
-  }) {
-    return _then(_$GetUserDataImpl(
-      null == userData
-          ? _value._userData
-          : userData // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$GetUserDataImpl implements GetUserData {
-  const _$GetUserDataImpl(final Map<String, dynamic> userData)
-      : _userData = userData;
-
-  final Map<String, dynamic> _userData;
-  @override
-  Map<String, dynamic> get userData {
-    if (_userData is EqualUnmodifiableMapView) return _userData;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_userData);
-  }
+  const _$GetUserDataImpl();
 
   @override
   String toString() {
-    return 'LoginEvent.getUserData(userData: $userData)';
+    return 'LoginEvent.getUserData()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetUserDataImpl &&
-            const DeepCollectionEquality().equals(other._userData, _userData));
+        (other.runtimeType == runtimeType && other is _$GetUserDataImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_userData));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetUserDataImplCopyWith<_$GetUserDataImpl> get copyWith =>
-      __$$GetUserDataImplCopyWithImpl<_$GetUserDataImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -868,9 +835,9 @@ class _$GetUserDataImpl implements GetUserData {
     required TResult Function(String password) passwordChange,
     required TResult Function() submit,
     required TResult Function() hidePassword,
-    required TResult Function(Map<String, dynamic> userData) getUserData,
+    required TResult Function() getUserData,
   }) {
-    return getUserData(userData);
+    return getUserData();
   }
 
   @override
@@ -881,9 +848,9 @@ class _$GetUserDataImpl implements GetUserData {
     TResult? Function(String password)? passwordChange,
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
-    TResult? Function(Map<String, dynamic> userData)? getUserData,
+    TResult? Function()? getUserData,
   }) {
-    return getUserData?.call(userData);
+    return getUserData?.call();
   }
 
   @override
@@ -894,11 +861,11 @@ class _$GetUserDataImpl implements GetUserData {
     TResult Function(String password)? passwordChange,
     TResult Function()? submit,
     TResult Function()? hidePassword,
-    TResult Function(Map<String, dynamic> userData)? getUserData,
+    TResult Function()? getUserData,
     required TResult orElse(),
   }) {
     if (getUserData != null) {
-      return getUserData(userData);
+      return getUserData();
     }
     return orElse();
   }
@@ -948,13 +915,7 @@ class _$GetUserDataImpl implements GetUserData {
 }
 
 abstract class GetUserData implements LoginEvent {
-  const factory GetUserData(final Map<String, dynamic> userData) =
-      _$GetUserDataImpl;
-
-  Map<String, dynamic> get userData;
-  @JsonKey(ignore: true)
-  _$$GetUserDataImplCopyWith<_$GetUserDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory GetUserData() = _$GetUserDataImpl;
 }
 
 /// @nodoc
@@ -1027,6 +988,8 @@ abstract class $LoginStateCopyWith<$Res> {
       String errorMessages,
       bool hidePassword,
       User? user});
+
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -1076,6 +1039,18 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
               as User?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -1093,6 +1068,9 @@ abstract class _$$InitialImplCopyWith<$Res>
       String errorMessages,
       bool hidePassword,
       User? user});
+
+  @override
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -1184,12 +1162,12 @@ class _$InitialImpl implements _Initial {
                 other.errorMessages == errorMessages) &&
             (identical(other.hidePassword, hidePassword) ||
                 other.hidePassword == hidePassword) &&
-            const DeepCollectionEquality().equals(other.user, user));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, email, password,
-      errorMessages, hidePassword, const DeepCollectionEquality().hash(user));
+  int get hashCode => Object.hash(
+      runtimeType, status, email, password, errorMessages, hidePassword, user);
 
   @JsonKey(ignore: true)
   @override

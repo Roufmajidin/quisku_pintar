@@ -31,13 +31,13 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<void> checkUserIsLogin() async {
     final loginStatus = await loginUseCase.getLocalToken();
-    final getUser = await loginUseCase.getLogedUser(loginStatus);
     await Future.delayed(const Duration(seconds: 4));
     // ignore: unnecessary_null_comparison
     if (loginStatus != null) {
+      // loginUseCase.getLogedUser(loginStatus);
+
       emit(state.copyWith(authenticated: true));
       // kalo != null
-      getUser;
     } else {
       emit(state.copyWith(authenticated: false));
     }

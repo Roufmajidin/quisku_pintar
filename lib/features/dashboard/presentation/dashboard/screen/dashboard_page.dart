@@ -1,6 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quisku_pintar/features/authentication/presentation/bloc/login_bloc.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/screen/dashboard_view.dart';
+
+import '../../../../authentication/presentation/data/datasources/auth_datasources.dart';
+import '../../../../authentication/presentation/data/repositories/auth_repositroy_impl.dart';
+import '../../../../authentication/presentation/data/usecases/login_usecase.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
@@ -8,6 +14,13 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DashboardView();
+    final dataSources = AuthenticationDataSources();
+
+    final authRepository = AuthRepositoryImpl(authDataSources: dataSources);
+    final loginUseCase = LoginUseCase(authRepository);
+    return BlocProvider(
+      create: (context) => LoginBloc(loginUseCase),
+      child: DashboardView(),
+    );
   }
 }
