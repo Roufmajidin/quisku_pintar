@@ -8,7 +8,7 @@ import 'package:quisku_pintar/features/dashboard/data/repositories/pelajaran_rep
 class GetMapelUsecase {
   final PelajaranRepositoryImpl pelRe;
   GetMapelUsecase({required this.pelRe});
-  Future<Either<Failure, Pelajaran>> getMapel() async {
+  Future<Either<Failure, List<Pelajaran>>> getMapel() async {
     log('on usecase => impl PelajaranRepositoryImpl()');
     return await pelRe.getMapel();
   }

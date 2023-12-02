@@ -11,7 +11,7 @@ class PelajaranRepositoryImpl implements PelajaranRepository {
   PelajaranRepositoryImpl({required this.pelajaranDataSources});
 
   @override
-  Future<Either<Failure, Pelajaran>> getMapel() async {
+  Future<Either<Failure, List<Pelajaran>>> getMapel() async {
     // TODO: implement getMapel
     log('on PelajaranRepositoryImpl to getMapelDataSources');
     try {

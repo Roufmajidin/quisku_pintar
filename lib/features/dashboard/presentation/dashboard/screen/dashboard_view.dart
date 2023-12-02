@@ -8,11 +8,13 @@ import 'package:formz/formz.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/widgets/container_artikel.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/widgets/fitur.dart';
 
 import '../../../../authentication/presentation/bloc/login_bloc.dart';
+import '../bloc/dashboard_bloc.dart';
 import '../pages/detail_page.dart';
 import '../widgets/container_pelatihan.dart';
 
@@ -107,6 +109,12 @@ class _DashboardViewState extends State<DashboardView> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    context.read<DashboardBloc>().add(const DashboardEvent.getMapel());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -130,7 +138,11 @@ class _DashboardViewState extends State<DashboardView> {
                         style: AppTextStyle.body3.setSemiBold(),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context
+                              .read<DashboardBloc>()
+                              .add(const DashboardEvent.getMapel());
+                        },
                         child: Row(
                           children: [
                             Text(
@@ -148,28 +160,43 @@ class _DashboardViewState extends State<DashboardView> {
                   ),
                 ),
                 SizedBox(
-                  height: 300,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: dataPelatihan.length,
-                    itemBuilder: (context, index) {
-                      final pelatihan = dataPelatihan[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 16),
-                        child: GestureDetector(
-                          onTap: () {
-                            // _navigateToDetail(pelatihan['title']!);
-                          },
-                          child: ContainerPelatihan(
-                            image: pelatihan['image']!,
-                            title: pelatihan['title']!,
-                            mentor: pelatihan['mentor']!,
-                            sks: pelatihan['sks']!,
-                            video: pelatihan['video']!,
-                            rating: pelatihan['rating']!,
-                          ),
-                        ),
+                  height: 220,
+                  child: BlocBuilder<DashboardBloc, DashboardState>(
+                    builder: (context, state) {
+                      if (state.fetchMapelStatus.isLoading) {
+                        context
+                            .read<DashboardBloc>()
+                            .add(const DashboardEvent.getMapel());
+                        log('ok');
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      if (state.fetchMapelStatus.isSuccess) {
+                        log('sukses');
+                      }
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.fetchMapel.length,
+                        itemBuilder: (context, index) {
+                          final data = state.fetchMapel[index];
+                          final pelatihan = dataPelatihan[index];
+                          for (var element in state.fetchMapel) {
+                            log(element.guru);
+                          }
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: GestureDetector(
+                              onTap: () {
+                                _navigateToDetail(pelatihan['title']!);
+                              },
+                              child: ContainerPelatihan(
+                                image: pelatihan['image']!,
+                                guru: data.guru,
+                                mapel: data.mapel,
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),

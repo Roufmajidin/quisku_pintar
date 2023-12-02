@@ -10,22 +10,23 @@ import 'package:http/http.dart' as http;
 
 abstract class PelajaranDataSources {}
 
-class PelDatSources extends PelajaranDataSources {
+class PelDatSources implements PelajaranDataSources {
   final Dio dio = Dio();
   final String apiUrl = Endpoints().baseUrl;
 
-  Future<Either<Failure, Pelajaran>> getMapel() async {
+  Future<Either<Failure, List<Pelajaran>>> getMapel() async {
     log('final : on GetMapel in PelajaranDataSources');
     try {
       final res = await http.get(Uri.parse('$apiUrl/mapel'));
       if (res.statusCode == 200) {
-        final Map<String, dynamic> data = jsonDecode(res.body);
-        final id = data['id'];
-        final guru = data['guru'];
-        final mapel = data['mapel'];
+        final List<dynamic> jsonDataList = jsonDecode(res.body);
 
-        final hasData = Pelajaran.fromJson(data);
-        return right(hasData);
+        final List<Pelajaran> pelajaranList = jsonDataList
+            .map((jsonData) => Pelajaran.fromJson(jsonData))
+            .toList();
+
+        log('finals : ${pelajaranList}');
+        return right(pelajaranList);
       }
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {
