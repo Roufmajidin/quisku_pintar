@@ -24,6 +24,7 @@ mixin _$LoginEvent {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$LoginEvent {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$LoginEvent {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$LoginEvent {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$LoginEvent {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$LoginEvent {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) {
     return started();
   }
@@ -155,6 +162,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) {
     return started?.call();
   }
@@ -168,6 +176,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -185,6 +194,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) {
     return started(this);
   }
@@ -198,6 +208,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) {
     return started?.call(this);
   }
@@ -211,6 +222,7 @@ class _$StartedImpl implements _Started {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -294,6 +306,7 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) {
     return emailChange(email);
   }
@@ -307,6 +320,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) {
     return emailChange?.call(email);
   }
@@ -320,6 +334,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (emailChange != null) {
@@ -337,6 +352,7 @@ class _$EmailChangedImpl implements EmailChanged {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) {
     return emailChange(this);
   }
@@ -350,6 +366,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) {
     return emailChange?.call(this);
   }
@@ -363,6 +380,7 @@ class _$EmailChangedImpl implements EmailChanged {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (emailChange != null) {
@@ -453,6 +471,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) {
     return passwordChange(password);
   }
@@ -466,6 +485,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) {
     return passwordChange?.call(password);
   }
@@ -479,6 +499,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (passwordChange != null) {
@@ -496,6 +517,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) {
     return passwordChange(this);
   }
@@ -509,6 +531,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) {
     return passwordChange?.call(this);
   }
@@ -522,6 +545,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (passwordChange != null) {
@@ -584,6 +608,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) {
     return submit();
   }
@@ -597,6 +622,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) {
     return submit?.call();
   }
@@ -610,6 +636,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -627,6 +654,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) {
     return submit(this);
   }
@@ -640,6 +668,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) {
     return submit?.call(this);
   }
@@ -653,6 +682,7 @@ class _$LoginSubmitImpl implements LoginSubmit {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -710,6 +740,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) {
     return hidePassword();
   }
@@ -723,6 +754,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) {
     return hidePassword?.call();
   }
@@ -736,6 +768,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (hidePassword != null) {
@@ -753,6 +786,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) {
     return hidePassword(this);
   }
@@ -766,6 +800,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) {
     return hidePassword?.call(this);
   }
@@ -779,6 +814,7 @@ class _$HiddenPasswordImpl implements HiddenPassword {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (hidePassword != null) {
@@ -836,6 +872,7 @@ class _$GetUserDataImpl implements GetUserData {
     required TResult Function() submit,
     required TResult Function() hidePassword,
     required TResult Function() getUserData,
+    required TResult Function() logout,
   }) {
     return getUserData();
   }
@@ -849,6 +886,7 @@ class _$GetUserDataImpl implements GetUserData {
     TResult? Function()? submit,
     TResult? Function()? hidePassword,
     TResult? Function()? getUserData,
+    TResult? Function()? logout,
   }) {
     return getUserData?.call();
   }
@@ -862,6 +900,7 @@ class _$GetUserDataImpl implements GetUserData {
     TResult Function()? submit,
     TResult Function()? hidePassword,
     TResult Function()? getUserData,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (getUserData != null) {
@@ -879,6 +918,7 @@ class _$GetUserDataImpl implements GetUserData {
     required TResult Function(LoginSubmit value) submit,
     required TResult Function(HiddenPassword value) hidePassword,
     required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
   }) {
     return getUserData(this);
   }
@@ -892,6 +932,7 @@ class _$GetUserDataImpl implements GetUserData {
     TResult? Function(LoginSubmit value)? submit,
     TResult? Function(HiddenPassword value)? hidePassword,
     TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
   }) {
     return getUserData?.call(this);
   }
@@ -905,6 +946,7 @@ class _$GetUserDataImpl implements GetUserData {
     TResult Function(LoginSubmit value)? submit,
     TResult Function(HiddenPassword value)? hidePassword,
     TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (getUserData != null) {
@@ -916,6 +958,138 @@ class _$GetUserDataImpl implements GetUserData {
 
 abstract class GetUserData implements LoginEvent {
   const factory GetUserData() = _$GetUserDataImpl;
+}
+
+/// @nodoc
+abstract class _$$LogoutImplCopyWith<$Res> {
+  factory _$$LogoutImplCopyWith(
+          _$LogoutImpl value, $Res Function(_$LogoutImpl) then) =
+      __$$LogoutImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogoutImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$LogoutImpl>
+    implements _$$LogoutImplCopyWith<$Res> {
+  __$$LogoutImplCopyWithImpl(
+      _$LogoutImpl _value, $Res Function(_$LogoutImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogoutImpl implements Logout {
+  const _$LogoutImpl();
+
+  @override
+  String toString() {
+    return 'LoginEvent.logout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogoutImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email) emailChange,
+    required TResult Function(String password) passwordChange,
+    required TResult Function() submit,
+    required TResult Function() hidePassword,
+    required TResult Function() getUserData,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email)? emailChange,
+    TResult? Function(String password)? passwordChange,
+    TResult? Function()? submit,
+    TResult? Function()? hidePassword,
+    TResult? Function()? getUserData,
+    TResult? Function()? logout,
+  }) {
+    return logout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email)? emailChange,
+    TResult Function(String password)? passwordChange,
+    TResult Function()? submit,
+    TResult Function()? hidePassword,
+    TResult Function()? getUserData,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(EmailChanged value) emailChange,
+    required TResult Function(PasswordChanged value) passwordChange,
+    required TResult Function(LoginSubmit value) submit,
+    required TResult Function(HiddenPassword value) hidePassword,
+    required TResult Function(GetUserData value) getUserData,
+    required TResult Function(Logout value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(EmailChanged value)? emailChange,
+    TResult? Function(PasswordChanged value)? passwordChange,
+    TResult? Function(LoginSubmit value)? submit,
+    TResult? Function(HiddenPassword value)? hidePassword,
+    TResult? Function(GetUserData value)? getUserData,
+    TResult? Function(Logout value)? logout,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(EmailChanged value)? emailChange,
+    TResult Function(PasswordChanged value)? passwordChange,
+    TResult Function(LoginSubmit value)? submit,
+    TResult Function(HiddenPassword value)? hidePassword,
+    TResult Function(GetUserData value)? getUserData,
+    TResult Function(Logout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Logout implements LoginEvent {
+  const factory Logout() = _$LogoutImpl;
 }
 
 /// @nodoc

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
@@ -21,16 +23,18 @@ class SplashView extends StatelessWidget {
     return Scaffold(
         body: BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
-        if (state.authenticated == true) {
-          context.router.pushAndPopUntil(
-            const HomeRoute(),
-            predicate: (_) => true,
-          );
-        } else
-          context.router.pushAndPopUntil(
-            const LoginRoute(),
-            predicate: (_) => false,
-          );
+        log(' state view ${state.authenticated}');
+        if (state.authenticated == false) {
+          //   context.router.pushAndPopUntil(
+          //     const LoginRoute(),
+          //     predicate: (_) => false,
+          //   );
+          // } else {
+          //   context.router.pushAndPopUntil(
+          //     const HomeRoute(),
+          //     predicate: (_) => true,
+          //   );
+        }
       },
       child: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -4,6 +4,7 @@ part of 'dashboard_bloc.dart';
 class DashboardState with _$DashboardState {
   const factory DashboardState.initial({
     @Default(<Pelajaran>[]) List<Pelajaran> fetchMapel,
+    @Default(<Ujian>[]) List<Ujian> fetchUjian,
     @Default(FetchStatus.initial) FetchStatus fetchMapelStatus,
   }) = _Initial;
 }

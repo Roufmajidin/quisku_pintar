@@ -29,76 +29,7 @@ class DashboardView extends StatefulWidget {
 class _DashboardViewState extends State<DashboardView> {
   final CarouselController _carouselController = CarouselController();
   int _currentIndex = 0;
-  List<Map<String, String>> dataArtikel = [
-    {
-      'image': Assets.images.artikel.path.toString(),
-      'day': '11 Oktober 2022, 15.30 WIB',
-      'title': 'Panduan Desain UI/UX yang Efisien di Figma',
-      'description': 'Sekarang buat website cukup hitungan menit kam...'
-    },
-    {
-      'image': Assets.images.artikel.path.toString(),
-      'day': '11 Oktober 2022, 15.30 WIB',
-      'title': 'Panduan Desain UI/UX yang Efisien di Figma',
-      'description': 'Sekarang buat website cukup hitungan menit kam...'
-    },
-    {
-      'image': Assets.images.artikel.path.toString(),
-      'day': '11 Oktober 2022, 15.30 WIB',
-      'title': 'Panduan Desain UI/UX yang Efisien di Figma',
-      'description': 'Sekarang buat website cukup hitungan menit kam...'
-    },
-  ];
-  List<Map<String, String>> dataPelatihan = [
-    {
-      'image': Assets.images.lp1.path.toString(),
-      'title': 'Keterampilan\nKomunikasi',
-      'mentor': 'Neneng Rohaye S.Kom.',
-      'sks': '3 SKS',
-      'video': '14 Video',
-      'rating': '4.0',
-    },
-    {
-      'image': Assets.images.lp2.path.toString(),
-      'title': 'Project Management',
-      'mentor': 'Neneng Rohaye S.Kom.',
-      'sks': '3 SKS',
-      'video': '14 Video',
-      'rating': '4.0',
-    },
-    {
-      'image': Assets.images.lp3.path.toString(),
-      'title': 'UI/UX Designer\nTingkat Lanjut',
-      'mentor': 'Neneng Rohaye S.Kom.',
-      'sks': '3 SKS',
-      'video': '14 Video',
-      'rating': '4.0',
-    },
-    {
-      'image': Assets.images.lp4.path.toString(),
-      'title': 'AI & Data Science\nDalam industri',
-      'mentor': 'Neneng Rohaye S.Kom.',
-      'sks': '3 SKS',
-      'video': '14 Video',
-      'rating': '4.0',
-    },
-    {
-      'image': Assets.images.lp5.path.toString(),
-      'title': 'CyberSecurity & Network',
-      'mentor': 'Neneng Rohaye S.Kom.',
-      'sks': '3 SKS',
-      'video': '14 Video',
-      'rating': '4.0',
-    },
-    {
-      'image': Assets.images.lp6.path.toString(),
-      'title': 'VR & Game',
-      'mentor': 'Neneng Rohaye S.Kom.',
-      'sks': '3 SKS',
-      'video': '14 Video',
-      'rating': '4.0',
-    },
-  ];
+
   void _navigateToDetail(String title) {
     Navigator.push(
       context,
@@ -112,6 +43,9 @@ class _DashboardViewState extends State<DashboardView> {
   void initState() {
     super.initState();
     context.read<DashboardBloc>().add(const DashboardEvent.getMapel());
+
+    context.read<LoginBloc>().add(const GetUserData());
+    //   log('pada view ${state.user}');
   }
 
   @override
@@ -134,7 +68,7 @@ class _DashboardViewState extends State<DashboardView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Ujian ',
+                        'Mapel ',
                         style: AppTextStyle.body3.setSemiBold(),
                       ),
                       GestureDetector(
@@ -179,7 +113,6 @@ class _DashboardViewState extends State<DashboardView> {
                         itemCount: state.fetchMapel.length,
                         itemBuilder: (context, index) {
                           final data = state.fetchMapel[index];
-                          final pelatihan = dataPelatihan[index];
                           for (var element in state.fetchMapel) {
                             log(element.guru);
                           }
@@ -187,10 +120,10 @@ class _DashboardViewState extends State<DashboardView> {
                             padding: const EdgeInsets.only(left: 16),
                             child: GestureDetector(
                               onTap: () {
-                                _navigateToDetail(pelatihan['title']!);
+                                _navigateToDetail('detail Mapel');
                               },
                               child: ContainerPelatihan(
-                                image: pelatihan['image']!,
+                                image: data.images,
                                 guru: data.guru,
                                 mapel: data.mapel,
                               ),
@@ -201,6 +134,7 @@ class _DashboardViewState extends State<DashboardView> {
                     },
                   ),
                 ),
+                TerakhirMengerjakan()
               ],
             ),
           ],
@@ -219,11 +153,10 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
-        if (state.user == null) {
-          context.read<LoginBloc>().add(const GetUserData());
-          log('pada view ${state.user}');
-          // return CircularProgressIndicator();
-        }
+        // if (state.user == null) {
+        //
+        //   // return CircularProgressIndicator();
+        // }
         return Stack(
           children: [
             Container(
@@ -278,9 +211,25 @@ class CustomAppBar extends StatelessWidget {
                         ),
                         GestureDetector(
                             onTap: () {
-                              context.router.push(const NotificationRoute());
+                              context
+                                  .read<LoginBloc>()
+                                  .add(const LoginEvent.logout());
+                              // context.router.push(const NotificationRoute());
+                              if (state.status ==
+                                  FormzStatus.submissionSuccess) {
+                                context.router.pushAndPopUntil(
+                                  LoginRoute(),
+                                  predicate: (route) => false,
+                                );
+                              }
                             },
-                            child: Assets.icons.notification.svg(width: 30)),
+                            child: state.status ==
+                                    FormzStatus.submissionInProgress
+                                ? SizedBox(
+                                    height: 30,
+                                    child: const CircularProgressIndicator(),
+                                  )
+                                : Assets.icons.notification.svg(width: 30)),
                       ],
                     ),
                   ],
@@ -323,8 +272,8 @@ class FiturWidget extends StatelessWidget {
   }
 }
 
-class WidgetOne extends StatelessWidget {
-  const WidgetOne({
+class TerakhirMengerjakan extends StatelessWidget {
+  const TerakhirMengerjakan({
     super.key,
   });
 

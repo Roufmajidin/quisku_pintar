@@ -23,6 +23,7 @@ mixin _$Pelajaran {
   int? get id => throw _privateConstructorUsedError;
   String get guru => throw _privateConstructorUsedError;
   String get mapel => throw _privateConstructorUsedError;
+  String get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $PelajaranCopyWith<$Res> {
   factory $PelajaranCopyWith(Pelajaran value, $Res Function(Pelajaran) then) =
       _$PelajaranCopyWithImpl<$Res, Pelajaran>;
   @useResult
-  $Res call({int? id, String guru, String mapel});
+  $Res call({int? id, String guru, String mapel, String images});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$PelajaranCopyWithImpl<$Res, $Val extends Pelajaran>
     Object? id = freezed,
     Object? guru = null,
     Object? mapel = null,
+    Object? images = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -68,6 +70,10 @@ class _$PelajaranCopyWithImpl<$Res, $Val extends Pelajaran>
           ? _value.mapel
           : mapel // ignore: cast_nullable_to_non_nullable
               as String,
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -80,7 +86,7 @@ abstract class _$$PelajaranImplCopyWith<$Res>
       __$$PelajaranImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String guru, String mapel});
+  $Res call({int? id, String guru, String mapel, String images});
 }
 
 /// @nodoc
@@ -97,6 +103,7 @@ class __$$PelajaranImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? guru = null,
     Object? mapel = null,
+    Object? images = null,
   }) {
     return _then(_$PelajaranImpl(
       id: freezed == id
@@ -111,6 +118,10 @@ class __$$PelajaranImplCopyWithImpl<$Res>
           ? _value.mapel
           : mapel // ignore: cast_nullable_to_non_nullable
               as String,
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,7 +129,8 @@ class __$$PelajaranImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PelajaranImpl implements _Pelajaran {
-  _$PelajaranImpl({this.id, required this.guru, required this.mapel});
+  _$PelajaranImpl(
+      {this.id, required this.guru, required this.mapel, required this.images});
 
   factory _$PelajaranImpl.fromJson(Map<String, dynamic> json) =>
       _$$PelajaranImplFromJson(json);
@@ -129,10 +141,12 @@ class _$PelajaranImpl implements _Pelajaran {
   final String guru;
   @override
   final String mapel;
+  @override
+  final String images;
 
   @override
   String toString() {
-    return 'Pelajaran(id: $id, guru: $guru, mapel: $mapel)';
+    return 'Pelajaran(id: $id, guru: $guru, mapel: $mapel, images: $images)';
   }
 
   @override
@@ -142,12 +156,13 @@ class _$PelajaranImpl implements _Pelajaran {
             other is _$PelajaranImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.guru, guru) || other.guru == guru) &&
-            (identical(other.mapel, mapel) || other.mapel == mapel));
+            (identical(other.mapel, mapel) || other.mapel == mapel) &&
+            (identical(other.images, images) || other.images == images));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, guru, mapel);
+  int get hashCode => Object.hash(runtimeType, id, guru, mapel, images);
 
   @JsonKey(ignore: true)
   @override
@@ -167,7 +182,8 @@ abstract class _Pelajaran implements Pelajaran {
   factory _Pelajaran(
       {final int? id,
       required final String guru,
-      required final String mapel}) = _$PelajaranImpl;
+      required final String mapel,
+      required final String images}) = _$PelajaranImpl;
 
   factory _Pelajaran.fromJson(Map<String, dynamic> json) =
       _$PelajaranImpl.fromJson;
@@ -178,6 +194,8 @@ abstract class _Pelajaran implements Pelajaran {
   String get guru;
   @override
   String get mapel;
+  @override
+  String get images;
   @override
   @JsonKey(ignore: true)
   _$$PelajaranImplCopyWith<_$PelajaranImpl> get copyWith =>

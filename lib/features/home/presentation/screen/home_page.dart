@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:quisku_pintar/features/acara_unik/presentation/acara_unik/screen/ujia_page.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/screen/dashboard_page.dart';
 
 @RoutePage()
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
           ),
           NavigationDestination(
             icon: Assets.icons.pelatihan.svg(),
-            label: 'Pelatihan-Ku',
+            label: 'Ujian',
             selectedIcon: Assets.icons.pelatihan.svg(
               // ignore: deprecated_member_use_from_same_package
               color: Colors.blue,
@@ -59,13 +60,13 @@ class _HomePageState extends State<HomePage> {
           ),
           NavigationDestination(
             icon: Assets.icons.penugasanSvg.svg(),
-            label: 'Penugasan',
+            label: 'Riwayat Ujian',
             // ignore: deprecated_member_use_from_same_package
             selectedIcon: Assets.icons.penugasanSvg.svg(color: Colors.blue),
           ),
           NavigationDestination(
             icon: Assets.icons.akun.svg(),
-            label: 'Akun',
+            label: 'Profile',
             // ignore: deprecated_member_use_from_same_package
             selectedIcon: Assets.icons.akun.svg(color: Colors.blue),
           ),
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: <Widget>[
         const DashboardPage(),
-        const SizedBox(),
+        const UjianPage(),
         const SizedBox(),
         Container(
           color: AppColors.neutral.ne05,

@@ -22,7 +22,7 @@ class SplashPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => SplashCubit(loginUseCase)..init(),
+          create: (context) => SplashCubit(loginUseCase, context)..init(),
         ),
         BlocProvider(
           create: (context) => LoginBloc(loginUseCase),

@@ -28,8 +28,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<HiddenPassword>(_hidePassword);
     on<LoginSubmit>(_loginSubmit);
     on<GetUserData>(_getLoginLocalUser);
+    on<Logout>(_logout);
   }
   // token
+  _logout(Logout event, Emitter<LoginState> emit) async {
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    final res = await loginUsesCase.logout();
+    emit(state.copyWith(status: FormzStatus.submissionSuccess));
+  }
+
   _getLoginLocalUser(GetUserData event, Emitter<LoginState> emit) async {
     final getToken = await loginUsesCase.getLocalToken();
     final res = await loginUsesCase.getLogedUser(getToken);
@@ -39,7 +46,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }, (r) {
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
 
-      emit(state.copyWith(user: r));
+      return emit(state.copyWith(user: r));
 
       log('emit ${state.user}');
     });

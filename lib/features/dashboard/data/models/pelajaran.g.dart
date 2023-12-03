@@ -11,6 +11,7 @@ _$PelajaranImpl _$$PelajaranImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       guru: json['guru'] as String,
       mapel: json['mapel'] as String,
+      images: json['images'] as String,
     );
 
 Map<String, dynamic> _$$PelajaranImplToJson(_$PelajaranImpl instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$PelajaranImplToJson(_$PelajaranImpl instance) =>
       'id': instance.id,
       'guru': instance.guru,
       'mapel': instance.mapel,
+      'images': instance.images,
     };

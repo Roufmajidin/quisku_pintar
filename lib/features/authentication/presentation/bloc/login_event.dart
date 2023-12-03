@@ -8,4 +8,5 @@ class LoginEvent with _$LoginEvent {
   const factory LoginEvent.submit() = LoginSubmit;
   const factory LoginEvent.hidePassword() = HiddenPassword;
   const factory LoginEvent.getUserData() = GetUserData;
+  const factory LoginEvent.logout() = Logout;
 }

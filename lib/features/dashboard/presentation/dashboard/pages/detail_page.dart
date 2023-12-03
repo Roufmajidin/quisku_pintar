@@ -4,6 +4,8 @@ import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
+import '../widgets/next_button.dart';
+
 class DetailPelatihanView extends StatelessWidget {
   final String title;
 
@@ -67,7 +69,7 @@ class DetailPelatihanView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Detail Pelatihan',
+          'Detail Ujian',
           style: AppTextStyle.body3.setSemiBold(),
         ),
       ),
@@ -107,7 +109,7 @@ class DetailPelatihanView extends StatelessWidget {
                                 style: AppTextStyle.body3.setSemiBold(),
                               ),
                               Text(
-                                'Mentor',
+                                'Guru',
                                 style: AppTextStyle.body4
                                     .setRegular()
                                     .copyWith(color: AppColors.neutral.ne10),
@@ -120,14 +122,14 @@ class DetailPelatihanView extends StatelessWidget {
                         height: 24,
                       ),
                       Text(
-                        'Tentang Pelatihan',
+                        'Ujian',
                         style: AppTextStyle.body3.setSemiBold(),
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
-                        'Pelatihan Keterampilan Komunikasi adalah program pendidikan yang dirancang untuk membantu peserta mengembangkan kemampuan komunikasi mereka. Program ini bertujuan untuk meningkatkan kemampuan berbicara, mendengarkan, dan berinteraksi secara efektif dalam berbagai situasi. ',
+                        'Kerjakan dengan benar dan teliti, jika sudah baca kembali dengan seksama. Baca Doa sebelum memulai. ',
                         textAlign: TextAlign.justify,
                         style: AppTextStyle.body4
                             .setRegular()
@@ -137,7 +139,7 @@ class DetailPelatihanView extends StatelessWidget {
                         height: 24,
                       ),
                       Text(
-                        'Pelatihan ini terdiri dari',
+                        'Detail Ujian',
                         style: AppTextStyle.body3.setSemiBold(),
                       ),
                       const SizedBox(
@@ -152,18 +154,25 @@ class DetailPelatihanView extends StatelessWidget {
                                 width: 8,
                               ),
                               Text(
-                                '24 Pertemuan',
+                                'Pemrgoraman Internet',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                               const SizedBox(
                                 width: 32,
                               ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                            children: [
                               Assets.icons.ujiand.svg(),
                               const SizedBox(
                                 width: 8,
                               ),
                               Text(
-                                '1 Ujian Akhir',
+                                'Neneng Rohaye',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                             ],
@@ -178,18 +187,7 @@ class DetailPelatihanView extends StatelessWidget {
                                 width: 8,
                               ),
                               Text(
-                                '16 Tugas',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                              const SizedBox(
-                                width: 65,
-                              ),
-                              Assets.icons.sksd.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                pelatihan['sks']!,
+                                '10 Soal',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                             ],
@@ -204,7 +202,7 @@ class DetailPelatihanView extends StatelessWidget {
                                 width: 8,
                               ),
                               Text(
-                                '12 Kuis',
+                                '10 point per nomor',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                             ],
@@ -215,7 +213,7 @@ class DetailPelatihanView extends StatelessWidget {
                         height: 24,
                       ),
                       Text(
-                        'Apa yang kamu dapat?',
+                        'Peraturan Ujian',
                         style: AppTextStyle.body3.setSemiBold(),
                       ),
                       const SizedBox(
@@ -230,7 +228,7 @@ class DetailPelatihanView extends StatelessWidget {
                                 width: 8,
                               ),
                               Text(
-                                'Sertifikat kursus pelatihan',
+                                'Baca Doa sebeum memuai ujian',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                             ],
@@ -245,7 +243,7 @@ class DetailPelatihanView extends StatelessWidget {
                                 width: 8,
                               ),
                               Text(
-                                'Opsi belajar mandiri yang efektif',
+                                'Dilarang mencontek',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                             ],
@@ -260,97 +258,7 @@ class DetailPelatihanView extends StatelessWidget {
                                 width: 8,
                               ),
                               Text(
-                                'Sertifikat kursus pelatihan',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            children: [
-                              Assets.icons.doned.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Video pelatihan dapat dipelajari kapan saja',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            children: [
-                              Assets.icons.doned.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Tugas untuk melatih kemampuan',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            children: [
-                              Assets.icons.doned.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Kuis dengan nilai',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            children: [
-                              Assets.icons.doned.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Diskusi dengan mentor dan teman',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            children: [
-                              Assets.icons.doned.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Belajar berbicara di depan umum',
-                                style: AppTextStyle.body4.setRegular(),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            children: [
-                              Assets.icons.doned.svg(),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Kemampuan Menyampaikan Ide dengan Efektif',
+                                'Jika sudah selesai harap baca kembali\npada soal-soal yang dijawab',
                                 style: AppTextStyle.body4.setRegular(),
                               ),
                             ],
@@ -364,13 +272,11 @@ class DetailPelatihanView extends StatelessWidget {
                   ),
                 ),
               ),
-              // Text(pelatihan['video']!),
-              // Text(pelatihan['user']!),
             ],
           ),
         ],
       ),
-      // bottomNavigationBar: const SaveButton(),
+      bottomNavigationBar: NextButtonWidget(title: "Mulai Ujian"),
     );
   }
 }

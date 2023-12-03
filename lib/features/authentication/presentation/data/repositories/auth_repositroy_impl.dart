@@ -50,4 +50,13 @@ class AuthRepositoryImpl implements AuthenticationRepository {
     log('token $re');
     return re;
   }
+
+  // loogout
+  Future<bool> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final t = prefs.get('token');
+    log('token $t cleared');
+    await prefs.remove('token');
+    return true;
+  }
 }

@@ -24,4 +24,8 @@ class LoginUseCase {
   Future<String> getLocalToken() async {
     return await authrepository.getToken('token');
   }
+
+  Future<bool> logout() async {
+    return await authrepository.logout();
+  }
 }

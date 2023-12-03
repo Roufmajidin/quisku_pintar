@@ -10,6 +10,7 @@ abstract class Pelajaran with _$Pelajaran {
     int? id,
     required String guru,
     required String mapel,
+    required String images,
   }) = _Pelajaran;
   factory Pelajaran.fromJson(Map<String, dynamic> json) =>
       _$PelajaranFromJson(json);
