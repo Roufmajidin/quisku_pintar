@@ -1,0 +1,46 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:quisku_pintar/core/error/failure/failure.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/ujian_models.dart';
+
+abstract class UjianDataSources {}
+
+class UjianDS implements UjianDataSources {
+  final Dio dio = Dio();
+  // final String? apiUrl = Endpoints().baseUrl;
+  final String jsonFirebaseRealtimeDB =
+      'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+
+  // get ujian by UserId
+  Future<Either<Failure, List<Ujian>>> getUjianByUser({required int id}) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String urlLink = json.decode(respons.body);
+    //
+    try {
+      final res = await http.get(Uri.parse('$urlLink/getExamStatus/$id'));
+      if (res.statusCode == 200) {
+        final Map<String, dynamic> jsonDataList = jsonDecode(res.body);
+
+        // final List<dynamic> jsonData = jsonDecode(res.body);
+        final List<Map<String, dynamic>> result =
+            List.from(jsonDataList['data']);
+        final List<Ujian> ujianList =
+            result.map((e) => Ujian.fromJson(e)).toList();
+        log(ujianList.toString());
+        return right(ujianList);
+      }
+      log(res.statusCode.toString());
+      return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
+    } catch (e) {
+      print(e);
+      return const Left(Failure.serverFailure());
+    }
+  }
+}

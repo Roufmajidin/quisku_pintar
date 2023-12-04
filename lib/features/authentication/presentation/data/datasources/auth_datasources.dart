@@ -14,12 +14,19 @@ abstract class AuthenticationDataS {}
 
 class AuthenticationDataSources implements AuthenticationDataS {
   final Dio dio = Dio();
-  final String apiUrl = Endpoints().baseUrl;
+  // String apiUrl = initializeBaseUrl;
+  final String jsonFirebaseRealtimeDB =
+      'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
 
   Future<Either<Failure, TokenModels>> loginEmailPassword(
       String email, String password) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String data = json.decode(respons.body);
+    //
     try {
-      final response = await http.post(Uri.parse('$apiUrl/login'), body: {
+      final response = await http.post(Uri.parse('$data/login'), body: {
         'email': email,
         'password': password,
       });
@@ -47,10 +54,14 @@ class AuthenticationDataSources implements AuthenticationDataS {
   }
 
   Future<Either<Failure, User>> getUseLoginDataSources(String token) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String data = json.decode(respons.body);
     try {
       final user = await http.get(
         Uri.parse(
-          '$apiUrl/user',
+          '$data/user',
         ),
         headers: {
           'Authorization': 'Bearer $token',
@@ -71,5 +82,18 @@ class AuthenticationDataSources implements AuthenticationDataS {
     } catch (e) {
       return const Left(Failure.parsingFailure());
     }
+  }
+
+  Future<String> initializeBaseUrl() async {
+    final response = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    // Parse the JSON response and extract the baseUrl
+    final String data = json.decode(response.body);
+    // d = data;
+
+    // Print or use the fetched baseUrl as needed
+    print('Fetched baseUrl from Firebase: $data');
+    print('Fetched baseUrl from Firebase: $data');
+
+    return data;
   }
 }

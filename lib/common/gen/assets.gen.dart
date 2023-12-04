@@ -491,6 +491,9 @@ class $AssetsImagesGen {
   AssetGenImage get lxpLogo =>
       const AssetGenImage('assets/images/lxp_logo.png');
 
+  /// File path: assets/images/notfound.svg
+  SvgGenImage get notfound => const SvgGenImage('assets/images/notfound.svg');
+
   /// File path: assets/images/ornamen.png
   AssetGenImage get ornamen => const AssetGenImage('assets/images/ornamen.png');
 
@@ -504,6 +507,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/reschedule-assesment.png
   AssetGenImage get rescheduleAssesment =>
       const AssetGenImage('assets/images/reschedule-assesment.png');
+
+  /// File path: assets/images/service-u.jpg
+  AssetGenImage get serviceU =>
+      const AssetGenImage('assets/images/service-u.jpg');
 
   /// File path: assets/images/sukses-assesment.png
   AssetGenImage get suksesAssesment =>
@@ -534,10 +541,12 @@ class $AssetsImagesGen {
         lp5,
         lp6,
         lxpLogo,
+        notfound,
         ornamen,
         profileDetail,
         quiz1,
         rescheduleAssesment,
+        serviceU,
         suksesAssesment
       ];
 }

@@ -50,6 +50,8 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -104,8 +106,15 @@ class _DashboardViewState extends State<DashboardView> {
                         log('ok');
                         return const Center(child: CircularProgressIndicator());
                       }
-                      if (state.fetchMapelStatus.isSuccess) {
-                        log('sukses');
+                      if (state.fetchMapelStatus.isFailure) {
+                        log("gagal");
+                        {
+                          return SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              child: Center(
+                                  child: Assets.images.serviceU
+                                      .image(height: 200, width: 100)));
+                        }
                       }
                       return ListView.builder(
                         shrinkWrap: true,
@@ -189,7 +198,7 @@ class CustomAppBar extends StatelessWidget {
                             ),
                             state.status == FormzStatus.submissionInProgress ||
                                     state.user == null
-                                ? SizedBox(
+                                ? state.status == FormzStatus.submissionFailure ? SizedBox() :  SizedBox(
                                     height: 15,
                                     width: 15,
                                     child: CircularProgressIndicator(

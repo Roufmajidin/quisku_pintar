@@ -2,9 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
-import 'package:quisku_pintar/features/acara_unik/data/models/ujian_models.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/dashboard/data/usecases/getmapel_usecase.dart';
+
+import '../../../../ujian/data/models/ujian_models.dart';
 
 part 'dashboard_event.dart';
 part 'dashboard_state.dart';

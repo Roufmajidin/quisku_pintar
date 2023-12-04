@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:quisku_pintar/features/acara_unik/presentation/acara_unik/screen/ujia_page.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/screen/dashboard_page.dart';
+import 'package:quisku_pintar/features/ujian/presentation/ujian/screen/ujia_page.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {

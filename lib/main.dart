@@ -4,9 +4,19 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'common/themes/themes.dart';
 // import 'core/injection/di.dart' as di;
+// import 'core/error/utils/endpoints.dart';
 import 'core/navigation/navigation.dart';
 
 void main() async {
+  // final Endpoints endpoints = Endpoints();
+  // try {
+  //   await endpoints.initializeBaseUrl();
+  // } catch (error) {
+  //   print('Error initializing Endpoints: $error');
+  //   return;
+  // }
+
+  //
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
