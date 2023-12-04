@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
-import 'package:quisku_pintar/features/ujian/presentation/subpages/detail_pelatihan/widgets/garis-garis.dart';
+import 'package:quisku_pintar/features/ujian/presentation/subpages/detail_ujian/widgets/garis-garis.dart';
 
 class ContentInformasi extends StatelessWidget {
   Ujian data;

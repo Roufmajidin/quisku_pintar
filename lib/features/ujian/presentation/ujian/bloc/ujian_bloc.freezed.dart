@@ -20,18 +20,21 @@ mixin _$UjianEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$UjianEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +228,7 @@ class _$GetUjianImpl implements GetUjian {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
   }) {
     return getUjianUser();
   }
@@ -225,6 +238,7 @@ class _$GetUjianImpl implements GetUjian {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
   }) {
     return getUjianUser?.call();
   }
@@ -234,6 +248,7 @@ class _$GetUjianImpl implements GetUjian {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
     required TResult orElse(),
   }) {
     if (getUjianUser != null) {
@@ -247,6 +262,7 @@ class _$GetUjianImpl implements GetUjian {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
   }) {
     return getUjianUser(this);
   }
@@ -256,6 +272,7 @@ class _$GetUjianImpl implements GetUjian {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
   }) {
     return getUjianUser?.call(this);
   }
@@ -265,6 +282,7 @@ class _$GetUjianImpl implements GetUjian {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
     required TResult orElse(),
   }) {
     if (getUjianUser != null) {
@@ -276,6 +294,146 @@ class _$GetUjianImpl implements GetUjian {
 
 abstract class GetUjian implements UjianEvent {
   const factory GetUjian() = _$GetUjianImpl;
+}
+
+/// @nodoc
+abstract class _$$GetDetailUjianImplCopyWith<$Res> {
+  factory _$$GetDetailUjianImplCopyWith(_$GetDetailUjianImpl value,
+          $Res Function(_$GetDetailUjianImpl) then) =
+      __$$GetDetailUjianImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$GetDetailUjianImplCopyWithImpl<$Res>
+    extends _$UjianEventCopyWithImpl<$Res, _$GetDetailUjianImpl>
+    implements _$$GetDetailUjianImplCopyWith<$Res> {
+  __$$GetDetailUjianImplCopyWithImpl(
+      _$GetDetailUjianImpl _value, $Res Function(_$GetDetailUjianImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$GetDetailUjianImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDetailUjianImpl implements GetDetailUjian {
+  const _$GetDetailUjianImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'UjianEvent.getDetailUjian(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDetailUjianImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDetailUjianImplCopyWith<_$GetDetailUjianImpl> get copyWith =>
+      __$$GetDetailUjianImplCopyWithImpl<_$GetDetailUjianImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
+  }) {
+    return getDetailUjian(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
+  }) {
+    return getDetailUjian?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
+    required TResult orElse(),
+  }) {
+    if (getDetailUjian != null) {
+      return getDetailUjian(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
+  }) {
+    return getDetailUjian(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
+  }) {
+    return getDetailUjian?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
+    required TResult orElse(),
+  }) {
+    if (getDetailUjian != null) {
+      return getDetailUjian(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetDetailUjian implements UjianEvent {
+  const factory GetDetailUjian(final int id) = _$GetDetailUjianImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$GetDetailUjianImplCopyWith<_$GetDetailUjianImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

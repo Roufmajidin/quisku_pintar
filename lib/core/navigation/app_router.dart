@@ -18,5 +18,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(
             page: DetailNotificationRoute.page, path: '/detail-notification'),
         AutoRoute(page: DetailUjianRoute.page, path: '/detail-notification'),
+        AutoRoute(page: QuestionRoute.page, path: '/detail-notification'),
       ];
 }

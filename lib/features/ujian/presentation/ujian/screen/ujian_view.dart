@@ -8,7 +8,7 @@ import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/widgets/widget.dart';
 
-import '../../subpages/detail_pelatihan/screen/detail_ujian_page.dart';
+import '../../subpages/detail_ujian/screen/detail_ujian_page.dart';
 import '../bloc/ujian_bloc.dart';
 
 class UjianView extends StatefulWidget {

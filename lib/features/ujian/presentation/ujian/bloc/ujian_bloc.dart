@@ -41,4 +41,7 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
       emit(state.copyWith(fetchUjian: r));
     });
   }
+  // TODO fungsi getdetail mapel
+  // model => question
+  //          enpoint detail/$id;
 }

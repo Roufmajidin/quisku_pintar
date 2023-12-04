@@ -1,7 +1,11 @@
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
 
 // ignore: must_be_immutable
@@ -52,9 +56,8 @@ class BuildButtonWidget extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: () {
-          if (ujian.status == 'Belum Mengerjakan') {
-            callBack();
-          }
+          callBack();
+          if (ujian.status == 'Belum Mengerjakan') {}
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -91,13 +94,16 @@ class AlertWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       insetPadding: EdgeInsets.symmetric(
-          horizontal: 50, vertical: MediaQuery.of(context).size.height * 0.23),
+          horizontal: 50, vertical: MediaQuery.of(context).size.height * 0.2),
       content: Column(
         children: [
           const SizedBox(
             height: 16,
           ),
-          Assets.icons.verifiedDetail.svg(),
+          Image.network(
+            ujian.images,
+            fit: BoxFit.cover,
+          ),
           const SizedBox(
             height: 8,
           ),
@@ -121,7 +127,9 @@ class AlertWidget extends StatelessWidget {
               ujian: ujian,
               title: 'Mulai',
               callBack: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                log('l');
+                context.router.push(QuestionRoute());
               })
         ],
       ),
