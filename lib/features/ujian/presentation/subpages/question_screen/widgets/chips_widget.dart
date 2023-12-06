@@ -26,6 +26,11 @@ class _ChipsWidgetState extends State<ChipsWidget> {
   PageController pageController = PageController();
   int currentQuestion = 0;
   List<int?> selectedOptions = List.generate(4, (index) => null);
+  @override
+  void initState() {
+    super.initState();
+    // context.read<UjianBloc>().add(onLoad(currentQuestion));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +108,20 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                                             } else {
                                               selectedOptions[index] = i;
                                             }
-                                            log(selectedOptions[index]
-                                                .toString());
+
+                                            // context.read<UjianBloc>().add(
+                                            //     OnSelectedOption(
+                                            //         i,
+                                            //         currentQuestion,
+                                            //         currentQuestion));
+
+                                            // log('User c : ${index}');
+                                            context
+                                                .read<UjianBloc>()
+                                                .add(onLoad(currentQuestion));
                                           });
+                                          context.read<UjianBloc>().add(
+                                              AddAnswer(i, currentQuestion));
                                         },
                                         selectedColor: AppColors.primary.pr03,
                                         showCheckmark: false,
@@ -136,7 +152,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                         if (currentQuestion > 0) {
                           currentQuestion--;
                           pageController.previousPage(
-                              duration: Duration(milliseconds: 300),
+                              duration: const Duration(milliseconds: 300),
                               curve: Curves.ease);
                         }
                       });
@@ -148,8 +164,10 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                     setState(() {
                       if (currentQuestion < widget.data.length - 1) {
                         currentQuestion++;
+                        context.read<UjianBloc>().add(onLoad(currentQuestion));
+
                         pageController.nextPage(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.ease);
                       }
                     });
