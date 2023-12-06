@@ -2,7 +2,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
+import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/error/utils/status.dart';
+import 'package:quisku_pintar/core/helpers/show_snackbar_helper.dart';
+import 'package:quisku_pintar/core/utils/enums.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
 
@@ -26,10 +30,28 @@ class _ChipsWidgetState extends State<ChipsWidget> {
   PageController pageController = PageController();
   int currentQuestion = 0;
   List<int?> selectedOptions = List.generate(4, (index) => null);
+  List<bool?> selectedAnswerTrue = List.generate(4, (index) => null);
   @override
   void initState() {
     super.initState();
     // context.read<UjianBloc>().add(onLoad(currentQuestion));
+  }
+
+  bool benar = false;
+  void cekJawaban(
+      List<int?> selectedInd, int indexJawaban, int indexjawabanBenar) {
+    if (selectedInd[indexJawaban] == indexjawabanBenar) {
+      setState(() {
+        log('benar');
+        selectedAnswerTrue[indexJawaban] = true;
+        benar = true;
+      });
+    } else {
+      setState(() {
+        benar = false;
+      });
+    }
+    // return true;
   }
 
   @override
@@ -58,7 +80,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                           }
                           var opsi = widget.data[index].opsi;
                           var pertanyaan = widget.data[index].pertanyaan;
-
+                          var jawabanBenar = widget.data[index].jawaban_benar;
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -75,61 +97,107 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: List.generate(opsi.length, (i) {
-                                    return Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 12),
-                                      child: FilterChip(
-                                        side: BorderSide(
-                                          color: AppColors.neutral.ne13,
-                                        ),
-                                        label: Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              opsi[i],
-                                              style:
-                                                  const TextStyle(fontSize: 13)
-                                                      .copyWith(
-                                                          color: AppColors
-                                                              .neutral.ne09)
-                                                      .setMedium(),
+                                    List abcd = ['A', 'B', 'C', 'D'];
+                                    return Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 12),
+                                          child: Container(
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                                color: selectedOptions[index] ==
+                                                        i
+                                                    ? AppColors.neutral.ne13
+                                                    : AppColors.neutral.ne01,
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(12),
+                                              child: Text(
+                                                abcd[i],
+                                                style: AppTextStyle.body3
+                                                    .setSemiBold(),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                        selected: selectedOptions[index] == i,
-                                        onSelected: (selected) {
-                                          setState(() {
-                                            final selectedOption =
-                                                selectedOptions[index];
-                                            final jawaban = opsi[i];
-                                            if (selectedOption == i) {
-                                              null;
-                                            } else {
-                                              selectedOptions[index] = i;
-                                            }
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 12),
+                                          child: SizedBox(
+                                            width: 300,
+                                            // height: 50,
+                                            child: FilterChip(
+                                              side: BorderSide(
+                                                color: AppColors.neutral.ne13,
+                                              ),
+                                              label: Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    opsi[i],
+                                                    style: const TextStyle(
+                                                            fontSize: 13)
+                                                        .copyWith(
+                                                            color: AppColors
+                                                                .neutral.ne09)
+                                                        .setMedium(),
+                                                  ),
+                                                ),
+                                              ),
+                                              selected:
+                                                  selectedOptions[index] == i,
+                                              onSelected: (selected) {
+                                                //
+                                                // if (state.selectedOptions[i] ==
+                                                //     2) {
+                                                // }
 
-                                            // context.read<UjianBloc>().add(
-                                            //     OnSelectedOption(
-                                            //         i,
-                                            //         currentQuestion,
-                                            //         currentQuestion));
+                                                setState(() {
+                                                  final selectedOption =
+                                                      selectedOptions[index];
+                                                  final jawaban = opsi[i];
+                                                  if (selectedOption == i) {
+                                                    null;
+                                                  } else {
+                                                    selectedOptions[index] = i;
+                                                  }
+// cek jawaban
+                                                  cekJawaban(selectedOptions, i,
+                                                      jawabanBenar);
+                                                  if (benar) {
+                                                    ShowSnackBarHelper.show(
+                                                        context,
+                                                        snackBarType:
+                                                            SnackBarType
+                                                                .success,
+                                                        message:
+                                                            'Jawaban Anda Benar');
+                                                  }
 
-                                            // log('User c : ${index}');
-                                            context
-                                                .read<UjianBloc>()
-                                                .add(onLoad(currentQuestion));
-                                          });
-                                          context.read<UjianBloc>().add(
-                                              AddAnswer(i, currentQuestion));
-                                        },
-                                        selectedColor: AppColors.primary.pr03,
-                                        showCheckmark: false,
-                                        backgroundColor:
-                                            selectedOptions[index] == i
-                                                ? AppColors.primary.pr03
-                                                : Colors.white,
-                                      ),
+                                                  context.read<UjianBloc>().add(
+                                                      onLoad(currentQuestion));
+                                                });
+                                                context.read<UjianBloc>().add(
+                                                    AddAnswer(
+                                                        i, currentQuestion));
+                                              },
+                                              selectedColor:
+                                                  AppColors.primary.pr03,
+                                              showCheckmark: false,
+                                              backgroundColor:
+                                                  selectedOptions[index] == i
+                                                      ? AppColors.primary.pr03
+                                                      : Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     );
                                   }),
                                 ),

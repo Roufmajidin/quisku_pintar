@@ -87,20 +87,11 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
     ));
     log(state.selectedOptions.toString());
   }
+  // [[0], [3], [0], [1]] => output answers user pada setiap pertanyaan
+  // TODO
+  //  comapare dengan models QUESTION terhadap 'key' jawabar
 
   Future<void> _onLoad(UjianEvent event, Emitter<UjianState> emit) async {
     final int newQuestionIndex = (event as onLoad).cur;
-    // emit(state.copyWith(currentQuestionIndex: newQuestionIndex));
-    // List<Map<String, dynamic>> updatedAnswersList =
-    //     List.from(state.answersList);
-    // updatedAnswersList.add({
-    //   'indexJawaban': null, // Isi dengan nilai jawaban yang sesuai
-    //   'pertanyaanIndex': newQuestionIndex,
-    // });
-
-    // emit(state.copyWith(
-    //   currentQuestionIndex: newQuestionIndex,
-    //   answersList: updatedAnswersList,
-    // ));
   }
 }
