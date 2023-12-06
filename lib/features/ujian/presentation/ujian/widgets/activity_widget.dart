@@ -28,11 +28,8 @@ class UjianList extends StatelessWidget {
               height: MediaQuery.of(context).size.height,
               child: const Center(child: CircularProgressIndicator()));
         }
-        if (state.fetchUjianStatus.isSuccess) {
-          log("ok");
-        }
+
         if (state.fetchUjianStatus.isFailure) {
-          log("gagal");
           return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: Center(child: Assets.images.serviceU.image(height: 300)));

@@ -8,15 +8,6 @@ import 'common/themes/themes.dart';
 import 'core/navigation/navigation.dart';
 
 void main() async {
-  // final Endpoints endpoints = Endpoints();
-  // try {
-  //   await endpoints.initializeBaseUrl();
-  // } catch (error) {
-  //   print('Error initializing Endpoints: $error');
-  //   return;
-  // }
-
-  //
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 

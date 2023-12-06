@@ -21,6 +21,10 @@ mixin _$UjianEvent {
     required TResult Function() started,
     required TResult Function() getUjianUser,
     required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +32,9 @@ mixin _$UjianEvent {
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
     TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +42,9 @@ mixin _$UjianEvent {
     TResult Function()? started,
     TResult Function()? getUjianUser,
     TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +53,10 @@ mixin _$UjianEvent {
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
     required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +64,9 @@ mixin _$UjianEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
     TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +74,9 @@ mixin _$UjianEvent {
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
     TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +141,10 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function() getUjianUser,
     required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
   }) {
     return started();
   }
@@ -131,6 +155,9 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
     TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
   }) {
     return started?.call();
   }
@@ -141,6 +168,9 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function()? getUjianUser,
     TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -155,6 +185,10 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
     required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
   }) {
     return started(this);
   }
@@ -165,6 +199,9 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
     TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
   }) {
     return started?.call(this);
   }
@@ -175,6 +212,9 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
     TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -229,6 +269,10 @@ class _$GetUjianImpl implements GetUjian {
     required TResult Function() started,
     required TResult Function() getUjianUser,
     required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
   }) {
     return getUjianUser();
   }
@@ -239,6 +283,9 @@ class _$GetUjianImpl implements GetUjian {
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
     TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
   }) {
     return getUjianUser?.call();
   }
@@ -249,6 +296,9 @@ class _$GetUjianImpl implements GetUjian {
     TResult Function()? started,
     TResult Function()? getUjianUser,
     TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
     required TResult orElse(),
   }) {
     if (getUjianUser != null) {
@@ -263,6 +313,10 @@ class _$GetUjianImpl implements GetUjian {
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
     required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
   }) {
     return getUjianUser(this);
   }
@@ -273,6 +327,9 @@ class _$GetUjianImpl implements GetUjian {
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
     TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
   }) {
     return getUjianUser?.call(this);
   }
@@ -283,6 +340,9 @@ class _$GetUjianImpl implements GetUjian {
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
     TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
     required TResult orElse(),
   }) {
     if (getUjianUser != null) {
@@ -364,6 +424,10 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     required TResult Function() started,
     required TResult Function() getUjianUser,
     required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
   }) {
     return getDetailUjian(id);
   }
@@ -374,6 +438,9 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult? Function()? started,
     TResult? Function()? getUjianUser,
     TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
   }) {
     return getDetailUjian?.call(id);
   }
@@ -384,6 +451,9 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult Function()? started,
     TResult Function()? getUjianUser,
     TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
     required TResult orElse(),
   }) {
     if (getDetailUjian != null) {
@@ -398,6 +468,10 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     required TResult Function(_Started value) started,
     required TResult Function(GetUjian value) getUjianUser,
     required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
   }) {
     return getDetailUjian(this);
   }
@@ -408,6 +482,9 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult? Function(_Started value)? started,
     TResult? Function(GetUjian value)? getUjianUser,
     TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
   }) {
     return getDetailUjian?.call(this);
   }
@@ -418,6 +495,9 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult Function(_Started value)? started,
     TResult Function(GetUjian value)? getUjianUser,
     TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
     required TResult orElse(),
   }) {
     if (getDetailUjian != null) {
@@ -437,25 +517,532 @@ abstract class GetDetailUjian implements UjianEvent {
 }
 
 /// @nodoc
+abstract class _$$OnSelectedOptionImplCopyWith<$Res> {
+  factory _$$OnSelectedOptionImplCopyWith(_$OnSelectedOptionImpl value,
+          $Res Function(_$OnSelectedOptionImpl) then) =
+      __$$OnSelectedOptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$OnSelectedOptionImplCopyWithImpl<$Res>
+    extends _$UjianEventCopyWithImpl<$Res, _$OnSelectedOptionImpl>
+    implements _$$OnSelectedOptionImplCopyWith<$Res> {
+  __$$OnSelectedOptionImplCopyWithImpl(_$OnSelectedOptionImpl _value,
+      $Res Function(_$OnSelectedOptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$OnSelectedOptionImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnSelectedOptionImpl implements OnSelectedOption {
+  const _$OnSelectedOptionImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'UjianEvent.onSelectOption(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnSelectedOptionImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnSelectedOptionImplCopyWith<_$OnSelectedOptionImpl> get copyWith =>
+      __$$OnSelectedOptionImplCopyWithImpl<_$OnSelectedOptionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
+  }) {
+    return onSelectOption(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
+  }) {
+    return onSelectOption?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
+    required TResult orElse(),
+  }) {
+    if (onSelectOption != null) {
+      return onSelectOption(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
+  }) {
+    return onSelectOption(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
+  }) {
+    return onSelectOption?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
+    required TResult orElse(),
+  }) {
+    if (onSelectOption != null) {
+      return onSelectOption(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnSelectedOption implements UjianEvent {
+  const factory OnSelectedOption(final int index) = _$OnSelectedOptionImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$OnSelectedOptionImplCopyWith<_$OnSelectedOptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateSelectedOptionsImplCopyWith<$Res> {
+  factory _$$UpdateSelectedOptionsImplCopyWith(
+          _$UpdateSelectedOptionsImpl value,
+          $Res Function(_$UpdateSelectedOptionsImpl) then) =
+      __$$UpdateSelectedOptionsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<int?> updatedSelectedOptions});
+}
+
+/// @nodoc
+class __$$UpdateSelectedOptionsImplCopyWithImpl<$Res>
+    extends _$UjianEventCopyWithImpl<$Res, _$UpdateSelectedOptionsImpl>
+    implements _$$UpdateSelectedOptionsImplCopyWith<$Res> {
+  __$$UpdateSelectedOptionsImplCopyWithImpl(_$UpdateSelectedOptionsImpl _value,
+      $Res Function(_$UpdateSelectedOptionsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? updatedSelectedOptions = null,
+  }) {
+    return _then(_$UpdateSelectedOptionsImpl(
+      null == updatedSelectedOptions
+          ? _value._updatedSelectedOptions
+          : updatedSelectedOptions // ignore: cast_nullable_to_non_nullable
+              as List<int?>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
+  const _$UpdateSelectedOptionsImpl(final List<int?> updatedSelectedOptions)
+      : _updatedSelectedOptions = updatedSelectedOptions;
+
+  final List<int?> _updatedSelectedOptions;
+  @override
+  List<int?> get updatedSelectedOptions {
+    if (_updatedSelectedOptions is EqualUnmodifiableListView)
+      return _updatedSelectedOptions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_updatedSelectedOptions);
+  }
+
+  @override
+  String toString() {
+    return 'UjianEvent.updateSelectedOptions(updatedSelectedOptions: $updatedSelectedOptions)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateSelectedOptionsImpl &&
+            const DeepCollectionEquality().equals(
+                other._updatedSelectedOptions, _updatedSelectedOptions));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_updatedSelectedOptions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateSelectedOptionsImplCopyWith<_$UpdateSelectedOptionsImpl>
+      get copyWith => __$$UpdateSelectedOptionsImplCopyWithImpl<
+          _$UpdateSelectedOptionsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
+  }) {
+    return updateSelectedOptions(updatedSelectedOptions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
+  }) {
+    return updateSelectedOptions?.call(updatedSelectedOptions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
+    required TResult orElse(),
+  }) {
+    if (updateSelectedOptions != null) {
+      return updateSelectedOptions(updatedSelectedOptions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
+  }) {
+    return updateSelectedOptions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
+  }) {
+    return updateSelectedOptions?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
+    required TResult orElse(),
+  }) {
+    if (updateSelectedOptions != null) {
+      return updateSelectedOptions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateSelectedOptions implements UjianEvent {
+  const factory UpdateSelectedOptions(final List<int?> updatedSelectedOptions) =
+      _$UpdateSelectedOptionsImpl;
+
+  List<int?> get updatedSelectedOptions;
+  @JsonKey(ignore: true)
+  _$$UpdateSelectedOptionsImplCopyWith<_$UpdateSelectedOptionsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$onLoadImplCopyWith<$Res> {
+  factory _$$onLoadImplCopyWith(
+          _$onLoadImpl value, $Res Function(_$onLoadImpl) then) =
+      __$$onLoadImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$onLoadImplCopyWithImpl<$Res>
+    extends _$UjianEventCopyWithImpl<$Res, _$onLoadImpl>
+    implements _$$onLoadImplCopyWith<$Res> {
+  __$$onLoadImplCopyWithImpl(
+      _$onLoadImpl _value, $Res Function(_$onLoadImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$onLoadImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$onLoadImpl implements onLoad {
+  const _$onLoadImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'UjianEvent.select(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onLoadImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$onLoadImplCopyWith<_$onLoadImpl> get copyWith =>
+      __$$onLoadImplCopyWithImpl<_$onLoadImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
+    required TResult Function(int index) onSelectOption,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int index) select,
+  }) {
+    return select(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
+    TResult? Function(int index)? onSelectOption,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int index)? select,
+  }) {
+    return select?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
+    TResult Function(int index)? onSelectOption,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int index)? select,
+    required TResult orElse(),
+  }) {
+    if (select != null) {
+      return select(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(OnSelectedOption value) onSelectOption,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
+  }) {
+    return select(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(OnSelectedOption value)? onSelectOption,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
+  }) {
+    return select?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(OnSelectedOption value)? onSelectOption,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
+    required TResult orElse(),
+  }) {
+    if (select != null) {
+      return select(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class onLoad implements UjianEvent {
+  const factory onLoad(final int index) = _$onLoadImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$onLoadImplCopyWith<_$onLoadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UjianState {
   List<Ujian> get fetchUjian => throw _privateConstructorUsedError;
+  List<Question> get fetchQuestion => throw _privateConstructorUsedError;
+  List<int?> get selectedOptions => throw _privateConstructorUsedError;
+  int get currentQuestionIndex => throw _privateConstructorUsedError;
   FetchStatus get fetchUjianStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            List<Ujian> fetchUjian, FetchStatus fetchUjianStatus)
+            List<Ujian> fetchUjian,
+            List<Question> fetchQuestion,
+            List<int?> selectedOptions,
+            int currentQuestionIndex,
+            FetchStatus fetchUjianStatus)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Ujian> fetchUjian, FetchStatus fetchUjianStatus)?
+    TResult? Function(
+            List<Ujian> fetchUjian,
+            List<Question> fetchQuestion,
+            List<int?> selectedOptions,
+            int currentQuestionIndex,
+            FetchStatus fetchUjianStatus)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Ujian> fetchUjian, FetchStatus fetchUjianStatus)?
+    TResult Function(
+            List<Ujian> fetchUjian,
+            List<Question> fetchQuestion,
+            List<int?> selectedOptions,
+            int currentQuestionIndex,
+            FetchStatus fetchUjianStatus)?
         initial,
     required TResult orElse(),
   }) =>
@@ -488,7 +1075,12 @@ abstract class $UjianStateCopyWith<$Res> {
           UjianState value, $Res Function(UjianState) then) =
       _$UjianStateCopyWithImpl<$Res, UjianState>;
   @useResult
-  $Res call({List<Ujian> fetchUjian, FetchStatus fetchUjianStatus});
+  $Res call(
+      {List<Ujian> fetchUjian,
+      List<Question> fetchQuestion,
+      List<int?> selectedOptions,
+      int currentQuestionIndex,
+      FetchStatus fetchUjianStatus});
 }
 
 /// @nodoc
@@ -505,6 +1097,9 @@ class _$UjianStateCopyWithImpl<$Res, $Val extends UjianState>
   @override
   $Res call({
     Object? fetchUjian = null,
+    Object? fetchQuestion = null,
+    Object? selectedOptions = null,
+    Object? currentQuestionIndex = null,
     Object? fetchUjianStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -512,6 +1107,18 @@ class _$UjianStateCopyWithImpl<$Res, $Val extends UjianState>
           ? _value.fetchUjian
           : fetchUjian // ignore: cast_nullable_to_non_nullable
               as List<Ujian>,
+      fetchQuestion: null == fetchQuestion
+          ? _value.fetchQuestion
+          : fetchQuestion // ignore: cast_nullable_to_non_nullable
+              as List<Question>,
+      selectedOptions: null == selectedOptions
+          ? _value.selectedOptions
+          : selectedOptions // ignore: cast_nullable_to_non_nullable
+              as List<int?>,
+      currentQuestionIndex: null == currentQuestionIndex
+          ? _value.currentQuestionIndex
+          : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       fetchUjianStatus: null == fetchUjianStatus
           ? _value.fetchUjianStatus
           : fetchUjianStatus // ignore: cast_nullable_to_non_nullable
@@ -528,7 +1135,12 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Ujian> fetchUjian, FetchStatus fetchUjianStatus});
+  $Res call(
+      {List<Ujian> fetchUjian,
+      List<Question> fetchQuestion,
+      List<int?> selectedOptions,
+      int currentQuestionIndex,
+      FetchStatus fetchUjianStatus});
 }
 
 /// @nodoc
@@ -543,6 +1155,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? fetchUjian = null,
+    Object? fetchQuestion = null,
+    Object? selectedOptions = null,
+    Object? currentQuestionIndex = null,
     Object? fetchUjianStatus = null,
   }) {
     return _then(_$InitialImpl(
@@ -550,6 +1165,18 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._fetchUjian
           : fetchUjian // ignore: cast_nullable_to_non_nullable
               as List<Ujian>,
+      fetchQuestion: null == fetchQuestion
+          ? _value._fetchQuestion
+          : fetchQuestion // ignore: cast_nullable_to_non_nullable
+              as List<Question>,
+      selectedOptions: null == selectedOptions
+          ? _value._selectedOptions
+          : selectedOptions // ignore: cast_nullable_to_non_nullable
+              as List<int?>,
+      currentQuestionIndex: null == currentQuestionIndex
+          ? _value.currentQuestionIndex
+          : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       fetchUjianStatus: null == fetchUjianStatus
           ? _value.fetchUjianStatus
           : fetchUjianStatus // ignore: cast_nullable_to_non_nullable
@@ -563,8 +1190,13 @@ class __$$InitialImplCopyWithImpl<$Res>
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {final List<Ujian> fetchUjian = const <Ujian>[],
+      final List<Question> fetchQuestion = const <Question>[],
+      final List<int?> selectedOptions = const <int?>[],
+      this.currentQuestionIndex = 0,
       this.fetchUjianStatus = FetchStatus.initial})
-      : _fetchUjian = fetchUjian;
+      : _fetchUjian = fetchUjian,
+        _fetchQuestion = fetchQuestion,
+        _selectedOptions = selectedOptions;
 
   final List<Ujian> _fetchUjian;
   @override
@@ -575,13 +1207,34 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(_fetchUjian);
   }
 
+  final List<Question> _fetchQuestion;
+  @override
+  @JsonKey()
+  List<Question> get fetchQuestion {
+    if (_fetchQuestion is EqualUnmodifiableListView) return _fetchQuestion;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fetchQuestion);
+  }
+
+  final List<int?> _selectedOptions;
+  @override
+  @JsonKey()
+  List<int?> get selectedOptions {
+    if (_selectedOptions is EqualUnmodifiableListView) return _selectedOptions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedOptions);
+  }
+
+  @override
+  @JsonKey()
+  final int currentQuestionIndex;
   @override
   @JsonKey()
   final FetchStatus fetchUjianStatus;
 
   @override
   String toString() {
-    return 'UjianState.initial(fetchUjian: $fetchUjian, fetchUjianStatus: $fetchUjianStatus)';
+    return 'UjianState.initial(fetchUjian: $fetchUjian, fetchQuestion: $fetchQuestion, selectedOptions: $selectedOptions, currentQuestionIndex: $currentQuestionIndex, fetchUjianStatus: $fetchUjianStatus)';
   }
 
   @override
@@ -591,13 +1244,24 @@ class _$InitialImpl implements _Initial {
             other is _$InitialImpl &&
             const DeepCollectionEquality()
                 .equals(other._fetchUjian, _fetchUjian) &&
+            const DeepCollectionEquality()
+                .equals(other._fetchQuestion, _fetchQuestion) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedOptions, _selectedOptions) &&
+            (identical(other.currentQuestionIndex, currentQuestionIndex) ||
+                other.currentQuestionIndex == currentQuestionIndex) &&
             (identical(other.fetchUjianStatus, fetchUjianStatus) ||
                 other.fetchUjianStatus == fetchUjianStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_fetchUjian), fetchUjianStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_fetchUjian),
+      const DeepCollectionEquality().hash(_fetchQuestion),
+      const DeepCollectionEquality().hash(_selectedOptions),
+      currentQuestionIndex,
+      fetchUjianStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -609,30 +1273,47 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            List<Ujian> fetchUjian, FetchStatus fetchUjianStatus)
+            List<Ujian> fetchUjian,
+            List<Question> fetchQuestion,
+            List<int?> selectedOptions,
+            int currentQuestionIndex,
+            FetchStatus fetchUjianStatus)
         initial,
   }) {
-    return initial(fetchUjian, fetchUjianStatus);
+    return initial(fetchUjian, fetchQuestion, selectedOptions,
+        currentQuestionIndex, fetchUjianStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Ujian> fetchUjian, FetchStatus fetchUjianStatus)?
+    TResult? Function(
+            List<Ujian> fetchUjian,
+            List<Question> fetchQuestion,
+            List<int?> selectedOptions,
+            int currentQuestionIndex,
+            FetchStatus fetchUjianStatus)?
         initial,
   }) {
-    return initial?.call(fetchUjian, fetchUjianStatus);
+    return initial?.call(fetchUjian, fetchQuestion, selectedOptions,
+        currentQuestionIndex, fetchUjianStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Ujian> fetchUjian, FetchStatus fetchUjianStatus)?
+    TResult Function(
+            List<Ujian> fetchUjian,
+            List<Question> fetchQuestion,
+            List<int?> selectedOptions,
+            int currentQuestionIndex,
+            FetchStatus fetchUjianStatus)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(fetchUjian, fetchUjianStatus);
+      return initial(fetchUjian, fetchQuestion, selectedOptions,
+          currentQuestionIndex, fetchUjianStatus);
     }
     return orElse();
   }
@@ -669,10 +1350,19 @@ class _$InitialImpl implements _Initial {
 abstract class _Initial implements UjianState {
   const factory _Initial(
       {final List<Ujian> fetchUjian,
+      final List<Question> fetchQuestion,
+      final List<int?> selectedOptions,
+      final int currentQuestionIndex,
       final FetchStatus fetchUjianStatus}) = _$InitialImpl;
 
   @override
   List<Ujian> get fetchUjian;
+  @override
+  List<Question> get fetchQuestion;
+  @override
+  List<int?> get selectedOptions;
+  @override
+  int get currentQuestionIndex;
   @override
   FetchStatus get fetchUjianStatus;
   @override

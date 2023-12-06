@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/usecases/login_usecase.dart';
+import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 
 import '../../../../../core/error/utils/status.dart';
 import '../../../data/models/ujian_models.dart';
@@ -19,6 +20,7 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
   UjianBloc({required this.ujianusecase, required this.loginusecase})
       : super(const _Initial()) {
     on<GetUjian>(_getUjian);
+    on<GetDetailUjian>(_getDetail);
   }
   Future<void> _getUjian(UjianEvent event, Emitter<UjianState> emit) async {
     log('paggil ujianBLoc');
@@ -41,7 +43,21 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
       emit(state.copyWith(fetchUjian: r));
     });
   }
+
   // TODO fungsi getdetail mapel
   // model => question
   //          enpoint detail/$id;
+  Future<void> _getDetail(UjianEvent event, Emitter<UjianState> emit) async {
+    log('bloc');
+    emit(state.copyWith(fetchUjianStatus: FetchStatus.loading));
+    int id = (event as GetDetailUjian).id;
+    log('bloc $id');
+
+    final res = await ujianusecase.getQuestion(id);
+    res.fold((l) => emit(state.copyWith(fetchUjianStatus: FetchStatus.failure)),
+        (r) {
+      emit(state.copyWith(fetchUjianStatus: FetchStatus.success));
+      emit(state.copyWith(fetchQuestion: r));
+    });
+  }
 }

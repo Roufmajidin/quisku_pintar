@@ -10,8 +10,9 @@ _$QuestionImpl _$$QuestionImplFromJson(Map<String, dynamic> json) =>
     _$QuestionImpl(
       id: json['id'] as int?,
       pelajaran_id: json['pelajaran_id'] as int?,
+      pertanyaan: json['pertanyaan'] as String,
       opsi: json['opsi'] as List<dynamic>,
-      jawaban_benar: json['jawaban_benar'] as String,
+      jawaban_benar: json['jawaban_benar'] as int,
       created_at: json['created_at'] as String,
       updated_at: json['updated_at'] as String,
       mapel: json['mapel'] == null
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$QuestionImplToJson(_$QuestionImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'pelajaran_id': instance.pelajaran_id,
+      'pertanyaan': instance.pertanyaan,
       'opsi': instance.opsi,
       'jawaban_benar': instance.jawaban_benar,
       'created_at': instance.created_at,

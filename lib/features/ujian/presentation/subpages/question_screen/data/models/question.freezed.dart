@@ -22,8 +22,9 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
 mixin _$Question {
   int? get id => throw _privateConstructorUsedError;
   int? get pelajaran_id => throw _privateConstructorUsedError;
+  String get pertanyaan => throw _privateConstructorUsedError;
   List<dynamic> get opsi => throw _privateConstructorUsedError;
-  String get jawaban_benar => throw _privateConstructorUsedError;
+  int get jawaban_benar => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
   String get updated_at => throw _privateConstructorUsedError;
   Mapel? get mapel => throw _privateConstructorUsedError;
@@ -42,8 +43,9 @@ abstract class $QuestionCopyWith<$Res> {
   $Res call(
       {int? id,
       int? pelajaran_id,
+      String pertanyaan,
       List<dynamic> opsi,
-      String jawaban_benar,
+      int jawaban_benar,
       String created_at,
       String updated_at,
       Mapel? mapel});
@@ -66,6 +68,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
   $Res call({
     Object? id = freezed,
     Object? pelajaran_id = freezed,
+    Object? pertanyaan = null,
     Object? opsi = null,
     Object? jawaban_benar = null,
     Object? created_at = null,
@@ -81,6 +84,10 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
           ? _value.pelajaran_id
           : pelajaran_id // ignore: cast_nullable_to_non_nullable
               as int?,
+      pertanyaan: null == pertanyaan
+          ? _value.pertanyaan
+          : pertanyaan // ignore: cast_nullable_to_non_nullable
+              as String,
       opsi: null == opsi
           ? _value.opsi
           : opsi // ignore: cast_nullable_to_non_nullable
@@ -88,7 +95,7 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
       jawaban_benar: null == jawaban_benar
           ? _value.jawaban_benar
           : jawaban_benar // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       created_at: null == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -128,8 +135,9 @@ abstract class _$$QuestionImplCopyWith<$Res>
   $Res call(
       {int? id,
       int? pelajaran_id,
+      String pertanyaan,
       List<dynamic> opsi,
-      String jawaban_benar,
+      int jawaban_benar,
       String created_at,
       String updated_at,
       Mapel? mapel});
@@ -151,6 +159,7 @@ class __$$QuestionImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? pelajaran_id = freezed,
+    Object? pertanyaan = null,
     Object? opsi = null,
     Object? jawaban_benar = null,
     Object? created_at = null,
@@ -166,6 +175,10 @@ class __$$QuestionImplCopyWithImpl<$Res>
           ? _value.pelajaran_id
           : pelajaran_id // ignore: cast_nullable_to_non_nullable
               as int?,
+      pertanyaan: null == pertanyaan
+          ? _value.pertanyaan
+          : pertanyaan // ignore: cast_nullable_to_non_nullable
+              as String,
       opsi: null == opsi
           ? _value._opsi
           : opsi // ignore: cast_nullable_to_non_nullable
@@ -173,7 +186,7 @@ class __$$QuestionImplCopyWithImpl<$Res>
       jawaban_benar: null == jawaban_benar
           ? _value.jawaban_benar
           : jawaban_benar // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       created_at: null == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
@@ -196,6 +209,7 @@ class _$QuestionImpl implements _Question {
   _$QuestionImpl(
       {this.id,
       this.pelajaran_id,
+      required this.pertanyaan,
       required final List<dynamic> opsi,
       required this.jawaban_benar,
       required this.created_at,
@@ -210,6 +224,8 @@ class _$QuestionImpl implements _Question {
   final int? id;
   @override
   final int? pelajaran_id;
+  @override
+  final String pertanyaan;
   final List<dynamic> _opsi;
   @override
   List<dynamic> get opsi {
@@ -219,7 +235,7 @@ class _$QuestionImpl implements _Question {
   }
 
   @override
-  final String jawaban_benar;
+  final int jawaban_benar;
   @override
   final String created_at;
   @override
@@ -229,7 +245,7 @@ class _$QuestionImpl implements _Question {
 
   @override
   String toString() {
-    return 'Question(id: $id, pelajaran_id: $pelajaran_id, opsi: $opsi, jawaban_benar: $jawaban_benar, created_at: $created_at, updated_at: $updated_at, mapel: $mapel)';
+    return 'Question(id: $id, pelajaran_id: $pelajaran_id, pertanyaan: $pertanyaan, opsi: $opsi, jawaban_benar: $jawaban_benar, created_at: $created_at, updated_at: $updated_at, mapel: $mapel)';
   }
 
   @override
@@ -240,6 +256,8 @@ class _$QuestionImpl implements _Question {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.pelajaran_id, pelajaran_id) ||
                 other.pelajaran_id == pelajaran_id) &&
+            (identical(other.pertanyaan, pertanyaan) ||
+                other.pertanyaan == pertanyaan) &&
             const DeepCollectionEquality().equals(other._opsi, _opsi) &&
             (identical(other.jawaban_benar, jawaban_benar) ||
                 other.jawaban_benar == jawaban_benar) &&
@@ -256,6 +274,7 @@ class _$QuestionImpl implements _Question {
       runtimeType,
       id,
       pelajaran_id,
+      pertanyaan,
       const DeepCollectionEquality().hash(_opsi),
       jawaban_benar,
       created_at,
@@ -280,8 +299,9 @@ abstract class _Question implements Question {
   factory _Question(
       {final int? id,
       final int? pelajaran_id,
+      required final String pertanyaan,
       required final List<dynamic> opsi,
-      required final String jawaban_benar,
+      required final int jawaban_benar,
       required final String created_at,
       required final String updated_at,
       final Mapel? mapel}) = _$QuestionImpl;
@@ -294,9 +314,11 @@ abstract class _Question implements Question {
   @override
   int? get pelajaran_id;
   @override
+  String get pertanyaan;
+  @override
   List<dynamic> get opsi;
   @override
-  String get jawaban_benar;
+  int get jawaban_benar;
   @override
   String get created_at;
   @override

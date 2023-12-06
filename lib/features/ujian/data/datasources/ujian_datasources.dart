@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:http/http.dart' as http;
+import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 
 import '../models/ujian_models.dart';
 
@@ -42,5 +43,36 @@ class UjianDS implements UjianDataSources {
       print(e);
       return const Left(Failure.serverFailure());
     }
+  }
+
+  // get question
+  Future<Either<Failure, List<Question>>> getQuestion(
+      {required mapelId}) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String urlLink = json.decode(respons.body);
+
+    try {
+      final res = await http.get(Uri.parse('$urlLink/detail/$mapelId'));
+      if (res.statusCode == 200) {
+        // final Map<String, dynamic> jsonDataList = jsonDecode(res.body);
+
+        final List<dynamic> jsonData = jsonDecode(res.body);
+        // final List<Map<String, dynamic>> result =
+        //     List.from(jsonDataList['data']);
+        final List<Question> questionList =
+            jsonData.map((e) => Question.fromJson(e)).toList();
+        log('QUESTION : ${questionList.toString()}');
+        return right(questionList);
+      }
+      log(res.statusCode.toString());
+      return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
+    } catch (e) {
+      print(e);
+      return const Left(Failure.serverFailure());
+    }
+
+    // return right(r)
   }
 }

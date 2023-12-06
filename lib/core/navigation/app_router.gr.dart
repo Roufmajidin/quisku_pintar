@@ -81,9 +81,13 @@ abstract class $AppRouter extends _i10.RootStackRouter {
       );
     },
     QuestionRoute.name: (routeData) {
+      final args = routeData.argsAs<QuestionRouteArgs>();
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i7.QuestionPage(),
+        child: _i7.QuestionPage(
+          key: args.key,
+          id: args.id,
+        ),
       );
     },
     SplashRoute.name: (routeData) {
@@ -241,16 +245,40 @@ class NotificationRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.QuestionPage]
-class QuestionRoute extends _i10.PageRouteInfo<void> {
-  const QuestionRoute({List<_i10.PageRouteInfo>? children})
-      : super(
+class QuestionRoute extends _i10.PageRouteInfo<QuestionRouteArgs> {
+  QuestionRoute({
+    _i11.Key? key,
+    required int id,
+    List<_i10.PageRouteInfo>? children,
+  }) : super(
           QuestionRoute.name,
+          args: QuestionRouteArgs(
+            key: key,
+            id: id,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'QuestionRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i10.PageInfo<QuestionRouteArgs> page =
+      _i10.PageInfo<QuestionRouteArgs>(name);
+}
+
+class QuestionRouteArgs {
+  const QuestionRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final _i11.Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'QuestionRouteArgs{key: $key, id: $id}';
+  }
 }
 
 /// generated route for

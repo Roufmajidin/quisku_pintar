@@ -128,8 +128,9 @@ class AlertWidget extends StatelessWidget {
               title: 'Mulai',
               callBack: () {
                 // Navigator.pop(context);
-                log('l');
-                context.router.push(QuestionRoute());
+                log(ujian.mapel_id.toString());
+                // question page
+                context.router.push(QuestionRoute(id: ujian.mapel_id));
               })
         ],
       ),

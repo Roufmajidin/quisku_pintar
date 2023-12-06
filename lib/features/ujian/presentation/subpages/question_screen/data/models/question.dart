@@ -8,8 +8,9 @@ abstract class Question with _$Question {
   factory Question({
     int? id,
     int? pelajaran_id,
+    required String pertanyaan,
     required List opsi,
-    required String jawaban_benar,
+    required int jawaban_benar,
     required String created_at,
     required String updated_at,
     Mapel? mapel,
