@@ -24,8 +24,13 @@ class _UjianViewState extends State<UjianView> {
   void initState() {
     super.initState();
     setState(() {
-      context.read<UjianBloc>().add(const GetUjian());
+      getUjian();
     });
+  }
+
+  // get ujian
+  getUjian() {
+    context.read<UjianBloc>().add(const GetUjian());
   }
 
   @override
@@ -48,11 +53,17 @@ class _UjianViewState extends State<UjianView> {
           ),
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UjianList(),
+            RefreshIndicator(
+                color: AppColors.neutral.ne01,
+                onRefresh: () async {
+                  getUjian();
+                  return Future<void>.delayed(const Duration(seconds: 3));
+                },
+                child: UjianList()),
           ],
         ),
       ),
