@@ -7,6 +7,7 @@ import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:http/http.dart' as http;
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 
+import '../../presentation/subpages/question_screen/data/answer_models/annswer_model.dart';
 import '../models/ujian_models.dart';
 
 abstract class UjianDataSources {}
@@ -56,8 +57,6 @@ class UjianDS implements UjianDataSources {
     try {
       final res = await http.get(Uri.parse('$urlLink/detail/$mapelId'));
       if (res.statusCode == 200) {
-        // final Map<String, dynamic> jsonDataList = jsonDecode(res.body);
-
         final List<dynamic> jsonData = jsonDecode(res.body);
         // final List<Map<String, dynamic>> result =
         //     List.from(jsonDataList['data']);
@@ -74,5 +73,38 @@ class UjianDS implements UjianDataSources {
     }
 
     // return right(r)
+  }
+
+  Future<int> postData({
+    required int id,
+    required int mapelId,
+    required AnswerModels modelsAnswer,
+  }) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+    // TODO https://eae6-114-124-212-117.ngrok-free.app/api/exam/postData/2/1
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String urlLink = json.decode(respons.body);
+    int statusCode = 0;
+    log(modelsAnswer.answers.toString());
+    final a = json.encode(modelsAnswer.answers);
+    try {
+      final res = await http.post(
+        Uri.parse('$urlLink/postData/$id/$mapelId'),
+        body: {
+          'jawaban': a.toString(),
+        },
+      );
+      if (res.statusCode == 200) {
+        statusCode = res.statusCode;
+      }
+    } catch (e) {
+      return 401;
+    }
+    log(respons.statusCode.toString());
+    return statusCode;
+
+    // log(id.toString());
+    // final List<Map<String, dynamic>> data = model.;
   }
 }

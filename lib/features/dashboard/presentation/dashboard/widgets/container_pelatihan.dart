@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
@@ -46,8 +47,8 @@ class ContainerPelatihan extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    image.toString(),
+                  child: CachedNetworkImage(
+                    imageUrl: image.toString(),
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
@@ -6,9 +7,15 @@ import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/core/helpers/show_snackbar_helper.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/core/utils/enums.dart';
+import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
+
+import '../../../../../authentication/presentation/bloc/login_bloc.dart';
+import '../../../../../authentication/presentation/data/models/user.dart';
+import '../../../../../authentication/presentation/data/usecases/login_usecase.dart';
 
 // ignore: must_be_immutable
 class ChipsWidget extends StatefulWidget {
@@ -54,6 +61,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
     // return true;
   }
 
+  int mapel = 0;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UjianBloc, UjianState>(
@@ -81,6 +89,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                           var opsi = widget.data[index].opsi;
                           var pertanyaan = widget.data[index].pertanyaan;
                           var jawabanBenar = widget.data[index].jawaban_benar;
+                          var mapelId = widget.data[index].pelajaran_id;
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -167,7 +176,10 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                                                   } else {
                                                     selectedOptions[index] = i;
                                                   }
-// cek jawaban
+                                                  mapel = mapelId!;
+
+                                                  // TODO cek jawaban :)
+
                                                   cekJawaban(selectedOptions, i,
                                                       jawabanBenar);
                                                   if (benar) {
@@ -179,7 +191,6 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                                                         message:
                                                             'Jawaban Anda Benar');
                                                   }
-
                                                   context.read<UjianBloc>().add(
                                                       onLoad(currentQuestion));
                                                 });
@@ -228,7 +239,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                     child: Text('back'),
                   ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     setState(() {
                       if (currentQuestion < widget.data.length - 1) {
                         currentQuestion++;
@@ -238,9 +249,20 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.ease);
                       }
+                      if (currentQuestion == widget.data.length - 1) {
+                        log('akhir');
+
+                        context.read<UjianBloc>().add(PostData(mapelId: mapel));
+                      }
                     });
+                    if (state.examFinish == 200) {
+                      context.router.push(const UjianRoute());
+                      ShowSnackBarHelper.show(context,
+                          snackBarType: SnackBarType.success,
+                          message: 'Selamat, selesai ujian');
+                    }
                   },
-                  child: Text(currentQuestion == widget.data.length - 1
+                  child: Text(currentQuestion == widget.data.length
                       ? "selesai"
                       : 'Next'),
                 ),

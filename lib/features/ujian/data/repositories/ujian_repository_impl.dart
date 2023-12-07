@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
+import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/answer_models/annswer_model.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 
 import '../datasources/ujian_datasources.dart';
@@ -32,7 +33,20 @@ class UjianRepositoryImpl implements UjianRepository {
       return res;
     } catch (e) {
       print(e);
-      return Left(Failure.parsingFailure());
+      return Left(const Failure.parsingFailure());
     }
+  }
+
+  Future<int> postAnswer({
+    required int id,
+    required int mapelId,
+    required AnswerModels modelsAnswer,
+  }) async {
+    final res = await ujianDataSources.postData(
+        id: id, mapelId: mapelId, modelsAnswer: modelsAnswer);
+    if (res == 200) {
+      return res;
+    }
+    return 401;
   }
 }

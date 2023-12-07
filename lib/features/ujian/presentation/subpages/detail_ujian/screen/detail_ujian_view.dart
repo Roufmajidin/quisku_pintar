@@ -7,6 +7,7 @@ import 'package:quisku_pintar/common/themes/themes.dart';
 
 import '../../../../data/models/ujian_models.dart';
 import '../widgets/widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailUjianView extends StatelessWidget {
   final Ujian ujian;
@@ -41,8 +42,8 @@ class DetailUjianView extends StatelessWidget {
                   // color: Colors.grey,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        ujian.images,
+                      child: CachedNetworkImage(
+                        imageUrl: ujian.images,
                         fit: BoxFit.cover,
                       )),
                 ),

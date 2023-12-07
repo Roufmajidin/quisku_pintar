@@ -24,6 +24,7 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
     on<GetDetailUjian>(_getDetail);
     on<onLoad>(_onLoad);
     on<AddAnswer>(_selectedAnswer);
+    on<PostData>(_postData);
   }
 
   Future<void> _getUjian(UjianEvent event, Emitter<UjianState> emit) async {
@@ -73,7 +74,6 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
     int? currentIndex = (event as AddAnswer).u;
     // tampung datd dulu, kalo  sebelumnya sudah terisi lalu user  edit o0psi
     // yaudah edit dulu baru masukkin ke state
-    List<Map<String, dynamic>> data = [];
     List<List<int?>> updatedSelectedOptions = List.from(state.selectedOptions);
     while (updatedSelectedOptions.length <= currentIndex) {
       updatedSelectedOptions.add([]);
@@ -85,7 +85,8 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
       selectedOptions: updatedSelectedOptions,
       currentQuestionIndex: currentIndex,
     ));
-    log(state.selectedOptions.toString());
+
+    log(updatedSelectedOptions.length.toString());
   }
   // [[0], [3], [0], [1]] => output answers user pada setiap pertanyaan
   // TODO
@@ -93,5 +94,28 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
 
   Future<void> _onLoad(UjianEvent event, Emitter<UjianState> emit) async {
     final int newQuestionIndex = (event as onLoad).cur;
+  }
+
+  Future<void> _postData(UjianEvent event, Emitter<UjianState> emit) async {
+    log('proses');
+    // TODO  get user Data :)
+    final mapelId = (event as PostData).mapelId;
+    final token = await loginusecase.getLocalToken();
+    final user = await loginusecase.getLogedUser(token);
+    int? id = 0;
+    user.fold((l) => null, (r) {
+      id = r.id;
+    });
+    log('mapel id = $mapelId .. User Id = $id');
+    // TODO : tangkap data pada state :)
+    List<List<int?>> updatedSelectedOptions = List.from(state.selectedOptions);
+    final a = AnswerModels(answers: updatedSelectedOptions);
+    final post =
+        await ujianusecase.postJawaban(id: id!, mapelId: mapelId, models: a);
+    log(post.toString());
+
+    if (post == 200) {
+      emit(state.copyWith(examFinish: post)); //nilai post adalah 200
+    }
   }
 }

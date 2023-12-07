@@ -25,6 +25,7 @@ mixin _$UjianEvent {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +36,7 @@ mixin _$UjianEvent {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +47,7 @@ mixin _$UjianEvent {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +60,7 @@ mixin _$UjianEvent {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$UjianEvent {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +82,7 @@ mixin _$UjianEvent {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +151,7 @@ class _$StartedImpl implements _Started {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) {
     return started();
   }
@@ -158,6 +165,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) {
     return started?.call();
   }
@@ -171,6 +179,7 @@ class _$StartedImpl implements _Started {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -189,6 +198,7 @@ class _$StartedImpl implements _Started {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) {
     return started(this);
   }
@@ -202,6 +212,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) {
     return started?.call(this);
   }
@@ -215,6 +226,7 @@ class _$StartedImpl implements _Started {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -273,6 +285,7 @@ class _$GetUjianImpl implements GetUjian {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) {
     return getUjianUser();
   }
@@ -286,6 +299,7 @@ class _$GetUjianImpl implements GetUjian {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) {
     return getUjianUser?.call();
   }
@@ -299,6 +313,7 @@ class _$GetUjianImpl implements GetUjian {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) {
     if (getUjianUser != null) {
@@ -317,6 +332,7 @@ class _$GetUjianImpl implements GetUjian {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) {
     return getUjianUser(this);
   }
@@ -330,6 +346,7 @@ class _$GetUjianImpl implements GetUjian {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) {
     return getUjianUser?.call(this);
   }
@@ -343,6 +360,7 @@ class _$GetUjianImpl implements GetUjian {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) {
     if (getUjianUser != null) {
@@ -428,6 +446,7 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) {
     return getDetailUjian(id);
   }
@@ -441,6 +460,7 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) {
     return getDetailUjian?.call(id);
   }
@@ -454,6 +474,7 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) {
     if (getDetailUjian != null) {
@@ -472,6 +493,7 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) {
     return getDetailUjian(this);
   }
@@ -485,6 +507,7 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) {
     return getDetailUjian?.call(this);
   }
@@ -498,6 +521,7 @@ class _$GetDetailUjianImpl implements GetDetailUjian {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) {
     if (getDetailUjian != null) {
@@ -598,6 +622,7 @@ class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) {
     return updateSelectedOptions(updatedSelectedOptions);
   }
@@ -611,6 +636,7 @@ class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) {
     return updateSelectedOptions?.call(updatedSelectedOptions);
   }
@@ -624,6 +650,7 @@ class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) {
     if (updateSelectedOptions != null) {
@@ -642,6 +669,7 @@ class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) {
     return updateSelectedOptions(this);
   }
@@ -655,6 +683,7 @@ class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) {
     return updateSelectedOptions?.call(this);
   }
@@ -668,6 +697,7 @@ class _$UpdateSelectedOptionsImpl implements UpdateSelectedOptions {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) {
     if (updateSelectedOptions != null) {
@@ -758,6 +788,7 @@ class _$onLoadImpl implements onLoad {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) {
     return select(cur);
   }
@@ -771,6 +802,7 @@ class _$onLoadImpl implements onLoad {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) {
     return select?.call(cur);
   }
@@ -784,6 +816,7 @@ class _$onLoadImpl implements onLoad {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -802,6 +835,7 @@ class _$onLoadImpl implements onLoad {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) {
     return select(this);
   }
@@ -815,6 +849,7 @@ class _$onLoadImpl implements onLoad {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) {
     return select?.call(this);
   }
@@ -828,6 +863,7 @@ class _$onLoadImpl implements onLoad {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) {
     if (select != null) {
@@ -925,6 +961,7 @@ class _$AddAnswerImpl implements AddAnswer {
         updateSelectedOptions,
     required TResult Function(int cur) select,
     required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
   }) {
     return addAnswer(i, u);
   }
@@ -938,6 +975,7 @@ class _$AddAnswerImpl implements AddAnswer {
     TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult? Function(int cur)? select,
     TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
   }) {
     return addAnswer?.call(i, u);
   }
@@ -951,6 +989,7 @@ class _$AddAnswerImpl implements AddAnswer {
     TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
     TResult Function(int cur)? select,
     TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
     required TResult orElse(),
   }) {
     if (addAnswer != null) {
@@ -969,6 +1008,7 @@ class _$AddAnswerImpl implements AddAnswer {
         updateSelectedOptions,
     required TResult Function(onLoad value) select,
     required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
   }) {
     return addAnswer(this);
   }
@@ -982,6 +1022,7 @@ class _$AddAnswerImpl implements AddAnswer {
     TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult? Function(onLoad value)? select,
     TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
   }) {
     return addAnswer?.call(this);
   }
@@ -995,6 +1036,7 @@ class _$AddAnswerImpl implements AddAnswer {
     TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
     TResult Function(onLoad value)? select,
     TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
     required TResult orElse(),
   }) {
     if (addAnswer != null) {
@@ -1015,12 +1057,178 @@ abstract class AddAnswer implements UjianEvent {
 }
 
 /// @nodoc
+abstract class _$$PostDataImplCopyWith<$Res> {
+  factory _$$PostDataImplCopyWith(
+          _$PostDataImpl value, $Res Function(_$PostDataImpl) then) =
+      __$$PostDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int mapelId});
+}
+
+/// @nodoc
+class __$$PostDataImplCopyWithImpl<$Res>
+    extends _$UjianEventCopyWithImpl<$Res, _$PostDataImpl>
+    implements _$$PostDataImplCopyWith<$Res> {
+  __$$PostDataImplCopyWithImpl(
+      _$PostDataImpl _value, $Res Function(_$PostDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mapelId = null,
+  }) {
+    return _then(_$PostDataImpl(
+      mapelId: null == mapelId
+          ? _value.mapelId
+          : mapelId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostDataImpl implements PostData {
+  _$PostDataImpl({required this.mapelId});
+
+  @override
+  final int mapelId;
+
+  @override
+  String toString() {
+    return 'UjianEvent.postData(mapelId: $mapelId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostDataImpl &&
+            (identical(other.mapelId, mapelId) || other.mapelId == mapelId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, mapelId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostDataImplCopyWith<_$PostDataImpl> get copyWith =>
+      __$$PostDataImplCopyWithImpl<_$PostDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUjianUser,
+    required TResult Function(int id) getDetailUjian,
+    required TResult Function(List<int?> updatedSelectedOptions)
+        updateSelectedOptions,
+    required TResult Function(int cur) select,
+    required TResult Function(int i, int u) addAnswer,
+    required TResult Function(int mapelId) postData,
+  }) {
+    return postData(mapelId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUjianUser,
+    TResult? Function(int id)? getDetailUjian,
+    TResult? Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult? Function(int cur)? select,
+    TResult? Function(int i, int u)? addAnswer,
+    TResult? Function(int mapelId)? postData,
+  }) {
+    return postData?.call(mapelId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUjianUser,
+    TResult Function(int id)? getDetailUjian,
+    TResult Function(List<int?> updatedSelectedOptions)? updateSelectedOptions,
+    TResult Function(int cur)? select,
+    TResult Function(int i, int u)? addAnswer,
+    TResult Function(int mapelId)? postData,
+    required TResult orElse(),
+  }) {
+    if (postData != null) {
+      return postData(mapelId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetUjian value) getUjianUser,
+    required TResult Function(GetDetailUjian value) getDetailUjian,
+    required TResult Function(UpdateSelectedOptions value)
+        updateSelectedOptions,
+    required TResult Function(onLoad value) select,
+    required TResult Function(AddAnswer value) addAnswer,
+    required TResult Function(PostData value) postData,
+  }) {
+    return postData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(GetUjian value)? getUjianUser,
+    TResult? Function(GetDetailUjian value)? getDetailUjian,
+    TResult? Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult? Function(onLoad value)? select,
+    TResult? Function(AddAnswer value)? addAnswer,
+    TResult? Function(PostData value)? postData,
+  }) {
+    return postData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetUjian value)? getUjianUser,
+    TResult Function(GetDetailUjian value)? getDetailUjian,
+    TResult Function(UpdateSelectedOptions value)? updateSelectedOptions,
+    TResult Function(onLoad value)? select,
+    TResult Function(AddAnswer value)? addAnswer,
+    TResult Function(PostData value)? postData,
+    required TResult orElse(),
+  }) {
+    if (postData != null) {
+      return postData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PostData implements UjianEvent {
+  factory PostData({required final int mapelId}) = _$PostDataImpl;
+
+  int get mapelId;
+  @JsonKey(ignore: true)
+  _$$PostDataImplCopyWith<_$PostDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UjianState {
   List<Ujian> get fetchUjian => throw _privateConstructorUsedError;
   List<Question> get fetchQuestion => throw _privateConstructorUsedError;
   List<AnswerModels> get postAnswer => throw _privateConstructorUsedError;
   dynamic get selectedOptions => throw _privateConstructorUsedError;
   int get currentQuestionIndex => throw _privateConstructorUsedError;
+  dynamic get examFinish => throw _privateConstructorUsedError;
   FetchStatus get fetchUjianStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1030,6 +1238,7 @@ mixin _$UjianState {
             List<AnswerModels> postAnswer,
             dynamic selectedOptions,
             int currentQuestionIndex,
+            dynamic examFinish,
             FetchStatus fetchUjianStatus)
         initial,
   }) =>
@@ -1042,6 +1251,7 @@ mixin _$UjianState {
             List<AnswerModels> postAnswer,
             dynamic selectedOptions,
             int currentQuestionIndex,
+            dynamic examFinish,
             FetchStatus fetchUjianStatus)?
         initial,
   }) =>
@@ -1054,6 +1264,7 @@ mixin _$UjianState {
             List<AnswerModels> postAnswer,
             dynamic selectedOptions,
             int currentQuestionIndex,
+            dynamic examFinish,
             FetchStatus fetchUjianStatus)?
         initial,
     required TResult orElse(),
@@ -1093,6 +1304,7 @@ abstract class $UjianStateCopyWith<$Res> {
       List<AnswerModels> postAnswer,
       dynamic selectedOptions,
       int currentQuestionIndex,
+      dynamic examFinish,
       FetchStatus fetchUjianStatus});
 }
 
@@ -1114,6 +1326,7 @@ class _$UjianStateCopyWithImpl<$Res, $Val extends UjianState>
     Object? postAnswer = null,
     Object? selectedOptions = freezed,
     Object? currentQuestionIndex = null,
+    Object? examFinish = freezed,
     Object? fetchUjianStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -1137,6 +1350,10 @@ class _$UjianStateCopyWithImpl<$Res, $Val extends UjianState>
           ? _value.currentQuestionIndex
           : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      examFinish: freezed == examFinish
+          ? _value.examFinish
+          : examFinish // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       fetchUjianStatus: null == fetchUjianStatus
           ? _value.fetchUjianStatus
           : fetchUjianStatus // ignore: cast_nullable_to_non_nullable
@@ -1159,6 +1376,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       List<AnswerModels> postAnswer,
       dynamic selectedOptions,
       int currentQuestionIndex,
+      dynamic examFinish,
       FetchStatus fetchUjianStatus});
 }
 
@@ -1178,6 +1396,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? postAnswer = null,
     Object? selectedOptions = freezed,
     Object? currentQuestionIndex = null,
+    Object? examFinish = freezed,
     Object? fetchUjianStatus = null,
   }) {
     return _then(_$InitialImpl(
@@ -1200,6 +1419,7 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.currentQuestionIndex
           : currentQuestionIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      examFinish: freezed == examFinish ? _value.examFinish! : examFinish,
       fetchUjianStatus: null == fetchUjianStatus
           ? _value.fetchUjianStatus
           : fetchUjianStatus // ignore: cast_nullable_to_non_nullable
@@ -1217,6 +1437,7 @@ class _$InitialImpl implements _Initial {
       final List<AnswerModels> postAnswer = const <AnswerModels>[],
       this.selectedOptions = const <List<int?>>[],
       this.currentQuestionIndex = 0,
+      this.examFinish = 401,
       this.fetchUjianStatus = FetchStatus.initial})
       : _fetchUjian = fetchUjian,
         _fetchQuestion = fetchQuestion,
@@ -1257,11 +1478,14 @@ class _$InitialImpl implements _Initial {
   final int currentQuestionIndex;
   @override
   @JsonKey()
+  final dynamic examFinish;
+  @override
+  @JsonKey()
   final FetchStatus fetchUjianStatus;
 
   @override
   String toString() {
-    return 'UjianState.initial(fetchUjian: $fetchUjian, fetchQuestion: $fetchQuestion, postAnswer: $postAnswer, selectedOptions: $selectedOptions, currentQuestionIndex: $currentQuestionIndex, fetchUjianStatus: $fetchUjianStatus)';
+    return 'UjianState.initial(fetchUjian: $fetchUjian, fetchQuestion: $fetchQuestion, postAnswer: $postAnswer, selectedOptions: $selectedOptions, currentQuestionIndex: $currentQuestionIndex, examFinish: $examFinish, fetchUjianStatus: $fetchUjianStatus)';
   }
 
   @override
@@ -1279,6 +1503,8 @@ class _$InitialImpl implements _Initial {
                 .equals(other.selectedOptions, selectedOptions) &&
             (identical(other.currentQuestionIndex, currentQuestionIndex) ||
                 other.currentQuestionIndex == currentQuestionIndex) &&
+            const DeepCollectionEquality()
+                .equals(other.examFinish, examFinish) &&
             (identical(other.fetchUjianStatus, fetchUjianStatus) ||
                 other.fetchUjianStatus == fetchUjianStatus));
   }
@@ -1291,6 +1517,7 @@ class _$InitialImpl implements _Initial {
       const DeepCollectionEquality().hash(_postAnswer),
       const DeepCollectionEquality().hash(selectedOptions),
       currentQuestionIndex,
+      const DeepCollectionEquality().hash(examFinish),
       fetchUjianStatus);
 
   @JsonKey(ignore: true)
@@ -1308,11 +1535,12 @@ class _$InitialImpl implements _Initial {
             List<AnswerModels> postAnswer,
             dynamic selectedOptions,
             int currentQuestionIndex,
+            dynamic examFinish,
             FetchStatus fetchUjianStatus)
         initial,
   }) {
     return initial(fetchUjian, fetchQuestion, postAnswer, selectedOptions,
-        currentQuestionIndex, fetchUjianStatus);
+        currentQuestionIndex, examFinish, fetchUjianStatus);
   }
 
   @override
@@ -1324,11 +1552,12 @@ class _$InitialImpl implements _Initial {
             List<AnswerModels> postAnswer,
             dynamic selectedOptions,
             int currentQuestionIndex,
+            dynamic examFinish,
             FetchStatus fetchUjianStatus)?
         initial,
   }) {
     return initial?.call(fetchUjian, fetchQuestion, postAnswer, selectedOptions,
-        currentQuestionIndex, fetchUjianStatus);
+        currentQuestionIndex, examFinish, fetchUjianStatus);
   }
 
   @override
@@ -1340,13 +1569,14 @@ class _$InitialImpl implements _Initial {
             List<AnswerModels> postAnswer,
             dynamic selectedOptions,
             int currentQuestionIndex,
+            dynamic examFinish,
             FetchStatus fetchUjianStatus)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
       return initial(fetchUjian, fetchQuestion, postAnswer, selectedOptions,
-          currentQuestionIndex, fetchUjianStatus);
+          currentQuestionIndex, examFinish, fetchUjianStatus);
     }
     return orElse();
   }
@@ -1387,6 +1617,7 @@ abstract class _Initial implements UjianState {
       final List<AnswerModels> postAnswer,
       final dynamic selectedOptions,
       final int currentQuestionIndex,
+      final dynamic examFinish,
       final FetchStatus fetchUjianStatus}) = _$InitialImpl;
 
   @override
@@ -1399,6 +1630,8 @@ abstract class _Initial implements UjianState {
   dynamic get selectedOptions;
   @override
   int get currentQuestionIndex;
+  @override
+  dynamic get examFinish;
   @override
   FetchStatus get fetchUjianStatus;
   @override
