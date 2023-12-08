@@ -88,13 +88,17 @@ class UjianDS implements UjianDataSources {
     int statusCode = 0;
     log(modelsAnswer.answers.toString());
     final a = json.encode(modelsAnswer.answers);
+    final nilai = json.encode(modelsAnswer.nilaiAkhir);
     try {
       final res = await http.post(
         Uri.parse('$urlLink/postData/$id/$mapelId'),
         body: {
           'jawaban': a.toString(),
+          'nilai': nilai.toString(),
         },
       );
+      // log(nilai);
+
       if (res.statusCode == 200) {
         statusCode = res.statusCode;
       }

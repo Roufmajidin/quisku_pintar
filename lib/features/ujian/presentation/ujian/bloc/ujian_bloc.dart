@@ -106,16 +106,37 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
     user.fold((l) => null, (r) {
       id = r.id;
     });
+
     log('mapel id = $mapelId .. User Id = $id');
     // TODO : tangkap data pada state :)
     List<List<int?>> updatedSelectedOptions = List.from(state.selectedOptions);
-    final a = AnswerModels(answers: updatedSelectedOptions);
+
+    // TODO 4: cek jawaban user comapare dengan models ujian :: where mapelId :)
+    List<Question> qum = state.fetchQuestion;
+    int userSc = calc(qum, updatedSelectedOptions);
+    final a = AnswerModels(answers: updatedSelectedOptions, nilaiAkhir: userSc);
+
     final post =
         await ujianusecase.postJawaban(id: id!, mapelId: mapelId, models: a);
-    log(post.toString());
+    log(a.nilaiAkhir.toString());
 
     if (post == 200) {
-      emit(state.copyWith(examFinish: post)); //nilai post adalah 200
+      log('nilai is $userSc');
+      emit(state.copyWith(
+          examFinish: post)); // return serve (nilai)  serve post adalah 200
     }
+    log('ini ${qum.toString()}');
+  }
+
+  // fungsi menghitung nilai :)
+  //
+  int calc(List<Question> q, List<List<int?>> answered) {
+    int sc = 0;
+    for (int i = 0; i < q.length; i++) {
+      if (q[i].jawaban_benar == answered[i][0]) {
+        sc++;
+      }
+    }
+    return sc * 10;
   }
 }

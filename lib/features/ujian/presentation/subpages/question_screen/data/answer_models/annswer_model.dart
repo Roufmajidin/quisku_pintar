@@ -1,22 +1,23 @@
 class AnswerModels {
   // final int? index;
-  // final int? current;
+  final int nilaiAkhir;
   final List<List<int?>> answers;
 
   const AnswerModels({
     // this.index,
-    // this.current,
+    required this.nilaiAkhir,
     required this.answers,
   });
 
   AnswerModels copyWith({
     // int? index,
     // int? current,
+    required final int nilaiAkhir,
     List<List<int>>? answers,
   }) {
     return AnswerModels(
       // index: index ?? this.index,
-      // current: current ?? this.current,
+      nilaiAkhir: nilaiAkhir,
       answers: answers ?? this.answers,
     );
   }

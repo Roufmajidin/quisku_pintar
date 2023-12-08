@@ -30,7 +30,7 @@ class ContentInformasi extends StatelessWidget {
             ),
             elevation: 0,
             child: Container(
-              height: 180,
+              height: 200,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -50,7 +50,7 @@ class ContentInformasi extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: 37,
+                      height: 30,
                       child: Stack(
                         children: [
                           Text(
@@ -121,7 +121,7 @@ class ContentInformasi extends StatelessWidget {
                           style: AppTextStyle.body4.setRegular(),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
