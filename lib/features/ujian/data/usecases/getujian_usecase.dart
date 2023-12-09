@@ -23,7 +23,6 @@ class GetUjianUsecase {
       {required int id,
       required int mapelId,
       required AnswerModels models}) async {
-    return await pelre.postAnswer(
-        id: id, mapelId: mapelId, modelsAnswer: models);
+    return pelre.postAnswer(id: id, mapelId: mapelId, modelsAnswer: models);
   }
 }

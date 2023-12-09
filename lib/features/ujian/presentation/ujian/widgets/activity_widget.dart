@@ -7,8 +7,10 @@ import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
+import 'package:quisku_pintar/core/utils/enums.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
 import '../../../../../common/gen/assets.gen.dart';
+import '../../../../../core/helpers/show_snackbar_helper.dart';
 
 class UjianList extends StatelessWidget {
   const UjianList({
@@ -23,7 +25,12 @@ class UjianList extends StatelessWidget {
         if (state.fetchUjianStatus.isLoading) {
           log('ok');
           // context.read<UjianBloc>().add(const GetUjian());
-
+          if (state.examFinish == 200) {
+            context.router.push(const UjianRoute());
+            ShowSnackBarHelper.show(context,
+                snackBarType: SnackBarType.success,
+                message: 'Selamat, selesai ujian');
+          }
           return SizedBox(
               height: MediaQuery.of(context).size.height,
               child: const Center(child: CircularProgressIndicator()));
@@ -110,7 +117,14 @@ class UjianList extends StatelessWidget {
                                             Text(
                                               data.status,
                                               style: AppTextStyle.body4
-                                                  .setRegular(),
+                                                  .setRegular()
+                                                  .copyWith(
+                                                      color: data.status ==
+                                                              "Belum Mengerjakan"
+                                                          ? AppColors
+                                                              .danger.dng09
+                                                          : AppColors
+                                                              .success.scs10),
                                             ),
                                             const SizedBox(
                                               width: 16,

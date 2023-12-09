@@ -48,7 +48,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       return emit(state.copyWith(user: r));
 
-      log('emit ${state.user}');
+      // log('emit ${state.user}');
     });
   }
 

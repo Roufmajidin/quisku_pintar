@@ -63,7 +63,9 @@ class AuthenticationDataSources implements AuthenticationDataS {
       final id = userData['id'];
       final name = userData['name'];
       final email = userData['email'];
-      final userJson = User(id: id, name: name, email: email);
+      final semester = userData['semester'];
+      final userJson =
+          User(id: id, name: name, email: email, semester: semester);
       log('user data : $userJson');
       return right(userJson);
       // } else {

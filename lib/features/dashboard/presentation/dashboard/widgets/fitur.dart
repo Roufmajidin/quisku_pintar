@@ -50,7 +50,7 @@ class FiturLxp extends StatelessWidget {
                 height: 8,
               ),
               const Text(
-                'Pelatihan\nKu',
+                'Ujian\n',
                 style: AppTextStyle.body4,
                 textAlign: TextAlign.center,
               ),
@@ -71,7 +71,7 @@ class FiturLxp extends StatelessWidget {
                 height: 8,
               ),
               const Text(
-                'Simulasi\n& Penilaian',
+                'Report\n& Nilai',
                 style: AppTextStyle.body4,
                 textAlign: TextAlign.center,
               ),

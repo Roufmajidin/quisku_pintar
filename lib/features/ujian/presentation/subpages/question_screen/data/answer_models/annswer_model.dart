@@ -3,7 +3,7 @@ class AnswerModels {
   final int nilaiAkhir;
   final List<List<int?>> answers;
 
-  const AnswerModels({
+  AnswerModels({
     // this.index,
     required this.nilaiAkhir,
     required this.answers,

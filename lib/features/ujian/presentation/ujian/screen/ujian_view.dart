@@ -58,7 +58,7 @@ class _UjianViewState extends State<UjianView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RefreshIndicator(
-                color: AppColors.neutral.ne01,
+                color: AppColors.primary.pr10,
                 onRefresh: () async {
                   getUjian();
                   return Future<void>.delayed(const Duration(seconds: 3));

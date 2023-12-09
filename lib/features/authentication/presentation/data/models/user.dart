@@ -9,6 +9,7 @@ abstract class User with _$User {
   factory User({
     int? id,
     required String name,
+    required int semester,
     required String email,
     String? emailVerified,
     DateTime? createdAt,

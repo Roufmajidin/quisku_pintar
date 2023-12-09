@@ -22,6 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  int get semester => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get emailVerified => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $UserCopyWith<$Res> {
   $Res call(
       {int? id,
       String name,
+      int semester,
       String email,
       String? emailVerified,
       DateTime? createdAt,
@@ -61,6 +63,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = freezed,
     Object? name = null,
+    Object? semester = null,
     Object? email = null,
     Object? emailVerified = freezed,
     Object? createdAt = freezed,
@@ -75,6 +78,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      semester: null == semester
+          ? _value.semester
+          : semester // ignore: cast_nullable_to_non_nullable
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -105,6 +112,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call(
       {int? id,
       String name,
+      int semester,
       String email,
       String? emailVerified,
       DateTime? createdAt,
@@ -123,6 +131,7 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = null,
+    Object? semester = null,
     Object? email = null,
     Object? emailVerified = freezed,
     Object? createdAt = freezed,
@@ -137,6 +146,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      semester: null == semester
+          ? _value.semester
+          : semester // ignore: cast_nullable_to_non_nullable
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -163,6 +176,7 @@ class _$UserImpl implements _User {
   _$UserImpl(
       {this.id,
       required this.name,
+      required this.semester,
       required this.email,
       this.emailVerified,
       this.createdAt,
@@ -176,6 +190,8 @@ class _$UserImpl implements _User {
   @override
   final String name;
   @override
+  final int semester;
+  @override
   final String email;
   @override
   final String? emailVerified;
@@ -186,7 +202,7 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, email: $email, emailVerified: $emailVerified, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'User(id: $id, name: $name, semester: $semester, email: $email, emailVerified: $emailVerified, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -196,6 +212,8 @@ class _$UserImpl implements _User {
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.semester, semester) ||
+                other.semester == semester) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.emailVerified, emailVerified) ||
                 other.emailVerified == emailVerified) &&
@@ -207,8 +225,8 @@ class _$UserImpl implements _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, email, emailVerified, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, name, semester, email,
+      emailVerified, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -228,6 +246,7 @@ abstract class _User implements User {
   factory _User(
       {final int? id,
       required final String name,
+      required final int semester,
       required final String email,
       final String? emailVerified,
       final DateTime? createdAt,
@@ -239,6 +258,8 @@ abstract class _User implements User {
   int? get id;
   @override
   String get name;
+  @override
+  int get semester;
   @override
   String get email;
   @override

@@ -11,6 +11,7 @@ import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/core/utils/enums.dart';
 import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
+import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/widgets/alert_buttonfinish.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
 
 import '../../../../../authentication/presentation/bloc/login_bloc.dart';
@@ -72,6 +73,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
             //   progres: currentQuestionIndex == 0 ? 1 : currentQuestionIndex + 1,
             //   lengthQuestion: widget.data.length,
             // ),
+
             SizedBox(
               height: 650,
               child: Stack(
@@ -239,30 +241,39 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                     child: Text('back'),
                   ),
                 ElevatedButton(
-                  onPressed: () async {
-                    setState(() {
-                      if (currentQuestion < widget.data.length - 1) {
-                        currentQuestion++;
-                        context.read<UjianBloc>().add(onLoad(currentQuestion));
-
-                        pageController.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease);
-                      }
-                      if (currentQuestion == widget.data.length - 1) {
-                        log('akhir');
-
-                        context.read<UjianBloc>().add(PostData(mapelId: mapel));
-                      }
-                    });
+                  onPressed: () {
+                    log('posisi page ${state.examFinish}');
                     if (state.examFinish == 200) {
-                      context.router.push(const UjianRoute());
+                      context.router.pushAndPopUntil(
+                        const UjianRoute(),
+                        predicate: (predicate) => false,
+                      );
                       ShowSnackBarHelper.show(context,
                           snackBarType: SnackBarType.success,
                           message: 'Selamat, selesai ujian');
                     }
+                    setState(
+                      () {
+                        log('halaman $currentQuestion');
+                        if (currentQuestion < widget.data.length - 1) {
+                          currentQuestion++;
+                          // context.read<UjianBloc>().add(onLoad(currentQuestion));
+                          // log('finish?');
+                          pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.ease);
+                        }
+
+                        if (currentQuestion == widget.data.length - 1) {
+                          log('finish?');
+                          context
+                              .read<UjianBloc>()
+                              .add(PostData(mapelId: mapel));
+                        }
+                      },
+                    );
                   },
-                  child: Text(currentQuestion == widget.data.length
+                  child: Text(currentQuestion == widget.data.length - 1
                       ? "selesai"
                       : 'Next'),
                 ),

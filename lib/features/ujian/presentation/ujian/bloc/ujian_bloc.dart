@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/usecases/login_usecase.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
@@ -113,19 +114,16 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
 
     // TODO 4: cek jawaban user comapare dengan models ujian :: where mapelId :)
     List<Question> qum = state.fetchQuestion;
-    int userSc = calc(qum, updatedSelectedOptions);
+    final b = await calc(qum, updatedSelectedOptions);
+    final userSc = b;
     final a = AnswerModels(answers: updatedSelectedOptions, nilaiAkhir: userSc);
 
     final post =
         await ujianusecase.postJawaban(id: id!, mapelId: mapelId, models: a);
-    log(a.nilaiAkhir.toString());
-
-    if (post == 200) {
-      log('nilai is $userSc');
-      emit(state.copyWith(
-          examFinish: post)); // return serve (nilai)  serve post adalah 200
-    }
+    log(' nilai A {a.nilaiAkhir.toString()}');
+    // post
     log('ini ${qum.toString()}');
+    emit(state.copyWith(examFinish: 200));
   }
 
   // fungsi menghitung nilai :)

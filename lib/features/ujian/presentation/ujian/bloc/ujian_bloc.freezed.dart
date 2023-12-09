@@ -1437,7 +1437,7 @@ class _$InitialImpl implements _Initial {
       final List<AnswerModels> postAnswer = const <AnswerModels>[],
       this.selectedOptions = const <List<int?>>[],
       this.currentQuestionIndex = 0,
-      this.examFinish = 401,
+      this.examFinish = int,
       this.fetchUjianStatus = FetchStatus.initial})
       : _fetchUjian = fetchUjian,
         _fetchQuestion = fetchQuestion,
