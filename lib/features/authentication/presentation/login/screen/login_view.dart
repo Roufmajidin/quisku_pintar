@@ -6,7 +6,6 @@ import 'package:quisku_pintar/features/authentication/presentation/login/widgets
 
 import '../../../../../common/themes/themes.dart';
 import '../../bloc/login_bloc.dart';
-import '../widgets/login_email_password_button.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

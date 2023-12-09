@@ -8,8 +8,7 @@ import 'package:quisku_pintar/features/dashboard/data/repositories/pelajaran_rep
 import '../../../ujian/data/models/ujian_models.dart';
 
 class GetMapelUsecase {
-  final PelajaranRepositoryImpl pelRe;
-  GetMapelUsecase({required this.pelRe});
+  final PelajaranRepositoryImpl pelRe = PelajaranRepositoryImpl();
   Future<Either<Failure, List<Pelajaran>>> getMapel() async {
     log('on usecase => impl PelajaranRepositoryImpl()');
     return await pelRe.getMapel();

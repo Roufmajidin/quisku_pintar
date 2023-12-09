@@ -36,9 +36,11 @@ abstract class $AppRouter extends _i10.RootStackRouter {
   @override
   final Map<String, _i10.PageFactory> pagesMap = {
     DashboardRoute.name: (routeData) {
+      final args = routeData.argsAs<DashboardRouteArgs>(
+          orElse: () => const DashboardRouteArgs());
       return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.DashboardPage(),
+        child: _i1.DashboardPage(key: args.key),
       );
     },
     DetailNotificationRoute.name: (routeData) {
@@ -107,16 +109,31 @@ abstract class $AppRouter extends _i10.RootStackRouter {
 
 /// generated route for
 /// [_i1.DashboardPage]
-class DashboardRoute extends _i10.PageRouteInfo<void> {
-  const DashboardRoute({List<_i10.PageRouteInfo>? children})
-      : super(
+class DashboardRoute extends _i10.PageRouteInfo<DashboardRouteArgs> {
+  DashboardRoute({
+    _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
+  }) : super(
           DashboardRoute.name,
+          args: DashboardRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'DashboardRoute';
 
-  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+  static const _i10.PageInfo<DashboardRouteArgs> page =
+      _i10.PageInfo<DashboardRouteArgs>(name);
+}
+
+class DashboardRouteArgs {
+  const DashboardRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'DashboardRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

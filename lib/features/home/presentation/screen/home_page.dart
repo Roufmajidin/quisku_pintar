@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       body: <Widget>[
-        const DashboardPage(),
+        DashboardPage(),
         const UjianPage(),
         const SizedBox(),
         Container(

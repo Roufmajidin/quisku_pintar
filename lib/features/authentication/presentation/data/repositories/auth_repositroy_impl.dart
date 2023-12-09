@@ -5,13 +5,11 @@ import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/datasources/auth_datasources.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/models/token.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/models/user.dart';
-import 'package:quisku_pintar/features/authentication/presentation/data/repositories/auth_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthRepositoryImpl implements AuthenticationRepository {
-  final AuthenticationDataSources authDataSources;
-  AuthRepositoryImpl({required this.authDataSources});
-  @override
+class AuthRepositoryImpl {
+  final AuthenticationDataSources authDataSources = AuthenticationDataSources();
+
   Future<Either<Failure, TokenModels>> loginUser(
       {required String email, required String password}) async {
     try {
@@ -23,7 +21,7 @@ class AuthRepositoryImpl implements AuthenticationRepository {
       await getToken('token');
       return res;
     } catch (e) {
-      return Left(const Failure.parsingFailure());
+      return const Left(Failure.parsingFailure());
     }
   }
 

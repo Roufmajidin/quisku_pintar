@@ -9,9 +9,7 @@ import 'package:http/http.dart' as http;
 
 import '../../../ujian/data/models/ujian_models.dart';
 
-abstract class PelajaranDataSources {}
-
-class PelDatSources implements PelajaranDataSources {
+class PelajaranDataSources {
   final Dio dio = Dio();
   // final String? apiUrl = Endpoints().baseUrl;
   final String jsonFirebaseRealtimeDB =

@@ -20,8 +20,8 @@ class QuestionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final dataSources = AuthenticationDataSources();
 
-    final authRepository = AuthRepositoryImpl(authDataSources: dataSources);
-    final loginUseCase = LoginUseCase(authRepository);
+    final authRepository = AuthRepositoryImpl();
+    final loginUseCase = LoginUseCase();
 
     // ujianUsecase;
     //
