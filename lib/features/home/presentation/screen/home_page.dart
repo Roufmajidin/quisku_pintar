@@ -3,6 +3,7 @@ import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/screen/dashboard_page.dart';
+import 'package:quisku_pintar/features/report_nilai/presentation/transkip_nilai/screen/transkip_nilai_page.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/screen/ujia_page.dart';
 
 @RoutePage()
@@ -81,7 +82,7 @@ class _HomePageState extends State<HomePage> {
       body: <Widget>[
         DashboardPage(),
         const UjianPage(),
-        const SizedBox(),
+        const TranskipNilaiPage(),
         Container(
           color: AppColors.neutral.ne05,
           alignment: Alignment.center,

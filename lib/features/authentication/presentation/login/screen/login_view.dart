@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
-import 'package:quisku_pintar/common/shared/independent/text_field.dart';
+import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
 import 'package:quisku_pintar/features/authentication/presentation/login/widgets/z.dart.dart';
 
 import '../../../../../common/themes/themes.dart';
-import '../../bloc/login_bloc.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

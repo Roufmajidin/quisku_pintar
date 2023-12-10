@@ -5,9 +5,9 @@ import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/models/token.dart';
 import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
-import '../../../../../core/error/utils/endpoints.dart';
 import '../models/user.dart';
 
 abstract class AuthenticationDataS {}
@@ -93,8 +93,8 @@ class AuthenticationDataSources implements AuthenticationDataS {
     // d = data;
 
     // Print or use the fetched baseUrl as needed
-    print('Fetched baseUrl from Firebase: $data');
-    print('Fetched baseUrl from Firebase: $data');
+    // print('Fetched baseUrl from Firebase: $data');
+    // print('Fetched baseUrl from Firebase: $data');
 
     return data;
   }

@@ -10,10 +10,10 @@ import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
-import 'package:quisku_pintar/features/dashboard/presentation/dashboard/widgets/container_artikel.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/widgets/fitur.dart';
 
-import '../../../../authentication/presentation/bloc/login_bloc.dart';
+import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
+
 import '../bloc/dashboard_bloc.dart';
 import '../pages/detail_page.dart';
 import '../widgets/container_pelatihan.dart';
@@ -198,13 +198,15 @@ class CustomAppBar extends StatelessWidget {
                             ),
                             state.status == FormzStatus.submissionInProgress ||
                                     state.user == null
-                                ? state.status == FormzStatus.submissionFailure ? SizedBox() :  SizedBox(
-                                    height: 15,
-                                    width: 15,
-                                    child: CircularProgressIndicator(
-                                      color: AppColors.neutral.ne01,
-                                    ),
-                                  )
+                                ? state.status == FormzStatus.submissionFailure
+                                    ? SizedBox()
+                                    : SizedBox(
+                                        height: 15,
+                                        width: 15,
+                                        child: CircularProgressIndicator(
+                                          color: AppColors.neutral.ne01,
+                                        ),
+                                      )
                                 : Text(
                                     state.user?.name ?? 'load',
                                     style: AppTextStyle.body2

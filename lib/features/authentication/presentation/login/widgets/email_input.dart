@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/shared/independent/text_field.dart';
-import '../../bloc/login_bloc.dart';
+import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
 
 class EmailInput extends StatelessWidget {
   const EmailInput({super.key});

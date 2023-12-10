@@ -3,20 +3,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
-import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
-import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/core/helpers/show_snackbar_helper.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/core/utils/enums.dart';
-import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
-import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
-import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/widgets/alert_buttonfinish.dart';
-import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
 
-import '../../../../../authentication/presentation/bloc/login_bloc.dart';
-import '../../../../../authentication/presentation/data/models/user.dart';
-import '../../../../../authentication/presentation/data/usecases/login_usecase.dart';
+import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
+import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
 
 // ignore: must_be_immutable
 class ChipsWidget extends StatefulWidget {

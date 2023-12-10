@@ -6,7 +6,7 @@ import 'package:quisku_pintar/core/helpers/show_snackbar_helper.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/core/utils/enums.dart';
 
-import '../../bloc/login_bloc.dart';
+import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
 
 class LoginEmailPasswordButton extends StatelessWidget {
   const LoginEmailPasswordButton({super.key});

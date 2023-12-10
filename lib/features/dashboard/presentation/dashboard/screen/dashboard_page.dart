@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:quisku_pintar/core/injection/dependency_injection.dart';
-import 'package:quisku_pintar/features/authentication/presentation/bloc/login_bloc.dart';
+import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
+
 import 'package:quisku_pintar/features/dashboard/data/usecases/getmapel_usecase.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/bloc/dashboard_bloc.dart';
 import 'package:quisku_pintar/features/dashboard/presentation/dashboard/screen/dashboard_view.dart';

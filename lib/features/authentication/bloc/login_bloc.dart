@@ -5,9 +5,8 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quisku_pintar/common/validation/email.dart';
 import 'package:quisku_pintar/common/validation/password.dart';
+import 'package:quisku_pintar/features/authentication/presentation/data/models/user.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/usecases/login_usecase.dart';
-
-import '../data/models/user.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -33,7 +32,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   // token
   _logout(Logout event, Emitter<LoginState> emit) async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-    final res = await loginUsesCase.logout();
+    await loginUsesCase.logout();
     emit(state.copyWith(status: FormzStatus.submissionSuccess));
   }
 
@@ -53,8 +52,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   _loginSubmit(LoginSubmit event, Emitter<LoginState> emit) async {
-    print("bloc aman");
-
     if (state.status.isValidated) {
       log('sdsd');
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
@@ -73,24 +70,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         (user) async {
           emit(state.copyWith(status: FormzStatus.submissionSuccess));
 
-          if (user != null && user.accesToken != null) {
-            final userResult =
-                await loginUsesCase.getLogedUser(user.accesToken);
-            log(userResult.toString());
+          final userResult = await loginUsesCase.getLogedUser(user.accesToken);
+          log(userResult.toString());
 
-            await userResult.fold(
-              (failure) async {
-                print('Error: $failure');
-              },
-              (user) async {
-                emit(state.copyWith(user: user));
-                log(state.user.toString());
-              },
-            );
-          } else {
-            // Handle the case where user or accessToken is null
-            print('Error: Invalid user or accessToken');
-          }
+          await userResult.fold(
+            (failure) async {},
+            (user) async {
+              emit(state.copyWith(user: user));
+              log(state.user.toString());
+            },
+          );
         },
       );
     }

@@ -1162,8 +1162,6 @@ abstract class $LoginStateCopyWith<$Res> {
       String errorMessages,
       bool hidePassword,
       User? user});
-
-  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -1213,18 +1211,6 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
               as User?,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -1242,9 +1228,6 @@ abstract class _$$InitialImplCopyWith<$Res>
       String errorMessages,
       bool hidePassword,
       User? user});
-
-  @override
-  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -1336,12 +1319,12 @@ class _$InitialImpl implements _Initial {
                 other.errorMessages == errorMessages) &&
             (identical(other.hidePassword, hidePassword) ||
                 other.hidePassword == hidePassword) &&
-            (identical(other.user, user) || other.user == user));
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, email, password, errorMessages, hidePassword, user);
+  int get hashCode => Object.hash(runtimeType, status, email, password,
+      errorMessages, hidePassword, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override

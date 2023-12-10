@@ -70,24 +70,22 @@ class _PnDropdownTextFieldState extends State<PnDropdownTextField> {
               ),
               items: [
                 ...(widget.dropdownItems
-                        .map<DropdownMenuItem<String>>(
-                          (item) => DropdownMenuItem<String>(
-                            value: item,
-                            child: Row(
-                              children: [
-                                Text(
-                                  item,
-                                  style:
-                                      AppTextStyle.body3.setRegular().copyWith(
-                                            color: AppColors.neutral.ne06,
-                                          ),
-                                ),
-                              ],
+                    .map<DropdownMenuItem<String>>(
+                      (item) => DropdownMenuItem<String>(
+                        value: item,
+                        child: Row(
+                          children: [
+                            Text(
+                              item,
+                              style: AppTextStyle.body3.setRegular().copyWith(
+                                    color: AppColors.neutral.ne06,
+                                  ),
                             ),
-                          ),
-                        )
-                        .toList() ??
-                    []),
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList()),
               ],
             ),
           ),

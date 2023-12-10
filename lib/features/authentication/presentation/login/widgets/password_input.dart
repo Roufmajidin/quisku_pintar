@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/shared/independent/text_field.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
-import '../../bloc/login_bloc.dart';
+import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
 
 class PasswordInput extends StatelessWidget {
   const PasswordInput({super.key});
