@@ -13,23 +13,30 @@ class ReportDataSources {
 
   Future<Either<Failure, List<ReportModels>>> getReportNilai(
       {required int userId}) async {
+    log('report dts');
+
     // parse link dari realtime database,
     //agar server ngrok lokal bisa autoload pada masing masing device
     final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
     final String urlLink = json.decode(respons.body);
     try {
       final respons = await http.get(Uri.parse('$urlLink/getReport/$userId'));
-      if (respons.statusCode == 200) {
-        final Map<String, dynamic> jsonDataList = jsonDecode(respons.body);
-        final List<Map<String, dynamic>> result =
-            List.from(jsonDataList['data']);
-        final List<ReportModels> nilaiReport =
-            result.map((e) => ReportModels.fromJson(e)).toList();
-        // final ReportModels nilaiReport = ReportModels.fromJson(jsonDataList);
-        log('report $nilaiReport');
-        return right(nilaiReport);
-      }
-      return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
+      final Map<String, dynamic> jsonDaMap = jsonDecode(respons.body);
+      final Map<String, dynamic> rawData = jsonDaMap['data'];
+      // final List<ReportModels> reportList = rawData;
+
+      final List<ReportModels> reportList = rawData.entries.map((entry) {
+        final String message = entry.key;
+        final List<ExamData> exams = (entry.value as List)
+            .map((exam) => ExamData.fromJson(exam))
+            .toList();
+
+        return ReportModels(keterangan: message, data: {message: exams});
+      }).toList();
+      log('rxx $rawData');
+      return right(reportList);
+
+      // return right(jsonDaMap['data']);
     } catch (e) {
       return const Left(Failure.serverFailure());
     }

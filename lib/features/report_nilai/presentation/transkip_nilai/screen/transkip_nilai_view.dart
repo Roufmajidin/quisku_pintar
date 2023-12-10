@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/features/report_nilai/bloc/nilai_bloc.dart';
 import 'package:quisku_pintar/features/report_nilai/presentation/transkip_nilai/widgets/widgets.dart';
 
 import '../widgets/report_nilai.dart';
@@ -16,7 +18,13 @@ class _TranskipNilaiViewState extends State<TranskipNilaiView> {
   int initialIndex = 0;
   void changeIndexTab({required int index}) {
     initialIndex = index;
-    setState(() {});
+    setState(() {
+      getReport();
+    });
+  }
+
+  getReport() {
+    context.read<NilaiBloc>().add(GetNilaiReport());
   }
 
   @override

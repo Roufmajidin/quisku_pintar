@@ -6,8 +6,13 @@ import 'package:quisku_pintar/features/authentication/presentation/data/reposito
 import 'package:quisku_pintar/features/dashboard/data/datasources/pelajaran_datasources.dart';
 import 'package:quisku_pintar/features/dashboard/data/repositories/pelajaran_repository_impl.dart';
 import 'package:quisku_pintar/features/dashboard/data/usecases/getmapel_usecase.dart';
+import 'package:quisku_pintar/features/report_nilai/data/datasources/Report_datasources.dart'
+    as rids;
+import 'package:quisku_pintar/features/report_nilai/data/repositories/report_repository_impl.dart';
+import 'package:quisku_pintar/features/report_nilai/data/usecases/report_usecase.dart';
 import 'package:quisku_pintar/features/ujian/data/datasources/ujian_datasources.dart'
     as uds;
+
 import 'package:quisku_pintar/features/ujian/data/repositories/ujian_repository_impl.dart';
 import 'package:quisku_pintar/features/ujian/data/usecases/getujian_usecase.dart';
 
@@ -33,4 +38,9 @@ Future<void> setupDependency() async {
   sl.registerFactory<GetUjianUsecase>(() => GetUjianUsecase(pelre: sl()));
   sl.registerSingleton<uds.UjianDS>(uds.UjianDS());
   sl.registerSingleton(UjianRepositoryImpl(ujianDataSources: uds.UjianDS()));
+
+  // TODO register report RDS
+  sl.registerFactory<ReportUsecase>(() => ReportUsecase());
+  sl.registerSingleton<rids.ReportDataSources>(rids.ReportDataSources());
+  sl.registerSingleton<ReportRepositoryImpl>(ReportRepositoryImpl());
 }

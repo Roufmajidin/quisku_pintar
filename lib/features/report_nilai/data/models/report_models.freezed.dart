@@ -20,7 +20,8 @@ ReportModels _$ReportModelsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReportModels {
-  Map<String, SemesterData> get semester => throw _privateConstructorUsedError;
+  String get keterangan => throw _privateConstructorUsedError;
+  Map<String, List<ExamData>> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $ReportModelsCopyWith<$Res> {
           ReportModels value, $Res Function(ReportModels) then) =
       _$ReportModelsCopyWithImpl<$Res, ReportModels>;
   @useResult
-  $Res call({Map<String, SemesterData> semester});
+  $Res call({String keterangan, Map<String, List<ExamData>> data});
 }
 
 /// @nodoc
@@ -50,13 +51,18 @@ class _$ReportModelsCopyWithImpl<$Res, $Val extends ReportModels>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? semester = null,
+    Object? keterangan = null,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
-      semester: null == semester
-          ? _value.semester
-          : semester // ignore: cast_nullable_to_non_nullable
-              as Map<String, SemesterData>,
+      keterangan: null == keterangan
+          ? _value.keterangan
+          : keterangan // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<ExamData>>,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$ReportModelsImplCopyWith<$Res>
       __$$ReportModelsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<String, SemesterData> semester});
+  $Res call({String keterangan, Map<String, List<ExamData>> data});
 }
 
 /// @nodoc
@@ -83,13 +89,18 @@ class __$$ReportModelsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? semester = null,
+    Object? keterangan = null,
+    Object? data = null,
   }) {
     return _then(_$ReportModelsImpl(
-      semester: null == semester
-          ? _value._semester
-          : semester // ignore: cast_nullable_to_non_nullable
-              as Map<String, SemesterData>,
+      keterangan: null == keterangan
+          ? _value.keterangan
+          : keterangan // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<ExamData>>,
     ));
   }
 }
@@ -97,23 +108,27 @@ class __$$ReportModelsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReportModelsImpl implements _ReportModels {
-  _$ReportModelsImpl({required final Map<String, SemesterData> semester})
-      : _semester = semester;
+  _$ReportModelsImpl(
+      {required this.keterangan,
+      required final Map<String, List<ExamData>> data})
+      : _data = data;
 
   factory _$ReportModelsImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReportModelsImplFromJson(json);
 
-  final Map<String, SemesterData> _semester;
   @override
-  Map<String, SemesterData> get semester {
-    if (_semester is EqualUnmodifiableMapView) return _semester;
+  final String keterangan;
+  final Map<String, List<ExamData>> _data;
+  @override
+  Map<String, List<ExamData>> get data {
+    if (_data is EqualUnmodifiableMapView) return _data;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_semester);
+    return EqualUnmodifiableMapView(_data);
   }
 
   @override
   String toString() {
-    return 'ReportModels(semester: $semester)';
+    return 'ReportModels(keterangan: $keterangan, data: $data)';
   }
 
   @override
@@ -121,13 +136,15 @@ class _$ReportModelsImpl implements _ReportModels {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReportModelsImpl &&
-            const DeepCollectionEquality().equals(other._semester, _semester));
+            (identical(other.keterangan, keterangan) ||
+                other.keterangan == keterangan) &&
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_semester));
+  int get hashCode => Object.hash(
+      runtimeType, keterangan, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -144,196 +161,20 @@ class _$ReportModelsImpl implements _ReportModels {
 }
 
 abstract class _ReportModels implements ReportModels {
-  factory _ReportModels({required final Map<String, SemesterData> semester}) =
-      _$ReportModelsImpl;
+  factory _ReportModels(
+      {required final String keterangan,
+      required final Map<String, List<ExamData>> data}) = _$ReportModelsImpl;
 
   factory _ReportModels.fromJson(Map<String, dynamic> json) =
       _$ReportModelsImpl.fromJson;
 
   @override
-  Map<String, SemesterData> get semester;
+  String get keterangan;
+  @override
+  Map<String, List<ExamData>> get data;
   @override
   @JsonKey(ignore: true)
   _$$ReportModelsImplCopyWith<_$ReportModelsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-SemesterData _$SemesterDataFromJson(Map<String, dynamic> json) {
-  return _SemesterData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$SemesterData {
-  Map<String, Map<String, ExamData>> get data_pas =>
-      throw _privateConstructorUsedError;
-  List<Map<String, ExamData>> get data_pts =>
-      throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SemesterDataCopyWith<SemesterData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SemesterDataCopyWith<$Res> {
-  factory $SemesterDataCopyWith(
-          SemesterData value, $Res Function(SemesterData) then) =
-      _$SemesterDataCopyWithImpl<$Res, SemesterData>;
-  @useResult
-  $Res call(
-      {Map<String, Map<String, ExamData>> data_pas,
-      List<Map<String, ExamData>> data_pts});
-}
-
-/// @nodoc
-class _$SemesterDataCopyWithImpl<$Res, $Val extends SemesterData>
-    implements $SemesterDataCopyWith<$Res> {
-  _$SemesterDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data_pas = null,
-    Object? data_pts = null,
-  }) {
-    return _then(_value.copyWith(
-      data_pas: null == data_pas
-          ? _value.data_pas
-          : data_pas // ignore: cast_nullable_to_non_nullable
-              as Map<String, Map<String, ExamData>>,
-      data_pts: null == data_pts
-          ? _value.data_pts
-          : data_pts // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, ExamData>>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SemesterDataImplCopyWith<$Res>
-    implements $SemesterDataCopyWith<$Res> {
-  factory _$$SemesterDataImplCopyWith(
-          _$SemesterDataImpl value, $Res Function(_$SemesterDataImpl) then) =
-      __$$SemesterDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Map<String, Map<String, ExamData>> data_pas,
-      List<Map<String, ExamData>> data_pts});
-}
-
-/// @nodoc
-class __$$SemesterDataImplCopyWithImpl<$Res>
-    extends _$SemesterDataCopyWithImpl<$Res, _$SemesterDataImpl>
-    implements _$$SemesterDataImplCopyWith<$Res> {
-  __$$SemesterDataImplCopyWithImpl(
-      _$SemesterDataImpl _value, $Res Function(_$SemesterDataImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? data_pas = null,
-    Object? data_pts = null,
-  }) {
-    return _then(_$SemesterDataImpl(
-      data_pas: null == data_pas
-          ? _value._data_pas
-          : data_pas // ignore: cast_nullable_to_non_nullable
-              as Map<String, Map<String, ExamData>>,
-      data_pts: null == data_pts
-          ? _value._data_pts
-          : data_pts // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, ExamData>>,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$SemesterDataImpl implements _SemesterData {
-  _$SemesterDataImpl(
-      {required final Map<String, Map<String, ExamData>> data_pas,
-      required final List<Map<String, ExamData>> data_pts})
-      : _data_pas = data_pas,
-        _data_pts = data_pts;
-
-  factory _$SemesterDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SemesterDataImplFromJson(json);
-
-  final Map<String, Map<String, ExamData>> _data_pas;
-  @override
-  Map<String, Map<String, ExamData>> get data_pas {
-    if (_data_pas is EqualUnmodifiableMapView) return _data_pas;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data_pas);
-  }
-
-  final List<Map<String, ExamData>> _data_pts;
-  @override
-  List<Map<String, ExamData>> get data_pts {
-    if (_data_pts is EqualUnmodifiableListView) return _data_pts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data_pts);
-  }
-
-  @override
-  String toString() {
-    return 'SemesterData(data_pas: $data_pas, data_pts: $data_pts)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SemesterDataImpl &&
-            const DeepCollectionEquality().equals(other._data_pas, _data_pas) &&
-            const DeepCollectionEquality().equals(other._data_pts, _data_pts));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_data_pas),
-      const DeepCollectionEquality().hash(_data_pts));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SemesterDataImplCopyWith<_$SemesterDataImpl> get copyWith =>
-      __$$SemesterDataImplCopyWithImpl<_$SemesterDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SemesterDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _SemesterData implements SemesterData {
-  factory _SemesterData(
-          {required final Map<String, Map<String, ExamData>> data_pas,
-          required final List<Map<String, ExamData>> data_pts}) =
-      _$SemesterDataImpl;
-
-  factory _SemesterData.fromJson(Map<String, dynamic> json) =
-      _$SemesterDataImpl.fromJson;
-
-  @override
-  Map<String, Map<String, ExamData>> get data_pas;
-  @override
-  List<Map<String, ExamData>> get data_pts;
-  @override
-  @JsonKey(ignore: true)
-  _$$SemesterDataImplCopyWith<_$SemesterDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -352,7 +193,7 @@ mixin _$ExamData {
   String get updated_at => throw _privateConstructorUsedError;
   int get mapel_id => throw _privateConstructorUsedError;
   int get nilai => throw _privateConstructorUsedError;
-  MapelData get mapel => throw _privateConstructorUsedError;
+  Mapel get mapel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -375,9 +216,9 @@ abstract class $ExamDataCopyWith<$Res> {
       String updated_at,
       int mapel_id,
       int nilai,
-      MapelData mapel});
+      Mapel mapel});
 
-  $MapelDataCopyWith<$Res> get mapel;
+  $MapelCopyWith<$Res> get mapel;
 }
 
 /// @nodoc
@@ -444,14 +285,14 @@ class _$ExamDataCopyWithImpl<$Res, $Val extends ExamData>
       mapel: null == mapel
           ? _value.mapel
           : mapel // ignore: cast_nullable_to_non_nullable
-              as MapelData,
+              as Mapel,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $MapelDataCopyWith<$Res> get mapel {
-    return $MapelDataCopyWith<$Res>(_value.mapel, (value) {
+  $MapelCopyWith<$Res> get mapel {
+    return $MapelCopyWith<$Res>(_value.mapel, (value) {
       return _then(_value.copyWith(mapel: value) as $Val);
     });
   }
@@ -475,10 +316,10 @@ abstract class _$$ExamDataImplCopyWith<$Res>
       String updated_at,
       int mapel_id,
       int nilai,
-      MapelData mapel});
+      Mapel mapel});
 
   @override
-  $MapelDataCopyWith<$Res> get mapel;
+  $MapelCopyWith<$Res> get mapel;
 }
 
 /// @nodoc
@@ -543,7 +384,7 @@ class __$$ExamDataImplCopyWithImpl<$Res>
       mapel: null == mapel
           ? _value.mapel
           : mapel // ignore: cast_nullable_to_non_nullable
-              as MapelData,
+              as Mapel,
     ));
   }
 }
@@ -585,7 +426,7 @@ class _$ExamDataImpl implements _ExamData {
   @override
   final int nilai;
   @override
-  final MapelData mapel;
+  final Mapel mapel;
 
   @override
   String toString() {
@@ -655,7 +496,7 @@ abstract class _ExamData implements ExamData {
       required final String updated_at,
       required final int mapel_id,
       required final int nilai,
-      required final MapelData mapel}) = _$ExamDataImpl;
+      required final Mapel mapel}) = _$ExamDataImpl;
 
   factory _ExamData.fromJson(Map<String, dynamic> json) =
       _$ExamDataImpl.fromJson;
@@ -679,41 +520,40 @@ abstract class _ExamData implements ExamData {
   @override
   int get nilai;
   @override
-  MapelData get mapel;
+  Mapel get mapel;
   @override
   @JsonKey(ignore: true)
   _$$ExamDataImplCopyWith<_$ExamDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-MapelData _$MapelDataFromJson(Map<String, dynamic> json) {
-  return _MapelData.fromJson(json);
+Mapel _$MapelFromJson(Map<String, dynamic> json) {
+  return _Mapel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MapelData {
+mixin _$Mapel {
   int get id => throw _privateConstructorUsedError;
   String get nama_mapel => throw _privateConstructorUsedError;
   String get nama_guru => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MapelDataCopyWith<MapelData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapelCopyWith<Mapel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MapelDataCopyWith<$Res> {
-  factory $MapelDataCopyWith(MapelData value, $Res Function(MapelData) then) =
-      _$MapelDataCopyWithImpl<$Res, MapelData>;
+abstract class $MapelCopyWith<$Res> {
+  factory $MapelCopyWith(Mapel value, $Res Function(Mapel) then) =
+      _$MapelCopyWithImpl<$Res, Mapel>;
   @useResult
   $Res call({int id, String nama_mapel, String nama_guru});
 }
 
 /// @nodoc
-class _$MapelDataCopyWithImpl<$Res, $Val extends MapelData>
-    implements $MapelDataCopyWith<$Res> {
-  _$MapelDataCopyWithImpl(this._value, this._then);
+class _$MapelCopyWithImpl<$Res, $Val extends Mapel>
+    implements $MapelCopyWith<$Res> {
+  _$MapelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -745,22 +585,21 @@ class _$MapelDataCopyWithImpl<$Res, $Val extends MapelData>
 }
 
 /// @nodoc
-abstract class _$$MapelDataImplCopyWith<$Res>
-    implements $MapelDataCopyWith<$Res> {
-  factory _$$MapelDataImplCopyWith(
-          _$MapelDataImpl value, $Res Function(_$MapelDataImpl) then) =
-      __$$MapelDataImplCopyWithImpl<$Res>;
+abstract class _$$MapelImplCopyWith<$Res> implements $MapelCopyWith<$Res> {
+  factory _$$MapelImplCopyWith(
+          _$MapelImpl value, $Res Function(_$MapelImpl) then) =
+      __$$MapelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String nama_mapel, String nama_guru});
 }
 
 /// @nodoc
-class __$$MapelDataImplCopyWithImpl<$Res>
-    extends _$MapelDataCopyWithImpl<$Res, _$MapelDataImpl>
-    implements _$$MapelDataImplCopyWith<$Res> {
-  __$$MapelDataImplCopyWithImpl(
-      _$MapelDataImpl _value, $Res Function(_$MapelDataImpl) _then)
+class __$$MapelImplCopyWithImpl<$Res>
+    extends _$MapelCopyWithImpl<$Res, _$MapelImpl>
+    implements _$$MapelImplCopyWith<$Res> {
+  __$$MapelImplCopyWithImpl(
+      _$MapelImpl _value, $Res Function(_$MapelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -770,7 +609,7 @@ class __$$MapelDataImplCopyWithImpl<$Res>
     Object? nama_mapel = null,
     Object? nama_guru = null,
   }) {
-    return _then(_$MapelDataImpl(
+    return _then(_$MapelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -789,12 +628,12 @@ class __$$MapelDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MapelDataImpl implements _MapelData {
-  _$MapelDataImpl(
+class _$MapelImpl implements _Mapel {
+  _$MapelImpl(
       {required this.id, required this.nama_mapel, required this.nama_guru});
 
-  factory _$MapelDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MapelDataImplFromJson(json);
+  factory _$MapelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MapelImplFromJson(json);
 
   @override
   final int id;
@@ -805,14 +644,14 @@ class _$MapelDataImpl implements _MapelData {
 
   @override
   String toString() {
-    return 'MapelData(id: $id, nama_mapel: $nama_mapel, nama_guru: $nama_guru)';
+    return 'Mapel(id: $id, nama_mapel: $nama_mapel, nama_guru: $nama_guru)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MapelDataImpl &&
+            other is _$MapelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nama_mapel, nama_mapel) ||
                 other.nama_mapel == nama_mapel) &&
@@ -827,25 +666,24 @@ class _$MapelDataImpl implements _MapelData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MapelDataImplCopyWith<_$MapelDataImpl> get copyWith =>
-      __$$MapelDataImplCopyWithImpl<_$MapelDataImpl>(this, _$identity);
+  _$$MapelImplCopyWith<_$MapelImpl> get copyWith =>
+      __$$MapelImplCopyWithImpl<_$MapelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MapelDataImplToJson(
+    return _$$MapelImplToJson(
       this,
     );
   }
 }
 
-abstract class _MapelData implements MapelData {
-  factory _MapelData(
+abstract class _Mapel implements Mapel {
+  factory _Mapel(
       {required final int id,
       required final String nama_mapel,
-      required final String nama_guru}) = _$MapelDataImpl;
+      required final String nama_guru}) = _$MapelImpl;
 
-  factory _MapelData.fromJson(Map<String, dynamic> json) =
-      _$MapelDataImpl.fromJson;
+  factory _Mapel.fromJson(Map<String, dynamic> json) = _$MapelImpl.fromJson;
 
   @override
   int get id;
@@ -855,6 +693,6 @@ abstract class _MapelData implements MapelData {
   String get nama_guru;
   @override
   @JsonKey(ignore: true)
-  _$$MapelDataImplCopyWith<_$MapelDataImpl> get copyWith =>
+  _$$MapelImplCopyWith<_$MapelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
