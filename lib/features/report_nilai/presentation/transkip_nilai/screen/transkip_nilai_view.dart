@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
+import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/features/report_nilai/bloc/nilai_bloc.dart';
 import 'package:quisku_pintar/features/report_nilai/presentation/transkip_nilai/widgets/widgets.dart';
 
@@ -16,15 +18,29 @@ class TranskipNilaiView extends StatefulWidget {
 
 class _TranskipNilaiViewState extends State<TranskipNilaiView> {
   int initialIndex = 0;
-  void changeIndexTab({required int index}) {
+  int semester = 0;
+  @override
+  void initState() {
+    super.initState();
+    changeIndexTab(index: 0, semesterTab: 1);
+  }
+
+  void changeIndexTab({required int index, required int semesterTab}) {
     initialIndex = index;
+    semester = semesterTab;
     setState(() {
-      getReport();
+      // if (initialIndex == 0) {
+      //   getReport(1);
+      // } else {
+      // }
+      getReport(semesterTab);
     });
   }
 
-  getReport() {
-    context.read<NilaiBloc>().add(GetNilaiReport());
+  getReport(int a) {
+    // int finalTab = 0;
+
+    context.read<NilaiBloc>().add(GetNilaiReport(a));
   }
 
   @override
@@ -63,18 +79,48 @@ class _TranskipNilaiViewState extends State<TranskipNilaiView> {
                   ChildTab(label: 'Semester 4'),
                 ],
                 onChangedTab: (v) {
-                  changeIndexTab(index: v);
+                  changeIndexTab(
+                    index: v,
+                    semesterTab: v + 1,
+                  );
                   // trigger
                 },
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.7,
-                child: const TabBarView(children: [
-                  ReportNilai(),
-                  Text('b'),
-                  Text('v'),
-                  Text('d'),
-                ]),
+              BlocBuilder<NilaiBloc, NilaiState>(
+                builder: (context, state) {
+                  if (state.fetchReportStatus == FetchStatus.loading) {
+                    return SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        child:
+                            const Center(child: CircularProgressIndicator()));
+                  }
+                  if (state.reportData.isEmpty ||
+                      state.reportData == null ||
+                      state.fetchReportStatus == FetchStatus.loading) {
+                    return SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.6,
+                        child: const Center(
+                            child: Text('semester ini belum ada data')));
+                  }
+                  if (state.fetchReportStatus.isFailure) {
+                    return SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        child: Center(
+                            child: Assets.images.serviceU.image(height: 300)));
+                  }
+                  return Expanded(
+                      child: TabBarView(
+                          children: List.generate(
+                    4,
+                    (index) => Builder(
+                      builder: (context) {
+                        return index == 0
+                            ? const ReportNilai()
+                            : const ReportNilai();
+                      },
+                    ),
+                  )));
+                },
               )
             ],
           ),

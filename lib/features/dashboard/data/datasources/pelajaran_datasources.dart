@@ -15,7 +15,8 @@ class PelajaranDataSources {
   final String jsonFirebaseRealtimeDB =
       'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
 
-  Future<Either<Failure, List<Pelajaran>>> getMapel() async {
+  Future<Either<Failure, List<Pelajaran>>> getMapel(
+      {required int userId}) async {
     log('final : on GetMapel in PelajaranDataSources');
     // parse link dari realtime database,
     //agar server ngrok lokal bisa autoload pada masing masing device
@@ -23,7 +24,7 @@ class PelajaranDataSources {
     final String urlLink = json.decode(respons.body);
     //
     try {
-      final res = await http.get(Uri.parse('$urlLink/mapel'));
+      final res = await http.get(Uri.parse('$urlLink/mapel/$userId'));
       if (res.statusCode == 200) {
         final List<dynamic> jsonDataList = jsonDecode(res.body);
 

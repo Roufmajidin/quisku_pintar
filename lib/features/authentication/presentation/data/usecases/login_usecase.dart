@@ -9,7 +9,7 @@ import '../models/token.dart';
 import 'package:dartz/dartz.dart';
 
 class LoginUseCase {
-  final AuthRepositoryImpl authrepository = sl<AuthRepositoryImpl>();
+  final AuthRepositoryImpl authrepository = AuthRepositoryImpl();
 
   // LoginUseCase(this.authrepository);
 

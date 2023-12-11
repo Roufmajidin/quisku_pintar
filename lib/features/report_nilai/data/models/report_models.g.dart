@@ -35,7 +35,8 @@ _$ExamDataImpl _$$ExamDataImplFromJson(Map<String, dynamic> json) =>
       updated_at: json['updated_at'] as String,
       mapel_id: json['mapel_id'] as int,
       nilai: json['nilai'] as int,
-      mapel: Mapel.fromJson(json['mapel'] as Map<String, dynamic>),
+      mapel: json['mapel'] as String,
+      guru: json['guru'] as String,
     );
 
 Map<String, dynamic> _$$ExamDataImplToJson(_$ExamDataImpl instance) =>
@@ -50,17 +51,5 @@ Map<String, dynamic> _$$ExamDataImplToJson(_$ExamDataImpl instance) =>
       'mapel_id': instance.mapel_id,
       'nilai': instance.nilai,
       'mapel': instance.mapel,
-    };
-
-_$MapelImpl _$$MapelImplFromJson(Map<String, dynamic> json) => _$MapelImpl(
-      id: json['id'] as int,
-      nama_mapel: json['nama_mapel'] as String,
-      nama_guru: json['nama_guru'] as String,
-    );
-
-Map<String, dynamic> _$$MapelImplToJson(_$MapelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'nama_mapel': instance.nama_mapel,
-      'nama_guru': instance.nama_guru,
+      'guru': instance.guru,
     };

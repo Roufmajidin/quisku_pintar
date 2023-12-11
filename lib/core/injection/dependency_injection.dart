@@ -21,7 +21,8 @@ import '../../features/authentication/presentation/data/usecases/login_usecase.d
 final GetIt sl = GetIt.instance;
 Future<void> setupDependency() async {
   // TODO : registerin authDatasoruce & repository
-  sl.registerFactory<LoginUseCase>(() => LoginUseCase());
+  // sl.registerFactory<LoginUseCase>(() => LoginUseCase());
+  sl.registerSingleton<LoginUseCase>(LoginUseCase());
   sl.registerSingleton<GetMapelUsecase>(GetMapelUsecase());
 
   // sl.registerFactory<t.LoginUseCase>(() => t.LoginUseCase());

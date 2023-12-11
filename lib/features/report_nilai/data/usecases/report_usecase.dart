@@ -8,9 +8,9 @@ import 'package:quisku_pintar/features/report_nilai/data/repositories/report_rep
 class ReportUsecase {
   final ReportRepositoryImpl rri = ReportRepositoryImpl();
   Future<Either<Failure, List<ReportModels>>> getReportNilai(
-      {required int userId}) async {
+      {required int userId, required int semester}) async {
     log('report usercase');
 
-    return await rri.getReport(userId: userId);
+    return await rri.getReport(userId: userId, semester: semester);
   }
 }

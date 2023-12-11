@@ -19,19 +19,19 @@ mixin _$NilaiEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getNilaiUser,
+    required TResult Function(int semester) getNilaiUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getNilaiUser,
+    TResult? Function(int semester)? getNilaiUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getNilaiUser,
+    TResult Function(int semester)? getNilaiUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getNilaiUser,
+    required TResult Function(int semester) getNilaiUser,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getNilaiUser,
+    TResult? Function(int semester)? getNilaiUser,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getNilaiUser,
+    TResult Function(int semester)? getNilaiUser,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -181,6 +181,8 @@ abstract class _$$GetNilaiReportImplCopyWith<$Res> {
   factory _$$GetNilaiReportImplCopyWith(_$GetNilaiReportImpl value,
           $Res Function(_$GetNilaiReportImpl) then) =
       __$$GetNilaiReportImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int semester});
 }
 
 /// @nodoc
@@ -190,54 +192,80 @@ class __$$GetNilaiReportImplCopyWithImpl<$Res>
   __$$GetNilaiReportImplCopyWithImpl(
       _$GetNilaiReportImpl _value, $Res Function(_$GetNilaiReportImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? semester = null,
+  }) {
+    return _then(_$GetNilaiReportImpl(
+      null == semester
+          ? _value.semester
+          : semester // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetNilaiReportImpl implements GetNilaiReport {
-  const _$GetNilaiReportImpl();
+  const _$GetNilaiReportImpl(this.semester);
+
+  @override
+  final int semester;
 
   @override
   String toString() {
-    return 'NilaiEvent.getNilaiUser()';
+    return 'NilaiEvent.getNilaiUser(semester: $semester)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetNilaiReportImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetNilaiReportImpl &&
+            (identical(other.semester, semester) ||
+                other.semester == semester));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, semester);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetNilaiReportImplCopyWith<_$GetNilaiReportImpl> get copyWith =>
+      __$$GetNilaiReportImplCopyWithImpl<_$GetNilaiReportImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getNilaiUser,
+    required TResult Function(int semester) getNilaiUser,
   }) {
-    return getNilaiUser();
+    return getNilaiUser(semester);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getNilaiUser,
+    TResult? Function(int semester)? getNilaiUser,
   }) {
-    return getNilaiUser?.call();
+    return getNilaiUser?.call(semester);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getNilaiUser,
+    TResult Function(int semester)? getNilaiUser,
     required TResult orElse(),
   }) {
     if (getNilaiUser != null) {
-      return getNilaiUser();
+      return getNilaiUser(semester);
     }
     return orElse();
   }
@@ -275,31 +303,47 @@ class _$GetNilaiReportImpl implements GetNilaiReport {
 }
 
 abstract class GetNilaiReport implements NilaiEvent {
-  const factory GetNilaiReport() = _$GetNilaiReportImpl;
+  const factory GetNilaiReport(final int semester) = _$GetNilaiReportImpl;
+
+  int get semester;
+  @JsonKey(ignore: true)
+  _$$GetNilaiReportImplCopyWith<_$GetNilaiReportImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$NilaiState {
   List<ReportModels> get reportData => throw _privateConstructorUsedError;
+  List<ReportModels> get groupedPTS => throw _privateConstructorUsedError;
+  List<ReportModels> get groupedPAS => throw _privateConstructorUsedError;
   FetchStatus get fetchReportStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            List<ReportModels> reportData, FetchStatus fetchReportStatus)
+            List<ReportModels> reportData,
+            List<ReportModels> groupedPTS,
+            List<ReportModels> groupedPAS,
+            FetchStatus fetchReportStatus)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            List<ReportModels> reportData, FetchStatus fetchReportStatus)?
+            List<ReportModels> reportData,
+            List<ReportModels> groupedPTS,
+            List<ReportModels> groupedPAS,
+            FetchStatus fetchReportStatus)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            List<ReportModels> reportData, FetchStatus fetchReportStatus)?
+            List<ReportModels> reportData,
+            List<ReportModels> groupedPTS,
+            List<ReportModels> groupedPAS,
+            FetchStatus fetchReportStatus)?
         initial,
     required TResult orElse(),
   }) =>
@@ -332,7 +376,11 @@ abstract class $NilaiStateCopyWith<$Res> {
           NilaiState value, $Res Function(NilaiState) then) =
       _$NilaiStateCopyWithImpl<$Res, NilaiState>;
   @useResult
-  $Res call({List<ReportModels> reportData, FetchStatus fetchReportStatus});
+  $Res call(
+      {List<ReportModels> reportData,
+      List<ReportModels> groupedPTS,
+      List<ReportModels> groupedPAS,
+      FetchStatus fetchReportStatus});
 }
 
 /// @nodoc
@@ -349,12 +397,22 @@ class _$NilaiStateCopyWithImpl<$Res, $Val extends NilaiState>
   @override
   $Res call({
     Object? reportData = null,
+    Object? groupedPTS = null,
+    Object? groupedPAS = null,
     Object? fetchReportStatus = null,
   }) {
     return _then(_value.copyWith(
       reportData: null == reportData
           ? _value.reportData
           : reportData // ignore: cast_nullable_to_non_nullable
+              as List<ReportModels>,
+      groupedPTS: null == groupedPTS
+          ? _value.groupedPTS
+          : groupedPTS // ignore: cast_nullable_to_non_nullable
+              as List<ReportModels>,
+      groupedPAS: null == groupedPAS
+          ? _value.groupedPAS
+          : groupedPAS // ignore: cast_nullable_to_non_nullable
               as List<ReportModels>,
       fetchReportStatus: null == fetchReportStatus
           ? _value.fetchReportStatus
@@ -372,7 +430,11 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ReportModels> reportData, FetchStatus fetchReportStatus});
+  $Res call(
+      {List<ReportModels> reportData,
+      List<ReportModels> groupedPTS,
+      List<ReportModels> groupedPAS,
+      FetchStatus fetchReportStatus});
 }
 
 /// @nodoc
@@ -387,12 +449,22 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reportData = null,
+    Object? groupedPTS = null,
+    Object? groupedPAS = null,
     Object? fetchReportStatus = null,
   }) {
     return _then(_$InitialImpl(
       reportData: null == reportData
           ? _value._reportData
           : reportData // ignore: cast_nullable_to_non_nullable
+              as List<ReportModels>,
+      groupedPTS: null == groupedPTS
+          ? _value._groupedPTS
+          : groupedPTS // ignore: cast_nullable_to_non_nullable
+              as List<ReportModels>,
+      groupedPAS: null == groupedPAS
+          ? _value._groupedPAS
+          : groupedPAS // ignore: cast_nullable_to_non_nullable
               as List<ReportModels>,
       fetchReportStatus: null == fetchReportStatus
           ? _value.fetchReportStatus
@@ -407,8 +479,12 @@ class __$$InitialImplCopyWithImpl<$Res>
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {final List<ReportModels> reportData = const <ReportModels>[],
+      final List<ReportModels> groupedPTS = const <ReportModels>[],
+      final List<ReportModels> groupedPAS = const <ReportModels>[],
       this.fetchReportStatus = FetchStatus.initial})
-      : _reportData = reportData;
+      : _reportData = reportData,
+        _groupedPTS = groupedPTS,
+        _groupedPAS = groupedPAS;
 
   final List<ReportModels> _reportData;
   @override
@@ -419,13 +495,31 @@ class _$InitialImpl implements _Initial {
     return EqualUnmodifiableListView(_reportData);
   }
 
+  final List<ReportModels> _groupedPTS;
+  @override
+  @JsonKey()
+  List<ReportModels> get groupedPTS {
+    if (_groupedPTS is EqualUnmodifiableListView) return _groupedPTS;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groupedPTS);
+  }
+
+  final List<ReportModels> _groupedPAS;
+  @override
+  @JsonKey()
+  List<ReportModels> get groupedPAS {
+    if (_groupedPAS is EqualUnmodifiableListView) return _groupedPAS;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groupedPAS);
+  }
+
   @override
   @JsonKey()
   final FetchStatus fetchReportStatus;
 
   @override
   String toString() {
-    return 'NilaiState.initial(reportData: $reportData, fetchReportStatus: $fetchReportStatus)';
+    return 'NilaiState.initial(reportData: $reportData, groupedPTS: $groupedPTS, groupedPAS: $groupedPAS, fetchReportStatus: $fetchReportStatus)';
   }
 
   @override
@@ -435,13 +529,21 @@ class _$InitialImpl implements _Initial {
             other is _$InitialImpl &&
             const DeepCollectionEquality()
                 .equals(other._reportData, _reportData) &&
+            const DeepCollectionEquality()
+                .equals(other._groupedPTS, _groupedPTS) &&
+            const DeepCollectionEquality()
+                .equals(other._groupedPAS, _groupedPAS) &&
             (identical(other.fetchReportStatus, fetchReportStatus) ||
                 other.fetchReportStatus == fetchReportStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_reportData), fetchReportStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_reportData),
+      const DeepCollectionEquality().hash(_groupedPTS),
+      const DeepCollectionEquality().hash(_groupedPAS),
+      fetchReportStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -453,32 +555,41 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            List<ReportModels> reportData, FetchStatus fetchReportStatus)
+            List<ReportModels> reportData,
+            List<ReportModels> groupedPTS,
+            List<ReportModels> groupedPAS,
+            FetchStatus fetchReportStatus)
         initial,
   }) {
-    return initial(reportData, fetchReportStatus);
+    return initial(reportData, groupedPTS, groupedPAS, fetchReportStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            List<ReportModels> reportData, FetchStatus fetchReportStatus)?
+            List<ReportModels> reportData,
+            List<ReportModels> groupedPTS,
+            List<ReportModels> groupedPAS,
+            FetchStatus fetchReportStatus)?
         initial,
   }) {
-    return initial?.call(reportData, fetchReportStatus);
+    return initial?.call(reportData, groupedPTS, groupedPAS, fetchReportStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            List<ReportModels> reportData, FetchStatus fetchReportStatus)?
+            List<ReportModels> reportData,
+            List<ReportModels> groupedPTS,
+            List<ReportModels> groupedPAS,
+            FetchStatus fetchReportStatus)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(reportData, fetchReportStatus);
+      return initial(reportData, groupedPTS, groupedPAS, fetchReportStatus);
     }
     return orElse();
   }
@@ -515,10 +626,16 @@ class _$InitialImpl implements _Initial {
 abstract class _Initial implements NilaiState {
   const factory _Initial(
       {final List<ReportModels> reportData,
+      final List<ReportModels> groupedPTS,
+      final List<ReportModels> groupedPAS,
       final FetchStatus fetchReportStatus}) = _$InitialImpl;
 
   @override
   List<ReportModels> get reportData;
+  @override
+  List<ReportModels> get groupedPTS;
+  @override
+  List<ReportModels> get groupedPAS;
   @override
   FetchStatus get fetchReportStatus;
   @override

@@ -11,8 +11,10 @@ class ReportDataSources {
   final String jsonFirebaseRealtimeDB =
       'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
 
-  Future<Either<Failure, List<ReportModels>>> getReportNilai(
-      {required int userId}) async {
+  Future<Either<Failure, List<ReportModels>>> getReportNilai({
+    required int userId,
+    required int semester,
+  }) async {
     log('report dts');
 
     // parse link dari realtime database,
@@ -20,8 +22,13 @@ class ReportDataSources {
     final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
     final String urlLink = json.decode(respons.body);
     try {
-      final respons = await http.get(Uri.parse('$urlLink/getReport/$userId'));
+      final respons =
+          await http.get(Uri.parse('$urlLink/getReport/$userId/$semester'));
       final Map<String, dynamic> jsonDaMap = jsonDecode(respons.body);
+      if (jsonDaMap['data'] is List && (jsonDaMap['data'] as List).isEmpty) {
+        // Handle empty data list
+        return right([]);
+      }
       final Map<String, dynamic> rawData = jsonDaMap['data'];
       // final List<ReportModels> reportList = rawData;
 

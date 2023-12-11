@@ -7,12 +7,14 @@ import 'package:quisku_pintar/features/report_nilai/data/models/report_models.da
 
 class ReportRepositoryImpl {
   final ReportDataSources rds = ReportDataSources();
-  Future<Either<Failure, List<ReportModels>>> getReport(
-      {required int userId}) async {
+  Future<Either<Failure, List<ReportModels>>> getReport({
+    required int userId,
+    required int semester,
+  }) async {
     log('report impl');
 
     try {
-      final res = await rds.getReportNilai(userId: userId);
+      final res = await rds.getReportNilai(userId: userId, semester: semester);
       return res;
     } catch (e) {
       return const Left(Failure.parsingFailure());

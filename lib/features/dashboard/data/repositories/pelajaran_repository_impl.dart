@@ -11,11 +11,12 @@ import '../../../ujian/data/models/ujian_models.dart';
 class PelajaranRepositoryImpl {
   final PelajaranDataSources pelajaranDataSources = PelajaranDataSources();
 
-  Future<Either<Failure, List<Pelajaran>>> getMapel() async {
+  Future<Either<Failure, List<Pelajaran>>> getMapel(
+      {required int userId}) async {
     // TODO: implement getMapel
     log('on PelajaranRepositoryImpl to getMapelDataSources');
     try {
-      final res = await pelajaranDataSources.getMapel();
+      final res = await pelajaranDataSources.getMapel(userId: userId);
 
       return res;
     } catch (e) {

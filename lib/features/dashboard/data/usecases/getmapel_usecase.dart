@@ -9,9 +9,9 @@ import '../../../ujian/data/models/ujian_models.dart';
 
 class GetMapelUsecase {
   final PelajaranRepositoryImpl pelRe = PelajaranRepositoryImpl();
-  Future<Either<Failure, List<Pelajaran>>> getMapel() async {
+  Future<Either<Failure, List<Pelajaran>>> getMapel({required userId}) async {
     log('on usecase => impl PelajaranRepositoryImpl()');
-    return await pelRe.getMapel();
+    return await pelRe.getMapel(userId: userId);
   }
 
   Future<Either<Failure, List<Ujian>>> getUjian(id) async {

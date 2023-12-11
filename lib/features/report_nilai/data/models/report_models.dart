@@ -26,20 +26,20 @@ class ExamData with _$ExamData {
     required String updated_at,
     required int mapel_id,
     required int nilai,
-    required Mapel mapel,
+    // required Mapel mapel,
+    required String mapel,
+    required String guru,
   }) = _ExamData;
 
   factory ExamData.fromJson(Map<String, dynamic> json) =>
       _$ExamDataFromJson(json);
 }
 
-@freezed
-class Mapel with _$Mapel {
-  factory Mapel({
-    required int id,
-    required String nama_mapel,
-    required String nama_guru,
-  }) = _Mapel;
+// @freezed
+// class Mapel with _$Mapel {
+//   factory Mapel({
+//     required int id,
+//   }) = _Mapel;
 
-  factory Mapel.fromJson(Map<String, dynamic> json) => _$MapelFromJson(json);
-}
+//   factory Mapel.fromJson(Map<String, dynamic> json) => _$MapelFromJson(json);
+// }

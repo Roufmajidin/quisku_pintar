@@ -192,8 +192,9 @@ mixin _$ExamData {
   String get created_at => throw _privateConstructorUsedError;
   String get updated_at => throw _privateConstructorUsedError;
   int get mapel_id => throw _privateConstructorUsedError;
-  int get nilai => throw _privateConstructorUsedError;
-  Mapel get mapel => throw _privateConstructorUsedError;
+  int get nilai => throw _privateConstructorUsedError; // required Mapel mapel,
+  String get mapel => throw _privateConstructorUsedError;
+  String get guru => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -216,9 +217,8 @@ abstract class $ExamDataCopyWith<$Res> {
       String updated_at,
       int mapel_id,
       int nilai,
-      Mapel mapel});
-
-  $MapelCopyWith<$Res> get mapel;
+      String mapel,
+      String guru});
 }
 
 /// @nodoc
@@ -244,6 +244,7 @@ class _$ExamDataCopyWithImpl<$Res, $Val extends ExamData>
     Object? mapel_id = null,
     Object? nilai = null,
     Object? mapel = null,
+    Object? guru = null,
   }) {
     return _then(_value.copyWith(
       keterangan_ujian: null == keterangan_ujian
@@ -285,16 +286,12 @@ class _$ExamDataCopyWithImpl<$Res, $Val extends ExamData>
       mapel: null == mapel
           ? _value.mapel
           : mapel // ignore: cast_nullable_to_non_nullable
-              as Mapel,
+              as String,
+      guru: null == guru
+          ? _value.guru
+          : guru // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MapelCopyWith<$Res> get mapel {
-    return $MapelCopyWith<$Res>(_value.mapel, (value) {
-      return _then(_value.copyWith(mapel: value) as $Val);
-    });
   }
 }
 
@@ -316,10 +313,8 @@ abstract class _$$ExamDataImplCopyWith<$Res>
       String updated_at,
       int mapel_id,
       int nilai,
-      Mapel mapel});
-
-  @override
-  $MapelCopyWith<$Res> get mapel;
+      String mapel,
+      String guru});
 }
 
 /// @nodoc
@@ -343,6 +338,7 @@ class __$$ExamDataImplCopyWithImpl<$Res>
     Object? mapel_id = null,
     Object? nilai = null,
     Object? mapel = null,
+    Object? guru = null,
   }) {
     return _then(_$ExamDataImpl(
       keterangan_ujian: null == keterangan_ujian
@@ -384,7 +380,11 @@ class __$$ExamDataImplCopyWithImpl<$Res>
       mapel: null == mapel
           ? _value.mapel
           : mapel // ignore: cast_nullable_to_non_nullable
-              as Mapel,
+              as String,
+      guru: null == guru
+          ? _value.guru
+          : guru // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -402,7 +402,8 @@ class _$ExamDataImpl implements _ExamData {
       required this.updated_at,
       required this.mapel_id,
       required this.nilai,
-      required this.mapel});
+      required this.mapel,
+      required this.guru});
 
   factory _$ExamDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExamDataImplFromJson(json);
@@ -425,12 +426,15 @@ class _$ExamDataImpl implements _ExamData {
   final int mapel_id;
   @override
   final int nilai;
+// required Mapel mapel,
   @override
-  final Mapel mapel;
+  final String mapel;
+  @override
+  final String guru;
 
   @override
   String toString() {
-    return 'ExamData(keterangan_ujian: $keterangan_ujian, semester: $semester, siswa_id: $siswa_id, jawaban: $jawaban, selesai: $selesai, created_at: $created_at, updated_at: $updated_at, mapel_id: $mapel_id, nilai: $nilai, mapel: $mapel)';
+    return 'ExamData(keterangan_ujian: $keterangan_ujian, semester: $semester, siswa_id: $siswa_id, jawaban: $jawaban, selesai: $selesai, created_at: $created_at, updated_at: $updated_at, mapel_id: $mapel_id, nilai: $nilai, mapel: $mapel, guru: $guru)';
   }
 
   @override
@@ -453,7 +457,8 @@ class _$ExamDataImpl implements _ExamData {
             (identical(other.mapel_id, mapel_id) ||
                 other.mapel_id == mapel_id) &&
             (identical(other.nilai, nilai) || other.nilai == nilai) &&
-            (identical(other.mapel, mapel) || other.mapel == mapel));
+            (identical(other.mapel, mapel) || other.mapel == mapel) &&
+            (identical(other.guru, guru) || other.guru == guru));
   }
 
   @JsonKey(ignore: true)
@@ -469,7 +474,8 @@ class _$ExamDataImpl implements _ExamData {
       updated_at,
       mapel_id,
       nilai,
-      mapel);
+      mapel,
+      guru);
 
   @JsonKey(ignore: true)
   @override
@@ -496,7 +502,8 @@ abstract class _ExamData implements ExamData {
       required final String updated_at,
       required final int mapel_id,
       required final int nilai,
-      required final Mapel mapel}) = _$ExamDataImpl;
+      required final String mapel,
+      required final String guru}) = _$ExamDataImpl;
 
   factory _ExamData.fromJson(Map<String, dynamic> json) =
       _$ExamDataImpl.fromJson;
@@ -519,180 +526,12 @@ abstract class _ExamData implements ExamData {
   int get mapel_id;
   @override
   int get nilai;
+  @override // required Mapel mapel,
+  String get mapel;
   @override
-  Mapel get mapel;
+  String get guru;
   @override
   @JsonKey(ignore: true)
   _$$ExamDataImplCopyWith<_$ExamDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Mapel _$MapelFromJson(Map<String, dynamic> json) {
-  return _Mapel.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Mapel {
-  int get id => throw _privateConstructorUsedError;
-  String get nama_mapel => throw _privateConstructorUsedError;
-  String get nama_guru => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MapelCopyWith<Mapel> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MapelCopyWith<$Res> {
-  factory $MapelCopyWith(Mapel value, $Res Function(Mapel) then) =
-      _$MapelCopyWithImpl<$Res, Mapel>;
-  @useResult
-  $Res call({int id, String nama_mapel, String nama_guru});
-}
-
-/// @nodoc
-class _$MapelCopyWithImpl<$Res, $Val extends Mapel>
-    implements $MapelCopyWith<$Res> {
-  _$MapelCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? nama_mapel = null,
-    Object? nama_guru = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      nama_mapel: null == nama_mapel
-          ? _value.nama_mapel
-          : nama_mapel // ignore: cast_nullable_to_non_nullable
-              as String,
-      nama_guru: null == nama_guru
-          ? _value.nama_guru
-          : nama_guru // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MapelImplCopyWith<$Res> implements $MapelCopyWith<$Res> {
-  factory _$$MapelImplCopyWith(
-          _$MapelImpl value, $Res Function(_$MapelImpl) then) =
-      __$$MapelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, String nama_mapel, String nama_guru});
-}
-
-/// @nodoc
-class __$$MapelImplCopyWithImpl<$Res>
-    extends _$MapelCopyWithImpl<$Res, _$MapelImpl>
-    implements _$$MapelImplCopyWith<$Res> {
-  __$$MapelImplCopyWithImpl(
-      _$MapelImpl _value, $Res Function(_$MapelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? nama_mapel = null,
-    Object? nama_guru = null,
-  }) {
-    return _then(_$MapelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      nama_mapel: null == nama_mapel
-          ? _value.nama_mapel
-          : nama_mapel // ignore: cast_nullable_to_non_nullable
-              as String,
-      nama_guru: null == nama_guru
-          ? _value.nama_guru
-          : nama_guru // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MapelImpl implements _Mapel {
-  _$MapelImpl(
-      {required this.id, required this.nama_mapel, required this.nama_guru});
-
-  factory _$MapelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MapelImplFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String nama_mapel;
-  @override
-  final String nama_guru;
-
-  @override
-  String toString() {
-    return 'Mapel(id: $id, nama_mapel: $nama_mapel, nama_guru: $nama_guru)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MapelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.nama_mapel, nama_mapel) ||
-                other.nama_mapel == nama_mapel) &&
-            (identical(other.nama_guru, nama_guru) ||
-                other.nama_guru == nama_guru));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, nama_mapel, nama_guru);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MapelImplCopyWith<_$MapelImpl> get copyWith =>
-      __$$MapelImplCopyWithImpl<_$MapelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MapelImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Mapel implements Mapel {
-  factory _Mapel(
-      {required final int id,
-      required final String nama_mapel,
-      required final String nama_guru}) = _$MapelImpl;
-
-  factory _Mapel.fromJson(Map<String, dynamic> json) = _$MapelImpl.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get nama_mapel;
-  @override
-  String get nama_guru;
-  @override
-  @JsonKey(ignore: true)
-  _$$MapelImplCopyWith<_$MapelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

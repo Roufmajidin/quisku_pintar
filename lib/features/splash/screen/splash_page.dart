@@ -21,9 +21,9 @@ class SplashPage extends StatelessWidget {
         BlocProvider(
           create: (context) => SplashCubit(sl<LoginUseCase>(), context)..init(),
         ),
-        BlocProvider(
-          create: (context) => LoginBloc(sl<LoginUseCase>()),
-        ),
+        // BlocProvider(
+        //   create: (context) => LoginBloc(sl<LoginUseCase>()),
+        // ),
       ],
       child: const SplashView(),
     );

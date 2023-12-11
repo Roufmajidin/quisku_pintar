@@ -13,7 +13,7 @@ import '../../../../authentication/presentation/data/usecases/login_usecase.dart
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
-  DashboardPage({super.key});
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,8 @@ class DashboardPage extends StatelessWidget {
           create: (context) => LoginBloc(sl<LoginUseCase>()),
         ),
         BlocProvider(
-          create: (context) => DashboardBloc(sl<GetMapelUsecase>()),
+          create: (context) =>
+              DashboardBloc(sl<GetMapelUsecase>(), sl<LoginUseCase>()),
         )
       ],
       child: const DashboardView(),
