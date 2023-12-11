@@ -20,7 +20,7 @@ class ExamData with _$ExamData {
     required String keterangan_ujian,
     required int semester,
     required int siswa_id,
-    required String jawaban,
+    required dynamic jawaban,
     required int selesai,
     required String created_at,
     required String updated_at,

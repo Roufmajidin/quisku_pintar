@@ -27,8 +27,7 @@ class LoginEmailPasswordButton extends StatelessWidget {
             message: 'Sukses Login',
             snackBarType: SnackBarType.success,
           );
-          context.router
-              .pushAndPopUntil(const HomeRoute(), predicate: (_) => false);
+          context.router.pushAndPopUntil(HomeRoute(), predicate: (_) => false);
         }
       },
       builder: (context, state) {

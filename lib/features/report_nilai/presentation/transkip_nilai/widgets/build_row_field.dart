@@ -18,15 +18,13 @@ class BuildRowField extends StatelessWidget {
       width: customeWidth != null ? customeWidth : 80,
       height: 70,
       // color: getContainerColor(itemIndex),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            item,
-            style: AppTextStyle.body4
-                .setRegular()
-                .copyWith(color: AppColors.neutral.ne12),
-          ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          item,
+          style: AppTextStyle.body4
+              .setRegular()
+              .copyWith(color: AppColors.neutral.ne12),
         ),
       ),
     );

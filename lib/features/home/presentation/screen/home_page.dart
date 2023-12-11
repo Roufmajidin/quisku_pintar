@@ -8,7 +8,8 @@ import 'package:quisku_pintar/features/ujian/presentation/ujian/screen/ujia_page
 
 @RoutePage()
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final int? currentPage;
+  const HomePage({super.key, this.currentPage});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,6 +17,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentPageIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    if (widget.currentPage != null) {
+      currentPageIndex = 1;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

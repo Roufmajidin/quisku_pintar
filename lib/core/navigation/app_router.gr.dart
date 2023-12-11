@@ -42,11 +42,9 @@ abstract class $AppRouter extends _i13.RootStackRouter {
   @override
   final Map<String, _i13.PageFactory> pagesMap = {
     DashboardRoute.name: (routeData) {
-      final args = routeData.argsAs<DashboardRouteArgs>(
-          orElse: () => const DashboardRouteArgs());
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i1.DashboardPage(key: args.key),
+        child: const _i1.DashboardPage(),
       );
     },
     DetailNilaiRoute.name: (routeData) {
@@ -81,9 +79,14 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return _i13.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.HomePage(),
+        child: _i5.HomePage(
+          key: args.key,
+          currentPage: args.currentPage,
+        ),
       );
     },
     LoginRoute.name: (routeData) {
@@ -137,31 +140,16 @@ abstract class $AppRouter extends _i13.RootStackRouter {
 
 /// generated route for
 /// [_i1.DashboardPage]
-class DashboardRoute extends _i13.PageRouteInfo<DashboardRouteArgs> {
-  DashboardRoute({
-    _i14.Key? key,
-    List<_i13.PageRouteInfo>? children,
-  }) : super(
+class DashboardRoute extends _i13.PageRouteInfo<void> {
+  const DashboardRoute({List<_i13.PageRouteInfo>? children})
+      : super(
           DashboardRoute.name,
-          args: DashboardRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'DashboardRoute';
 
-  static const _i13.PageInfo<DashboardRouteArgs> page =
-      _i13.PageInfo<DashboardRouteArgs>(name);
-}
-
-class DashboardRouteArgs {
-  const DashboardRouteArgs({this.key});
-
-  final _i14.Key? key;
-
-  @override
-  String toString() {
-    return 'DashboardRouteArgs{key: $key}';
-  }
+  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
 }
 
 /// generated route for
@@ -286,16 +274,40 @@ class DetailUjianRouteArgs {
 
 /// generated route for
 /// [_i5.HomePage]
-class HomeRoute extends _i13.PageRouteInfo<void> {
-  const HomeRoute({List<_i13.PageRouteInfo>? children})
-      : super(
+class HomeRoute extends _i13.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    _i14.Key? key,
+    int? currentPage,
+    List<_i13.PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(
+            key: key,
+            currentPage: currentPage,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i13.PageInfo<HomeRouteArgs> page =
+      _i13.PageInfo<HomeRouteArgs>(name);
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({
+    this.key,
+    this.currentPage,
+  });
+
+  final _i14.Key? key;
+
+  final int? currentPage;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key, currentPage: $currentPage}';
+  }
 }
 
 /// generated route for

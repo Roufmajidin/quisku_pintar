@@ -187,7 +187,7 @@ mixin _$ExamData {
   String get keterangan_ujian => throw _privateConstructorUsedError;
   int get semester => throw _privateConstructorUsedError;
   int get siswa_id => throw _privateConstructorUsedError;
-  String get jawaban => throw _privateConstructorUsedError;
+  dynamic get jawaban => throw _privateConstructorUsedError;
   int get selesai => throw _privateConstructorUsedError;
   String get created_at => throw _privateConstructorUsedError;
   String get updated_at => throw _privateConstructorUsedError;
@@ -211,7 +211,7 @@ abstract class $ExamDataCopyWith<$Res> {
       {String keterangan_ujian,
       int semester,
       int siswa_id,
-      String jawaban,
+      dynamic jawaban,
       int selesai,
       String created_at,
       String updated_at,
@@ -237,7 +237,7 @@ class _$ExamDataCopyWithImpl<$Res, $Val extends ExamData>
     Object? keterangan_ujian = null,
     Object? semester = null,
     Object? siswa_id = null,
-    Object? jawaban = null,
+    Object? jawaban = freezed,
     Object? selesai = null,
     Object? created_at = null,
     Object? updated_at = null,
@@ -259,10 +259,10 @@ class _$ExamDataCopyWithImpl<$Res, $Val extends ExamData>
           ? _value.siswa_id
           : siswa_id // ignore: cast_nullable_to_non_nullable
               as int,
-      jawaban: null == jawaban
+      jawaban: freezed == jawaban
           ? _value.jawaban
           : jawaban // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
       selesai: null == selesai
           ? _value.selesai
           : selesai // ignore: cast_nullable_to_non_nullable
@@ -307,7 +307,7 @@ abstract class _$$ExamDataImplCopyWith<$Res>
       {String keterangan_ujian,
       int semester,
       int siswa_id,
-      String jawaban,
+      dynamic jawaban,
       int selesai,
       String created_at,
       String updated_at,
@@ -331,7 +331,7 @@ class __$$ExamDataImplCopyWithImpl<$Res>
     Object? keterangan_ujian = null,
     Object? semester = null,
     Object? siswa_id = null,
-    Object? jawaban = null,
+    Object? jawaban = freezed,
     Object? selesai = null,
     Object? created_at = null,
     Object? updated_at = null,
@@ -353,10 +353,10 @@ class __$$ExamDataImplCopyWithImpl<$Res>
           ? _value.siswa_id
           : siswa_id // ignore: cast_nullable_to_non_nullable
               as int,
-      jawaban: null == jawaban
+      jawaban: freezed == jawaban
           ? _value.jawaban
           : jawaban // ignore: cast_nullable_to_non_nullable
-              as String,
+              as dynamic,
       selesai: null == selesai
           ? _value.selesai
           : selesai // ignore: cast_nullable_to_non_nullable
@@ -415,7 +415,7 @@ class _$ExamDataImpl implements _ExamData {
   @override
   final int siswa_id;
   @override
-  final String jawaban;
+  final dynamic jawaban;
   @override
   final int selesai;
   @override
@@ -448,7 +448,7 @@ class _$ExamDataImpl implements _ExamData {
                 other.semester == semester) &&
             (identical(other.siswa_id, siswa_id) ||
                 other.siswa_id == siswa_id) &&
-            (identical(other.jawaban, jawaban) || other.jawaban == jawaban) &&
+            const DeepCollectionEquality().equals(other.jawaban, jawaban) &&
             (identical(other.selesai, selesai) || other.selesai == selesai) &&
             (identical(other.created_at, created_at) ||
                 other.created_at == created_at) &&
@@ -468,7 +468,7 @@ class _$ExamDataImpl implements _ExamData {
       keterangan_ujian,
       semester,
       siswa_id,
-      jawaban,
+      const DeepCollectionEquality().hash(jawaban),
       selesai,
       created_at,
       updated_at,
@@ -496,7 +496,7 @@ abstract class _ExamData implements ExamData {
       {required final String keterangan_ujian,
       required final int semester,
       required final int siswa_id,
-      required final String jawaban,
+      required final dynamic jawaban,
       required final int selesai,
       required final String created_at,
       required final String updated_at,
@@ -515,7 +515,7 @@ abstract class _ExamData implements ExamData {
   @override
   int get siswa_id;
   @override
-  String get jawaban;
+  dynamic get jawaban;
   @override
   int get selesai;
   @override

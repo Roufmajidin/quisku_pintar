@@ -46,7 +46,7 @@ class SplashCubit extends Cubit<SplashState> {
     emit(state.copyWith(authenticated: isAuthenticated));
     if (loginStatus != 'null') {
       _context.router.push(
-        const HomeRoute(),
+        HomeRoute(),
       );
     } else {
       _context.router.pushAndPopUntil(

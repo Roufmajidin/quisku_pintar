@@ -39,6 +39,8 @@ class NilaiBloc extends Bloc<NilaiEvent, NilaiState> {
     res.fold(
         (l) => emit(state.copyWith(fetchReportStatus: FetchStatus.failure)),
         (r) {
+      log('bloc data nilai $r');
+
       emit(state.copyWith(fetchReportStatus: FetchStatus.success));
       // log('ini ${r.toString()}');
       // Group the reports by their type (PTS or PAS)
@@ -50,7 +52,6 @@ class NilaiBloc extends Bloc<NilaiEvent, NilaiState> {
       emit(state.copyWith(groupedPAS: groupedReports['PAS'] ?? []));
       emit(state.copyWith(groupedPTS: groupedReports['PTS'] ?? []));
     });
-    log('bloc data nilai ');
     print(' pas gr ${jsonEncode(state.groupedPAS.toList())}');
     print(' pas gr ${jsonEncode(state.groupedPTS.toList())}');
     print(jsonEncode(state.groupedPAS.toList()));

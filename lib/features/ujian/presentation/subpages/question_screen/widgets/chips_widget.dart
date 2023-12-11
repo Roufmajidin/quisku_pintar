@@ -30,7 +30,7 @@ class ChipsWidget extends StatefulWidget {
 class _ChipsWidgetState extends State<ChipsWidget> {
   PageController pageController = PageController();
   int currentQuestion = 0;
-  List<int?> selectedOptions = List.generate(4, (index) => null);
+  List<int?> selectedOptions = List.generate(10, (index) => null);
   List<bool?> selectedAnswerTrue = List.generate(4, (index) => null);
   @override
   void initState() {
@@ -238,7 +238,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                     log('posisi page ${state.examFinish}');
                     if (state.examFinish == 200) {
                       context.router.pushAndPopUntil(
-                        const UjianRoute(),
+                        HomeRoute(currentPage: 1),
                         predicate: (predicate) => false,
                       );
                       ShowSnackBarHelper.show(context,

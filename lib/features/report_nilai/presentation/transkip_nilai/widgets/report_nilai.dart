@@ -29,6 +29,20 @@ class _ReportNilaiState extends State<ReportNilai> {
     return totalScore / items.length;
   }
 
+  String calculateGrade(int score) {
+    if (score >= 90) {
+      return 'A';
+    } else if (score >= 80) {
+      return 'B';
+    } else if (score >= 70) {
+      return 'C';
+    } else if (score >= 60) {
+      return 'D';
+    } else {
+      return 'F';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double totalAverageScore = 0;
@@ -85,12 +99,20 @@ class _ReportNilaiState extends State<ReportNilai> {
                             ? List.generate(pts.length, (s) {
                                 var d = pts[s];
                                 return Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     BuildRowField(
-                                        item: d.mapel, customeWidth: 150),
+                                      item: d.mapel,
+                                      customeWidth: 200,
+                                    ),
                                     BuildRowField(
                                       item: d.nilai.toString(),
-                                      customeWidth: 140,
+                                      customeWidth: 70,
+                                    ),
+                                    BuildRowField(
+                                      item: calculateGrade(d.nilai),
+                                      customeWidth: 70,
                                     ),
                                   ],
                                 );

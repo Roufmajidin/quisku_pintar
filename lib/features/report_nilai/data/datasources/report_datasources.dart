@@ -26,7 +26,6 @@ class ReportDataSources {
           await http.get(Uri.parse('$urlLink/getReport/$userId/$semester'));
       final Map<String, dynamic> jsonDaMap = jsonDecode(respons.body);
       if (jsonDaMap['data'] is List && (jsonDaMap['data'] as List).isEmpty) {
-        // Handle empty data list
         return right([]);
       }
       final Map<String, dynamic> rawData = jsonDaMap['data'];

@@ -114,13 +114,12 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
 
     // TODO 4: cek jawaban user comapare dengan models ujian :: where mapelId :)
     List<Question> qum = state.fetchQuestion;
-    final b = await calc(qum, updatedSelectedOptions);
+    final b = calc(qum, updatedSelectedOptions);
     final userSc = b;
     final a = AnswerModels(answers: updatedSelectedOptions, nilaiAkhir: userSc);
 
-    final post =
-        await ujianusecase.postJawaban(id: id!, mapelId: mapelId, models: a);
-    log(' nilai A {a.nilaiAkhir.toString()}');
+    await ujianusecase.postJawaban(id: id!, mapelId: mapelId, models: a);
+    log(' nilai A ${a.nilaiAkhir.toString()}');
     // post
     log('ini ${qum.toString()}');
     emit(state.copyWith(examFinish: 200));

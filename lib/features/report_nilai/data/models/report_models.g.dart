@@ -29,7 +29,7 @@ _$ExamDataImpl _$$ExamDataImplFromJson(Map<String, dynamic> json) =>
       keterangan_ujian: json['keterangan_ujian'] as String,
       semester: json['semester'] as int,
       siswa_id: json['siswa_id'] as int,
-      jawaban: json['jawaban'] as String,
+      jawaban: json['jawaban'],
       selesai: json['selesai'] as int,
       created_at: json['created_at'] as String,
       updated_at: json['updated_at'] as String,
