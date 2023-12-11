@@ -7,16 +7,19 @@ class BuildRowField extends StatelessWidget {
     super.key,
     required this.item,
     this.customeWidth,
+    this.color,
   });
 
   final String item;
+  final Color? color;
   final double? customeWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: color,
       width: customeWidth != null ? customeWidth : 80,
-      height: 70,
+      height: 60,
       // color: getContainerColor(itemIndex),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

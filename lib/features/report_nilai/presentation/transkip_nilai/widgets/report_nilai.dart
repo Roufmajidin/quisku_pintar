@@ -74,7 +74,9 @@ class _ReportNilaiState extends State<ReportNilai> {
                         HeaderContainer(
                           child: Center(
                             child: Text(
-                              items.keterangan,
+                              items.keterangan == "PTS"
+                                  ? "Penilaian Tengah Semester (PTS)"
+                                  : "Penilaian AKhir Semester (PTS)",
                               style: AppTextStyle.body3
                                   .setMedium()
                                   .copyWith(color: Colors.white),
@@ -97,24 +99,31 @@ class _ReportNilaiState extends State<ReportNilai> {
                     Column(
                         children: pts != null
                             ? List.generate(pts.length, (s) {
+                                Color backgroundColor = s % 2 == 0
+                                    ? Color.fromARGB(179, 244, 244, 244)
+                                    : Colors.white;
+
                                 var d = pts[s];
-                                return Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    BuildRowField(
-                                      item: d.mapel,
-                                      customeWidth: 200,
-                                    ),
-                                    BuildRowField(
-                                      item: d.nilai.toString(),
-                                      customeWidth: 70,
-                                    ),
-                                    BuildRowField(
-                                      item: calculateGrade(d.nilai),
-                                      customeWidth: 70,
-                                    ),
-                                  ],
+                                return Container(
+                                  color: backgroundColor,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      BuildRowField(
+                                        item: d.mapel,
+                                        customeWidth: 150,
+                                      ),
+                                      BuildRowField(
+                                        item: d.nilai.toString(),
+                                        customeWidth: 40,
+                                      ),
+                                      BuildRowField(
+                                        item: calculateGrade(d.nilai),
+                                        customeWidth: 70,
+                                      ),
+                                    ],
+                                  ),
                                 );
 
                                 // Your code here
@@ -126,18 +135,24 @@ class _ReportNilaiState extends State<ReportNilai> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: pas != null
                             ? List.generate(pas.length, (s) {
+                                Color backgroundColor = s % 2 == 0
+                                    ? Color.fromARGB(179, 244, 244, 244)
+                                    : Colors.white;
                                 var d = pas[s];
-                                return Row(
-                                  children: [
-                                    BuildRowField(
-                                      item: d.mapel,
-                                      customeWidth: 150,
-                                    ),
-                                    BuildRowField(
-                                      item: d.nilai.toString(),
-                                      customeWidth: 140,
-                                    ),
-                                  ],
+                                return Container(
+                                  color: backgroundColor,
+                                  child: Row(
+                                    children: [
+                                      BuildRowField(
+                                        item: d.mapel,
+                                        customeWidth: 150,
+                                      ),
+                                      BuildRowField(
+                                        item: d.nilai.toString(),
+                                        customeWidth: 140,
+                                      ),
+                                    ],
+                                  ),
                                 );
                                 // Your code here
                               })
