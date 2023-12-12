@@ -26,7 +26,9 @@ class UjianDS implements UjianDataSources {
     final String urlLink = json.decode(respons.body);
     //
     try {
-      final res = await http.get(Uri.parse('$urlLink/getExamStatus/$id'));
+      String jenisUjian = await getTypeUjian();
+      final res =
+          await http.get(Uri.parse('$urlLink/getExamStatus/$id/$jenisUjian'));
       if (res.statusCode == 200) {
         final Map<String, dynamic> jsonDataList = jsonDecode(res.body);
 
@@ -41,9 +43,26 @@ class UjianDS implements UjianDataSources {
       log(res.statusCode.toString());
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {
-      print(e);
+      // print(e);
       return const Left(Failure.serverFailure());
     }
+  }
+
+  // get type ujian
+  Future<String> getTypeUjian() async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String urlLink = json.decode(respons.body);
+    final getActiveUjian = await http.get(Uri.parse('$urlLink/getActiveUjian'));
+    final Map<String, dynamic> activeUjian = jsonDecode(getActiveUjian.body);
+    String u = '';
+    for (var element in activeUjian['data']) {
+      String jenisUjian = element['ujian'];
+      u = jenisUjian;
+      log('type ujian ${jenisUjian}');
+    }
+    return u;
   }
 
   // get question

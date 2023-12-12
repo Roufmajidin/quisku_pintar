@@ -25,7 +25,6 @@ class AuthRepositoryImpl {
     }
   }
 
-  @override
   Future<Either<Failure, User>> getUserLogin({required String token}) async {
     try {
       final res = await authDataSources.getUseLoginDataSources(token);
