@@ -21,13 +21,8 @@ class ReportNilai extends StatefulWidget {
 }
 
 class _ReportNilaiState extends State<ReportNilai> {
-  double calculateTotalScore(List<Map<String, dynamic>> items) {
-    double totalScore = 0;
-    for (var item in items) {
-      totalScore += double.parse(item["skor"]);
-    }
-    return totalScore / items.length;
-  }
+  double totalScore = 0;
+  double totalScorepas = 0;
 
   String calculateGrade(int score) {
     if (score >= 90) {
@@ -45,11 +40,6 @@ class _ReportNilaiState extends State<ReportNilai> {
 
   @override
   Widget build(BuildContext context) {
-    double totalAverageScore = 0;
-    // for (var batchData in data) {
-    //   totalAverageScore += calculateTotalScore(batchData["items"]);
-    // }
-
     return BlocBuilder<NilaiBloc, NilaiState>(
       builder: (context, state) {
         var datas = state.reportData;
@@ -97,40 +87,47 @@ class _ReportNilaiState extends State<ReportNilai> {
                     ),
                     //
                     Column(
-                        children: pts != null
-                            ? List.generate(pts.length, (s) {
-                                Color backgroundColor = s % 2 == 0
-                                    ? Color.fromARGB(179, 244, 244, 244)
-                                    : Colors.white;
+                      children: pts != null
+                          ? List.generate(pts.length, (s) {
+                              Color backgroundColor = s % 2 == 0
+                                  ? Color.fromARGB(179, 244, 244, 244)
+                                  : Colors.white;
 
-                                var d = pts[s];
-                                return Container(
-                                  color: backgroundColor,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      BuildRowField(
-                                        item: d.mapel,
-                                        customeWidth: 150,
-                                      ),
-                                      BuildRowField(
-                                        item: d.nilai.toString(),
-                                        customeWidth: 40,
-                                      ),
-                                      BuildRowField(
-                                        item: calculateGrade(d.nilai),
-                                        customeWidth: 70,
-                                      ),
-                                    ],
-                                  ),
-                                );
+                              var d = pts[s];
+                              int n = 0;
+                              for (var i in pts) {
+                                // log(i.nilai)
+                                n += i.nilai;
+                                totalScore = n.toDouble();
+                              }
 
-                                // Your code here
-                              })
-                            : [] // Return an empty list if pts is null
+                              log("rata rata $n");
+                              return Container(
+                                color: backgroundColor,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    BuildRowField(
+                                      item: d.mapel,
+                                      customeWidth: 150,
+                                    ),
+                                    BuildRowField(
+                                      item: d.nilai.toString(),
+                                      customeWidth: 40,
+                                    ),
+                                    BuildRowField(
+                                      item: calculateGrade(d.nilai),
+                                      customeWidth: 70,
+                                    ),
+                                  ],
+                                ),
+                              );
 
-                        ),
+                              // Your code here
+                            })
+                          : [],
+                    ),
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: pas != null
@@ -139,6 +136,11 @@ class _ReportNilaiState extends State<ReportNilai> {
                                     ? Color.fromARGB(179, 244, 244, 244)
                                     : Colors.white;
                                 var d = pas[s];
+                                int n = 0;
+                                for (var i in pas) {
+                                  n += i.nilai;
+                                  totalScorepas = n.toDouble();
+                                }
                                 return Container(
                                   color: backgroundColor,
                                   child: Row(
@@ -156,7 +158,9 @@ class _ReportNilaiState extends State<ReportNilai> {
                                 );
                                 // Your code here
                               })
-                            : [])
+                            : []),
+                    BuildFinalScore(
+                        value: totalScore / pts!.length, title: 'Poin Akhir'),
                   ],
                 );
               },
@@ -167,6 +171,3 @@ class _ReportNilaiState extends State<ReportNilai> {
     );
   }
 }
-// BuildFinalScore(
-//                   value: totalAverageScore.toStringAsFixed(0),
-//                   title: 'Poin Akhir'),

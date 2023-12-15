@@ -3,7 +3,7 @@ import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
 class BuildFinalScore extends StatelessWidget {
-  String value;
+  double value;
   String title;
 
   BuildFinalScore({
@@ -40,7 +40,7 @@ class BuildFinalScore extends StatelessWidget {
                 height: 70,
                 child: Center(
                     child: Text(
-                  value,
+                  value.toStringAsFixed(0),
                   style: AppTextStyle.body3
                       .setMedium()
                       .copyWith(color: Colors.white),
