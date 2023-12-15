@@ -66,7 +66,7 @@ class _ReportNilaiState extends State<ReportNilai> {
                             child: Text(
                               items.keterangan == "PTS"
                                   ? "Penilaian Tengah Semester (PTS)"
-                                  : "Penilaian AKhir Semester (PTS)",
+                                  : "Penilaian Akhir Semester (PAS)",
                               style: AppTextStyle.body3
                                   .setMedium()
                                   .copyWith(color: Colors.white),
@@ -117,7 +117,9 @@ class _ReportNilaiState extends State<ReportNilai> {
                                       customeWidth: 40,
                                     ),
                                     BuildRowField(
-                                      item: calculateGrade(d.nilai),
+                                      item: d.nilai == 0
+                                          ? ''
+                                          : calculateGrade(d.nilai),
                                       customeWidth: 70,
                                     ),
                                   ],
@@ -128,6 +130,7 @@ class _ReportNilaiState extends State<ReportNilai> {
                             })
                           : [],
                     ),
+
                     Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: pas != null
@@ -144,6 +147,8 @@ class _ReportNilaiState extends State<ReportNilai> {
                                 return Container(
                                   color: backgroundColor,
                                   child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       BuildRowField(
                                         item: d.mapel,
@@ -151,7 +156,13 @@ class _ReportNilaiState extends State<ReportNilai> {
                                       ),
                                       BuildRowField(
                                         item: d.nilai.toString(),
-                                        customeWidth: 140,
+                                        customeWidth: 40,
+                                      ),
+                                      BuildRowField(
+                                        item: d.nilai == 0
+                                            ? ''
+                                            : calculateGrade(d.nilai),
+                                        customeWidth: 70,
                                       ),
                                     ],
                                   ),
@@ -159,8 +170,13 @@ class _ReportNilaiState extends State<ReportNilai> {
                                 // Your code here
                               })
                             : []),
-                    BuildFinalScore(
-                        value: totalScore / pts!.length, title: 'Poin Akhir'),
+                    items.keterangan == "PTS"
+                        ? BuildFinalScore(
+                            value: totalScore / pts!.length, title: 'Rata-Rata')
+                        : BuildFinalScore(
+                            value: totalScorepas / pas!.length,
+                            title: 'Rata-Rata'),
+                    const SizedBox(height: 16),
                   ],
                 );
               },

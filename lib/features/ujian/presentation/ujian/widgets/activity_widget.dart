@@ -41,6 +41,7 @@ class UjianList extends StatelessWidget {
               height: MediaQuery.of(context).size.height,
               child: Center(child: Assets.images.serviceU.image(height: 300)));
         }
+        // TODO , kayaknya disini bakal diisi jika ujian status adalah 0/1 pada masing masing type
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -59,7 +60,8 @@ class UjianList extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         // ke detail
-                        context.router.push(DetailUjianRoute(data: data));
+                        context.router.push(
+                            DetailUjianRoute(data: data, ujianId: data.id));
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),

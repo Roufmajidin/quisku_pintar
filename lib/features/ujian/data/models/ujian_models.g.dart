@@ -7,6 +7,7 @@ part of 'ujian_models.dart';
 // **************************************************************************
 
 _$UjianImpl _$$UjianImplFromJson(Map<String, dynamic> json) => _$UjianImpl(
+      id: json['id'] as int,
       user_id: json['user_id'] as String,
       user_name: json['user_name'] as String,
       mapel: json['mapel'] as String,
@@ -19,6 +20,7 @@ _$UjianImpl _$$UjianImplFromJson(Map<String, dynamic> json) => _$UjianImpl(
 
 Map<String, dynamic> _$$UjianImplToJson(_$UjianImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'user_id': instance.user_id,
       'user_name': instance.user_name,
       'mapel': instance.mapel,

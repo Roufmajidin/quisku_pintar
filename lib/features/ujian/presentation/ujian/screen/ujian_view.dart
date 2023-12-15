@@ -5,10 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
-import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/widgets/widget.dart';
 
-import '../../subpages/detail_ujian/screen/detail_ujian_page.dart';
 import '../bloc/ujian_bloc.dart';
 
 class UjianView extends StatefulWidget {
@@ -63,7 +61,7 @@ class _UjianViewState extends State<UjianView> {
                   getUjian();
                   return Future<void>.delayed(const Duration(seconds: 3));
                 },
-                child: UjianList()),
+                child: const UjianList()),
           ],
         ),
       ),

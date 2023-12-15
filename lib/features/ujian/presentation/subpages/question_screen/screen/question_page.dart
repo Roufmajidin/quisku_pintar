@@ -14,7 +14,8 @@ import 'question_view.dart';
 @RoutePage()
 class QuestionPage extends StatelessWidget {
   final int id;
-  const QuestionPage({super.key, required this.id});
+  final int ujianId;
+  const QuestionPage({super.key, required this.id, required this.ujianId});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class QuestionPage extends StatelessWidget {
           UjianBloc(loginusecase: loginUseCase, ujianusecase: ucase),
       child: QuestionView(
         ujianId: id,
+        id: ujianId,
       ),
     );
   }

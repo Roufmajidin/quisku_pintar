@@ -6,7 +6,7 @@ part 'ujian_models.freezed.dart';
 @freezed
 abstract class Ujian with _$Ujian {
   factory Ujian({
-    // int? id,
+    required int id,
     required String user_id,
     required String user_name,
     required String mapel,

@@ -7,10 +7,13 @@ import 'package:quisku_pintar/features/ujian/presentation/subpages/detail_ujian/
 class DetailUjianPage extends StatelessWidget {
   final Ujian data;
 
-  const DetailUjianPage({required this.data, Key? key}) : super(key: key);
+  int ujianId;
+
+  DetailUjianPage({required this.data, required this.ujianId, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DetailUjianView(ujian: data);
+    return DetailUjianView(ujian: data, ujianId: ujianId);
   }
 }

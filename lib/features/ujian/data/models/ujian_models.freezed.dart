@@ -20,7 +20,7 @@ Ujian _$UjianFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Ujian {
-// int? id,
+  int get id => throw _privateConstructorUsedError;
   String get user_id => throw _privateConstructorUsedError;
   String get user_name => throw _privateConstructorUsedError;
   String get mapel => throw _privateConstructorUsedError;
@@ -41,7 +41,8 @@ abstract class $UjianCopyWith<$Res> {
       _$UjianCopyWithImpl<$Res, Ujian>;
   @useResult
   $Res call(
-      {String user_id,
+      {int id,
+      String user_id,
       String user_name,
       String mapel,
       int mapel_id,
@@ -64,6 +65,7 @@ class _$UjianCopyWithImpl<$Res, $Val extends Ujian>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? user_id = null,
     Object? user_name = null,
     Object? mapel = null,
@@ -74,6 +76,10 @@ class _$UjianCopyWithImpl<$Res, $Val extends Ujian>
     Object? status = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       user_id: null == user_id
           ? _value.user_id
           : user_id // ignore: cast_nullable_to_non_nullable
@@ -118,7 +124,8 @@ abstract class _$$UjianImplCopyWith<$Res> implements $UjianCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String user_id,
+      {int id,
+      String user_id,
       String user_name,
       String mapel,
       int mapel_id,
@@ -139,6 +146,7 @@ class __$$UjianImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? user_id = null,
     Object? user_name = null,
     Object? mapel = null,
@@ -149,6 +157,10 @@ class __$$UjianImplCopyWithImpl<$Res>
     Object? status = null,
   }) {
     return _then(_$UjianImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       user_id: null == user_id
           ? _value.user_id
           : user_id // ignore: cast_nullable_to_non_nullable
@@ -189,7 +201,8 @@ class __$$UjianImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UjianImpl implements _Ujian {
   _$UjianImpl(
-      {required this.user_id,
+      {required this.id,
+      required this.user_id,
       required this.user_name,
       required this.mapel,
       required this.mapel_id,
@@ -201,7 +214,8 @@ class _$UjianImpl implements _Ujian {
   factory _$UjianImpl.fromJson(Map<String, dynamic> json) =>
       _$$UjianImplFromJson(json);
 
-// int? id,
+  @override
+  final int id;
   @override
   final String user_id;
   @override
@@ -221,7 +235,7 @@ class _$UjianImpl implements _Ujian {
 
   @override
   String toString() {
-    return 'Ujian(user_id: $user_id, user_name: $user_name, mapel: $mapel, mapel_id: $mapel_id, images: $images, guru: $guru, nilai: $nilai, status: $status)';
+    return 'Ujian(id: $id, user_id: $user_id, user_name: $user_name, mapel: $mapel, mapel_id: $mapel_id, images: $images, guru: $guru, nilai: $nilai, status: $status)';
   }
 
   @override
@@ -229,6 +243,7 @@ class _$UjianImpl implements _Ujian {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UjianImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.user_id, user_id) || other.user_id == user_id) &&
             (identical(other.user_name, user_name) ||
                 other.user_name == user_name) &&
@@ -243,7 +258,7 @@ class _$UjianImpl implements _Ujian {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user_id, user_name, mapel,
+  int get hashCode => Object.hash(runtimeType, id, user_id, user_name, mapel,
       mapel_id, images, guru, nilai, status);
 
   @JsonKey(ignore: true)
@@ -262,7 +277,8 @@ class _$UjianImpl implements _Ujian {
 
 abstract class _Ujian implements Ujian {
   factory _Ujian(
-      {required final String user_id,
+      {required final int id,
+      required final String user_id,
       required final String user_name,
       required final String mapel,
       required final int mapel_id,
@@ -273,7 +289,9 @@ abstract class _Ujian implements Ujian {
 
   factory _Ujian.fromJson(Map<String, dynamic> json) = _$UjianImpl.fromJson;
 
-  @override // int? id,
+  @override
+  int get id;
+  @override
   String get user_id;
   @override
   String get user_name;

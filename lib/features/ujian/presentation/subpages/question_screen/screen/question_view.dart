@@ -9,9 +9,10 @@ import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.
 import '../widgets/widget.dart';
 
 class QuestionView extends StatefulWidget {
+  int id;
   int ujianId;
 
-  QuestionView({super.key, required this.ujianId});
+  QuestionView({super.key, required this.ujianId, required this.id});
 
   @override
   State<QuestionView> createState() => _QuestionViewState();
@@ -95,6 +96,7 @@ class _QuestionViewState extends State<QuestionView> {
                   ChipsWidget(
                     size: size,
                     data: state.fetchQuestion,
+                    ujianId: widget.id,
                   )
                 ],
               ),

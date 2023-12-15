@@ -40,10 +40,11 @@ class UjianRepositoryImpl implements UjianRepository {
   Future<int> postAnswer({
     required int id,
     required int mapelId,
+    required int idUjian,
     required AnswerModels modelsAnswer,
   }) async {
     final res = await ujianDataSources.postData(
-        id: id, mapelId: mapelId, modelsAnswer: modelsAnswer);
+        id: id, mapelId: mapelId, modelsAnswer: modelsAnswer, idUjian: idUjian);
     if (res == 200) {
       return res;
     }

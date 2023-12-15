@@ -11,7 +11,9 @@ import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
 // ignore: must_be_immutable
 class UjianButton extends StatelessWidget {
   Ujian ujian;
-  UjianButton({Key? key, required this.ujian}) : super(key: key);
+  int ujianId;
+  UjianButton({Key? key, required this.ujian, required this.ujianId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class UjianButton extends StatelessWidget {
               barrierDismissible: false,
               context: context,
               builder: (BuildContext context) {
-                return AlertWidget(ujian: ujian);
+                return AlertWidget(ujian: ujian, ujianId: ujianId);
               },
             );
           }),
@@ -82,8 +84,10 @@ class AlertWidget extends StatelessWidget {
   const AlertWidget({
     super.key,
     required this.ujian,
+    required this.ujianId,
   });
 
+  final int ujianId;
   final Ujian ujian;
 
   @override
@@ -130,7 +134,8 @@ class AlertWidget extends StatelessWidget {
                 // Navigator.pop(context);
                 log(ujian.mapel_id.toString());
                 // question page
-                context.router.push(QuestionRoute(id: ujian.mapel_id));
+                context.router
+                    .push(QuestionRoute(id: ujian.mapel_id, ujianId: ujianId));
               })
         ],
       ),

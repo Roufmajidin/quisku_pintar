@@ -22,7 +22,9 @@ class GetUjianUsecase {
   Future<int> postJawaban(
       {required int id,
       required int mapelId,
+      required int idUjian,
       required AnswerModels models}) async {
-    return pelre.postAnswer(id: id, mapelId: mapelId, modelsAnswer: models);
+    return pelre.postAnswer(
+        id: id, mapelId: mapelId, modelsAnswer: models, idUjian: idUjian);
   }
 }

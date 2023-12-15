@@ -10,5 +10,6 @@ class UjianEvent with _$UjianEvent {
       List<int?> updatedSelectedOptions) = UpdateSelectedOptions;
   const factory UjianEvent.select(int cur) = onLoad;
   const factory UjianEvent.addAnswer(int i, int u) = AddAnswer;
-  factory UjianEvent.postData({required int mapelId}) = PostData;
+  factory UjianEvent.postData({required int mapelId, required int id}) =
+      PostData;
 }

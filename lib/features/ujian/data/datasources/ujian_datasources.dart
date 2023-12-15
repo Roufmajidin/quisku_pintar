@@ -97,6 +97,7 @@ class UjianDS implements UjianDataSources {
   Future<int> postData({
     required int id,
     required int mapelId,
+    required int idUjian,
     required AnswerModels modelsAnswer,
   }) async {
     // parse link dari realtime database,
@@ -110,7 +111,7 @@ class UjianDS implements UjianDataSources {
     final nilai = json.encode(modelsAnswer.nilaiAkhir);
     try {
       final res = await http.post(
-        Uri.parse('$urlLink/postData/$id/$mapelId'),
+        Uri.parse('$urlLink/postData/$idUjian/$id/$mapelId'),
         body: {
           'jawaban': a.toString(),
           'nilai': nilai.toString(),

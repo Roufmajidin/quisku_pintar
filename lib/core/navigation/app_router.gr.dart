@@ -74,6 +74,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         routeData: routeData,
         child: _i4.DetailUjianPage(
           data: args.data,
+          ujianId: args.ujianId,
           key: args.key,
         ),
       );
@@ -108,6 +109,7 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         child: _i8.QuestionPage(
           key: args.key,
           id: args.id,
+          ujianId: args.ujianId,
         ),
       );
     },
@@ -239,12 +241,14 @@ class DetailNotificationRouteArgs {
 class DetailUjianRoute extends _i13.PageRouteInfo<DetailUjianRouteArgs> {
   DetailUjianRoute({
     required _i15.Ujian data,
+    required int ujianId,
     _i14.Key? key,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           DetailUjianRoute.name,
           args: DetailUjianRouteArgs(
             data: data,
+            ujianId: ujianId,
             key: key,
           ),
           initialChildren: children,
@@ -259,16 +263,19 @@ class DetailUjianRoute extends _i13.PageRouteInfo<DetailUjianRouteArgs> {
 class DetailUjianRouteArgs {
   const DetailUjianRouteArgs({
     required this.data,
+    required this.ujianId,
     this.key,
   });
 
   final _i15.Ujian data;
 
+  final int ujianId;
+
   final _i14.Key? key;
 
   @override
   String toString() {
-    return 'DetailUjianRouteArgs{data: $data, key: $key}';
+    return 'DetailUjianRouteArgs{data: $data, ujianId: $ujianId, key: $key}';
   }
 }
 
@@ -344,12 +351,14 @@ class QuestionRoute extends _i13.PageRouteInfo<QuestionRouteArgs> {
   QuestionRoute({
     _i14.Key? key,
     required int id,
+    required int ujianId,
     List<_i13.PageRouteInfo>? children,
   }) : super(
           QuestionRoute.name,
           args: QuestionRouteArgs(
             key: key,
             id: id,
+            ujianId: ujianId,
           ),
           initialChildren: children,
         );
@@ -364,15 +373,18 @@ class QuestionRouteArgs {
   const QuestionRouteArgs({
     this.key,
     required this.id,
+    required this.ujianId,
   });
 
   final _i14.Key? key;
 
   final int id;
 
+  final int ujianId;
+
   @override
   String toString() {
-    return 'QuestionRouteArgs{key: $key, id: $id}';
+    return 'QuestionRouteArgs{key: $key, id: $id, ujianId: $ujianId}';
   }
 }
 

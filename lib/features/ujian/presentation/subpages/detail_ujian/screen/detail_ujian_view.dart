@@ -11,8 +11,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailUjianView extends StatelessWidget {
   final Ujian ujian;
+  final int ujianId;
 
-  const DetailUjianView({Key? key, required this.ujian}) : super(key: key);
+  const DetailUjianView({Key? key, required this.ujian, required this.ujianId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +155,7 @@ class DetailUjianView extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: UjianButton(ujian: ujian),
+      bottomNavigationBar: UjianButton(ujian: ujian, ujianId: ujianId),
     );
   }
 }

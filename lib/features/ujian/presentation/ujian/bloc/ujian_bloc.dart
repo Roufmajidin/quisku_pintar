@@ -101,6 +101,7 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
     log('proses');
     // TODO  get user Data :)
     final mapelId = (event as PostData).mapelId;
+    int idUjian = (event as PostData).id;
     final token = await loginusecase.getLocalToken();
     final user = await loginusecase.getLogedUser(token);
     int? id = 0;
@@ -118,7 +119,8 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
     final userSc = b;
     final a = AnswerModels(answers: updatedSelectedOptions, nilaiAkhir: userSc);
 
-    await ujianusecase.postJawaban(id: id!, mapelId: mapelId, models: a);
+    await ujianusecase.postJawaban(
+        id: id!, mapelId: mapelId, models: a, idUjian: idUjian);
     log(' nilai A ${a.nilaiAkhir.toString()}');
     // post
     log('ini ${qum.toString()}');

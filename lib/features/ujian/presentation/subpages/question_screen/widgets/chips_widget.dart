@@ -14,11 +14,13 @@ import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.
 // ignore: must_be_immutable
 class ChipsWidget extends StatefulWidget {
   List<Question> data;
+  final int ujianId;
 
   ChipsWidget({
     super.key,
     required this.size,
     required this.data,
+    required this.ujianId,
   });
 
   final Size size;
@@ -58,8 +60,11 @@ class _ChipsWidgetState extends State<ChipsWidget> {
   int mapel = 0;
   @override
   Widget build(BuildContext context) {
+    log('id Ujian adalah. ${widget.ujianId}');
+
     return BlocBuilder<UjianBloc, UjianState>(
       builder: (context, state) {
+        log('state. ${state.fetchQuestion}');
         return Column(
           children: [
             // ProgressWidget(
@@ -85,6 +90,8 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                           var pertanyaan = widget.data[index].pertanyaan;
                           var jawabanBenar = widget.data[index].jawaban_benar;
                           var mapelId = widget.data[index].pelajaran_id;
+                          // idUjian = widget.data[index].id!;
+
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -259,9 +266,8 @@ class _ChipsWidgetState extends State<ChipsWidget> {
 
                         if (currentQuestion == widget.data.length - 1) {
                           log('finish?');
-                          context
-                              .read<UjianBloc>()
-                              .add(PostData(mapelId: mapel));
+                          context.read<UjianBloc>().add(
+                              PostData(mapelId: mapel, id: widget.ujianId));
                         }
                       },
                     );
