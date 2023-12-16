@@ -129,9 +129,11 @@ class _DashboardViewState extends State<DashboardView> {
                             padding: const EdgeInsets.only(left: 16),
                             child: GestureDetector(
                               onTap: () {
-                                _navigateToDetail('detail Mapel');
+                                // _navigateToDetail('detail Mapel');
+                                context.pushRoute(DetailMapelRoute(data: data));
                               },
                               child: ContainerPelatihan(
+                                callBack: () {},
                                 image: data.images,
                                 guru: data.guru,
                                 mapel: data.mapel,
@@ -143,7 +145,7 @@ class _DashboardViewState extends State<DashboardView> {
                     },
                   ),
                 ),
-                TerakhirMengerjakan()
+                const TerakhirMengerjakan()
               ],
             ),
           ],
