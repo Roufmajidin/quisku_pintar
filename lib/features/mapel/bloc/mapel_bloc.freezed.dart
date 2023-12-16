@@ -19,19 +19,19 @@ mixin _$MapelEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() fetchPresensi,
+    required TResult Function(int userId, int mapelId) fetchPresensi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? fetchPresensi,
+    TResult? Function(int userId, int mapelId)? fetchPresensi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? fetchPresensi,
+    TResult Function(int userId, int mapelId)? fetchPresensi,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() fetchPresensi,
+    required TResult Function(int userId, int mapelId) fetchPresensi,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? fetchPresensi,
+    TResult? Function(int userId, int mapelId)? fetchPresensi,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? fetchPresensi,
+    TResult Function(int userId, int mapelId)? fetchPresensi,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -181,6 +181,8 @@ abstract class _$$FetchPresensiImplCopyWith<$Res> {
   factory _$$FetchPresensiImplCopyWith(
           _$FetchPresensiImpl value, $Res Function(_$FetchPresensiImpl) then) =
       __$$FetchPresensiImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int userId, int mapelId});
 }
 
 /// @nodoc
@@ -190,54 +192,86 @@ class __$$FetchPresensiImplCopyWithImpl<$Res>
   __$$FetchPresensiImplCopyWithImpl(
       _$FetchPresensiImpl _value, $Res Function(_$FetchPresensiImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? mapelId = null,
+  }) {
+    return _then(_$FetchPresensiImpl(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+      mapelId: null == mapelId
+          ? _value.mapelId
+          : mapelId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$FetchPresensiImpl implements FetchPresensi {
-  const _$FetchPresensiImpl();
+  const _$FetchPresensiImpl({required this.userId, required this.mapelId});
+
+  @override
+  final int userId;
+  @override
+  final int mapelId;
 
   @override
   String toString() {
-    return 'MapelEvent.fetchPresensi()';
+    return 'MapelEvent.fetchPresensi(userId: $userId, mapelId: $mapelId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchPresensiImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FetchPresensiImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.mapelId, mapelId) || other.mapelId == mapelId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, userId, mapelId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchPresensiImplCopyWith<_$FetchPresensiImpl> get copyWith =>
+      __$$FetchPresensiImplCopyWithImpl<_$FetchPresensiImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() fetchPresensi,
+    required TResult Function(int userId, int mapelId) fetchPresensi,
   }) {
-    return fetchPresensi();
+    return fetchPresensi(userId, mapelId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? fetchPresensi,
+    TResult? Function(int userId, int mapelId)? fetchPresensi,
   }) {
-    return fetchPresensi?.call();
+    return fetchPresensi?.call(userId, mapelId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? fetchPresensi,
+    TResult Function(int userId, int mapelId)? fetchPresensi,
     required TResult orElse(),
   }) {
     if (fetchPresensi != null) {
-      return fetchPresensi();
+      return fetchPresensi(userId, mapelId);
     }
     return orElse();
   }
@@ -275,7 +309,15 @@ class _$FetchPresensiImpl implements FetchPresensi {
 }
 
 abstract class FetchPresensi implements MapelEvent {
-  const factory FetchPresensi() = _$FetchPresensiImpl;
+  const factory FetchPresensi(
+      {required final int userId,
+      required final int mapelId}) = _$FetchPresensiImpl;
+
+  int get userId;
+  int get mapelId;
+  @JsonKey(ignore: true)
+  _$$FetchPresensiImplCopyWith<_$FetchPresensiImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
