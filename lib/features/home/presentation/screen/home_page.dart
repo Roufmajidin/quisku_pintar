@@ -89,6 +89,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       body: <Widget>[
+        // ignore: prefer_const_constructors
         DashboardPage(),
         const UjianPage(),
         const TranskipNilaiPage(),

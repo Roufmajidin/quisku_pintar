@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -60,7 +62,7 @@ class UjianDS implements UjianDataSources {
     for (var element in activeUjian['data']) {
       String jenisUjian = element['ujian'];
       u = jenisUjian;
-      log('type ujian ${jenisUjian}');
+      log('type ujian $jenisUjian');
     }
     return u;
   }
@@ -87,7 +89,6 @@ class UjianDS implements UjianDataSources {
       log(res.statusCode.toString());
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {
-      print(e);
       return const Left(Failure.serverFailure());
     }
 

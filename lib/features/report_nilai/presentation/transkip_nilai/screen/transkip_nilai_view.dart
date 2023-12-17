@@ -95,7 +95,6 @@ class _TranskipNilaiViewState extends State<TranskipNilaiView> {
                             const Center(child: CircularProgressIndicator()));
                   }
                   if (state.reportData.isEmpty ||
-                      state.reportData == null ||
                       state.fetchReportStatus == FetchStatus.loading) {
                     return SizedBox(
                         height: MediaQuery.of(context).size.height * 0.6,

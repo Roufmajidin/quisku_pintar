@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/usecases/login_usecase.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
@@ -93,15 +92,13 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
   // TODO
   //  comapare dengan models QUESTION terhadap 'key' jawabar
 
-  Future<void> _onLoad(UjianEvent event, Emitter<UjianState> emit) async {
-    final int newQuestionIndex = (event as onLoad).cur;
-  }
+  Future<void> _onLoad(UjianEvent event, Emitter<UjianState> emit) async {}
 
   Future<void> _postData(UjianEvent event, Emitter<UjianState> emit) async {
     log('proses');
     // TODO  get user Data :)
     final mapelId = (event as PostData).mapelId;
-    int idUjian = (event as PostData).id;
+    int idUjian = (event).id;
     final token = await loginusecase.getLocalToken();
     final user = await loginusecase.getLogedUser(token);
     int? id = 0;

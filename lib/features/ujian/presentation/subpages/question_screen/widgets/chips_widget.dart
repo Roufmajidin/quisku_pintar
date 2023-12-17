@@ -79,7 +79,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                   SizedBox(
                       height: 650,
                       child: PageView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: widget.data.length,
                         controller: pageController,
                         itemBuilder: (context, index) {
@@ -172,7 +172,6 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                                                 setState(() {
                                                   final selectedOption =
                                                       selectedOptions[index];
-                                                  final jawaban = opsi[i];
                                                   if (selectedOption == i) {
                                                     null;
                                                   } else {
@@ -238,7 +237,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
                         }
                       });
                     },
-                    child: Text('back'),
+                    child: const Text('back'),
                   ),
                 ElevatedButton(
                   onPressed: () {

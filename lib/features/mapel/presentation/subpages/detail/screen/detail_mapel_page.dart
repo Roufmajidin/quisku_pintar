@@ -8,16 +8,14 @@ import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/usecases/mapel_usecase.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/screen/detail_mapel_view.dart';
-import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/models/question.dart';
 
-// ignore: must_be_immutable
 @RoutePage()
 class DetailMapelPage extends StatelessWidget {
   final Pelajaran data;
 
   // int ujianId;
 
-  DetailMapelPage(
+  const DetailMapelPage(
       {
       //   required this.data,
       required this.data,

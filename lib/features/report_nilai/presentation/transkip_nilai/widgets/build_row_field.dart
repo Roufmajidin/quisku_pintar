@@ -18,7 +18,7 @@ class BuildRowField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: color,
-      width: customeWidth != null ? customeWidth : 80,
+      width: customeWidth ?? 80,
       height: 60,
       // color: getContainerColor(itemIndex),
       child: Padding(

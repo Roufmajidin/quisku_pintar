@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +12,7 @@ class DetailMapelView extends StatefulWidget {
   final Pelajaran mapel;
   // final int ujianId;
 
+  // ignore: prefer_const_constructors_in_immutables
   DetailMapelView({
     Key? key,
     required this.mapel,
@@ -121,6 +120,7 @@ class _DetailMapelViewState extends State<DetailMapelView> {
                                     ],
                                   ),
                                   ListView(
+                                    // ignore: prefer_const_literals_to_create_immutables
                                     children: [
                                       // ContentInformasi(data: ujian),
                                     ],

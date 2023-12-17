@@ -33,8 +33,9 @@ class LoginView extends StatelessWidget {
                         .copyWith(color: AppColors.neutral.ne05),
                   ),
                   const SizedBox(height: 32.0),
-                  EmailInput(),
+                  const EmailInput(),
                   const SizedBox(height: 16.0),
+                  // ignore: prefer_const_constructors
                   PasswordInput(),
                   const SizedBox(height: 16.0),
                   const SizedBox(height: 24.0),

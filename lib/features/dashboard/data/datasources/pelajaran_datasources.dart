@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 import '../../../ujian/data/models/ujian_models.dart';
@@ -32,12 +33,11 @@ class PelajaranDataSources {
             .map((jsonData) => Pelajaran.fromJson(jsonData))
             .toList();
 
-        log('finals : ${pelajaranList}');
+        log('finals : $pelajaranList');
         return right(pelajaranList);
       }
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {
-      print(e);
       return const Left(Failure.serverFailure());
     }
   }
@@ -60,7 +60,6 @@ class PelajaranDataSources {
       }
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {
-      print(e);
       return const Left(Failure.serverFailure());
     }
   }

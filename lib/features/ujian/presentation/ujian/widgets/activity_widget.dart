@@ -19,7 +19,6 @@ class UjianList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return BlocBuilder<UjianBloc, UjianState>(
       builder: (context, state) {
         if (state.fetchUjianStatus.isLoading) {

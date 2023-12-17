@@ -8,6 +8,7 @@ import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.
 
 import '../widgets/widget.dart';
 
+// ignore: must_be_immutable
 class QuestionView extends StatefulWidget {
   int id;
   int ujianId;

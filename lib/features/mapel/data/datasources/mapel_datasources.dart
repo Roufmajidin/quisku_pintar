@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class MapelDatasources {

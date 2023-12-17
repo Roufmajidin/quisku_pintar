@@ -19,9 +19,7 @@ class TimerWidget extends StatelessWidget {
         );
       },
       interval: const Duration(seconds: 1),
-      onFinished: () {
-        print('Timer is done!');
-      },
+      onFinished: () {},
     );
   }
 }

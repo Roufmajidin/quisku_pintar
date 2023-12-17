@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/question_screen/data/answer_models/annswer_model.dart';
@@ -20,7 +18,6 @@ class UjianRepositoryImpl implements UjianRepository {
       final res = await ujianDataSources.getUjianByUser(id: id);
       return res;
     } catch (e) {
-      print(e);
       return const Left(Failure.parsingFailure());
     }
   }
@@ -32,8 +29,7 @@ class UjianRepositoryImpl implements UjianRepository {
       final res = await ujianDataSources.getQuestion(mapelId: id);
       return res;
     } catch (e) {
-      print(e);
-      return Left(const Failure.parsingFailure());
+      return const Left(Failure.parsingFailure());
     }
   }
 

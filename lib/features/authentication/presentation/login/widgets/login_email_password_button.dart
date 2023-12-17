@@ -48,6 +48,7 @@ class LoginEmailPasswordButton extends StatelessWidget {
                         valueColor: AlwaysStoppedAnimation(Colors.white),
                       ))
                   :  */
+              // ignore: prefer_const_constructors
               Padding(
             padding: const EdgeInsets.symmetric(horizontal: 100),
             child: const Text('Masuk'),

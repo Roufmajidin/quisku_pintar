@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+// ignore: unused_import
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,6 @@ import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 
-import 'garis-garis.dart';
 import 'widget.dart';
 
 // ignore: camel_case_types, must_be_immutable
@@ -285,6 +285,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+      // ignore: prefer_const_constructors
       insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 200),
       content: Column(
         children: [

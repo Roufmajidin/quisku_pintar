@@ -35,9 +35,10 @@ class SplashCubit extends Cubit<SplashState> {
   Future<bool> checkUserIsLogin() async {
     final loginStatus = await loginUseCase.getLocalToken();
 
-    print('Token: $loginStatus');
+    // print('Token: $loginStatus');
 
     bool isAuthenticated =
+        // ignore: unnecessary_null_comparison
         loginStatus == null && loginStatus.isEmpty ? false : true;
 
     // Update the state
@@ -45,10 +46,12 @@ class SplashCubit extends Cubit<SplashState> {
     emit(SplashState.loaded(authenticated: isAuthenticated));
     emit(state.copyWith(authenticated: isAuthenticated));
     if (loginStatus != 'null') {
+      // ignore: use_build_context_synchronously
       _context.router.push(
         HomeRoute(),
       );
     } else {
+      // ignore: use_build_context_synchronously
       _context.router.pushAndPopUntil(
         const LoginRoute(),
         predicate: (_) => false,

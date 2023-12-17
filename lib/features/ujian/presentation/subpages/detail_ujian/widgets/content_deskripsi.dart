@@ -4,7 +4,7 @@ import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
 
-// ignore: camel_case_types
+// ignore: camel_case_types, must_be_immutable
 class ContentDeskripsi extends StatelessWidget {
   Ujian data;
 

@@ -8,20 +8,12 @@ import 'package:quisku_pintar/features/ujian/data/usecases/getujian_usecase.dart
 import 'package:quisku_pintar/features/ujian/presentation/ujian/bloc/ujian_bloc.dart';
 import 'package:quisku_pintar/features/ujian/presentation/ujian/screen/ujian_view.dart';
 
-import '../../../../authentication/presentation/data/datasources/auth_datasources.dart';
-import '../../../../authentication/presentation/data/repositories/auth_repositroy_impl.dart';
-
 @RoutePage()
 class UjianPage extends StatelessWidget {
   const UjianPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dataSources = AuthenticationDataSources();
-
-    final authRepository = AuthRepositoryImpl();
-    final loginUseCase = LoginUseCase();
-
     // ujianUsecase;
     //
 

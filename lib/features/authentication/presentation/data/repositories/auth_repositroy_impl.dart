@@ -30,7 +30,6 @@ class AuthRepositoryImpl {
       final res = await authDataSources.getUseLoginDataSources(token);
       return res;
     } catch (e) {
-      print(e);
       return const Left(Failure.parsingFailure());
     }
   }

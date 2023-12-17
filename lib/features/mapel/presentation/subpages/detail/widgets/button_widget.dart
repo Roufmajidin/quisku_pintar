@@ -21,7 +21,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: customWidth != null ? customWidth : 148,
+      width: customWidth ?? 148,
       child: ElevatedButton(
         onPressed: () => tapped(),
         style: isFilledButton == false

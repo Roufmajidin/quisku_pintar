@@ -15,6 +15,7 @@ part 'mapel_bloc.freezed.dart';
 class MapelBloc extends Bloc<MapelEvent, MapelState> {
   final MapelUsecase mapelUsecase;
   final LoginUseCase loginUseCase = sl<LoginUseCase>();
+  // ignore: prefer_const_constructors
   MapelBloc({required this.mapelUsecase}) : super(_Initial()) {
     on<FetchPresensi>(_fetchPresensi);
     on<GetMessages>(_getMessages);

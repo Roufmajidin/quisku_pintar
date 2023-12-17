@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
+// ignore: must_be_immutable
 class HeaderContainer extends StatelessWidget {
   Widget child;
 
