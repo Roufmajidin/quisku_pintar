@@ -4,5 +4,6 @@ part of 'mapel_bloc.dart';
 class MapelState with _$MapelState {
   const factory MapelState.initial({
     @Default(<Presensi>[]) List<Presensi> presensiData,
+    @Default(FetchStatus.initial) FetchStatus fetchDataProses,
   }) = _Initial;
 }

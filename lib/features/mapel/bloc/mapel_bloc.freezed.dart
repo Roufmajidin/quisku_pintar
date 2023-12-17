@@ -323,19 +323,24 @@ abstract class FetchPresensi implements MapelEvent {
 /// @nodoc
 mixin _$MapelState {
   List<Presensi> get presensiData => throw _privateConstructorUsedError;
+  FetchStatus get fetchDataProses => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Presensi> presensiData) initial,
+    required TResult Function(
+            List<Presensi> presensiData, FetchStatus fetchDataProses)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Presensi> presensiData)? initial,
+    TResult? Function(List<Presensi> presensiData, FetchStatus fetchDataProses)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Presensi> presensiData)? initial,
+    TResult Function(List<Presensi> presensiData, FetchStatus fetchDataProses)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -367,7 +372,7 @@ abstract class $MapelStateCopyWith<$Res> {
           MapelState value, $Res Function(MapelState) then) =
       _$MapelStateCopyWithImpl<$Res, MapelState>;
   @useResult
-  $Res call({List<Presensi> presensiData});
+  $Res call({List<Presensi> presensiData, FetchStatus fetchDataProses});
 }
 
 /// @nodoc
@@ -384,12 +389,17 @@ class _$MapelStateCopyWithImpl<$Res, $Val extends MapelState>
   @override
   $Res call({
     Object? presensiData = null,
+    Object? fetchDataProses = freezed,
   }) {
     return _then(_value.copyWith(
       presensiData: null == presensiData
           ? _value.presensiData
           : presensiData // ignore: cast_nullable_to_non_nullable
               as List<Presensi>,
+      fetchDataProses: freezed == fetchDataProses
+          ? _value.fetchDataProses
+          : fetchDataProses // ignore: cast_nullable_to_non_nullable
+              as FetchStatus,
     ) as $Val);
   }
 }
@@ -402,7 +412,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Presensi> presensiData});
+  $Res call({List<Presensi> presensiData, FetchStatus fetchDataProses});
 }
 
 /// @nodoc
@@ -417,12 +427,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? presensiData = null,
+    Object? fetchDataProses = freezed,
   }) {
     return _then(_$InitialImpl(
       presensiData: null == presensiData
           ? _value._presensiData
           : presensiData // ignore: cast_nullable_to_non_nullable
               as List<Presensi>,
+      fetchDataProses: freezed == fetchDataProses
+          ? _value.fetchDataProses
+          : fetchDataProses // ignore: cast_nullable_to_non_nullable
+              as FetchStatus,
     ));
   }
 }
@@ -430,7 +445,9 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({final List<Presensi> presensiData = const <Presensi>[]})
+  const _$InitialImpl(
+      {final List<Presensi> presensiData = const <Presensi>[],
+      this.fetchDataProses = FetchStatus.initial})
       : _presensiData = presensiData;
 
   final List<Presensi> _presensiData;
@@ -443,8 +460,12 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  @JsonKey()
+  final FetchStatus fetchDataProses;
+
+  @override
   String toString() {
-    return 'MapelState.initial(presensiData: $presensiData)';
+    return 'MapelState.initial(presensiData: $presensiData, fetchDataProses: $fetchDataProses)';
   }
 
   @override
@@ -453,12 +474,16 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             const DeepCollectionEquality()
-                .equals(other._presensiData, _presensiData));
+                .equals(other._presensiData, _presensiData) &&
+            const DeepCollectionEquality()
+                .equals(other.fetchDataProses, fetchDataProses));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_presensiData));
+      runtimeType,
+      const DeepCollectionEquality().hash(_presensiData),
+      const DeepCollectionEquality().hash(fetchDataProses));
 
   @JsonKey(ignore: true)
   @override
@@ -469,27 +494,31 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Presensi> presensiData) initial,
+    required TResult Function(
+            List<Presensi> presensiData, FetchStatus fetchDataProses)
+        initial,
   }) {
-    return initial(presensiData);
+    return initial(presensiData, fetchDataProses);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Presensi> presensiData)? initial,
+    TResult? Function(List<Presensi> presensiData, FetchStatus fetchDataProses)?
+        initial,
   }) {
-    return initial?.call(presensiData);
+    return initial?.call(presensiData, fetchDataProses);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Presensi> presensiData)? initial,
+    TResult Function(List<Presensi> presensiData, FetchStatus fetchDataProses)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(presensiData);
+      return initial(presensiData, fetchDataProses);
     }
     return orElse();
   }
@@ -524,10 +553,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements MapelState {
-  const factory _Initial({final List<Presensi> presensiData}) = _$InitialImpl;
+  const factory _Initial(
+      {final List<Presensi> presensiData,
+      final FetchStatus fetchDataProses}) = _$InitialImpl;
 
   @override
   List<Presensi> get presensiData;
+  @override
+  FetchStatus get fetchDataProses;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
