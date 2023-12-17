@@ -104,6 +104,10 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                           messages:
                               'jangan lupa absen Pertemuan  ${presensi!.pertemuan}'));
                     }
+                    if (presensi == null) {
+                      sessionColor = Colors
+                          .grey; // Replace this with your desired default color
+                    }
 
                     return GestureDetector(
                       onTap: () {

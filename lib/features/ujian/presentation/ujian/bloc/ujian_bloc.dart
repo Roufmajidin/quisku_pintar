@@ -71,7 +71,7 @@ class UjianBloc extends Bloc<UjianEvent, UjianState> {
       UjianEvent event, Emitter<UjianState> emit) async {
     //TODO => get data index di state
     int? index = (event as AddAnswer).i;
-    int? currentIndex = (event as AddAnswer).u;
+    int? currentIndex = (event).u;
     // tampung datd dulu, kalo  sebelumnya sudah terisi lalu user  edit o0psi
     // yaudah edit dulu baru masukkin ke state
     List<List<int?>> updatedSelectedOptions = List.from(state.selectedOptions);
