@@ -28,7 +28,7 @@ class _DetailMapelViewState extends State<DetailMapelView> {
   @override
   void initState() {
     super.initState();
-    context.read<MapelBloc>().add(FetchPresensi(mapelId: widget.mapel.id));
+    fetcUlang();
   }
 
   fetcUlang() {
@@ -37,8 +37,6 @@ class _DetailMapelViewState extends State<DetailMapelView> {
 
   @override
   Widget build(BuildContext context) {
-    String u = '';
-
     // Cari objek pelatihan berdasarkan title di dalam dataPelatihan
     // final acaraU = dataAcara.firstWhere((p) => p['title'] == title);
     // log(ujian.guru);
@@ -52,9 +50,10 @@ class _DetailMapelViewState extends State<DetailMapelView> {
       ),
       body: RefreshIndicator(
         color: AppColors.primary.pr10,
+        displacement: 6.0,
         onRefresh: () async {
           fetcUlang();
-          return Future<void>.delayed(const Duration(seconds: 3));
+          return Future<void>.delayed(const Duration(seconds: 5));
         },
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 16),

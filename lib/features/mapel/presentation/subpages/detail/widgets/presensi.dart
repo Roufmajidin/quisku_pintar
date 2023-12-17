@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
+import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
@@ -11,6 +12,7 @@ import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 
 import 'garis-garis.dart';
+import 'widget.dart';
 
 // ignore: camel_case_types, must_be_immutable
 class PresensiWidget extends StatefulWidget {
@@ -33,12 +35,12 @@ class _PresensiWidgetState extends State<PresensiWidget> {
     return BlocBuilder<MapelBloc, MapelState>(
       builder: (context, state) {
         if (state.fetchDataProses == FetchStatus.loading) {
-          return SizedBox(
+          return const SizedBox(
             height: 15,
             width: 15,
-            child: CircularProgressIndicator(
-              color: AppColors.neutral.ne09,
-            ),
+            // child: CircularProgressIndicator(
+            //   color: AppColors.neutral.ne09,
+            // ),
           );
         }
         return Padding(
@@ -76,7 +78,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                 ),
               ),
               const SizedBox(
-                height: 8,
+                height: 16,
               ),
               SizedBox(
                 height: 40,
@@ -109,12 +111,39 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                           log('kosong');
                         } else if (presensi?.created_at.day !=
                             DateTime.now().day) {
-                          log('tidak bisa absen pertemuan ${presensi?.pertemuan}, sudah kelewat');
+                          showDialog(
+                            // barrierDismissible: false,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return showD('lewat', index + 1);
+                            },
+                          );
                         } else if (presensi?.created_at.day ==
-                            DateTime.now().day) {
+                                DateTime.now().day &&
+                            presensi?.updated_at == null) {
                           log(presensi!.pertemuan.toString());
 
                           log('mau absen pertemuan ${presensi.pertemuan.toString()} ?');
+                          showDialog(
+                            // barrierDismissible: false,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return showD('belum', index + 1);
+                            },
+                          );
+                        } else if (presensi?.created_at.day ==
+                                DateTime.now().day &&
+                            presensi?.updated_at != null) {
+                          log(presensi!.pertemuan.toString());
+
+                          log('mau absen pertemuan ${presensi.pertemuan.toString()} ?');
+                          showDialog(
+                            // barrierDismissible: false,
+                            context: context,
+                            builder: (BuildContext context) {
+                              return showD('sudah', index + 1);
+                            },
+                          );
                         }
                       },
                       child: Padding(
@@ -247,6 +276,80 @@ class _PresensiWidgetState extends State<PresensiWidget> {
           ),
         );
       },
+    );
+  }
+
+  showD(String v, index) {
+    return AlertDialog(
+      backgroundColor: AppColors.neutral.ne01,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 200),
+      content: Column(
+        children: [
+          // ignore: deprecated_member_use_from_same_package
+          const SizedBox(
+            height: 16,
+          ),
+          if (v == "sudah") Assets.icons.selesai1.svg(height: 100),
+
+          if (v == 'belum' || v == 'lewat')
+            Assets.icons.iconWarningKonversi.image(height: 100),
+
+          const SizedBox(
+            height: 16,
+          ),
+          Text(
+            'Presensi',
+            textAlign: TextAlign.center,
+            style: AppTextStyle.body2.setSemiBold(),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          if (v == 'belum')
+            Text(
+              'Anda mau absen pertemuan $index ',
+              // textAlign: TextAlign.center,
+              style: AppTextStyle.body3,
+            ),
+          if (v == 'lewat')
+            Text(
+              'Status absen anda terlewat pada pertemuan $index',
+              // textAlign: TextAlign.center,
+              style: AppTextStyle.body3,
+            ),
+          if (v == 'sudah')
+            Text(
+              'Anda sudah absen pada pertemuan $index',
+              // textAlign: TextAlign.center,
+              style: AppTextStyle.body3,
+            ),
+          const SizedBox(
+            height: 24,
+          ),
+
+          Column(
+            children: [
+              if (v == 'belum')
+                ButtonWidget(
+                    customWidth: double.infinity,
+                    label: 'Absen',
+                    isFilledButton: true,
+                    tapped: () {}),
+              ButtonWidget(
+                customWidth: double.infinity,
+                label: v == 'lewat' || v == 'sudah' ? 'Kembali' : 'Batal',
+                isFilledButton: false,
+                tapped: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

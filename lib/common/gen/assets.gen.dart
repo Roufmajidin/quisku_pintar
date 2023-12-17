@@ -161,6 +161,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home1.svg
   SvgGenImage get home1 => const SvgGenImage('assets/icons/home1.svg');
 
+  /// File path: assets/icons/icon-warning-konversi.png
+  AssetGenImage get iconWarningKonversi =>
+      const AssetGenImage('assets/icons/icon-warning-konversi.png');
+
   /// File path: assets/icons/iconBulan.svg
   SvgGenImage get iconBulan => const SvgGenImage('assets/icons/iconBulan.svg');
 
@@ -354,6 +358,7 @@ class $AssetsIconsGen {
         google,
         home,
         home1,
+        iconWarningKonversi,
         iconBulan,
         iconJadwal,
         iconMinggu,
