@@ -2,13 +2,15 @@ import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
+import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/widgets/log_tugas.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/widgets/presensi.dart';
 
-class DetailMapelView extends StatelessWidget {
+class DetailMapelView extends StatefulWidget {
   final Pelajaran mapel;
   // final int ujianId;
 
@@ -19,6 +21,17 @@ class DetailMapelView extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<DetailMapelView> createState() => _DetailMapelViewState();
+}
+
+class _DetailMapelViewState extends State<DetailMapelView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MapelBloc>().add(FetchPresensi(mapelId: widget.mapel.id));
+  }
+
+  @override
   Widget build(BuildContext context) {
     // Cari objek pelatihan berdasarkan title di dalam dataPelatihan
     // final acaraU = dataAcara.firstWhere((p) => p['title'] == title);
@@ -27,7 +40,7 @@ class DetailMapelView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          mapel.mapel,
+          widget.mapel.mapel,
           style: AppTextStyle.body3.setSemiBold(),
         ),
       ),
@@ -47,7 +60,7 @@ class DetailMapelView extends StatelessWidget {
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: CachedNetworkImage(
-                        imageUrl: mapel.images,
+                        imageUrl: widget.mapel.images,
                         fit: BoxFit.cover,
                       )),
                 ),
@@ -58,14 +71,14 @@ class DetailMapelView extends StatelessWidget {
                       height: 24,
                     ),
                     Text(
-                      mapel.mapel,
+                      widget.mapel.mapel,
                       style: AppTextStyle.body3.setSemiBold(),
                     ),
                     const SizedBox(
                       height: 2,
                     ),
                     Text(
-                      mapel.guru,
+                      widget.mapel.guru,
                       textAlign: TextAlign.justify,
                       style: AppTextStyle.body4
                           .setRegular()
@@ -91,7 +104,7 @@ class DetailMapelView extends StatelessWidget {
                               children: [
                                 ListView(
                                   children: [
-                                    PresensiWidget(data: mapel),
+                                    PresensiWidget(data: widget.mapel),
                                   ],
                                 ),
                                 ListView(
@@ -101,7 +114,7 @@ class DetailMapelView extends StatelessWidget {
                                 ),
                                 ListView(
                                   children: [
-                                    LogTugas(data: mapel),
+                                    LogTugas(data: widget.mapel),
                                   ],
                                 ),
                               ],

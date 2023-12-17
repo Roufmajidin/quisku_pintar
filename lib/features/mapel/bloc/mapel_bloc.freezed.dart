@@ -19,19 +19,19 @@ mixin _$MapelEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int userId, int mapelId) fetchPresensi,
+    required TResult Function(int? mapelId) fetchPresensi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int userId, int mapelId)? fetchPresensi,
+    TResult? Function(int? mapelId)? fetchPresensi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int userId, int mapelId)? fetchPresensi,
+    TResult Function(int? mapelId)? fetchPresensi,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int userId, int mapelId) fetchPresensi,
+    required TResult Function(int? mapelId) fetchPresensi,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int userId, int mapelId)? fetchPresensi,
+    TResult? Function(int? mapelId)? fetchPresensi,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int userId, int mapelId)? fetchPresensi,
+    TResult Function(int? mapelId)? fetchPresensi,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,7 +182,7 @@ abstract class _$$FetchPresensiImplCopyWith<$Res> {
           _$FetchPresensiImpl value, $Res Function(_$FetchPresensiImpl) then) =
       __$$FetchPresensiImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int userId, int mapelId});
+  $Res call({int? mapelId});
 }
 
 /// @nodoc
@@ -196,18 +196,13 @@ class __$$FetchPresensiImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? mapelId = null,
+    Object? mapelId = freezed,
   }) {
     return _then(_$FetchPresensiImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      mapelId: null == mapelId
+      mapelId: freezed == mapelId
           ? _value.mapelId
           : mapelId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -215,16 +210,14 @@ class __$$FetchPresensiImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchPresensiImpl implements FetchPresensi {
-  const _$FetchPresensiImpl({required this.userId, required this.mapelId});
+  const _$FetchPresensiImpl({this.mapelId});
 
   @override
-  final int userId;
-  @override
-  final int mapelId;
+  final int? mapelId;
 
   @override
   String toString() {
-    return 'MapelEvent.fetchPresensi(userId: $userId, mapelId: $mapelId)';
+    return 'MapelEvent.fetchPresensi(mapelId: $mapelId)';
   }
 
   @override
@@ -232,12 +225,11 @@ class _$FetchPresensiImpl implements FetchPresensi {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchPresensiImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.mapelId, mapelId) || other.mapelId == mapelId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId, mapelId);
+  int get hashCode => Object.hash(runtimeType, mapelId);
 
   @JsonKey(ignore: true)
   @override
@@ -249,29 +241,29 @@ class _$FetchPresensiImpl implements FetchPresensi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int userId, int mapelId) fetchPresensi,
+    required TResult Function(int? mapelId) fetchPresensi,
   }) {
-    return fetchPresensi(userId, mapelId);
+    return fetchPresensi(mapelId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int userId, int mapelId)? fetchPresensi,
+    TResult? Function(int? mapelId)? fetchPresensi,
   }) {
-    return fetchPresensi?.call(userId, mapelId);
+    return fetchPresensi?.call(mapelId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int userId, int mapelId)? fetchPresensi,
+    TResult Function(int? mapelId)? fetchPresensi,
     required TResult orElse(),
   }) {
     if (fetchPresensi != null) {
-      return fetchPresensi(userId, mapelId);
+      return fetchPresensi(mapelId);
     }
     return orElse();
   }
@@ -309,12 +301,9 @@ class _$FetchPresensiImpl implements FetchPresensi {
 }
 
 abstract class FetchPresensi implements MapelEvent {
-  const factory FetchPresensi(
-      {required final int userId,
-      required final int mapelId}) = _$FetchPresensiImpl;
+  const factory FetchPresensi({final int? mapelId}) = _$FetchPresensiImpl;
 
-  int get userId;
-  int get mapelId;
+  int? get mapelId;
   @JsonKey(ignore: true)
   _$$FetchPresensiImplCopyWith<_$FetchPresensiImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -389,14 +378,14 @@ class _$MapelStateCopyWithImpl<$Res, $Val extends MapelState>
   @override
   $Res call({
     Object? presensiData = null,
-    Object? fetchDataProses = freezed,
+    Object? fetchDataProses = null,
   }) {
     return _then(_value.copyWith(
       presensiData: null == presensiData
           ? _value.presensiData
           : presensiData // ignore: cast_nullable_to_non_nullable
               as List<Presensi>,
-      fetchDataProses: freezed == fetchDataProses
+      fetchDataProses: null == fetchDataProses
           ? _value.fetchDataProses
           : fetchDataProses // ignore: cast_nullable_to_non_nullable
               as FetchStatus,
@@ -427,14 +416,14 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? presensiData = null,
-    Object? fetchDataProses = freezed,
+    Object? fetchDataProses = null,
   }) {
     return _then(_$InitialImpl(
       presensiData: null == presensiData
           ? _value._presensiData
           : presensiData // ignore: cast_nullable_to_non_nullable
               as List<Presensi>,
-      fetchDataProses: freezed == fetchDataProses
+      fetchDataProses: null == fetchDataProses
           ? _value.fetchDataProses
           : fetchDataProses // ignore: cast_nullable_to_non_nullable
               as FetchStatus,
@@ -475,15 +464,13 @@ class _$InitialImpl implements _Initial {
             other is _$InitialImpl &&
             const DeepCollectionEquality()
                 .equals(other._presensiData, _presensiData) &&
-            const DeepCollectionEquality()
-                .equals(other.fetchDataProses, fetchDataProses));
+            (identical(other.fetchDataProses, fetchDataProses) ||
+                other.fetchDataProses == fetchDataProses));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_presensiData),
-      const DeepCollectionEquality().hash(fetchDataProses));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_presensiData), fetchDataProses);
 
   @JsonKey(ignore: true)
   @override

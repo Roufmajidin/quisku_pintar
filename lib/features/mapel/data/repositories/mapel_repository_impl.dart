@@ -5,8 +5,8 @@ import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 import 'package:quisku_pintar/features/mapel/data/repositories/mapel_repository.dart';
 
 class MapelRepositoryImpl implements MapelRepository {
-  final MapelDatasources mapelData;
-  MapelRepositoryImpl({required this.mapelData});
+  final MapelDatasources mapelData = MapelDatasources();
+  // MapelRepositoryImpl({required this.mapelData});
   @override
   Future<Either<Failure, List<Presensi>>> getPresensi(
       {required int userId, required int mapelId}) async {
