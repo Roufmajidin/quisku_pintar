@@ -15,7 +15,6 @@ import 'garis-garis.dart';
 // ignore: camel_case_types, must_be_immutable
 class PresensiWidget extends StatefulWidget {
   Pelajaran data;
-  // final Function(String ucapan) callBack;
   PresensiWidget({super.key, required this.data});
 
   @override
@@ -47,9 +46,34 @@ class _PresensiWidgetState extends State<PresensiWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                notify,
-                style: AppTextStyle.body3.setSemiBold(),
+              // pengingat absens
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.danger.dng04.withOpacity(0.2),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Pengingat !',
+                          style: AppTextStyle.body2
+                              .setSemiBold()
+                              .copyWith(color: AppColors.danger.dng04),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      state.messages,
+                      style: AppTextStyle.body3
+                          .copyWith(color: AppColors.danger.dng04),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 8,
@@ -74,9 +98,11 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                         presensi?.updated_at != null ? Colors.blue : Colors.red;
                     if (presensi?.created_at.day == DateTime.now().day) {
                       // notif('');
-                      notif(
-                          ' jangan lupa absen pertemuan ${presensi?.pertemuan}');
+                      context.read<MapelBloc>().add(GetMessages(
+                          messages:
+                              'jangan lupa absen Pertemuan  ${presensi!.pertemuan}'));
                     }
+
                     return GestureDetector(
                       onTap: () {
                         if (presensi?.pertemuan == null) {

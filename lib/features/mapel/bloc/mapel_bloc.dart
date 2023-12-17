@@ -17,6 +17,7 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
   final LoginUseCase loginUseCase = sl<LoginUseCase>();
   MapelBloc({required this.mapelUsecase}) : super(_Initial()) {
     on<FetchPresensi>(_fetchPresensi);
+    on<GetMessages>(_getMessages);
   }
   Future<void> _fetchPresensi(
       MapelEvent event, Emitter<MapelState> emit) async {
@@ -39,5 +40,11 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
       emit(state.copyWith(fetchDataProses: FetchStatus.success));
       emit(state.copyWith(presensiData: r));
     });
+  }
+
+  _getMessages(MapelEvent event, Emitter<MapelState> emit) {
+    String? mess = (event as GetMessages).messages;
+
+    emit(state.copyWith(messages: mess ?? ''));
   }
 }
