@@ -7,7 +7,7 @@ class MapelUsecase {
   final MapelRepositoryImpl mapelRe = MapelRepositoryImpl();
   // MapelUsecase({required this.mapelRe});
   Future<Either<Failure, List<Presensi>>> getPresensi(
-      {required int userId, required int mapelId}) async {
+      {required int? userId, required int? mapelId}) async {
     return await mapelRe.getPresensi(userId: userId, mapelId: mapelId);
   }
 }

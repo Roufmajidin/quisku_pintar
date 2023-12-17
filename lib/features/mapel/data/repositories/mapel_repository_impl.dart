@@ -9,7 +9,7 @@ class MapelRepositoryImpl implements MapelRepository {
   // MapelRepositoryImpl({required this.mapelData});
   @override
   Future<Either<Failure, List<Presensi>>> getPresensi(
-      {required int userId, required int mapelId}) async {
+      {required int? userId, required int? mapelId}) async {
     // TODO: implement getPresensi
     try {
       final res = await mapelData.getPresensi(userId: userId, mapelId: mapelId);

@@ -10,8 +10,8 @@ abstract class Presensi with _$Presensi {
     required int mapel_id,
     required int pertemuan,
     required int status,
-    required int created_at,
-    int? updated_at,
+    required DateTime created_at,
+    DateTime? updated_at,
   }) = _Presensi;
   factory Presensi.fromJson(Map<String, dynamic> json) =>
       _$PresensiFromJson(json);

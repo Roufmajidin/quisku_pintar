@@ -22,6 +22,7 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
       MapelEvent event, Emitter<MapelState> emit) async {
     emit(state.copyWith(fetchDataProses: FetchStatus.loading));
     log('fetch prenssi');
+    int? mapelId = (event as FetchPresensi).mapelId;
     // get userid
     final String t = await loginUseCase.getLocalToken();
     final getLoged = await loginUseCase.getLogedUser(t);
@@ -30,5 +31,13 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
         (l) => emit(state.copyWith(fetchDataProses: FetchStatus.failure)),
         (r) => userId = r.id);
     log('user Id = $userId');
+    final getPresensi =
+        await mapelUsecase.getPresensi(userId: userId, mapelId: mapelId);
+    log('get presensi $getPresensi');
+    getPresensi.fold(
+        (l) => emit(state.copyWith(fetchDataProses: FetchStatus.failure)), (r) {
+      emit(state.copyWith(fetchDataProses: FetchStatus.success));
+      emit(state.copyWith(presensiData: r));
+    });
   }
 }

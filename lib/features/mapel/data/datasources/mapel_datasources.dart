@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
@@ -10,7 +11,7 @@ class MapelDatasources {
       'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
 
   Future<Either<Failure, List<Presensi>>> getPresensi(
-      {required int userId, required int mapelId}) async {
+      {required int? userId, required int? mapelId}) async {
     // parse link dari realtime database,
     //agar server ngrok lokal bisa autoload pada masing masing device
     final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
@@ -19,8 +20,12 @@ class MapelDatasources {
     try {
       final res =
           await http.get(Uri.parse('$urlLink/fetchAbsen/$userId/$mapelId'));
+
       if (res.statusCode == 200) {
         final Map<String, dynamic> jsonDataList = jsonDecode(res.body);
+
+        // final Map<String, dynamic> rawData = jsonDataList['data'];
+        // log('data ${rawData}');
         final List<Map<String, dynamic>> result =
             List.from(jsonDataList['data']);
         final List<Presensi> presensi =

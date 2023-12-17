@@ -24,8 +24,8 @@ mixin _$Presensi {
   int get mapel_id => throw _privateConstructorUsedError;
   int get pertemuan => throw _privateConstructorUsedError;
   int get status => throw _privateConstructorUsedError;
-  int get created_at => throw _privateConstructorUsedError;
-  int? get updated_at => throw _privateConstructorUsedError;
+  DateTime get created_at => throw _privateConstructorUsedError;
+  DateTime? get updated_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,8 +43,8 @@ abstract class $PresensiCopyWith<$Res> {
       int mapel_id,
       int pertemuan,
       int status,
-      int created_at,
-      int? updated_at});
+      DateTime created_at,
+      DateTime? updated_at});
 }
 
 /// @nodoc
@@ -87,11 +87,11 @@ class _$PresensiCopyWithImpl<$Res, $Val extends Presensi>
       created_at: null == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
-              as int,
+              as DateTime,
       updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -109,8 +109,8 @@ abstract class _$$PresensiImplCopyWith<$Res>
       int mapel_id,
       int pertemuan,
       int status,
-      int created_at,
-      int? updated_at});
+      DateTime created_at,
+      DateTime? updated_at});
 }
 
 /// @nodoc
@@ -151,11 +151,11 @@ class __$$PresensiImplCopyWithImpl<$Res>
       created_at: null == created_at
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
-              as int,
+              as DateTime,
       updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as DateTime?,
     ));
   }
 }
@@ -183,9 +183,9 @@ class _$PresensiImpl implements _Presensi {
   @override
   final int status;
   @override
-  final int created_at;
+  final DateTime created_at;
   @override
-  final int? updated_at;
+  final DateTime? updated_at;
 
   @override
   String toString() {
@@ -234,8 +234,8 @@ abstract class _Presensi implements Presensi {
       required final int mapel_id,
       required final int pertemuan,
       required final int status,
-      required final int created_at,
-      final int? updated_at}) = _$PresensiImpl;
+      required final DateTime created_at,
+      final DateTime? updated_at}) = _$PresensiImpl;
 
   factory _Presensi.fromJson(Map<String, dynamic> json) =
       _$PresensiImpl.fromJson;
@@ -249,9 +249,9 @@ abstract class _Presensi implements Presensi {
   @override
   int get status;
   @override
-  int get created_at;
+  DateTime get created_at;
   @override
-  int? get updated_at;
+  DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)
   _$$PresensiImplCopyWith<_$PresensiImpl> get copyWith =>
