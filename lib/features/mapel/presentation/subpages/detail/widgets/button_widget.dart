@@ -38,18 +38,9 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       width: widget.customWidth ?? 148,
       child: ElevatedButton(
         onPressed: () async {
-          setState(() {
-            loads = true;
-            // Future.delayed(Duration(seconds: 3));
-          });
-          if (loads == true) {
-            setState(() {
-              loads == false;
-            });
-          }
-          await Future.delayed(Duration(seconds: 3));
+          widget.tapped(true);
 
-          await widget.tapped(loads == true ? true : false);
+          // await Future.delayed(Duration(seconds: 3));
         },
         style: widget.isFilledButton == false
             ? ElevatedButton.styleFrom(

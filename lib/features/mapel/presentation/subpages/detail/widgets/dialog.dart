@@ -15,7 +15,7 @@ showD(String v, index, ctx, idAbsen, context) {
       borderRadius: BorderRadius.circular(8),
     ),
     // ignore: prefer_const_constructors
-    insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 200),
+    insetPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 230),
     content: Column(
       children: [
         // ignore: deprecated_member_use_from_same_package

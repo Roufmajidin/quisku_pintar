@@ -50,9 +50,9 @@ class _PresensiWidgetState extends State<PresensiWidget> {
             child: ShimmerLoadWidget(widget: widget, state: state),
           );
         }
-        if (state.statusPost == 300) {
-          widget.refresh(true);
-        }
+        // if (state.statusPost == 300) {
+        //   widget.refresh(true);
+        // }
         log(load.toString());
         return Padding(
           padding: const EdgeInsets.only(top: 24),
@@ -104,6 +104,8 @@ class _PresensiWidgetState extends State<PresensiWidget> {
 
                       child: GestureDetector(
                         onTap: () {
+                          log('id ${presensi?.id} pertemuan : ${presensi?.pertemuan} c: ${presensi?.created_at}');
+
                           if (presensi?.pertemuan == null) {
                             log('kosong');
                           } else if (presensi?.created_at.day !=
@@ -118,8 +120,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                               },
                             );
                           } else if (presensi?.created_at.day ==
-                                  DateTime.now().day &&
-                              presensi?.updated_at == null) {
+                              DateTime.now().day) {
                             log(presensi!.pertemuan.toString());
 
                             log('mau absen pertemuan ${presensi.pertemuan.toString()} ?');
@@ -185,7 +186,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                                   widget.refresh(true);
                                                 });
                                                 if (value == true) {
-                                                  Navigator.pop(ctx);
+                                                  Navigator.pop(context);
                                                 }
                                               }),
 
@@ -194,7 +195,9 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                             label: 'Batal',
                                             isFilledButton: false,
                                             tapped: (value) {
-                                              Navigator.pop(ctx);
+                                              setState(() {
+                                                Navigator.pop(context);
+                                              });
                                             },
                                           )
                                         ],
@@ -202,20 +205,6 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                     ],
                                   ),
                                 );
-                              },
-                            );
-                          } else if (presensi?.created_at.day ==
-                                  DateTime.now().day &&
-                              presensi?.updated_at != null) {
-                            log(presensi!.pertemuan.toString());
-
-                            log('mau absen pertemuan ${presensi.pertemuan.toString()} ?');
-                            showDialog(
-                              // barrierDismissible: false,
-                              context: context,
-                              builder: (BuildContext ctx) {
-                                return showD('sudah', index + 1, ctx,
-                                    presensi?.id, context);
                               },
                             );
                           } else if (presensi?.created_at.day !=

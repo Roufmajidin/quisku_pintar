@@ -20,8 +20,9 @@ class ShimmerLoadWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      // loop: 1,
-      enabled: true,
+      loop: 3,
+      // enabled: true,
+      period: Duration(seconds: 4),
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
       child: Column(

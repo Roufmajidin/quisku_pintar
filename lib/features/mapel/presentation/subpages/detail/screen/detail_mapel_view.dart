@@ -125,9 +125,7 @@ class _DetailMapelViewState extends State<DetailMapelView> {
                                           PresensiWidget(
                                             refresh: (value) {
                                               log('value $value');
-                                              if (value == true) {
-                                                fetcUlang();
-                                              }
+                                              fetcUlang();
                                             },
                                             data: widget.mapel,
                                           ),
