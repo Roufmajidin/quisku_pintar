@@ -19,7 +19,7 @@ class CardWidget extends StatelessWidget {
       ),
       elevation: 0,
       child: Container(
-        height: 200,
+        // height: 200,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

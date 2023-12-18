@@ -16,7 +16,7 @@ class Pengingat extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         color: shimmer == true
             ? Colors.grey
-            : AppColors.danger.dng04.withOpacity(0.2),
+            : AppColors.primary.pr10.withOpacity(0.1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,13 +28,13 @@ class Pengingat extends StatelessWidget {
                 'Pengingat !',
                 style: AppTextStyle.body2
                     .setSemiBold()
-                    .copyWith(color: AppColors.danger.dng04),
+                    .copyWith(color: AppColors.primary.pr10),
               ),
             ],
           ),
           Text(
             state.messages,
-            style: AppTextStyle.body3.copyWith(color: AppColors.danger.dng04),
+            style: AppTextStyle.body3.copyWith(color: AppColors.primary.pr10),
           ),
         ],
       ),

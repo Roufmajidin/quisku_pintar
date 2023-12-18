@@ -109,7 +109,7 @@ class _DetailMapelViewState extends State<DetailMapelView> {
                               ],
                             ),
                             SizedBox(
-                              height: 300,
+                              height: 500,
                               child: TabBarView(
                                 children: [
                                   ListView(
