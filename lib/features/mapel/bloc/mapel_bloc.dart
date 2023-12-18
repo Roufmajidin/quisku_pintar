@@ -19,7 +19,24 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
   MapelBloc({required this.mapelUsecase}) : super(_Initial()) {
     on<FetchPresensi>(_fetchPresensi);
     on<GetMessages>(_getMessages);
+    on<PresentSekarang>(_presenSekarang);
   }
+  // todo : post presensi
+  Future<void> _presenSekarang(
+      MapelEvent event, Emitter<MapelState> emit) async {
+    emit(state.copyWith(fetchDataProses: FetchStatus.loading));
+    emit(state.copyWith(statusPost: 300));
+
+    int? idAbsen = (event as PresentSekarang).idAbsen;
+    log(state.statusPost.toString());
+    final res = await mapelUsecase.postAbsen(idAbsen: idAbsen);
+    log(res.toString());
+    res.fold((l) => emit(state.copyWith(statusPost: 401)), (r) {
+      emit(state.copyWith(fetchDataProses: FetchStatus.success));
+      emit(state.copyWith(statusPost: res));
+    });
+  }
+
   Future<void> _fetchPresensi(
       MapelEvent event, Emitter<MapelState> emit) async {
     emit(state.copyWith(fetchDataProses: FetchStatus.loading));

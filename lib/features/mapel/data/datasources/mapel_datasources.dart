@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
@@ -33,6 +34,32 @@ class MapelDatasources {
         return right(presensi);
       }
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
+    } catch (e) {
+      return const Left(Failure.serverFailure());
+    }
+  }
+  // TODO :: post Absensi byId
+
+  Future<Either<Failure, int>> postPresensi({required int? idAbsen}) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String urlLink = json.decode(respons.body);
+
+    //
+    log('$urlLink/postAbsen/$idAbsen');
+    try {
+      final res =
+          await http.post(Uri.parse('$urlLink/postAbsen/$idAbsen'), body: {
+        'waktu_presensi': DateTime.now().toString(),
+        // 'status': 1,
+      });
+      log(res.statusCode.toString());
+      if (res.statusCode == 200) {
+        return right(res.statusCode);
+      }
+      return const Left(Failure.parsingFailure(message: "Gagal Post Dimuat"));
     } catch (e) {
       return const Left(Failure.serverFailure());
     }

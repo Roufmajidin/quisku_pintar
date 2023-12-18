@@ -20,11 +20,14 @@ Presensi _$PresensiFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Presensi {
-  int get id => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
   int get mapel_id => throw _privateConstructorUsedError;
   int get pertemuan => throw _privateConstructorUsedError;
-  int get status => throw _privateConstructorUsedError;
-  DateTime get created_at => throw _privateConstructorUsedError;
+  int get status =>
+      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  DateTime get created_at =>
+      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -176,14 +179,17 @@ class _$PresensiImpl implements _Presensi {
 
   @override
   final int id;
+// ignore: non_constant_identifier_names
   @override
   final int mapel_id;
   @override
   final int pertemuan;
   @override
   final int status;
+// ignore: non_constant_identifier_names
   @override
   final DateTime created_at;
+// ignore: non_constant_identifier_names
   @override
   final DateTime? updated_at;
 
@@ -242,15 +248,15 @@ abstract class _Presensi implements Presensi {
 
   @override
   int get id;
-  @override
+  @override // ignore: non_constant_identifier_names
   int get mapel_id;
   @override
   int get pertemuan;
   @override
   int get status;
-  @override
+  @override // ignore: non_constant_identifier_names
   DateTime get created_at;
-  @override
+  @override // ignore: non_constant_identifier_names
   DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)

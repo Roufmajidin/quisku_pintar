@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
+import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
@@ -16,7 +17,8 @@ import 'widget.dart';
 // ignore: camel_case_types, must_be_immutable
 class PresensiWidget extends StatefulWidget {
   Pelajaran data;
-  PresensiWidget({super.key, required this.data});
+  final Function(bool) refresh;
+  PresensiWidget({super.key, required this.data, required this.refresh});
 
   @override
   State<PresensiWidget> createState() => _PresensiWidgetState();
@@ -37,6 +39,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
     return formattedDateTime;
   }
 
+  bool load = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MapelBloc, MapelState>(
@@ -47,6 +50,10 @@ class _PresensiWidgetState extends State<PresensiWidget> {
             child: ShimmerLoadWidget(widget: widget, state: state),
           );
         }
+        if (state.statusPost == 300) {
+          widget.refresh(true);
+        }
+        log(load.toString());
         return Padding(
           padding: const EdgeInsets.only(top: 24),
           child: Column(
@@ -90,6 +97,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                     return Tooltip(
                       // message: presensi?.updated_at.toString(),
                       //  richMessage: InlineSpan,
+
                       message: presensi?.updated_at == null
                           ? 'Tidak Absen'
                           : formatCurren(presensi!.updated_at.toString()),
@@ -104,8 +112,9 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                             showDialog(
                               // barrierDismissible: false,
                               context: context,
-                              builder: (BuildContext context) {
-                                return showD('sudah', index + 1, context);
+                              builder: (BuildContext ctx) {
+                                return showD('sudah', index + 1, ctx,
+                                    presensi?.id, context);
                               },
                             );
                           } else if (presensi?.created_at.day ==
@@ -114,11 +123,85 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                             log(presensi!.pertemuan.toString());
 
                             log('mau absen pertemuan ${presensi.pertemuan.toString()} ?');
+                            // setState(() {});
+
                             showDialog(
                               // barrierDismissible: false,
                               context: context,
-                              builder: (BuildContext context) {
-                                return showD('belum', index + 1, context);
+                              builder: (BuildContext ctx) {
+                                return AlertDialog(
+                                  backgroundColor: AppColors.neutral.ne01,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  // ignore: prefer_const_constructors
+                                  insetPadding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 200),
+                                  content: Column(
+                                    children: [
+                                      // ignore: deprecated_member_use_from_same_package
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      Assets.icons.iconWarningKonversi
+                                          .image(height: 100),
+
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      Text(
+                                        'Presensi',
+                                        textAlign: TextAlign.center,
+                                        style: AppTextStyle.body2.setSemiBold(),
+                                      ),
+                                      const SizedBox(
+                                        height: 24,
+                                      ),
+                                      Text(
+                                        'Anda mau absen pertemuan ${index + 1} ',
+                                        // textAlign: TextAlign.center,
+                                        style: AppTextStyle.body3,
+                                      ),
+
+                                      const SizedBox(
+                                        height: 24,
+                                      ),
+
+                                      Column(
+                                        children: [
+                                          // if (load == false)
+
+                                          ButtonWidget(
+                                              customWidth: double.infinity,
+                                              label: 'Absen',
+                                              isFilledButton: true,
+                                              // load: load,
+                                              tapped: (value) {
+                                                // log('ok');
+                                                context.read<MapelBloc>().add(
+                                                    PresentSekarang(
+                                                        idAbsen: presensi?.id));
+                                                setState(() {
+                                                  widget.refresh(true);
+                                                });
+                                                if (value == true) {
+                                                  Navigator.pop(ctx);
+                                                }
+                                              }),
+
+                                          ButtonWidget(
+                                            customWidth: double.infinity,
+                                            label: 'Batal',
+                                            isFilledButton: false,
+                                            tapped: (value) {
+                                              Navigator.pop(ctx);
+                                            },
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                );
                               },
                             );
                           } else if (presensi?.created_at.day ==
@@ -130,8 +213,9 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                             showDialog(
                               // barrierDismissible: false,
                               context: context,
-                              builder: (BuildContext context) {
-                                return showD('sudah', index + 1, context);
+                              builder: (BuildContext ctx) {
+                                return showD('sudah', index + 1, ctx,
+                                    presensi?.id, context);
                               },
                             );
                           } else if (presensi?.created_at.day !=
@@ -140,8 +224,9 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                             showDialog(
                               // barrierDismissible: false,
                               context: context,
-                              builder: (BuildContext context) {
-                                return showD('lewat', index + 1, context);
+                              builder: (BuildContext ctx) {
+                                return showD('lewat', index + 1, ctx,
+                                    presensi?.id, context);
                               },
                             );
                           }

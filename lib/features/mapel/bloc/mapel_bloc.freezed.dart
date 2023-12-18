@@ -21,6 +21,7 @@ mixin _$MapelEvent {
     required TResult Function() started,
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
+    required TResult Function(int? idAbsen) presenSekarang,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$MapelEvent {
     TResult? Function()? started,
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
+    TResult? Function(int? idAbsen)? presenSekarang,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$MapelEvent {
     TResult Function()? started,
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
+    TResult Function(int? idAbsen)? presenSekarang,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$MapelEvent {
     required TResult Function(_Started value) started,
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
+    required TResult Function(PresentSekarang value) presenSekarang,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$MapelEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
+    TResult? Function(PresentSekarang value)? presenSekarang,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$MapelEvent {
     TResult Function(_Started value)? started,
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
+    TResult Function(PresentSekarang value)? presenSekarang,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
+    required TResult Function(int? idAbsen) presenSekarang,
   }) {
     return started();
   }
@@ -131,6 +138,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
+    TResult? Function(int? idAbsen)? presenSekarang,
   }) {
     return started?.call();
   }
@@ -141,6 +149,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
+    TResult Function(int? idAbsen)? presenSekarang,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -155,6 +164,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
+    required TResult Function(PresentSekarang value) presenSekarang,
   }) {
     return started(this);
   }
@@ -165,6 +175,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
+    TResult? Function(PresentSekarang value)? presenSekarang,
   }) {
     return started?.call(this);
   }
@@ -175,6 +186,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
+    TResult Function(PresentSekarang value)? presenSekarang,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +267,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     required TResult Function() started,
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
+    required TResult Function(int? idAbsen) presenSekarang,
   }) {
     return fetchPresensi(mapelId);
   }
@@ -265,6 +278,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult? Function()? started,
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
+    TResult? Function(int? idAbsen)? presenSekarang,
   }) {
     return fetchPresensi?.call(mapelId);
   }
@@ -275,6 +289,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult Function()? started,
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
+    TResult Function(int? idAbsen)? presenSekarang,
     required TResult orElse(),
   }) {
     if (fetchPresensi != null) {
@@ -289,6 +304,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     required TResult Function(_Started value) started,
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
+    required TResult Function(PresentSekarang value) presenSekarang,
   }) {
     return fetchPresensi(this);
   }
@@ -299,6 +315,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult? Function(_Started value)? started,
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
+    TResult? Function(PresentSekarang value)? presenSekarang,
   }) {
     return fetchPresensi?.call(this);
   }
@@ -309,6 +326,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult Function(_Started value)? started,
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
+    TResult Function(PresentSekarang value)? presenSekarang,
     required TResult orElse(),
   }) {
     if (fetchPresensi != null) {
@@ -395,6 +413,7 @@ class _$GetMessagesImpl implements GetMessages {
     required TResult Function() started,
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
+    required TResult Function(int? idAbsen) presenSekarang,
   }) {
     return getMessage(messages);
   }
@@ -405,6 +424,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult? Function()? started,
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
+    TResult? Function(int? idAbsen)? presenSekarang,
   }) {
     return getMessage?.call(messages);
   }
@@ -415,6 +435,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult Function()? started,
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
+    TResult Function(int? idAbsen)? presenSekarang,
     required TResult orElse(),
   }) {
     if (getMessage != null) {
@@ -429,6 +450,7 @@ class _$GetMessagesImpl implements GetMessages {
     required TResult Function(_Started value) started,
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
+    required TResult Function(PresentSekarang value) presenSekarang,
   }) {
     return getMessage(this);
   }
@@ -439,6 +461,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult? Function(_Started value)? started,
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
+    TResult? Function(PresentSekarang value)? presenSekarang,
   }) {
     return getMessage?.call(this);
   }
@@ -449,6 +472,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult Function(_Started value)? started,
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
+    TResult Function(PresentSekarang value)? presenSekarang,
     required TResult orElse(),
   }) {
     if (getMessage != null) {
@@ -468,28 +492,175 @@ abstract class GetMessages implements MapelEvent {
 }
 
 /// @nodoc
+abstract class _$$PresentSekarangImplCopyWith<$Res> {
+  factory _$$PresentSekarangImplCopyWith(_$PresentSekarangImpl value,
+          $Res Function(_$PresentSekarangImpl) then) =
+      __$$PresentSekarangImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? idAbsen});
+}
+
+/// @nodoc
+class __$$PresentSekarangImplCopyWithImpl<$Res>
+    extends _$MapelEventCopyWithImpl<$Res, _$PresentSekarangImpl>
+    implements _$$PresentSekarangImplCopyWith<$Res> {
+  __$$PresentSekarangImplCopyWithImpl(
+      _$PresentSekarangImpl _value, $Res Function(_$PresentSekarangImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idAbsen = freezed,
+  }) {
+    return _then(_$PresentSekarangImpl(
+      idAbsen: freezed == idAbsen
+          ? _value.idAbsen
+          : idAbsen // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PresentSekarangImpl implements PresentSekarang {
+  const _$PresentSekarangImpl({this.idAbsen});
+
+  @override
+  final int? idAbsen;
+
+  @override
+  String toString() {
+    return 'MapelEvent.presenSekarang(idAbsen: $idAbsen)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PresentSekarangImpl &&
+            (identical(other.idAbsen, idAbsen) || other.idAbsen == idAbsen));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idAbsen);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PresentSekarangImplCopyWith<_$PresentSekarangImpl> get copyWith =>
+      __$$PresentSekarangImplCopyWithImpl<_$PresentSekarangImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int? mapelId) fetchPresensi,
+    required TResult Function(String? messages) getMessage,
+    required TResult Function(int? idAbsen) presenSekarang,
+  }) {
+    return presenSekarang(idAbsen);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int? mapelId)? fetchPresensi,
+    TResult? Function(String? messages)? getMessage,
+    TResult? Function(int? idAbsen)? presenSekarang,
+  }) {
+    return presenSekarang?.call(idAbsen);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int? mapelId)? fetchPresensi,
+    TResult Function(String? messages)? getMessage,
+    TResult Function(int? idAbsen)? presenSekarang,
+    required TResult orElse(),
+  }) {
+    if (presenSekarang != null) {
+      return presenSekarang(idAbsen);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(FetchPresensi value) fetchPresensi,
+    required TResult Function(GetMessages value) getMessage,
+    required TResult Function(PresentSekarang value) presenSekarang,
+  }) {
+    return presenSekarang(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(FetchPresensi value)? fetchPresensi,
+    TResult? Function(GetMessages value)? getMessage,
+    TResult? Function(PresentSekarang value)? presenSekarang,
+  }) {
+    return presenSekarang?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(FetchPresensi value)? fetchPresensi,
+    TResult Function(GetMessages value)? getMessage,
+    TResult Function(PresentSekarang value)? presenSekarang,
+    required TResult orElse(),
+  }) {
+    if (presenSekarang != null) {
+      return presenSekarang(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PresentSekarang implements MapelEvent {
+  const factory PresentSekarang({final int? idAbsen}) = _$PresentSekarangImpl;
+
+  int? get idAbsen;
+  @JsonKey(ignore: true)
+  _$$PresentSekarangImplCopyWith<_$PresentSekarangImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$MapelState {
   List<Presensi> get presensiData => throw _privateConstructorUsedError;
   FetchStatus get fetchDataProses => throw _privateConstructorUsedError;
+  dynamic get statusPost => throw _privateConstructorUsedError;
   String get messages => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Presensi> presensiData,
-            FetchStatus fetchDataProses, String messages)
+            FetchStatus fetchDataProses, dynamic statusPost, String messages)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Presensi> presensiData, FetchStatus fetchDataProses,
-            String messages)?
+            dynamic statusPost, String messages)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Presensi> presensiData, FetchStatus fetchDataProses,
-            String messages)?
+            dynamic statusPost, String messages)?
         initial,
     required TResult orElse(),
   }) =>
@@ -525,6 +696,7 @@ abstract class $MapelStateCopyWith<$Res> {
   $Res call(
       {List<Presensi> presensiData,
       FetchStatus fetchDataProses,
+      dynamic statusPost,
       String messages});
 }
 
@@ -543,6 +715,7 @@ class _$MapelStateCopyWithImpl<$Res, $Val extends MapelState>
   $Res call({
     Object? presensiData = null,
     Object? fetchDataProses = null,
+    Object? statusPost = freezed,
     Object? messages = null,
   }) {
     return _then(_value.copyWith(
@@ -554,6 +727,10 @@ class _$MapelStateCopyWithImpl<$Res, $Val extends MapelState>
           ? _value.fetchDataProses
           : fetchDataProses // ignore: cast_nullable_to_non_nullable
               as FetchStatus,
+      statusPost: freezed == statusPost
+          ? _value.statusPost
+          : statusPost // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       messages: null == messages
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
@@ -573,6 +750,7 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {List<Presensi> presensiData,
       FetchStatus fetchDataProses,
+      dynamic statusPost,
       String messages});
 }
 
@@ -589,6 +767,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? presensiData = null,
     Object? fetchDataProses = null,
+    Object? statusPost = freezed,
     Object? messages = null,
   }) {
     return _then(_$InitialImpl(
@@ -600,6 +779,7 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.fetchDataProses
           : fetchDataProses // ignore: cast_nullable_to_non_nullable
               as FetchStatus,
+      statusPost: freezed == statusPost ? _value.statusPost! : statusPost,
       messages: null == messages
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
@@ -614,6 +794,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {final List<Presensi> presensiData = const <Presensi>[],
       this.fetchDataProses = FetchStatus.initial,
+      this.statusPost = 401,
       this.messages = ''})
       : _presensiData = presensiData;
 
@@ -631,11 +812,14 @@ class _$InitialImpl implements _Initial {
   final FetchStatus fetchDataProses;
   @override
   @JsonKey()
+  final dynamic statusPost;
+  @override
+  @JsonKey()
   final String messages;
 
   @override
   String toString() {
-    return 'MapelState.initial(presensiData: $presensiData, fetchDataProses: $fetchDataProses, messages: $messages)';
+    return 'MapelState.initial(presensiData: $presensiData, fetchDataProses: $fetchDataProses, statusPost: $statusPost, messages: $messages)';
   }
 
   @override
@@ -647,6 +831,8 @@ class _$InitialImpl implements _Initial {
                 .equals(other._presensiData, _presensiData) &&
             (identical(other.fetchDataProses, fetchDataProses) ||
                 other.fetchDataProses == fetchDataProses) &&
+            const DeepCollectionEquality()
+                .equals(other.statusPost, statusPost) &&
             (identical(other.messages, messages) ||
                 other.messages == messages));
   }
@@ -656,6 +842,7 @@ class _$InitialImpl implements _Initial {
       runtimeType,
       const DeepCollectionEquality().hash(_presensiData),
       fetchDataProses,
+      const DeepCollectionEquality().hash(statusPost),
       messages);
 
   @JsonKey(ignore: true)
@@ -668,32 +855,32 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Presensi> presensiData,
-            FetchStatus fetchDataProses, String messages)
+            FetchStatus fetchDataProses, dynamic statusPost, String messages)
         initial,
   }) {
-    return initial(presensiData, fetchDataProses, messages);
+    return initial(presensiData, fetchDataProses, statusPost, messages);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Presensi> presensiData, FetchStatus fetchDataProses,
-            String messages)?
+            dynamic statusPost, String messages)?
         initial,
   }) {
-    return initial?.call(presensiData, fetchDataProses, messages);
+    return initial?.call(presensiData, fetchDataProses, statusPost, messages);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Presensi> presensiData, FetchStatus fetchDataProses,
-            String messages)?
+            dynamic statusPost, String messages)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(presensiData, fetchDataProses, messages);
+      return initial(presensiData, fetchDataProses, statusPost, messages);
     }
     return orElse();
   }
@@ -731,12 +918,15 @@ abstract class _Initial implements MapelState {
   const factory _Initial(
       {final List<Presensi> presensiData,
       final FetchStatus fetchDataProses,
+      final dynamic statusPost,
       final String messages}) = _$InitialImpl;
 
   @override
   List<Presensi> get presensiData;
   @override
   FetchStatus get fetchDataProses;
+  @override
+  dynamic get statusPost;
   @override
   String get messages;
   @override

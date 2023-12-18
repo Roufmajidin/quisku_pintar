@@ -3,7 +3,7 @@ part of 'themes.dart';
 abstract final class AppTheme {
   static final ThemeData theme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primary.pr05,
+      seedColor: AppColors.neutral.ne01,
     ),
     useMaterial3: true,
     fontFamily: 'Poppins',

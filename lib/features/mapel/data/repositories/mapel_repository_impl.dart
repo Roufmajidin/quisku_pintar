@@ -18,4 +18,15 @@ class MapelRepositoryImpl implements MapelRepository {
       return const Left(Failure.parsingFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, int>> postPresensi({required int? idAbsen}) async {
+    // TODO: implement postPresensi
+    try {
+      final res = await mapelData.postPresensi(idAbsen: idAbsen);
+      return res;
+    } catch (e) {
+      return const Left(Failure.parsingFailure());
+    }
+  }
 }

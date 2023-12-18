@@ -4,9 +4,9 @@ import 'package:quisku_pintar/common/extensions/extensions.dart';
 import '../../../../../../common/themes/themes.dart';
 
 // ignore: must_be_immutable
-class ButtonWidget extends StatelessWidget {
+class ButtonWidget extends StatefulWidget {
   bool isFilledButton;
-  Function tapped;
+  Function(bool) tapped;
   double? customWidth;
 
   ButtonWidget(
@@ -19,12 +19,39 @@ class ButtonWidget extends StatelessWidget {
   final String label;
 
   @override
+  State<ButtonWidget> createState() => _ButtonWidgetState();
+}
+
+class _ButtonWidgetState extends State<ButtonWidget> {
+  @override
+  void initState() {
+    super.initState();
+    loads = false;
+  }
+
+  bool? load;
+
+  bool loads = false;
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: customWidth ?? 148,
+      width: widget.customWidth ?? 148,
       child: ElevatedButton(
-        onPressed: () => tapped(),
-        style: isFilledButton == false
+        onPressed: () async {
+          setState(() {
+            loads = true;
+            // Future.delayed(Duration(seconds: 3));
+          });
+          if (loads == true) {
+            setState(() {
+              loads == false;
+            });
+          }
+          await Future.delayed(Duration(seconds: 3));
+
+          await widget.tapped(loads == true ? true : false);
+        },
+        style: widget.isFilledButton == false
             ? ElevatedButton.styleFrom(
                 elevation: 0,
                 shape: RoundedRectangleBorder(
@@ -43,15 +70,19 @@ class ButtonWidget extends StatelessWidget {
                 )),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2),
-          child: Text(
-            label,
-            style: AppTextStyle.body2
-                .copyWith(
-                    color: isFilledButton
-                        ? AppColors.neutral.ne01
-                        : AppColors.primary.pr10)
-                .setMedium(),
-          ),
+          child: loads == true &&
+                  widget.label != "Batal" &&
+                  widget.label != "Kembali"
+              ? const CircularProgressIndicator()
+              : Text(
+                  widget.label,
+                  style: AppTextStyle.body2
+                      .copyWith(
+                          color: widget.isFilledButton
+                              ? AppColors.neutral.ne01
+                              : AppColors.primary.pr10)
+                      .setMedium(),
+                ),
         ),
       ),
     );

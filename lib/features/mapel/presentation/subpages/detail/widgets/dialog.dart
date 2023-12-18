@@ -1,11 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 
 import 'button_widget.dart';
 
-showD(String v, index, context) {
+showD(String v, index, ctx, idAbsen, context) {
   return AlertDialog(
     backgroundColor: AppColors.neutral.ne01,
     shape: RoundedRectangleBorder(
@@ -64,13 +67,18 @@ showD(String v, index, context) {
                   customWidth: double.infinity,
                   label: 'Absen',
                   isFilledButton: true,
-                  tapped: () {}),
+                  tapped: (value) {
+                    // log('ok');
+                    context
+                        .read<MapelBloc>()
+                        .add(PresentSekarang(idAbsen: idAbsen?.id));
+                  }),
             ButtonWidget(
               customWidth: double.infinity,
               label: v == 'lewat' || v == 'sudah' ? 'Kembali' : 'Batal',
               isFilledButton: false,
-              tapped: () {
-                Navigator.pop(context);
+              tapped: (value) {
+                Navigator.pop(ctx);
               },
             )
           ],
