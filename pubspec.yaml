@@ -48,6 +48,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
+  flutter_launcher_icons: ^0.13.1
   flutter_localizations:
     sdk: flutter
   flutter_native_splash: ^2.3.2
@@ -81,6 +82,8 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: ^7.3.1
+  flutter_launcher_icons: "^0.13.1"
+
   build_runner: ^2.4.6
   flutter_gen_runner: ^5.3.1
   flutter_lints: ^2.0.0
@@ -88,6 +91,11 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.2
   json_serializable: ^6.7.1
+flutter_icons:
+  android: 'launcher_icon'
+  ios: true
+  image_path: 'assets/icons/my-icon.png'
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
 # analyzer overrides beacause freezed and flutter_gen_runner conflict
 dependency_overrides:

@@ -159,7 +159,9 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                         height: 24,
                                       ),
                                       Text(
-                                        'Anda mau absen pertemuan ${index + 1} ',
+                                        presensi?.updated_at == null
+                                            ? 'Anda mau absen pertemuan ${index + 1} '
+                                            : "Anda Sudah Absen pada pertemuan ${index + 1}  ",
                                         // textAlign: TextAlign.center,
                                         style: AppTextStyle.body3,
                                       ),
@@ -170,29 +172,30 @@ class _PresensiWidgetState extends State<PresensiWidget> {
 
                                       Column(
                                         children: [
-                                          // if (load == false)
-
-                                          ButtonWidget(
-                                              customWidth: double.infinity,
-                                              label: 'Absen',
-                                              isFilledButton: true,
-                                              // load: load,
-                                              tapped: (value) {
-                                                // log('ok');
-                                                context.read<MapelBloc>().add(
-                                                    PresentSekarang(
-                                                        idAbsen: presensi?.id));
-                                                setState(() {
-                                                  widget.refresh(true);
-                                                });
-                                                if (value == true) {
-                                                  Navigator.pop(context);
-                                                }
-                                              }),
-
+                                          if (presensi?.updated_at == null)
+                                            ButtonWidget(
+                                                customWidth: double.infinity,
+                                                label: 'Absen',
+                                                isFilledButton: true,
+                                                // load: load,
+                                                tapped: (value) {
+                                                  // log('ok');
+                                                  context.read<MapelBloc>().add(
+                                                      PresentSekarang(
+                                                          idAbsen:
+                                                              presensi?.id));
+                                                  setState(() {
+                                                    widget.refresh(true);
+                                                  });
+                                                  if (value == true) {
+                                                    Navigator.pop(context);
+                                                  }
+                                                }),
                                           ButtonWidget(
                                             customWidth: double.infinity,
-                                            label: 'Batal',
+                                            label: presensi?.updated_at == null
+                                                ? 'Batal'
+                                                : 'Kembali',
                                             isFilledButton: false,
                                             tapped: (value) {
                                               setState(() {
