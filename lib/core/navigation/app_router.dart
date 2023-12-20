@@ -23,5 +23,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: TranskipNilaiRoute.page, path: '/detail-notification'),
         AutoRoute(page: DetailUjianRoute.page, path: '/detail-notification'),
         AutoRoute(page: DetailMapelRoute.page, path: '/detail-mapel'),
+        AutoRoute(page: ReadPdfRoute.page, path: '/detail-pdf'),
       ];
 }
