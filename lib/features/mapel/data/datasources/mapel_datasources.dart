@@ -27,11 +27,18 @@ class MapelDatasources {
 
         // final Map<String, dynamic> rawData = jsonDataList['data'];
         // log('data ${rawData}');
+        // todo : ubah karena pdf link dari return  {{urlLink}}/getPdf/39
         final List<Map<String, dynamic>> result =
             List.from(jsonDataList['data']);
-        final List<Presensi> presensi =
-            result.map((e) => Presensi.fromJson(e)).toList();
-        return right(presensi);
+        final List<Presensi> presensiList = result.map((e) {
+          e['file'] = '$urlLink/${e['file']}';
+          return Presensi.fromJson(e);
+        }).toList();
+        // final List<Map<String, dynamic>> result =
+        //     List.from(jsonDataList['data']);
+        // final List<Presensi> presensi =
+        //     result.map((e) => Presensi.fromJson(e)).toList();
+        return right(presensiList);
       }
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {

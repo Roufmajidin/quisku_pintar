@@ -13,6 +13,7 @@ abstract class Presensi with _$Presensi {
     required int status,
     // ignore: non_constant_identifier_names
     required DateTime created_at,
+    required String file,
     // ignore: non_constant_identifier_names
     DateTime? updated_at,
   }) = _Presensi;

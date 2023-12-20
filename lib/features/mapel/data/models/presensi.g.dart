@@ -13,6 +13,7 @@ _$PresensiImpl _$$PresensiImplFromJson(Map<String, dynamic> json) =>
       pertemuan: json['pertemuan'] as int,
       status: json['status'] as int,
       created_at: DateTime.parse(json['created_at'] as String),
+      file: json['file'] as String,
       updated_at: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
@@ -25,5 +26,6 @@ Map<String, dynamic> _$$PresensiImplToJson(_$PresensiImpl instance) =>
       'pertemuan': instance.pertemuan,
       'status': instance.status,
       'created_at': instance.created_at.toIso8601String(),
+      'file': instance.file,
       'updated_at': instance.updated_at?.toIso8601String(),
     };
