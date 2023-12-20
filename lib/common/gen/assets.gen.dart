@@ -197,6 +197,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/mknows.jpg
   AssetGenImage get mknows => const AssetGenImage('assets/icons/mknows.jpg');
 
+  /// File path: assets/icons/my-icon.png
+  AssetGenImage get myIcon => const AssetGenImage('assets/icons/my-icon.png');
+
   /// File path: assets/icons/nilai_sertifikat.png
   AssetGenImage get nilaiSertifikat =>
       const AssetGenImage('assets/icons/nilai_sertifikat.png');
@@ -368,6 +371,7 @@ class $AssetsIconsGen {
         lainnya,
         layananKonsultasi,
         mknows,
+        myIcon,
         nilaiSertifikat,
         notification,
         panduan,
