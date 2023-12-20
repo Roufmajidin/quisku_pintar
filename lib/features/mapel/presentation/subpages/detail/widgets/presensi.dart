@@ -87,6 +87,12 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                           messages:
                               'Jangan lupa absen Pertemuan ${presensi!.pertemuan} ya !'));
                     }
+                    if (presensi?.updated_at != null) {
+                      // notif('');
+                      context.read<MapelBloc>().add(GetMessages(
+                          messages:
+                              'Yey, Kamu Sudah Absen Pertemuan ${dataPresen.last.pertemuan} !'));
+                    }
                     if (presensi == null) {
                       sessionColor = Colors.grey[
                           300]!; // Replace this with your desired default color
@@ -233,12 +239,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
               ),
               // Detail Acara
 
-              BlocBuilder<MapelBloc, MapelState>(
-                builder: (context, state) {
-                  final p = state.presensiData;
-                  return CardWidget(widget: widget, data: p);
-                },
-              )
+              CardWidget(widget: widget, data: state.presensiData),
             ],
           ),
         );

@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/widgets/widget.dart';
 
@@ -87,12 +89,26 @@ class CardWidget extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            log(i.id.toString());
+                            log(i.file.toString());
+                            context.pushRoute(ReadPdfRoute(pdfLink: i.file));
                           },
-                          child: Text(
-                            'Lihat Materi',
-                            style: AppTextStyle.body4.setRegular().copyWith(
-                                color: AppColors.secondary.scGreen.sc11),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 4),
+                                child: Icon(
+                                  Icons.picture_as_pdf,
+                                  size: 16,
+                                  color: AppColors.primary.pr10,
+                                ),
+                              ),
+                              Text(
+                                'Materi',
+                                style: AppTextStyle.body4
+                                    .setRegular()
+                                    .copyWith(color: AppColors.primary.pr10),
+                              ),
+                            ],
                           ),
                         )
                       ],
