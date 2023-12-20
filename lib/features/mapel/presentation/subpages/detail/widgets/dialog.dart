@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
@@ -15,7 +13,7 @@ showD(String v, index, ctx, idAbsen, context) {
       borderRadius: BorderRadius.circular(8),
     ),
     // ignore: prefer_const_constructors
-    insetPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 230),
+    insetPadding: EdgeInsets.symmetric(horizontal: 60, vertical: 260),
     content: Column(
       children: [
         // ignore: deprecated_member_use_from_same_package
@@ -59,31 +57,28 @@ showD(String v, index, ctx, idAbsen, context) {
         const SizedBox(
           height: 24,
         ),
-
-        Column(
-          children: [
-            if (v == 'belum')
-              ButtonWidget(
-                  customWidth: double.infinity,
-                  label: 'Absen',
-                  isFilledButton: true,
-                  tapped: (value) {
-                    // log('ok');
-                    context
-                        .read<MapelBloc>()
-                        .add(PresentSekarang(idAbsen: idAbsen?.id));
-                  }),
-            ButtonWidget(
-              customWidth: double.infinity,
-              label: v == 'lewat' || v == 'sudah' ? 'Kembali' : 'Batal',
-              isFilledButton: false,
-              tapped: (value) {
-                Navigator.pop(ctx);
-              },
-            )
-          ],
-        )
       ],
     ),
+    actions: [
+      if (v == 'belum')
+        ButtonWidget(
+            customWidth: double.infinity,
+            label: 'Absen',
+            isFilledButton: true,
+            tapped: (value) {
+              // log('ok');
+              context
+                  .read<MapelBloc>()
+                  .add(PresentSekarang(idAbsen: idAbsen?.id));
+            }),
+      ButtonWidget(
+        customWidth: double.infinity,
+        label: v == 'lewat' || v == 'sudah' ? 'Kembali' : 'Batal',
+        isFilledButton: false,
+        tapped: (value) {
+          Navigator.pop(ctx);
+        },
+      )
+    ],
   );
 }

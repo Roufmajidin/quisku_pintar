@@ -30,7 +30,7 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
     int? idAbsen = (event as PresentSekarang).idAbsen;
     log(state.statusPost.toString());
     final res = await mapelUsecase.postAbsen(idAbsen: idAbsen);
-    log(res.toString());
+    // log(res.toString());
     res.fold((l) => emit(state.copyWith(statusPost: 401)), (r) {
       emit(state.copyWith(fetchDataProses: FetchStatus.success));
       emit(state.copyWith(statusPost: res));

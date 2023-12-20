@@ -53,7 +53,6 @@ class _PresensiWidgetState extends State<PresensiWidget> {
         // if (state.statusPost == 300) {
         //   widget.refresh(true);
         // }
-        log(load.toString());
         return Padding(
           padding: const EdgeInsets.only(top: 24),
           child: Column(
@@ -77,7 +76,6 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                     for (var element in dataPresen) {
                       if (element.pertemuan == index + 1) {
                         presensi = element;
-                        log('p $presensi');
                         break;
                       }
                     }
@@ -106,21 +104,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                         onTap: () {
                           log('id ${presensi?.id} pertemuan : ${presensi?.pertemuan} c: ${presensi?.created_at}');
 
-                          if (presensi?.pertemuan == null) {
-                            log('kosong');
-                          } else if (presensi?.created_at.day !=
-                                  DateTime.now().day &&
-                              presensi?.updated_at != null) {
-                            showDialog(
-                              // barrierDismissible: false,
-                              context: context,
-                              builder: (BuildContext ctx) {
-                                return showD('sudah', index + 1, ctx,
-                                    presensi?.id, context);
-                              },
-                            );
-                          } else if (presensi?.created_at.day ==
-                              DateTime.now().day) {
+                          if (presensi?.created_at.day == DateTime.now().day) {
                             log(presensi!.pertemuan.toString());
 
                             log('mau absen pertemuan ${presensi.pertemuan.toString()} ?');
@@ -137,7 +121,11 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                   ),
                                   // ignore: prefer_const_constructors
                                   insetPadding: EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 200),
+                                    horizontal: 20,
+                                    vertical: presensi?.updated_at == null
+                                        ? 240
+                                        : 260,
+                                  ),
                                   content: Column(
                                     children: [
                                       // ignore: deprecated_member_use_from_same_package
@@ -160,7 +148,7 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                       ),
                                       Text(
                                         presensi?.updated_at == null
-                                            ? 'Anda mau absen pertemuan ${index + 1} '
+                                            ? 'Anda akan absen pertemuan ${index + 1} '
                                             : "Anda Sudah Absen pada pertemuan ${index + 1}  ",
                                         // textAlign: TextAlign.center,
                                         style: AppTextStyle.body3,
@@ -169,44 +157,40 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                                       const SizedBox(
                                         height: 24,
                                       ),
-
-                                      Column(
-                                        children: [
-                                          if (presensi?.updated_at == null)
-                                            ButtonWidget(
-                                                customWidth: double.infinity,
-                                                label: 'Absen',
-                                                isFilledButton: true,
-                                                // load: load,
-                                                tapped: (value) {
-                                                  // log('ok');
-                                                  context.read<MapelBloc>().add(
-                                                      PresentSekarang(
-                                                          idAbsen:
-                                                              presensi?.id));
-                                                  setState(() {
-                                                    widget.refresh(true);
-                                                  });
-                                                  if (value == true) {
-                                                    Navigator.pop(context);
-                                                  }
-                                                }),
-                                          ButtonWidget(
-                                            customWidth: double.infinity,
-                                            label: presensi?.updated_at == null
-                                                ? 'Batal'
-                                                : 'Kembali',
-                                            isFilledButton: false,
-                                            tapped: (value) {
-                                              setState(() {
-                                                Navigator.pop(context);
-                                              });
-                                            },
-                                          )
-                                        ],
-                                      )
                                     ],
                                   ),
+                                  actions: [
+                                    if (presensi?.updated_at == null)
+                                      ButtonWidget(
+                                          customWidth: double.infinity,
+                                          label: 'Absen',
+                                          isFilledButton: true,
+                                          // load: load,
+                                          tapped: (value) {
+                                            // log('ok');
+                                            context.read<MapelBloc>().add(
+                                                PresentSekarang(
+                                                    idAbsen: presensi?.id));
+                                            setState(() {
+                                              widget.refresh(true);
+                                            });
+                                            if (value == true) {
+                                              Navigator.pop(context);
+                                            }
+                                          }),
+                                    ButtonWidget(
+                                      customWidth: double.infinity,
+                                      label: presensi?.updated_at == null
+                                          ? 'Batal'
+                                          : 'Kembali',
+                                      isFilledButton: false,
+                                      tapped: (value) {
+                                        setState(() {
+                                          Navigator.pop(context);
+                                        });
+                                      },
+                                    )
+                                  ],
                                 );
                               },
                             );
@@ -249,7 +233,12 @@ class _PresensiWidgetState extends State<PresensiWidget> {
               ),
               // Detail Acara
 
-              CardWidget(widget: widget),
+              BlocBuilder<MapelBloc, MapelState>(
+                builder: (context, state) {
+                  final p = state.presensiData;
+                  return CardWidget(widget: widget, data: p);
+                },
+              )
             ],
           ),
         );

@@ -22,7 +22,7 @@ class ShimmerLoadWidget extends StatelessWidget {
     return Shimmer.fromColors(
       loop: 3,
       // enabled: true,
-      period: Duration(seconds: 4),
+      period: const Duration(seconds: 4),
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
       child: Column(
@@ -37,8 +37,6 @@ class ShimmerLoadWidget extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 14,
               itemBuilder: (context, index) {
-                final dataPresen = state.presensiData;
-
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Container(
@@ -59,7 +57,7 @@ class ShimmerLoadWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          CardWidget(widget: widget),
+          CardWidget(widget: widget, data: state.presensiData),
         ],
       ),
     );

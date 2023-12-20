@@ -3,6 +3,7 @@ import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 
+// ignore: must_be_immutable
 class Pengingat extends StatelessWidget {
   MapelState state;
   bool shimmer;
