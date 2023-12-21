@@ -242,7 +242,10 @@ class _PresensiWidgetState extends State<PresensiWidget> {
               ),
               // Detail Acara
 
-              CardWidget(widget: widget, data: state.presensiData),
+              CardWidget(
+                  widget: widget,
+                  data: state.presensiData,
+                  pelajaran: widget.data),
             ],
           ),
         );

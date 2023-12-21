@@ -6,16 +6,20 @@ import 'package:intl/intl.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
+import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/widgets/widget.dart';
+import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/screen/peng_tugas_page.dart';
 
 class CardWidget extends StatelessWidget {
   List<Presensi> data;
+  Pelajaran pelajaran;
 
   CardWidget({
     super.key,
     required this.widget,
     required this.data,
+    required this.pelajaran,
   });
 
   final PresensiWidget widget;
@@ -113,6 +117,34 @@ class CardWidget extends StatelessWidget {
                         )
                       ],
                     ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Tugas',
+                          style: AppTextStyle.body4.setRegular(),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PengumpulanTugasPage(
+                                        presensi: i,
+                                        pel: pelajaran,
+                                      )),
+                            );
+                          },
+                          child: Text(
+                            i.is_tugas == 1 ? 'Kumpulkan' : '-',
+                            style: AppTextStyle.body4
+                                .setSemiBold()
+                                .copyWith(color: AppColors.primary.pr10),
+                          ),
+                        )
+                      ],
+                    ),
                     const SizedBox(
                       height: 16,
                     ),
@@ -139,20 +171,6 @@ class CardWidget extends StatelessWidget {
                         ),
                         Text(
                           '08.00 WIB',
-                          style: AppTextStyle.body4.setRegular(),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Tugas',
-                          style: AppTextStyle.body4.setRegular(),
-                        ),
-                        Text(
-                          i.is_tugas == 1 ? 'Ada' : '-',
                           style: AppTextStyle.body4.setRegular(),
                         )
                       ],
