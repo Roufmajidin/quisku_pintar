@@ -52,18 +52,20 @@ class _TranskipNilaiViewState extends State<TranskipNilaiView> {
             'Transkip Nilai',
             style: AppTextStyle.body3.setSemiBold(),
           ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                size: 16,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
+          automaticallyImplyLeading: false,
+
+          // leading: Padding(
+          //   padding: const EdgeInsets.only(left: 16),
+          //   child: IconButton(
+          //     icon: const Icon(
+          //       Icons.arrow_back_ios,
+          //       size: 16,
+          //     ),
+          //     onPressed: () {
+          //       Navigator.of(context).pop();
+          //     },
+          //   ),
+          // ),
         ),
         body: DefaultTabController(
           initialIndex: 0,

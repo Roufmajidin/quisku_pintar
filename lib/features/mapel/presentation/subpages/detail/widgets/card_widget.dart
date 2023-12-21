@@ -143,6 +143,20 @@ class CardWidget extends StatelessWidget {
                         )
                       ],
                     ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Tugas',
+                          style: AppTextStyle.body4.setRegular(),
+                        ),
+                        Text(
+                          i.is_tugas == 1 ? 'Ada' : '-',
+                          style: AppTextStyle.body4.setRegular(),
+                        )
+                      ],
+                    ),
                   ],
                 ),
               ),

@@ -26,7 +26,9 @@ mixin _$Presensi {
   int get pertemuan => throw _privateConstructorUsedError;
   int get status =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
-  DateTime get created_at => throw _privateConstructorUsedError;
+  DateTime get created_at =>
+      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  int get is_tugas => throw _privateConstructorUsedError;
   String get file =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
   DateTime? get updated_at => throw _privateConstructorUsedError;
@@ -48,6 +50,7 @@ abstract class $PresensiCopyWith<$Res> {
       int pertemuan,
       int status,
       DateTime created_at,
+      int is_tugas,
       String file,
       DateTime? updated_at});
 }
@@ -70,6 +73,7 @@ class _$PresensiCopyWithImpl<$Res, $Val extends Presensi>
     Object? pertemuan = null,
     Object? status = null,
     Object? created_at = null,
+    Object? is_tugas = null,
     Object? file = null,
     Object? updated_at = freezed,
   }) {
@@ -94,6 +98,10 @@ class _$PresensiCopyWithImpl<$Res, $Val extends Presensi>
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      is_tugas: null == is_tugas
+          ? _value.is_tugas
+          : is_tugas // ignore: cast_nullable_to_non_nullable
+              as int,
       file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -120,6 +128,7 @@ abstract class _$$PresensiImplCopyWith<$Res>
       int pertemuan,
       int status,
       DateTime created_at,
+      int is_tugas,
       String file,
       DateTime? updated_at});
 }
@@ -140,6 +149,7 @@ class __$$PresensiImplCopyWithImpl<$Res>
     Object? pertemuan = null,
     Object? status = null,
     Object? created_at = null,
+    Object? is_tugas = null,
     Object? file = null,
     Object? updated_at = freezed,
   }) {
@@ -164,6 +174,10 @@ class __$$PresensiImplCopyWithImpl<$Res>
           ? _value.created_at
           : created_at // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      is_tugas: null == is_tugas
+          ? _value.is_tugas
+          : is_tugas // ignore: cast_nullable_to_non_nullable
+              as int,
       file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -185,6 +199,7 @@ class _$PresensiImpl implements _Presensi {
       required this.pertemuan,
       required this.status,
       required this.created_at,
+      required this.is_tugas,
       required this.file,
       this.updated_at});
 
@@ -203,6 +218,9 @@ class _$PresensiImpl implements _Presensi {
 // ignore: non_constant_identifier_names
   @override
   final DateTime created_at;
+// ignore: non_constant_identifier_names
+  @override
+  final int is_tugas;
   @override
   final String file;
 // ignore: non_constant_identifier_names
@@ -211,7 +229,7 @@ class _$PresensiImpl implements _Presensi {
 
   @override
   String toString() {
-    return 'Presensi(id: $id, mapel_id: $mapel_id, pertemuan: $pertemuan, status: $status, created_at: $created_at, file: $file, updated_at: $updated_at)';
+    return 'Presensi(id: $id, mapel_id: $mapel_id, pertemuan: $pertemuan, status: $status, created_at: $created_at, is_tugas: $is_tugas, file: $file, updated_at: $updated_at)';
   }
 
   @override
@@ -227,6 +245,8 @@ class _$PresensiImpl implements _Presensi {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.created_at, created_at) ||
                 other.created_at == created_at) &&
+            (identical(other.is_tugas, is_tugas) ||
+                other.is_tugas == is_tugas) &&
             (identical(other.file, file) || other.file == file) &&
             (identical(other.updated_at, updated_at) ||
                 other.updated_at == updated_at));
@@ -235,7 +255,7 @@ class _$PresensiImpl implements _Presensi {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, mapel_id, pertemuan, status,
-      created_at, file, updated_at);
+      created_at, is_tugas, file, updated_at);
 
   @JsonKey(ignore: true)
   @override
@@ -258,6 +278,7 @@ abstract class _Presensi implements Presensi {
       required final int pertemuan,
       required final int status,
       required final DateTime created_at,
+      required final int is_tugas,
       required final String file,
       final DateTime? updated_at}) = _$PresensiImpl;
 
@@ -274,6 +295,8 @@ abstract class _Presensi implements Presensi {
   int get status;
   @override // ignore: non_constant_identifier_names
   DateTime get created_at;
+  @override // ignore: non_constant_identifier_names
+  int get is_tugas;
   @override
   String get file;
   @override // ignore: non_constant_identifier_names

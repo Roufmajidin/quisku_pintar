@@ -3,6 +3,7 @@ import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+// ignore: must_be_immutable
 class ReadPdfView extends StatefulWidget {
   String link;
 
@@ -15,7 +16,6 @@ class ReadPdfView extends StatefulWidget {
 class _ReadPdfViewState extends State<ReadPdfView> {
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
   late String document;
-  bool _isLoading = true;
 
   @override
   initState() {
@@ -46,9 +46,7 @@ class _ReadPdfViewState extends State<ReadPdfView> {
           ],
         ),
         body: Center(
-            child:
-                // ? const Center(child: CircularProgressIndicator())
-                SfPdfViewer.network(
+            child: SfPdfViewer.network(
           widget.link,
           enableDoubleTapZooming: true,
         )));

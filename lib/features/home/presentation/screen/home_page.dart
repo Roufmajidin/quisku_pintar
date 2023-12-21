@@ -28,28 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: LxpAppBar(
-      //   leading: SizedBox(width: 25.0, child: Assets.images.lxpLogo.image()),
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.notifications_rounded),
-      //       onPressed: () {},
-      //     ),
-      //     IconButton(
-      //       icon: const Icon(Icons.person_rounded),
-      //       onPressed: () {},
-      //     ),
-      //   ],
-      // ),
-      /* AppBar(
-        backgroundColor: AppColors.primary.pr01,
-        leading: Assets.images.pngajuanLogo.image(width: 20.0),
-        actions: [
-          Text('ABC'),
-          Text('ABC'),
-        ],
-      ), */
-
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,
         destinations: [

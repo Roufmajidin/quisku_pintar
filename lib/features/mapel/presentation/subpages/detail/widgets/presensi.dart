@@ -100,19 +100,15 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                           messages:
                               'Hey, Absen Pertemuan ${dataPresen.last.pertemuan} Terlewat !'));
                     }
+
                     if (presensi == null) {
-                      sessionColor = Colors.grey[
-                          300]!; // Replace this with your desired default color
+                      sessionColor = Colors.grey[300]!;
                     }
 
                     return Tooltip(
-                      // message: presensi?.updated_at.toString(),
-                      //  richMessage: InlineSpan,
-
                       message: presensi?.updated_at == null
                           ? 'Tidak Absen'
                           : formatCurren(presensi!.updated_at.toString()),
-
                       child: GestureDetector(
                         onTap: () {
                           log('id ${presensi?.id} pertemuan : ${presensi?.pertemuan} c: ${presensi?.created_at}');
