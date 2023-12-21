@@ -49,7 +49,10 @@ class _ButtonWidgetState extends State<ButtonWidget> {
                   borderRadius: BorderRadius.circular(8),
                   side: BorderSide(
                     width: 1.5,
-                    color: AppColors.primary.pr10, // Set the border color
+                    color: widget.isFilledButton == false &&
+                            widget.label != "Tambah Gambar"
+                        ? AppColors.neutral.ne03
+                        : AppColors.primary.pr10, // Set the border color
                   ),
                 ),
               )
@@ -71,9 +74,13 @@ class _ButtonWidgetState extends State<ButtonWidget> {
                   widget.label,
                   style: AppTextStyle.body2
                       .copyWith(
-                          color: widget.isFilledButton
-                              ? AppColors.neutral.ne01
-                              : AppColors.primary.pr10)
+                          color: widget.isFilledButton == true &&
+                                  widget.label == "Tambah Gambar"
+                              ? AppColors.neutral.ne03
+                              : widget.isFilledButton == true &&
+                                      widget.label == "Kirim"
+                                  ? AppColors.neutral.ne03
+                                  : AppColors.neutral.ne03)
                       .setMedium(),
                 ),
         ),

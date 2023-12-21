@@ -1,11 +1,15 @@
+// TODO :: tinggal tambahin semua image (cam) jadiin pdf
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/button_widget.dart';
+import 'package:image_picker/image_picker.dart';
 
 class PengumpulanTugasView extends StatefulWidget {
   Presensi presensi;
@@ -18,8 +22,36 @@ class PengumpulanTugasView extends StatefulWidget {
 }
 
 class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
+  // take pciture fungsi
+  List<File> _images = [];
+  bool _filled = false;
+  bool _load = false;
+
+  // late File _image;
+  final picker = ImagePicker();
+
+  Future getImageFromCamera() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+
+    setState(() async {
+      _load = true;
+      Future.delayed(const Duration(seconds: 3));
+
+      if (pickedFile != null) {
+        _images.add(File(pickedFile.path));
+        _load = false;
+        _filled = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_images.isEmpty) {
+      setState(() {
+        _filled = false;
+      });
+    }
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
@@ -30,15 +62,15 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SizedBox(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -90,26 +122,82 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                         ],
                       ),
                       const SizedBox(height: 16),
+                      // _image == null
+                      //     ?
                       SizedBox(
                         width: size.width,
                         height: 300,
                         child: GridView.builder(
                           shrinkWrap: false,
-                          itemCount: 4,
+                          itemCount: _images.length == 0 ? 1 : _images.length,
                           gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  mainAxisExtent: 120,
-                                  crossAxisCount: 2,
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent:
+                                      _images.length == 1 ? 220 : 120,
+                                  crossAxisCount: _images.length == 1 ? 1 : 2,
                                   childAspectRatio: 0.5,
                                   mainAxisSpacing: 4.0,
                                   crossAxisSpacing: 4.0),
                           primary: false,
                           itemBuilder: (context, index) {
+                            if (index < _images.length) {
+                              // timpa jika ada
+                              return Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          // hapus
+                                          log('hapus');
+                                          setState(() {
+                                            _images.removeAt(index);
+                                            _filled = true;
+                                          });
+                                        },
+                                        child: Container(
+                                          height:
+                                              _images.length == 1 ? 200 : 86,
+                                          width:
+                                              _images.length == 1 ? 400 : 154,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.neutral.ne03
+                                                .withOpacity(0.2),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Image.file(
+                                            _images[index],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Text('Gambar ${index + 1}',
+                                          style:
+                                              AppTextStyle.body3.setMedium()),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 86,
+                                    width: 154,
+                                    child: Center(
+                                      child: _load == true
+                                          ? CircularProgressIndicator()
+                                          : Icon(Icons.delete,
+                                              color:
+                                                  Colors.red.withOpacity(0.6)),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }
+                            _filled = false;
                             return Column(
                               children: [
                                 Container(
                                   height: 86,
-                                  width: 154,
+                                  // width: _images.isEmpty == 0 ? 300 : 140,
                                   decoration: BoxDecoration(
                                       color: AppColors.neutral.ne03
                                           .withOpacity(0.2),
@@ -131,40 +219,7 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(16.0),
-              //   child: ButtonWidget(
-              //     customWidth: size.width,
-              //     isFilledButton: false,
-              //     label: 'Tambah Image',
-              //     tapped: (value) {},
-              //   ),
-              // ),
-
-              // Container(
-              //   padding: const EdgeInsets.all(10),
-              //   width: size.width,
-              //   decoration: BoxDecoration(
-              //     color: AppColors.primary.pr10.withOpacity(0.2),
-              //   ),
-              //   child: Text('Tugas', style: AppTextStyle.body3.setSemiBold()),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(16),
-              //   child: Row(
-              //     children: [
-              //       const Padding(
-              //         padding: EdgeInsets.only(right: 6),
-              //         child: Icon(Icons.picture_as_pdf, size: 12),
-              //       ),
-              //       Text('Tugas pertemuan 1.pdf',
-              //           style: AppTextStyle.body4.setSemiBold()),
-              //     ],
-              //   ),
-              // ),
-            ],
-          ),
-        ),
+            ])),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -174,11 +229,13 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                 isFilledButton: true,
                 customWidth: 200,
                 label: 'Tambah Gambar',
-                tapped: (value) {},
+                tapped: (value) {
+                  getImageFromCamera();
+                },
               ),
               const SizedBox(width: 8),
               ButtonWidget(
-                isFilledButton: true,
+                isFilledButton: _filled,
                 customWidth: 90,
                 label: 'Kirim',
                 tapped: (value) {},
