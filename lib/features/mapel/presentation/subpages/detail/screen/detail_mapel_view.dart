@@ -96,7 +96,7 @@ class _DetailMapelViewState extends State<DetailMapelView> {
                             height: 2,
                           ),
                           Text(
-                            'widget.mapel.guru',
+                            widget.mapel.guru,
                             textAlign: TextAlign.justify,
                             style: AppTextStyle.body4
                                 .setRegular()

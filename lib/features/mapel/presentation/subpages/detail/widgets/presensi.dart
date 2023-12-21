@@ -93,6 +93,13 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                           messages:
                               'Yey, Kamu Sudah Absen Pertemuan ${dataPresen.last.pertemuan} !'));
                     }
+                    if (presensi?.updated_at != null &&
+                        presensi!.updated_at?.day != DateTime.now().day) {
+                      // notif('');
+                      context.read<MapelBloc>().add(GetMessages(
+                          messages:
+                              'Hey, Absen Pertemuan ${dataPresen.last.pertemuan} Terlewat !'));
+                    }
                     if (presensi == null) {
                       sessionColor = Colors.grey[
                           300]!; // Replace this with your desired default color
