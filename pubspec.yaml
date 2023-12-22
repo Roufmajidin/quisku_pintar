@@ -70,6 +70,7 @@ dependencies:
   package_info_plus: ^4.1.0
   paged_vertical_calendar: ^1.1.6
   path_provider: ^2.1.0
+  pdf: ^3.10.7
   rxdart: ^0.27.7
   shared_preferences: ^2.2.0
   shimmer: ^3.0.0

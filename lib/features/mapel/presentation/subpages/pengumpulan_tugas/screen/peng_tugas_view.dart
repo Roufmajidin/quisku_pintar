@@ -1,16 +1,21 @@
-// TODO :: tinggal tambahin semua image (cam) jadiin pdf
+// TODO :: tinggal tambahin semua image (cam) jadiin pdf (done)
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
+import 'package:quisku_pintar/features/mapel/presentation/subpages/lihat_materi/screen/readpdf_view.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/button_widget.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 
+// ignore: must_be_immutable
 class PengumpulanTugasView extends StatefulWidget {
   Presensi presensi;
   Pelajaran pel;
@@ -23,6 +28,7 @@ class PengumpulanTugasView extends StatefulWidget {
 
 class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
   // take pciture fungsi
+  // File file
   List<File> _images = [];
   bool _filled = false;
   bool _load = false;
@@ -33,7 +39,7 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
   Future getImageFromCamera() async {
     final pickedFile = await picker.pickImage(source: ImageSource.camera);
 
-    setState(() async {
+    setState(() {
       _load = true;
       Future.delayed(const Duration(seconds: 3));
 
@@ -43,6 +49,34 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
         _filled = true;
       }
     });
+  }
+
+// generate pdf nya
+  Future<String> _generatePdf() async {
+    final pdf = pw.Document();
+
+    for (final imageFile in _images) {
+      final image = pw.MemoryImage(File(imageFile.path).readAsBytesSync());
+
+      pdf.addPage(pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (context) {
+          return pw.Center(
+            child: pw.Image(image),
+          );
+        },
+      ));
+    }
+
+    final directory = await getExternalStorageDirectory();
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final fileName = 'pdf_file_$timestamp.pdf';
+    final filePath = '${directory?.path}/$fileName';
+
+    final file = File(filePath);
+    log('file path $filePath');
+    await file.writeAsBytes(await pdf.save());
+    return filePath;
   }
 
   @override
@@ -87,7 +121,7 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                                 style: AppTextStyle.body3.setSemiBold(),
                               ),
                               Text(
-                                widget.pel.mapel,
+                                '${widget.pel.mapel} Pertemuan ${widget.presensi.pertemuan}',
                                 style: AppTextStyle.body3
                                     .setMedium()
                                     .copyWith(color: AppColors.primary.pr10),
@@ -238,7 +272,19 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                 isFilledButton: _filled,
                 customWidth: 90,
                 label: 'Kirim',
-                tapped: (value) {},
+                tapped: (value) async {
+                  final filePath = await _generatePdf();
+
+                  // ignore: use_build_context_synchronously
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReadPdfView(
+                        link: filePath,
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),

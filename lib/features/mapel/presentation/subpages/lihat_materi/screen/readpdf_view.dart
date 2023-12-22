@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
@@ -46,8 +48,8 @@ class _ReadPdfViewState extends State<ReadPdfView> {
           ],
         ),
         body: Center(
-            child: SfPdfViewer.network(
-          widget.link,
+            child: SfPdfViewer.file(
+          File(widget.link),
           enableDoubleTapZooming: true,
         )));
   }
