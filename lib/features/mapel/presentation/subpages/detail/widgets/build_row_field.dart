@@ -19,8 +19,7 @@ class BuildRowField extends StatelessWidget {
     return Container(
       color: color,
       width: customeWidth ?? 80,
-      height: 60,
-      // color: getContainerColor(itemIndex),
+      height: 50,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(

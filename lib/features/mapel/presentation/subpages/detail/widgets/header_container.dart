@@ -12,14 +12,17 @@ class HeaderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 37,
+      // height: 70,
       decoration: BoxDecoration(
         color: AppColors.primary.pr10,
         border: const Border(
           bottom: BorderSide(color: Colors.white),
         ),
       ),
-      child: child,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: child,
+      ),
     );
   }
 }
