@@ -13,6 +13,7 @@ abstract class Presensi with _$Presensi {
     required DateTime created_at,
     required int is_tugas,
     required String file,
+    required String file_tugas,
     DateTime? updated_at,
   }) = _Presensi;
   factory Presensi.fromJson(Map<String, dynamic> json) =>

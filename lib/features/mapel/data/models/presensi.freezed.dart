@@ -20,17 +20,14 @@ Presensi _$PresensiFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Presensi {
-  int get id =>
-      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  int get id => throw _privateConstructorUsedError;
   int get mapel_id => throw _privateConstructorUsedError;
   int get pertemuan => throw _privateConstructorUsedError;
-  int get status =>
-      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
-  DateTime get created_at =>
-      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  int get status => throw _privateConstructorUsedError;
+  DateTime get created_at => throw _privateConstructorUsedError;
   int get is_tugas => throw _privateConstructorUsedError;
-  String get file =>
-      throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  String get file => throw _privateConstructorUsedError;
+  String get file_tugas => throw _privateConstructorUsedError;
   DateTime? get updated_at => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,6 +49,7 @@ abstract class $PresensiCopyWith<$Res> {
       DateTime created_at,
       int is_tugas,
       String file,
+      String file_tugas,
       DateTime? updated_at});
 }
 
@@ -75,6 +73,7 @@ class _$PresensiCopyWithImpl<$Res, $Val extends Presensi>
     Object? created_at = null,
     Object? is_tugas = null,
     Object? file = null,
+    Object? file_tugas = null,
     Object? updated_at = freezed,
   }) {
     return _then(_value.copyWith(
@@ -106,6 +105,10 @@ class _$PresensiCopyWithImpl<$Res, $Val extends Presensi>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as String,
+      file_tugas: null == file_tugas
+          ? _value.file_tugas
+          : file_tugas // ignore: cast_nullable_to_non_nullable
+              as String,
       updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -130,6 +133,7 @@ abstract class _$$PresensiImplCopyWith<$Res>
       DateTime created_at,
       int is_tugas,
       String file,
+      String file_tugas,
       DateTime? updated_at});
 }
 
@@ -151,6 +155,7 @@ class __$$PresensiImplCopyWithImpl<$Res>
     Object? created_at = null,
     Object? is_tugas = null,
     Object? file = null,
+    Object? file_tugas = null,
     Object? updated_at = freezed,
   }) {
     return _then(_$PresensiImpl(
@@ -182,6 +187,10 @@ class __$$PresensiImplCopyWithImpl<$Res>
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as String,
+      file_tugas: null == file_tugas
+          ? _value.file_tugas
+          : file_tugas // ignore: cast_nullable_to_non_nullable
+              as String,
       updated_at: freezed == updated_at
           ? _value.updated_at
           : updated_at // ignore: cast_nullable_to_non_nullable
@@ -201,6 +210,7 @@ class _$PresensiImpl implements _Presensi {
       required this.created_at,
       required this.is_tugas,
       required this.file,
+      required this.file_tugas,
       this.updated_at});
 
   factory _$PresensiImpl.fromJson(Map<String, dynamic> json) =>
@@ -208,28 +218,26 @@ class _$PresensiImpl implements _Presensi {
 
   @override
   final int id;
-// ignore: non_constant_identifier_names
   @override
   final int mapel_id;
   @override
   final int pertemuan;
   @override
   final int status;
-// ignore: non_constant_identifier_names
   @override
   final DateTime created_at;
-// ignore: non_constant_identifier_names
   @override
   final int is_tugas;
   @override
   final String file;
-// ignore: non_constant_identifier_names
+  @override
+  final String file_tugas;
   @override
   final DateTime? updated_at;
 
   @override
   String toString() {
-    return 'Presensi(id: $id, mapel_id: $mapel_id, pertemuan: $pertemuan, status: $status, created_at: $created_at, is_tugas: $is_tugas, file: $file, updated_at: $updated_at)';
+    return 'Presensi(id: $id, mapel_id: $mapel_id, pertemuan: $pertemuan, status: $status, created_at: $created_at, is_tugas: $is_tugas, file: $file, file_tugas: $file_tugas, updated_at: $updated_at)';
   }
 
   @override
@@ -248,6 +256,8 @@ class _$PresensiImpl implements _Presensi {
             (identical(other.is_tugas, is_tugas) ||
                 other.is_tugas == is_tugas) &&
             (identical(other.file, file) || other.file == file) &&
+            (identical(other.file_tugas, file_tugas) ||
+                other.file_tugas == file_tugas) &&
             (identical(other.updated_at, updated_at) ||
                 other.updated_at == updated_at));
   }
@@ -255,7 +265,7 @@ class _$PresensiImpl implements _Presensi {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, mapel_id, pertemuan, status,
-      created_at, is_tugas, file, updated_at);
+      created_at, is_tugas, file, file_tugas, updated_at);
 
   @JsonKey(ignore: true)
   @override
@@ -280,6 +290,7 @@ abstract class _Presensi implements Presensi {
       required final DateTime created_at,
       required final int is_tugas,
       required final String file,
+      required final String file_tugas,
       final DateTime? updated_at}) = _$PresensiImpl;
 
   factory _Presensi.fromJson(Map<String, dynamic> json) =
@@ -287,19 +298,21 @@ abstract class _Presensi implements Presensi {
 
   @override
   int get id;
-  @override // ignore: non_constant_identifier_names
+  @override
   int get mapel_id;
   @override
   int get pertemuan;
   @override
   int get status;
-  @override // ignore: non_constant_identifier_names
+  @override
   DateTime get created_at;
-  @override // ignore: non_constant_identifier_names
+  @override
   int get is_tugas;
   @override
   String get file;
-  @override // ignore: non_constant_identifier_names
+  @override
+  String get file_tugas;
+  @override
   DateTime? get updated_at;
   @override
   @JsonKey(ignore: true)

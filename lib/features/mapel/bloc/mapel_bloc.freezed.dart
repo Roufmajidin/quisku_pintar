@@ -22,6 +22,7 @@ mixin _$MapelEvent {
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
     required TResult Function(int? idAbsen) presenSekarang,
+    required TResult Function(int? idAbsen, File? file) postTugas,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$MapelEvent {
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
     TResult? Function(int? idAbsen)? presenSekarang,
+    TResult? Function(int? idAbsen, File? file)? postTugas,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$MapelEvent {
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
     TResult Function(int? idAbsen)? presenSekarang,
+    TResult Function(int? idAbsen, File? file)? postTugas,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$MapelEvent {
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
     required TResult Function(PresentSekarang value) presenSekarang,
+    required TResult Function(PostTugas value) postTugas,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$MapelEvent {
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
     TResult? Function(PresentSekarang value)? presenSekarang,
+    TResult? Function(PostTugas value)? postTugas,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$MapelEvent {
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
     TResult Function(PresentSekarang value)? presenSekarang,
+    TResult Function(PostTugas value)? postTugas,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
     required TResult Function(int? idAbsen) presenSekarang,
+    required TResult Function(int? idAbsen, File? file) postTugas,
   }) {
     return started();
   }
@@ -139,6 +146,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
     TResult? Function(int? idAbsen)? presenSekarang,
+    TResult? Function(int? idAbsen, File? file)? postTugas,
   }) {
     return started?.call();
   }
@@ -150,6 +158,7 @@ class _$StartedImpl implements _Started {
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
     TResult Function(int? idAbsen)? presenSekarang,
+    TResult Function(int? idAbsen, File? file)? postTugas,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -165,6 +174,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
     required TResult Function(PresentSekarang value) presenSekarang,
+    required TResult Function(PostTugas value) postTugas,
   }) {
     return started(this);
   }
@@ -176,6 +186,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
     TResult? Function(PresentSekarang value)? presenSekarang,
+    TResult? Function(PostTugas value)? postTugas,
   }) {
     return started?.call(this);
   }
@@ -187,6 +198,7 @@ class _$StartedImpl implements _Started {
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
     TResult Function(PresentSekarang value)? presenSekarang,
+    TResult Function(PostTugas value)? postTugas,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -268,6 +280,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
     required TResult Function(int? idAbsen) presenSekarang,
+    required TResult Function(int? idAbsen, File? file) postTugas,
   }) {
     return fetchPresensi(mapelId);
   }
@@ -279,6 +292,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
     TResult? Function(int? idAbsen)? presenSekarang,
+    TResult? Function(int? idAbsen, File? file)? postTugas,
   }) {
     return fetchPresensi?.call(mapelId);
   }
@@ -290,6 +304,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
     TResult Function(int? idAbsen)? presenSekarang,
+    TResult Function(int? idAbsen, File? file)? postTugas,
     required TResult orElse(),
   }) {
     if (fetchPresensi != null) {
@@ -305,6 +320,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
     required TResult Function(PresentSekarang value) presenSekarang,
+    required TResult Function(PostTugas value) postTugas,
   }) {
     return fetchPresensi(this);
   }
@@ -316,6 +332,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
     TResult? Function(PresentSekarang value)? presenSekarang,
+    TResult? Function(PostTugas value)? postTugas,
   }) {
     return fetchPresensi?.call(this);
   }
@@ -327,6 +344,7 @@ class _$FetchPresensiImpl implements FetchPresensi {
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
     TResult Function(PresentSekarang value)? presenSekarang,
+    TResult Function(PostTugas value)? postTugas,
     required TResult orElse(),
   }) {
     if (fetchPresensi != null) {
@@ -414,6 +432,7 @@ class _$GetMessagesImpl implements GetMessages {
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
     required TResult Function(int? idAbsen) presenSekarang,
+    required TResult Function(int? idAbsen, File? file) postTugas,
   }) {
     return getMessage(messages);
   }
@@ -425,6 +444,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
     TResult? Function(int? idAbsen)? presenSekarang,
+    TResult? Function(int? idAbsen, File? file)? postTugas,
   }) {
     return getMessage?.call(messages);
   }
@@ -436,6 +456,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
     TResult Function(int? idAbsen)? presenSekarang,
+    TResult Function(int? idAbsen, File? file)? postTugas,
     required TResult orElse(),
   }) {
     if (getMessage != null) {
@@ -451,6 +472,7 @@ class _$GetMessagesImpl implements GetMessages {
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
     required TResult Function(PresentSekarang value) presenSekarang,
+    required TResult Function(PostTugas value) postTugas,
   }) {
     return getMessage(this);
   }
@@ -462,6 +484,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
     TResult? Function(PresentSekarang value)? presenSekarang,
+    TResult? Function(PostTugas value)? postTugas,
   }) {
     return getMessage?.call(this);
   }
@@ -473,6 +496,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
     TResult Function(PresentSekarang value)? presenSekarang,
+    TResult Function(PostTugas value)? postTugas,
     required TResult orElse(),
   }) {
     if (getMessage != null) {
@@ -560,6 +584,7 @@ class _$PresentSekarangImpl implements PresentSekarang {
     required TResult Function(int? mapelId) fetchPresensi,
     required TResult Function(String? messages) getMessage,
     required TResult Function(int? idAbsen) presenSekarang,
+    required TResult Function(int? idAbsen, File? file) postTugas,
   }) {
     return presenSekarang(idAbsen);
   }
@@ -571,6 +596,7 @@ class _$PresentSekarangImpl implements PresentSekarang {
     TResult? Function(int? mapelId)? fetchPresensi,
     TResult? Function(String? messages)? getMessage,
     TResult? Function(int? idAbsen)? presenSekarang,
+    TResult? Function(int? idAbsen, File? file)? postTugas,
   }) {
     return presenSekarang?.call(idAbsen);
   }
@@ -582,6 +608,7 @@ class _$PresentSekarangImpl implements PresentSekarang {
     TResult Function(int? mapelId)? fetchPresensi,
     TResult Function(String? messages)? getMessage,
     TResult Function(int? idAbsen)? presenSekarang,
+    TResult Function(int? idAbsen, File? file)? postTugas,
     required TResult orElse(),
   }) {
     if (presenSekarang != null) {
@@ -597,6 +624,7 @@ class _$PresentSekarangImpl implements PresentSekarang {
     required TResult Function(FetchPresensi value) fetchPresensi,
     required TResult Function(GetMessages value) getMessage,
     required TResult Function(PresentSekarang value) presenSekarang,
+    required TResult Function(PostTugas value) postTugas,
   }) {
     return presenSekarang(this);
   }
@@ -608,6 +636,7 @@ class _$PresentSekarangImpl implements PresentSekarang {
     TResult? Function(FetchPresensi value)? fetchPresensi,
     TResult? Function(GetMessages value)? getMessage,
     TResult? Function(PresentSekarang value)? presenSekarang,
+    TResult? Function(PostTugas value)? postTugas,
   }) {
     return presenSekarang?.call(this);
   }
@@ -619,6 +648,7 @@ class _$PresentSekarangImpl implements PresentSekarang {
     TResult Function(FetchPresensi value)? fetchPresensi,
     TResult Function(GetMessages value)? getMessage,
     TResult Function(PresentSekarang value)? presenSekarang,
+    TResult Function(PostTugas value)? postTugas,
     required TResult orElse(),
   }) {
     if (presenSekarang != null) {
@@ -634,6 +664,168 @@ abstract class PresentSekarang implements MapelEvent {
   int? get idAbsen;
   @JsonKey(ignore: true)
   _$$PresentSekarangImplCopyWith<_$PresentSekarangImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PostTugasImplCopyWith<$Res> {
+  factory _$$PostTugasImplCopyWith(
+          _$PostTugasImpl value, $Res Function(_$PostTugasImpl) then) =
+      __$$PostTugasImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? idAbsen, File? file});
+}
+
+/// @nodoc
+class __$$PostTugasImplCopyWithImpl<$Res>
+    extends _$MapelEventCopyWithImpl<$Res, _$PostTugasImpl>
+    implements _$$PostTugasImplCopyWith<$Res> {
+  __$$PostTugasImplCopyWithImpl(
+      _$PostTugasImpl _value, $Res Function(_$PostTugasImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idAbsen = freezed,
+    Object? file = freezed,
+  }) {
+    return _then(_$PostTugasImpl(
+      idAbsen: freezed == idAbsen
+          ? _value.idAbsen
+          : idAbsen // ignore: cast_nullable_to_non_nullable
+              as int?,
+      file: freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostTugasImpl implements PostTugas {
+  const _$PostTugasImpl({this.idAbsen, this.file});
+
+  @override
+  final int? idAbsen;
+  @override
+  final File? file;
+
+  @override
+  String toString() {
+    return 'MapelEvent.postTugas(idAbsen: $idAbsen, file: $file)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostTugasImpl &&
+            (identical(other.idAbsen, idAbsen) || other.idAbsen == idAbsen) &&
+            const DeepCollectionEquality().equals(other.file, file));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, idAbsen, const DeepCollectionEquality().hash(file));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostTugasImplCopyWith<_$PostTugasImpl> get copyWith =>
+      __$$PostTugasImplCopyWithImpl<_$PostTugasImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int? mapelId) fetchPresensi,
+    required TResult Function(String? messages) getMessage,
+    required TResult Function(int? idAbsen) presenSekarang,
+    required TResult Function(int? idAbsen, File? file) postTugas,
+  }) {
+    return postTugas(idAbsen, file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(int? mapelId)? fetchPresensi,
+    TResult? Function(String? messages)? getMessage,
+    TResult? Function(int? idAbsen)? presenSekarang,
+    TResult? Function(int? idAbsen, File? file)? postTugas,
+  }) {
+    return postTugas?.call(idAbsen, file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int? mapelId)? fetchPresensi,
+    TResult Function(String? messages)? getMessage,
+    TResult Function(int? idAbsen)? presenSekarang,
+    TResult Function(int? idAbsen, File? file)? postTugas,
+    required TResult orElse(),
+  }) {
+    if (postTugas != null) {
+      return postTugas(idAbsen, file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(FetchPresensi value) fetchPresensi,
+    required TResult Function(GetMessages value) getMessage,
+    required TResult Function(PresentSekarang value) presenSekarang,
+    required TResult Function(PostTugas value) postTugas,
+  }) {
+    return postTugas(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(FetchPresensi value)? fetchPresensi,
+    TResult? Function(GetMessages value)? getMessage,
+    TResult? Function(PresentSekarang value)? presenSekarang,
+    TResult? Function(PostTugas value)? postTugas,
+  }) {
+    return postTugas?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(FetchPresensi value)? fetchPresensi,
+    TResult Function(GetMessages value)? getMessage,
+    TResult Function(PresentSekarang value)? presenSekarang,
+    TResult Function(PostTugas value)? postTugas,
+    required TResult orElse(),
+  }) {
+    if (postTugas != null) {
+      return postTugas(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PostTugas implements MapelEvent {
+  const factory PostTugas({final int? idAbsen, final File? file}) =
+      _$PostTugasImpl;
+
+  int? get idAbsen;
+  File? get file;
+  @JsonKey(ignore: true)
+  _$$PostTugasImplCopyWith<_$PostTugasImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
