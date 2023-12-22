@@ -40,9 +40,6 @@ class _DetailMapelViewState extends State<DetailMapelView> {
 
   @override
   Widget build(BuildContext context) {
-    // Cari objek pelatihan berdasarkan title di dalam dataPelatihan
-    // final acaraU = dataAcara.firstWhere((p) => p['title'] == title);
-    // log(ujian.guru);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

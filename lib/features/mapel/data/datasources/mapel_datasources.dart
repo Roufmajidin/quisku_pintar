@@ -13,8 +13,10 @@ class MapelDatasources {
   final String jsonFirebaseRealtimeDB =
       'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
 
-  Future<Either<Failure, List<Presensi>>> getPresensi(
-      {required int? userId, required int? mapelId}) async {
+  Future<Either<Failure, List<Presensi>>> getPresensi({
+    required int? userId,
+    required int? mapelId,
+  }) async {
     // parse link dari realtime database,
     //agar server ngrok lokal bisa autoload pada masing masing device
     final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
@@ -33,7 +35,8 @@ class MapelDatasources {
         final List<Map<String, dynamic>> result =
             List.from(jsonDataList['data']);
         final List<Presensi> presensiList = result.map((e) {
-          e['file'] = '$urlLink/${e['file']}';
+          e['file'] = '$urlLink/${e['file']}/file-pertemuan';
+          e['file_tugas'] = '$urlLink/${e['file_tugas']}/file-tugas';
           return Presensi.fromJson(e);
         }).toList();
         // final List<Map<String, dynamic>> result =

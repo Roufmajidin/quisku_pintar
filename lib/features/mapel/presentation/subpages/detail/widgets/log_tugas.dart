@@ -1,7 +1,11 @@
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
@@ -71,7 +75,7 @@ class BuildContentWidget extends StatelessWidget {
             height: isShimmer == true ? 2 : 0,
           ),
           SizedBox(
-            height: 400,
+            height: 600,
             child: ListView.builder(
               itemCount: presensiyangadatugas.length,
               itemBuilder: (context, index) {
@@ -90,13 +94,23 @@ class BuildContentWidget extends StatelessWidget {
                         BuildRowField(
                           item: 'Pertemuan ${i.pertemuan.toString()}',
                           customeWidth: 120,
+                          callback: () {},
                         ),
                         BuildRowField(
                           item: i.status == 1 ? 'Mengumpulkan' : 'Belum',
                           customeWidth: 120,
+                          callback: () {},
                         ),
                         BuildRowField(
                           item: i.status == 0 ? '-' : 'Open',
+                          callback: () {
+                            if (i.status != 0) {
+                              log('k ${i.file_tugas}');
+                              context.router
+                                  .push(ReadPdfRoute(pdfLink: i.file_tugas));
+                            }
+                          },
+
                           // customeWidth: 120,
                         ),
                       ],

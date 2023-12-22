@@ -48,8 +48,8 @@ class _ReadPdfViewState extends State<ReadPdfView> {
           ],
         ),
         body: Center(
-            child: SfPdfViewer.file(
-          File(widget.link),
+            child: SfPdfViewer.network(
+          widget.link,
           enableDoubleTapZooming: true,
         )));
   }
