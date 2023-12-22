@@ -3,11 +3,13 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
+import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/lihat_materi/screen/readpdf_view.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/button_widget.dart';
@@ -110,156 +112,161 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
           style: AppTextStyle.body3.setSemiBold(),
         ),
       ),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        const SizedBox(height: 16),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SizedBox(
-            child: Column(
-              children: [
-                Row(
+      body: BlocBuilder<MapelBloc, MapelState>(
+        builder: (context, state) {
+          return SingleChildScrollView(
+              child: Column(children: [
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 6),
-                      child: Assets.images.profileDetail.image(height: 60),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        Text(
-                          widget.pel.guru,
-                          style: AppTextStyle.body3.setSemiBold(),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6),
+                          child: Assets.images.profileDetail.image(height: 60),
                         ),
-                        Text(
-                          '${widget.pel.mapel} Pertemuan ${widget.presensi.pertemuan}',
-                          style: AppTextStyle.body3
-                              .setMedium()
-                              .copyWith(color: AppColors.primary.pr10),
-                        )
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.pel.guru,
+                              style: AppTextStyle.body3.setSemiBold(),
+                            ),
+                            Text(
+                              '${widget.pel.mapel} Pertemuan ${widget.presensi.pertemuan}',
+                              style: AppTextStyle.body3
+                                  .setMedium()
+                                  .copyWith(color: AppColors.primary.pr10),
+                            )
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
 
-                const SizedBox(height: 16),
-                // pr soal
-                Text(
-                  'silahkan upload pr kalian dengan menekan tombol dibawah ya',
-                  style: AppTextStyle.body3.setRegular(),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                    const SizedBox(height: 16),
+                    // pr soal
                     Text(
-                      'Waktu',
-                      style: AppTextStyle.body3
-                          .setSemiBold()
-                          .copyWith(color: AppColors.primary.pr10),
+                      'silahkan upload pr kalian dengan menekan tombol dibawah ya',
+                      style: AppTextStyle.body3.setRegular(),
                     ),
-                    Text(
-                      'Deadline : Minggu Depan',
-                      style: AppTextStyle.body3
-                          .setRegular()
-                          .copyWith(color: AppColors.danger.dng05),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Waktu',
+                          style: AppTextStyle.body3
+                              .setSemiBold()
+                              .copyWith(color: AppColors.primary.pr10),
+                        ),
+                        Text(
+                          'Deadline : Minggu Depan',
+                          style: AppTextStyle.body3
+                              .setRegular()
+                              .copyWith(color: AppColors.danger.dng05),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                // _image == null
-                //     ?
-                SizedBox(
-                  width: size.width,
-                  height: 300,
-                  child: GridView.builder(
-                    shrinkWrap: false,
-                    itemCount: _images.isEmpty ? 1 : _images.length + 1,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: _images.isEmpty ? 220 : 120,
-                        crossAxisCount: _images.isEmpty ? 1 : 2,
-                        childAspectRatio: 0.5,
-                        mainAxisSpacing: 4.0,
-                        crossAxisSpacing: 4.0),
-                    primary: false,
-                    itemBuilder: (context, index) {
-                      if (index < _images.length) {
-                        // timpa jika ada
-                        return Stack(
-                          // alignment: Alignment.center,
-                          children: [
-                            Column(
+                    const SizedBox(height: 16),
+                    // _image == null
+                    //     ?
+                    SizedBox(
+                      width: size.width,
+                      height: 300,
+                      child: GridView.builder(
+                        shrinkWrap: false,
+                        itemCount: _images.isEmpty ? 1 : _images.length + 1,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisExtent: _images.isEmpty ? 220 : 120,
+                            crossAxisCount: _images.isEmpty ? 1 : 2,
+                            childAspectRatio: 0.5,
+                            mainAxisSpacing: 4.0,
+                            crossAxisSpacing: 4.0),
+                        primary: false,
+                        itemBuilder: (context, index) {
+                          if (index < _images.length) {
+                            // timpa jika ada
+                            return Stack(
+                              // alignment: Alignment.center,
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    // hapus
-                                    log('hapus');
-                                    setState(() {
-                                      _images.removeAt(index);
-                                      _filled = true;
-                                    });
-                                  },
-                                  child: Container(
-                                    height: _images.isEmpty ? 200 : 86,
-                                    width: _images.isEmpty ? 400 : 200,
-                                    decoration: BoxDecoration(
+                                Column(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        // hapus
+                                        log('hapus');
+                                        setState(() {
+                                          _images.removeAt(index);
+                                          _filled = true;
+                                        });
+                                      },
+                                      child: Container(
+                                        height: _images.isEmpty ? 200 : 86,
+                                        width: _images.isEmpty ? 400 : 200,
+                                        decoration: BoxDecoration(
+                                          color: AppColors.neutral.ne03
+                                              .withOpacity(0.2),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        child: Image.file(
+                                          _images[index],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 6),
+                                    Text('Gambar ${index + 1}',
+                                        style: AppTextStyle.body3.setMedium()),
+                                  ],
+                                ),
+                                Center(
+                                  child:
+                                      // ? const CircularProgressIndicator()
+                                      // :
+                                      Icon(Icons.delete,
+                                          color: Colors.red.withOpacity(0.6)),
+                                ),
+                              ],
+                            );
+                          }
+
+                          return Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () => getImageFromCamera(),
+                                child: Container(
+                                  height: 86,
+                                  width: 300,
+                                  decoration: BoxDecoration(
                                       color: AppColors.neutral.ne03
                                           .withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Image.file(
-                                      _images[index],
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                      borderRadius: BorderRadius.circular(12)),
+                                  child: const Center(
+                                      child: Icon(
+                                    Icons.add_a_photo,
+                                    color: Colors.blue,
+                                  )),
                                 ),
-                                const SizedBox(height: 6),
-                                Text('Gambar ${index + 1}',
-                                    style: AppTextStyle.body3.setMedium()),
-                              ],
-                            ),
-                            Center(
-                              child:
-                                  // ? const CircularProgressIndicator()
-                                  // :
-                                  Icon(Icons.delete,
-                                      color: Colors.red.withOpacity(0.6)),
-                            ),
-                          ],
-                        );
-                      }
-
-                      return Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () => getImageFromCamera(),
-                            child: Container(
-                              height: 86,
-                              width: 300,
-                              decoration: BoxDecoration(
-                                  color:
-                                      AppColors.neutral.ne03.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(12)),
-                              child: const Center(
-                                  child: Icon(
-                                Icons.add_a_photo,
-                                color: Colors.blue,
-                              )),
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          Text('Tambah Foto',
-                              style: AppTextStyle.body3.setMedium()),
-                        ],
-                      );
-                    },
-                  ),
-                )
-              ],
+                              ),
+                              const SizedBox(height: 6),
+                              Text('Tambah Foto',
+                                  style: AppTextStyle.body3.setMedium()),
+                            ],
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-      ])),
+          ]));
+        },
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16),
         child: _load == true
@@ -267,15 +274,17 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                 pre: loadingPercentage,
                 isDone: (v) {
                   if (v == true) {
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => ReadPdfView(
-                              link: path,
-                            ),
-                          ));
-                    });
+                    context.read<MapelBloc>().add(PostTugas(
+                        idAbsen: widget.presensi.id, file: File(path)));
+                    // WidgetsBinding.instance.addPostFrameCallback((_) {
+                    //   Navigator.pushReplacement(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (_) => ReadPdfView(
+                    //           link: path,
+                    //         ),
+                    //       ));
+                    // });
                     _load = false;
                   }
                 },

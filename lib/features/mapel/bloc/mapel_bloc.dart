@@ -21,6 +21,7 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
     on<FetchPresensi>(_fetchPresensi);
     on<GetMessages>(_getMessages);
     on<PresentSekarang>(_presenSekarang);
+    on<PostTugas>(_postTugas);
   }
   // todo : post presensi
   Future<void> _presenSekarang(
@@ -35,6 +36,22 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
     res.fold((l) => emit(state.copyWith(statusPost: 401)), (r) {
       emit(state.copyWith(fetchDataProses: FetchStatus.success));
       emit(state.copyWith(statusPost: res));
+    });
+  }
+
+// todo :: post Tugas
+  Future<void> _postTugas(MapelEvent event, Emitter<MapelState> emit) async {
+    emit(state.copyWith(fetchDataProses: FetchStatus.loading));
+    log('fetch prenssi');
+    int? idAbsen = (event as PostTugas).idAbsen;
+    File file = (event as PostTugas).file;
+    // get userid
+
+    final r = await mapelUsecase.postTugas(idAbsen: idAbsen, file: file);
+    r.fold(
+        (l) => emit(state.copyWith(fetchDataProses: FetchStatus.failure)), (r) {
+      emit(state.copyWith(fetchDataProses: FetchStatus.success));
+      emit(state.copyWith(statusPost: r));
     });
   }
 

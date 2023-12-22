@@ -88,15 +88,17 @@ class MapelDatasources {
     try {
       final request = http.MultipartRequest(
         'POST',
-        Uri.parse('$urlLink/postAbsen/$idAbsen'),
+        Uri.parse('$urlLink/postTugas/$idAbsen'),
       );
       final fileStream = http.ByteStream(file.openRead());
       final fileLength = await file.length();
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      final fileName = 'pdf_file_$timestamp.pdf';
       final multipartFile = http.MultipartFile(
         'tugas',
         fileStream,
         fileLength,
-        filename: 'filename.pdf',
+        filename: fileName,
         contentType: MediaType('application', 'pdf'),
       );
       request.files.add(multipartFile);
