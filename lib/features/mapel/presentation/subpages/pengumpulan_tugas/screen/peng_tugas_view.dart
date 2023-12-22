@@ -2,12 +2,14 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
@@ -285,6 +287,13 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                     //         ),
                     //       ));
                     // });
+                    Future.delayed(const Duration(seconds: 2));
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      context.router.pushAndPopUntil(
+                        DetailMapelRoute(data: widget.pel),
+                        predicate: (route) => true,
+                      );
+                    });
                     _load = false;
                   }
                 },

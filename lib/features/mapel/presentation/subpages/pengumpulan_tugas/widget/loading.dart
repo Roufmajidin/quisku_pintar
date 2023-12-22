@@ -18,6 +18,7 @@ class LoadingContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: GFProgressBar(
+        animationDuration: 300,
         progressHeadType: GFProgressHeadType.circular,
         percentage: pre,
         animation: true,

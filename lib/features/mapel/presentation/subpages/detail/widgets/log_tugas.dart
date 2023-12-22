@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
+import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'widget.dart';
 
 // ignore: must_be_immutable
@@ -11,45 +13,59 @@ class LogTugas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HeaderContainer(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BuildRow(
-                  label: "Tanggal",
+    return BlocBuilder<MapelBloc, MapelState>(
+      builder: (context, state) {
+        final presensi = state.presensiData;
+        final presensiyangadatugas =
+            presensi.where((element) => element.is_tugas == 1).toList();
+        return Padding(
+          padding: const EdgeInsets.only(top: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderContainer(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BuildRow(label: "Pertemuan", customeWidth: 120),
+                    BuildRow(label: "Status", customeWidth: 120),
+                    BuildRow(label: "file", customeWidth: 120),
+                  ],
                 ),
-                BuildRow(label: "Pertemuan", customeWidth: 120),
-                BuildRow(label: "Grade"),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 400,
+                child: ListView.builder(
+                  itemCount: presensiyangadatugas.length,
+                  itemBuilder: (context, index) {
+                    var i = presensiyangadatugas[index];
+                    return Container(
+                      color: AppColors.neutral.ne01,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          BuildRowField(
+                            item: 'Pertemuan ${i.pertemuan.toString()}',
+                            customeWidth: 120,
+                          ),
+                          BuildRowField(
+                            item: i.status == 1 ? 'Mengumpulkan' : 'Belum',
+                            customeWidth: 120,
+                          ),
+                          BuildRowField(
+                            item: i.status == 0 ? '-' : 'Open',
+                            // customeWidth: 120,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
           ),
-          Container(
-            color: AppColors.neutral.ne01,
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BuildRowField(
-                  item: '12 Feb 2023',
-                  customeWidth: 100,
-                ),
-                BuildRowField(
-                  item: 'Pertemuan 1',
-                  customeWidth: 120,
-                ),
-                BuildRowField(
-                  item: 'Open',
-                  customeWidth: 70,
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+        );
+      },
     );
   }
 }
