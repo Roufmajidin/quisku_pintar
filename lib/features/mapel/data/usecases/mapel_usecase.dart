@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
@@ -17,5 +18,11 @@ class MapelUsecase {
   Future<Either<Failure, int>> postAbsen({required int? idAbsen}) async {
     log("ok $idAbsen");
     return await mapelRe.postPresensi(idAbsen: idAbsen);
+  }
+
+  // todo : post tugas
+  Future<Either<Failure, int>> postTugas(
+      {required int? idAbsen, required File file}) async {
+    return await mapelRe.postTugas(idAbsen: idAbsen, file: file);
   }
 }

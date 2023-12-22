@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/mapel/data/datasources/mapel_datasources.dart';
@@ -24,6 +26,18 @@ class MapelRepositoryImpl implements MapelRepository {
     // TODO: implement postPresensi
     try {
       final res = await mapelData.postPresensi(idAbsen: idAbsen);
+      return res;
+    } catch (e) {
+      return const Left(Failure.parsingFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, int>> postTugas(
+      {required int? idAbsen, required File file}) async {
+    // TODO: implement postTugas
+    try {
+      final res = await mapelData.postTugas(idAbsen: idAbsen, file: file);
       return res;
     } catch (e) {
       return const Left(Failure.parsingFailure());

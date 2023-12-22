@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:quisku_pintar/core/error/failure/failure.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 // ignore: depend_on_referenced_packages
@@ -67,6 +69,44 @@ class MapelDatasources {
         return right(res.statusCode);
       }
       return const Left(Failure.parsingFailure(message: "Gagal Post Dimuat"));
+    } catch (e) {
+      return const Left(Failure.serverFailure());
+    }
+  }
+  // todo: post tugas siswa
+
+  Future<Either<Failure, int>> postTugas(
+      {required int? idAbsen, required File file}) async {
+    // parse link dari realtime database,
+    //agar server ngrok lokal bisa autoload pada masing masing device
+
+    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
+    final String urlLink = json.decode(respons.body);
+
+    //
+    log('$urlLink/postTugas/$idAbsen');
+    try {
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('$urlLink/postAbsen/$idAbsen'),
+      );
+      final fileStream = http.ByteStream(file.openRead());
+      final fileLength = await file.length();
+      final multipartFile = http.MultipartFile(
+        'tugas',
+        fileStream,
+        fileLength,
+        filename: 'filename.pdf',
+        contentType: MediaType('application', 'pdf'),
+      );
+      request.files.add(multipartFile);
+
+      final res = await request.send();
+      log(res.statusCode.toString());
+      if (res.statusCode == 200) {
+        return right(res.statusCode);
+      }
+      return const Left(Failure.parsingFailure(message: "Gagal Post Data"));
     } catch (e) {
       return const Left(Failure.serverFailure());
     }
