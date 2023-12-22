@@ -14,6 +14,7 @@ import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_t
 import 'package:image_picker/image_picker.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/loading.dart';
 
 // ignore: must_be_immutable
 class PengumpulanTugasView extends StatefulWidget {
@@ -32,9 +33,10 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
   List<File> _images = [];
   bool _filled = false;
   bool _load = false;
-
+  double loadingPercentage = 0.2;
   // late File _image;
   final picker = ImagePicker();
+  String path = '';
 
   Future getImageFromCamera() async {
     final pickedFile = await picker.pickImage(source: ImageSource.camera);
@@ -51,8 +53,20 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
     });
   }
 
+  void simulateLoading() {
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        loadingPercentage = 1.0;
+      });
+    });
+  }
+
 // generate pdf nya
-  Future<String> _generatePdf() async {
+  Future _generatePdf() async {
+    setState(() {
+      _load = true;
+      simulateLoading();
+    });
     final pdf = pw.Document();
 
     for (final imageFile in _images) {
@@ -76,7 +90,8 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
     final file = File(filePath);
     log('file path $filePath');
     await file.writeAsBytes(await pdf.save());
-    return filePath;
+    path = filePath;
+    // return filePath;
   }
 
   @override
@@ -88,206 +103,194 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
     }
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'Pengumpulan Tugas',
-            style: AppTextStyle.body3.setSemiBold(),
-          ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'Pengumpulan Tugas',
+          style: AppTextStyle.body3.setSemiBold(),
         ),
-        body: SingleChildScrollView(
+      ),
+      body: SingleChildScrollView(
+          child: Column(children: [
+        const SizedBox(height: 16),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SizedBox(
             child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-              const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 6),
-                            child:
-                                Assets.images.profileDetail.image(height: 60),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                widget.pel.guru,
-                                style: AppTextStyle.body3.setSemiBold(),
-                              ),
-                              Text(
-                                '${widget.pel.mapel} Pertemuan ${widget.presensi.pertemuan}',
-                                style: AppTextStyle.body3
-                                    .setMedium()
-                                    .copyWith(color: AppColors.primary.pr10),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 6),
+                      child: Assets.images.profileDetail.image(height: 60),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.pel.guru,
+                          style: AppTextStyle.body3.setSemiBold(),
+                        ),
+                        Text(
+                          '${widget.pel.mapel} Pertemuan ${widget.presensi.pertemuan}',
+                          style: AppTextStyle.body3
+                              .setMedium()
+                              .copyWith(color: AppColors.primary.pr10),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
 
-                      const SizedBox(height: 16),
-                      // pr soal
-                      Text(
-                        'silahkan upload pr kalian dengan menekan tombol dibawah ya',
-                        style: AppTextStyle.body3.setRegular(),
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Waktu',
-                            style: AppTextStyle.body3
-                                .setSemiBold()
-                                .copyWith(color: AppColors.primary.pr10),
-                          ),
-                          Text(
-                            'Deadline : Minggu Depan',
-                            style: AppTextStyle.body3
-                                .setRegular()
-                                .copyWith(color: AppColors.danger.dng05),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      // _image == null
-                      //     ?
-                      SizedBox(
-                        width: size.width,
-                        height: 300,
-                        child: GridView.builder(
-                          shrinkWrap: false,
-                          itemCount: _images.length == 0 ? 1 : _images.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  mainAxisExtent:
-                                      _images.length == 1 ? 220 : 120,
-                                  crossAxisCount: _images.length == 1 ? 1 : 2,
-                                  childAspectRatio: 0.5,
-                                  mainAxisSpacing: 4.0,
-                                  crossAxisSpacing: 4.0),
-                          primary: false,
-                          itemBuilder: (context, index) {
-                            if (index < _images.length) {
-                              // timpa jika ada
-                              return Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Column(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          // hapus
-                                          log('hapus');
-                                          setState(() {
-                                            _images.removeAt(index);
-                                            _filled = true;
-                                          });
-                                        },
-                                        child: Container(
-                                          height:
-                                              _images.length == 1 ? 200 : 86,
-                                          width:
-                                              _images.length == 1 ? 400 : 154,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.neutral.ne03
-                                                .withOpacity(0.2),
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          child: Image.file(
-                                            _images[index],
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Text('Gambar ${index + 1}',
-                                          style:
-                                              AppTextStyle.body3.setMedium()),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 86,
-                                    width: 154,
-                                    child: Center(
-                                      child: _load == true
-                                          ? CircularProgressIndicator()
-                                          : Icon(Icons.delete,
-                                              color:
-                                                  Colors.red.withOpacity(0.6)),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }
-                            _filled = false;
-                            return Column(
+                const SizedBox(height: 16),
+                // pr soal
+                Text(
+                  'silahkan upload pr kalian dengan menekan tombol dibawah ya',
+                  style: AppTextStyle.body3.setRegular(),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Waktu',
+                      style: AppTextStyle.body3
+                          .setSemiBold()
+                          .copyWith(color: AppColors.primary.pr10),
+                    ),
+                    Text(
+                      'Deadline : Minggu Depan',
+                      style: AppTextStyle.body3
+                          .setRegular()
+                          .copyWith(color: AppColors.danger.dng05),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                // _image == null
+                //     ?
+                SizedBox(
+                  width: size.width,
+                  height: 300,
+                  child: GridView.builder(
+                    shrinkWrap: false,
+                    itemCount: _images.isEmpty ? 1 : _images.length + 1,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisExtent: _images.isEmpty ? 220 : 120,
+                        crossAxisCount: _images.isEmpty ? 1 : 2,
+                        childAspectRatio: 0.5,
+                        mainAxisSpacing: 4.0,
+                        crossAxisSpacing: 4.0),
+                    primary: false,
+                    itemBuilder: (context, index) {
+                      if (index < _images.length) {
+                        // timpa jika ada
+                        return Stack(
+                          // alignment: Alignment.center,
+                          children: [
+                            Column(
                               children: [
-                                Container(
-                                  height: 86,
-                                  // width: _images.isEmpty == 0 ? 300 : 140,
-                                  decoration: BoxDecoration(
+                                GestureDetector(
+                                  onTap: () {
+                                    // hapus
+                                    log('hapus');
+                                    setState(() {
+                                      _images.removeAt(index);
+                                      _filled = true;
+                                    });
+                                  },
+                                  child: Container(
+                                    height: _images.isEmpty ? 200 : 86,
+                                    width: _images.isEmpty ? 400 : 200,
+                                    decoration: BoxDecoration(
                                       color: AppColors.neutral.ne03
                                           .withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(12)),
-                                  child: const Center(
-                                      child: Icon(
-                                    Icons.picture_as_pdf,
-                                    color: Colors.red,
-                                  )),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Image.file(
+                                      _images[index],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
+                                const SizedBox(height: 6),
                                 Text('Gambar ${index + 1}',
                                     style: AppTextStyle.body3.setMedium()),
                               ],
-                            );
-                          },
-                        ),
-                      )
-                    ],
+                            ),
+                            Center(
+                              child:
+                                  // ? const CircularProgressIndicator()
+                                  // :
+                                  Icon(Icons.delete,
+                                      color: Colors.red.withOpacity(0.6)),
+                            ),
+                          ],
+                        );
+                      }
+
+                      return Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => getImageFromCamera(),
+                            child: Container(
+                              height: 86,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                  color:
+                                      AppColors.neutral.ne03.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: const Center(
+                                  child: Icon(
+                                Icons.add_a_photo,
+                                color: Colors.blue,
+                              )),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text('Tambah Foto',
+                              style: AppTextStyle.body3.setMedium()),
+                        ],
+                      );
+                    },
                   ),
-                ),
-              ),
-            ])),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ButtonWidget(
-                isFilledButton: true,
-                customWidth: 200,
-                label: 'Tambah Gambar',
-                tapped: (value) {
-                  getImageFromCamera();
+                )
+              ],
+            ),
+          ),
+        ),
+      ])),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16),
+        child: _load == true
+            ? LoadingContainer(
+                pre: loadingPercentage,
+                isDone: (v) {
+                  if (v == true) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ReadPdfView(
+                              link: path,
+                            ),
+                          ));
+                    });
+                    _load = false;
+                  }
                 },
-              ),
-              const SizedBox(width: 8),
-              ButtonWidget(
+              )
+            : ButtonWidget(
                 isFilledButton: _filled,
-                customWidth: 90,
+                customWidth: 200,
                 label: 'Kirim',
                 tapped: (value) async {
-                  final filePath = await _generatePdf();
+                  _generatePdf();
 
                   // ignore: use_build_context_synchronously
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ReadPdfView(
-                        link: filePath,
-                      ),
-                    ),
-                  );
                 },
               ),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }
