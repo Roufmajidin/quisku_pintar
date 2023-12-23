@@ -14,19 +14,22 @@ abstract class AuthenticationDataS {}
 
 class AuthenticationDataSources implements AuthenticationDataS {
   final Dio dio = Dio();
-  // String apiUrl = initializeBaseUrl;
-  final String jsonFirebaseRealtimeDB =
-      'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+
+  Future<String> getUrlStringAuto() async {
+    const String jsonFirebaseRealtimeDB =
+        'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+
+    final uri = Uri.parse(jsonFirebaseRealtimeDB);
+    final response = await http.get(uri);
+    final Map<String, dynamic> data = json.decode(response.body);
+    return data['data'].toString();
+  }
 
   Future<Either<Failure, TokenModels>> loginEmailPassword(
       String email, String password) async {
-    // parse link dari realtime database,
-    //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String data = json.decode(respons.body);
-    //
+    final urlString = await getUrlStringAuto();
     try {
-      final response = await http.post(Uri.parse('$data/login'), body: {
+      final response = await http.post(Uri.parse('$urlString/login'), body: {
         'email': email,
         'password': password,
       });
@@ -54,14 +57,12 @@ class AuthenticationDataSources implements AuthenticationDataS {
   }
 
   Future<Either<Failure, User>> getUseLoginDataSources(String token) async {
-    // parse link dari realtime database,
-    //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String data = json.decode(respons.body);
+    final urlString = await getUrlStringAuto();
+
     try {
       final user = await http.get(
         Uri.parse(
-          '$data/user',
+          '$urlString/user',
         ),
         headers: {
           'Authorization': 'Bearer $token',
@@ -84,18 +85,5 @@ class AuthenticationDataSources implements AuthenticationDataS {
     } catch (e) {
       return const Left(Failure.parsingFailure());
     }
-  }
-
-  Future<String> initializeBaseUrl() async {
-    final response = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    // Parse the JSON response and extract the baseUrl
-    final String data = json.decode(response.body);
-    // d = data;
-
-    // Print or use the fetched baseUrl as needed
-    // print('Fetched baseUrl from Firebase: $data');
-    // print('Fetched baseUrl from Firebase: $data');
-
-    return data;
   }
 }

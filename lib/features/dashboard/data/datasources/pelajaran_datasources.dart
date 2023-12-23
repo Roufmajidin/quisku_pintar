@@ -12,18 +12,21 @@ import '../../../ujian/data/models/ujian_models.dart';
 
 class PelajaranDataSources {
   final Dio dio = Dio();
-  // final String? apiUrl = Endpoints().baseUrl;
-  final String jsonFirebaseRealtimeDB =
-      'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+  Future<String> getUrlStringAuto() async {
+    const String jsonFirebaseRealtimeDB =
+        'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+
+    final uri = Uri.parse(jsonFirebaseRealtimeDB);
+    final response = await http.get(uri);
+    final Map<String, dynamic> data = json.decode(response.body);
+    return data['data'].toString();
+  }
 
   Future<Either<Failure, List<Pelajaran>>> getMapel(
       {required int userId}) async {
     log('final : on GetMapel in PelajaranDataSources');
-    // parse link dari realtime database,
-    //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String urlLink = json.decode(respons.body);
-    //
+    final urlLink = await getUrlStringAuto();
+
     try {
       final res = await http.get(Uri.parse('$urlLink/mapel/$userId'));
       if (res.statusCode == 200) {
@@ -44,11 +47,8 @@ class PelajaranDataSources {
 
   // get ujian by UserId
   Future<Either<Failure, List<Ujian>>> getUjianByUser({required int id}) async {
-    // parse link dari realtime database,
-    //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String urlLink = json.decode(respons.body);
     //
+    final urlLink = await getUrlStringAuto();
     try {
       final res = await http.get(Uri.parse('$urlLink/getExamStatus/$id'));
       if (res.statusCode == 200) {
