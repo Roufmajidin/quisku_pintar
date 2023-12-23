@@ -20,18 +20,15 @@ class PelajaranRepositoryImpl {
 
       return res;
     } catch (e) {
-      print(e);
       return const Left(Failure.parsingFailure());
     }
   }
 
   Future<Either<Failure, List<Ujian>>> getUjian({required int id}) async {
-    // TODO: implement getUjian
     try {
       final res = await pelajaranDataSources.getUjianByUser(id: id);
       return res;
     } catch (e) {
-      print(e);
       return const Left(Failure.parsingFailure());
     }
   }

@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -15,7 +14,6 @@ import 'package:quisku_pintar/features/dashboard/presentation/dashboard/widgets/
 import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
 
 import '../bloc/dashboard_bloc.dart';
-import '../pages/detail_page.dart';
 import '../widgets/container_pelatihan.dart';
 
 class DashboardView extends StatefulWidget {
@@ -27,18 +25,6 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  final CarouselController _carouselController = CarouselController();
-  int _currentIndex = 0;
-
-  void _navigateToDetail(String title) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DetailPelatihanView(title: title),
-      ),
-    );
-  }
-
   @override
   void initState() {
     super.initState();
@@ -50,8 +36,6 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -88,6 +72,7 @@ class _DashboardViewState extends State<DashboardView> {
                             const SizedBox(
                               width: 8,
                             ),
+                            // ignore: deprecated_member_use_from_same_package
                             Assets.icons.arrowRight.svg(color: Colors.black),
                           ],
                         ),
@@ -201,7 +186,7 @@ class CustomAppBar extends StatelessWidget {
                             state.status == FormzStatus.submissionInProgress ||
                                     state.user == null
                                 ? state.status == FormzStatus.submissionFailure
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : SizedBox(
                                         height: 15,
                                         width: 15,
@@ -231,18 +216,18 @@ class CustomAppBar extends StatelessWidget {
                               if (state.status ==
                                   FormzStatus.submissionSuccess) {
                                 context.router.pushAndPopUntil(
-                                  LoginRoute(),
+                                  const LoginRoute(),
                                   predicate: (route) => false,
                                 );
                               }
                             },
-                            child: state.status ==
-                                    FormzStatus.submissionInProgress
-                                ? SizedBox(
-                                    height: 30,
-                                    child: const CircularProgressIndicator(),
-                                  )
-                                : Assets.icons.notification.svg(width: 30)),
+                            child:
+                                state.status == FormzStatus.submissionInProgress
+                                    ? const SizedBox(
+                                        height: 30,
+                                        child: CircularProgressIndicator(),
+                                      )
+                                    : Assets.icons.notification.svg(width: 30)),
                       ],
                     ),
                   ],

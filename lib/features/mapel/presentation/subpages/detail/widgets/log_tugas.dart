@@ -1,6 +1,15 @@
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
+import 'package:quisku_pintar/core/error/utils/status.dart';
+import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
+import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
+import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
+import 'package:shimmer/shimmer.dart';
 import 'widget.dart';
 
 // ignore: must_be_immutable
@@ -8,6 +17,42 @@ class LogTugas extends StatelessWidget {
   Pelajaran data;
 
   LogTugas({Key? key, required this.data}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MapelBloc, MapelState>(builder: (context, state) {
+      final presensi = state.presensiData;
+      final presensiyangadatugas =
+          presensi.where((element) => element.is_tugas == 1).toList();
+      if (state.fetchDataProses == FetchStatus.loading) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Shimmer.fromColors(
+              loop: 3,
+              period: const Duration(seconds: 4),
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: BuildContentWidget(
+                  presensiyangadatugas: presensiyangadatugas, isShimmer: true)),
+        );
+      }
+      return BuildContentWidget(
+          presensiyangadatugas: presensiyangadatugas, isShimmer: false);
+    });
+  }
+}
+
+// ignore: must_be_immutable
+class BuildContentWidget extends StatelessWidget {
+  bool isShimmer;
+
+  BuildContentWidget({
+    super.key,
+    required this.presensiyangadatugas,
+    required this.isShimmer,
+  });
+
+  final List<Presensi> presensiyangadatugas;
 
   @override
   Widget build(BuildContext context) {
@@ -20,32 +65,59 @@ class LogTugas extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                BuildRow(
-                  label: "Tanggal",
-                ),
                 BuildRow(label: "Pertemuan", customeWidth: 120),
-                BuildRow(label: "Grade"),
+                BuildRow(label: "Status", customeWidth: 120),
+                BuildRow(label: "file", customeWidth: 120),
               ],
             ),
           ),
-          Container(
-            color: AppColors.neutral.ne01,
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BuildRowField(
-                  item: '12 Feb 2023',
-                  customeWidth: 100,
-                ),
-                BuildRowField(
-                  item: 'Pertemuan 1',
-                  customeWidth: 120,
-                ),
-                BuildRowField(
-                  item: 'Open',
-                  customeWidth: 70,
-                ),
-              ],
+          SizedBox(
+            height: isShimmer == true ? 2 : 0,
+          ),
+          SizedBox(
+            height: 600,
+            child: ListView.builder(
+              itemCount: presensiyangadatugas.length,
+              itemBuilder: (context, index) {
+                var i = presensiyangadatugas[index];
+                Color backgroundColor = index % 2 == 0
+                    ? Color.fromARGB(179, 253, 248, 248)
+                    : Colors.white;
+                return Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: isShimmer == true ? 2 : 0),
+                  child: Container(
+                    color: backgroundColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BuildRowField(
+                          item: 'Pertemuan ${i.pertemuan.toString()}',
+                          customeWidth: 120,
+                          callback: () {},
+                        ),
+                        BuildRowField(
+                          item: i.status == 1 ? 'Mengumpulkan' : 'Belum',
+                          customeWidth: 120,
+                          callback: () {},
+                        ),
+                        BuildRowField(
+                          item: i.status == 0 ? '-' : 'Open',
+                          callback: () {
+                            if (i.status != 0) {
+                              log('k ${i.file_tugas}');
+                              context.router
+                                  .push(ReadPdfRoute(pdfLink: i.file_tugas));
+                            }
+                          },
+
+                          // customeWidth: 120,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
           )
         ],

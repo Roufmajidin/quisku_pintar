@@ -52,18 +52,20 @@ class _TranskipNilaiViewState extends State<TranskipNilaiView> {
             'Transkip Nilai',
             style: AppTextStyle.body3.setSemiBold(),
           ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                size: 16,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
+          automaticallyImplyLeading: false,
+
+          // leading: Padding(
+          //   padding: const EdgeInsets.only(left: 16),
+          //   child: IconButton(
+          //     icon: const Icon(
+          //       Icons.arrow_back_ios,
+          //       size: 16,
+          //     ),
+          //     onPressed: () {
+          //       Navigator.of(context).pop();
+          //     },
+          //   ),
+          // ),
         ),
         body: DefaultTabController(
           initialIndex: 0,
@@ -95,7 +97,6 @@ class _TranskipNilaiViewState extends State<TranskipNilaiView> {
                             const Center(child: CircularProgressIndicator()));
                   }
                   if (state.reportData.isEmpty ||
-                      state.reportData == null ||
                       state.fetchReportStatus == FetchStatus.loading) {
                     return SizedBox(
                         height: MediaQuery.of(context).size.height * 0.6,

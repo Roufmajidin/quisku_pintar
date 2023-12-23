@@ -1,12 +1,9 @@
-import 'dart:developer';
-
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
 class AlertButton extends StatelessWidget {
-  AlertButton({
+  const AlertButton({
     super.key,
   });
 

@@ -165,6 +165,7 @@ class RiwayatKonversiView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Assets.icons.unduh.svg(
+                      // ignore: deprecated_member_use_from_same_package
                       color: isWaiting
                           ? AppColors.neutral.ne14
                           : AppColors.primary.pr10),

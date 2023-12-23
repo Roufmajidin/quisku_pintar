@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
+// ignore: must_be_immutable
 class BuildFinalScore extends StatelessWidget {
   double value;
   String title;

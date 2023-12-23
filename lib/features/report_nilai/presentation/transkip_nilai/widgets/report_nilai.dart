@@ -1,14 +1,11 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/report_nilai/bloc/nilai_bloc.dart';
 
-import '../../../data/models/report_models.dart';
-import 'header_container.dart';
 import 'widgets.dart';
 
 class ReportNilai extends StatefulWidget {
@@ -90,7 +87,7 @@ class _ReportNilaiState extends State<ReportNilai> {
                       children: pts != null
                           ? List.generate(pts.length, (s) {
                               Color backgroundColor = s % 2 == 0
-                                  ? Color.fromARGB(179, 244, 244, 244)
+                                  ? const Color.fromARGB(179, 244, 244, 244)
                                   : Colors.white;
 
                               var d = pts[s];
@@ -136,7 +133,7 @@ class _ReportNilaiState extends State<ReportNilai> {
                         children: pas != null
                             ? List.generate(pas.length, (s) {
                                 Color backgroundColor = s % 2 == 0
-                                    ? Color.fromARGB(179, 244, 244, 244)
+                                    ? const Color.fromARGB(179, 244, 244, 244)
                                     : Colors.white;
                                 var d = pas[s];
                                 int n = 0;

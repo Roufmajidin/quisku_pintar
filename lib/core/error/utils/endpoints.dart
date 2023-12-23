@@ -1,4 +1,5 @@
 import 'dart:convert';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class Endpoints {
@@ -22,7 +23,7 @@ class Endpoints {
         baseUrl = data;
 
         // Print or use the fetched baseUrl as needed
-        print('Fetched baseUrl from Firebase: $baseUrl');
+        // print('Fetched baseUrl from Firebase: $baseUrl');
       } else {
         // Handle the case when the server returns an error status code
         throw Exception(
@@ -30,7 +31,7 @@ class Endpoints {
       }
     } catch (error) {
       // Handle network or other errors
-      print('Error: $error');
+      // print('Error: $error');
       throw Exception('Error fetching baseUrl: $error');
     }
   }

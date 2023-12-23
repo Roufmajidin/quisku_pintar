@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
-import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';

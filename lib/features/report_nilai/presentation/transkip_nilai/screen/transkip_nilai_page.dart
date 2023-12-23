@@ -18,6 +18,7 @@ class TranskipNilaiPage extends StatelessWidget {
         sl<ReportUsecase>(),
         sl<LoginUseCase>(),
       ),
+      // ignore: prefer_const_constructors
       child: TranskipNilaiView(),
     );
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -65,6 +67,7 @@ class ButtonWidgets extends StatelessWidget {
                         'Tekan tombol Selesai untuk melihat hasil Test ',
                         style: AppTextStyle.body3,
                       ),
+                      // ignore: prefer_const_constructors
                       AlertButton()
                     ],
                   ),

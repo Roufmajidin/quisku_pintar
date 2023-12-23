@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -15,15 +17,21 @@ abstract class UjianDataSources {}
 class UjianDS implements UjianDataSources {
   final Dio dio = Dio();
   // final String? apiUrl = Endpoints().baseUrl;
-  final String jsonFirebaseRealtimeDB =
-      'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+  Future<String> getUrlStringAuto() async {
+    const String jsonFirebaseRealtimeDB =
+        'https://sementara-264a2-default-rtdb.firebaseio.com/endpoint_injection.json';
+
+    final uri = Uri.parse(jsonFirebaseRealtimeDB);
+    final response = await http.get(uri);
+    final Map<String, dynamic> data = json.decode(response.body);
+    return data['data'].toString();
+  }
 
   // get ujian by UserId
   Future<Either<Failure, List<Ujian>>> getUjianByUser({required int id}) async {
     // parse link dari realtime database,
     //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String urlLink = json.decode(respons.body);
+    final String urlLink = await getUrlStringAuto();
     //
     try {
       String jenisUjian = await getTypeUjian();
@@ -50,17 +58,14 @@ class UjianDS implements UjianDataSources {
 
   // get type ujian
   Future<String> getTypeUjian() async {
-    // parse link dari realtime database,
-    //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String urlLink = json.decode(respons.body);
+    final String urlLink = await getUrlStringAuto();
     final getActiveUjian = await http.get(Uri.parse('$urlLink/getActiveUjian'));
     final Map<String, dynamic> activeUjian = jsonDecode(getActiveUjian.body);
     String u = '';
     for (var element in activeUjian['data']) {
       String jenisUjian = element['ujian'];
       u = jenisUjian;
-      log('type ujian ${jenisUjian}');
+      log('type ujian $jenisUjian');
     }
     return u;
   }
@@ -68,10 +73,7 @@ class UjianDS implements UjianDataSources {
   // get question
   Future<Either<Failure, List<Question>>> getQuestion(
       {required mapelId}) async {
-    // parse link dari realtime database,
-    //agar server ngrok lokal bisa autoload pada masing masing device
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String urlLink = json.decode(respons.body);
+    final String urlLink = await getUrlStringAuto();
 
     try {
       final res = await http.get(Uri.parse('$urlLink/detail/$mapelId'));
@@ -87,7 +89,6 @@ class UjianDS implements UjianDataSources {
       log(res.statusCode.toString());
       return const Left(Failure.parsingFailure(message: "Data Gagal Dimuat"));
     } catch (e) {
-      print(e);
       return const Left(Failure.serverFailure());
     }
 
@@ -103,8 +104,7 @@ class UjianDS implements UjianDataSources {
     // parse link dari realtime database,
     //agar server ngrok lokal bisa autoload pada masing masing device
     // TODO https://eae6-114-124-212-117.ngrok-free.app/api/exam/postData/2/1
-    final respons = await http.get(Uri.parse(jsonFirebaseRealtimeDB));
-    final String urlLink = json.decode(respons.body);
+    final String urlLink = await getUrlStringAuto();
     int statusCode = 0;
     log(modelsAnswer.answers.toString());
     final a = json.encode(modelsAnswer.answers);
@@ -125,7 +125,6 @@ class UjianDS implements UjianDataSources {
     } catch (e) {
       return 401;
     }
-    log(respons.statusCode.toString());
     return statusCode;
 
     // log(id.toString());

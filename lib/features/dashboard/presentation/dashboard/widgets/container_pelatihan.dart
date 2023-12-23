@@ -10,7 +10,7 @@ class ContainerPelatihan extends StatelessWidget {
   final String mapel;
   final Function callBack;
 
-  ContainerPelatihan({
+  const ContainerPelatihan({
     Key? key,
     required this.image,
     required this.guru,

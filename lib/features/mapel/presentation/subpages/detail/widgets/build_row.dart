@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 
+// ignore: must_be_immutable
 class BuildRow extends StatelessWidget {
   String label;
   double? customeWidth;
@@ -10,7 +11,7 @@ class BuildRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: customeWidth != null ? customeWidth : 76,
+        width: customeWidth ?? 76,
         child: Center(
             child: Text(
           label,

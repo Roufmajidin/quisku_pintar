@@ -4,6 +4,7 @@ import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/ujian/data/models/ujian_models.dart';
 import 'package:quisku_pintar/features/ujian/presentation/subpages/detail_ujian/widgets/garis-garis.dart';
 
+// ignore: must_be_immutable
 class ContentInformasi extends StatelessWidget {
   Ujian data;
 

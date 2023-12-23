@@ -161,6 +161,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home1.svg
   SvgGenImage get home1 => const SvgGenImage('assets/icons/home1.svg');
 
+  /// File path: assets/icons/icon-warning-konversi.png
+  AssetGenImage get iconWarningKonversi =>
+      const AssetGenImage('assets/icons/icon-warning-konversi.png');
+
   /// File path: assets/icons/iconBulan.svg
   SvgGenImage get iconBulan => const SvgGenImage('assets/icons/iconBulan.svg');
 
@@ -192,6 +196,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/mknows.jpg
   AssetGenImage get mknows => const AssetGenImage('assets/icons/mknows.jpg');
+
+  /// File path: assets/icons/my-icon.png
+  AssetGenImage get myIcon => const AssetGenImage('assets/icons/my-icon.png');
 
   /// File path: assets/icons/nilai_sertifikat.png
   AssetGenImage get nilaiSertifikat =>
@@ -354,6 +361,7 @@ class $AssetsIconsGen {
         google,
         home,
         home1,
+        iconWarningKonversi,
         iconBulan,
         iconJadwal,
         iconMinggu,
@@ -363,6 +371,7 @@ class $AssetsIconsGen {
         lainnya,
         layananKonsultasi,
         mknows,
+        myIcon,
         nilaiSertifikat,
         notification,
         panduan,
@@ -551,12 +560,23 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsPdfGen {
+  const $AssetsPdfGen();
+
+  /// File path: assets/pdf/sample.pdf
+  String get sample => 'assets/pdf/sample.pdf';
+
+  /// List of all assets
+  List<String> get values => [sample];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsPdfGen pdf = $AssetsPdfGen();
 }
 
 class AssetGenImage {

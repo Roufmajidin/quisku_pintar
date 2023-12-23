@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -19,9 +18,7 @@ class NilaiBloc extends Bloc<NilaiEvent, NilaiState> {
   ReportUsecase reportUsecase;
 
   NilaiBloc(this.reportUsecase, this.loginusecase) : super(const _Initial()) {
-    on<NilaiEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<NilaiEvent>((event, emit) {});
     on<GetNilaiReport>(_getReport);
   }
   _getReport(NilaiEvent event, Emitter<NilaiState> emit) async {
@@ -52,9 +49,9 @@ class NilaiBloc extends Bloc<NilaiEvent, NilaiState> {
       emit(state.copyWith(groupedPAS: groupedReports['PAS'] ?? []));
       emit(state.copyWith(groupedPTS: groupedReports['PTS'] ?? []));
     });
-    print(' pas gr ${jsonEncode(state.groupedPAS.toList())}');
-    print(' pas gr ${jsonEncode(state.groupedPTS.toList())}');
-    print(jsonEncode(state.groupedPAS.toList()));
+    // print(' pas gr ${jsonEncode(state.groupedPAS.toList())}');
+    // print(' pas gr ${jsonEncode(state.groupedPTS.toList())}');
+    // print(jsonEncode(state.groupedPAS.toList()));
   }
 
   Map<String, List<ReportModels>> groupReportsByType(
