@@ -52,7 +52,8 @@ class _PresensiWidgetState extends State<PresensiWidget> {
         if (state.fetchDataProses == FetchStatus.loading) {
           return Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: ShimmerLoadWidget(widget: widget, state: state),
+            child: ShimmerLoadWidget(
+                widget: widget, state: state, type: widget.type),
           );
         }
         // if (state.statusPost == 300) {
@@ -245,9 +246,10 @@ class _PresensiWidgetState extends State<PresensiWidget> {
                     },
                   ),
                 ),
-              const SizedBox(
-                height: 16,
-              ),
+              if (widget.type == 'presensi')
+                const SizedBox(
+                  height: 16,
+                ),
               // Detail Acara
 
               CardWidget(

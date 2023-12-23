@@ -14,10 +14,12 @@ class ShimmerLoadWidget extends StatelessWidget {
     super.key,
     required this.widget,
     required this.state,
+    required this.type,
   });
 
   final PresensiWidget widget;
   final MapelState state;
+  final String type;
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
@@ -32,32 +34,33 @@ class ShimmerLoadWidget extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          SizedBox(
-            height: 40,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 14,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
+          if (type == 'presensi')
+            SizedBox(
+              height: 40,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 14,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        'P${index + 1}',
+                        style: AppTextStyle.body3
+                            .setSemiBold()
+                            .copyWith(color: AppColors.neutral.ne01),
+                      ),
                     ),
-                    child: Text(
-                      'P${index + 1}',
-                      style: AppTextStyle.body3
-                          .setSemiBold()
-                          .copyWith(color: AppColors.neutral.ne01),
-                    ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
+          if (type == 'presensi') const SizedBox(height: 16),
           SizedBox(
             height: 250,
             child: ListView.builder(
