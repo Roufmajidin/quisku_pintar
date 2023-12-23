@@ -48,8 +48,8 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
     // get userid
 
     final r = await mapelUsecase.postTugas(idAbsen: idAbsen, file: file);
-    r.fold(
-        (l) => emit(state.copyWith(fetchDataProses: FetchStatus.failure)), (r) {
+    r.fold((l) => emit(state.copyWith(fetchDataProses: FetchStatus.failure)),
+        (r) {
       emit(state.copyWith(fetchDataProses: FetchStatus.success));
       emit(state.copyWith(statusPost: r));
     });
@@ -70,11 +70,15 @@ class MapelBloc extends Bloc<MapelEvent, MapelState> {
     log('user Id = $userId');
     final getPresensi =
         await mapelUsecase.getPresensi(userId: userId, mapelId: mapelId);
-    log('get presensi $getPresensi');
+    // log('get presensi $getPresensi');
+
     getPresensi.fold(
         (l) => emit(state.copyWith(fetchDataProses: FetchStatus.failure)), (r) {
       emit(state.copyWith(fetchDataProses: FetchStatus.success));
       emit(state.copyWith(presensiData: r));
+      for (var e in r) {
+        log('id ${e.id}, pert : ${e.pertemuan}  materi : ${e.file} kmplkn : ${e.file_tugas}');
+      }
     });
   }
 

@@ -37,6 +37,8 @@ class MapelDatasources {
         final List<Presensi> presensiList = result.map((e) {
           e['file'] = '$urlLink/${e['file']}/file-pertemuan';
           e['file_tugas'] = '$urlLink/${e['file_tugas']}/file-tugas';
+
+          // log(jsonDataList['data']);
           return Presensi.fromJson(e);
         }).toList();
         // final List<Map<String, dynamic>> result =
