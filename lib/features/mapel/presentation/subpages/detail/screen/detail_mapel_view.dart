@@ -120,17 +120,22 @@ class _DetailMapelViewState extends State<DetailMapelView> {
                                       ListView(
                                         children: [
                                           PresensiWidget(
-                                            refresh: (value) {
-                                              fetcUlang();
-                                            },
-                                            data: widget.mapel,
-                                          ),
+                                              refresh: (value) {
+                                                fetcUlang();
+                                              },
+                                              data: widget.mapel,
+                                              type: 'presensi'),
                                         ],
                                       ),
                                       ListView(
-                                        // ignore: prefer_const_literals_to_create_immutables
                                         children: [
                                           // ContentInformasi(data: ujian),
+                                          PresensiWidget(
+                                              refresh: (value) {
+                                                fetcUlang();
+                                              },
+                                              data: widget.mapel,
+                                              type: 'penugasan'),
                                         ],
                                       ),
                                       ListView(

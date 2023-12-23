@@ -123,6 +123,7 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
@@ -150,22 +151,28 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
 
                     const SizedBox(height: 16),
                     // pr soal
+
                     Text(
-                      'silahkan upload pr kalian dengan menekan tombol dibawah ya',
+                      widget.presensi.status != 0
+                          ? 'Kamu Sudah Mengumpulkan tugas pertemuan ${widget.presensi.pertemuan}'
+                          : 'silahkan upload pr kalian dengan menekan tombol dibawah ya',
                       style: AppTextStyle.body3.setRegular(),
                     ),
                     const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        if (widget.presensi.status == 0)
+                          Text(
+                            'Waktu',
+                            style: AppTextStyle.body3
+                                .setSemiBold()
+                                .copyWith(color: AppColors.primary.pr10),
+                          ),
                         Text(
-                          'Waktu',
-                          style: AppTextStyle.body3
-                              .setSemiBold()
-                              .copyWith(color: AppColors.primary.pr10),
-                        ),
-                        Text(
-                          'Deadline : Minggu Depan',
+                          widget.presensi.status != 0
+                              ? 'Pengumpulan : ${widget.presensi.updated_at}'
+                              : 'Deadline : Minggu Depan',
                           style: AppTextStyle.body3
                               .setRegular()
                               .copyWith(color: AppColors.danger.dng05),
@@ -175,9 +182,10 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                     const SizedBox(height: 16),
                     // _image == null
                     //     ?
+
                     SizedBox(
                       width: size.width,
-                      height: 300,
+                      height: widget.presensi.status == 0 ? 300 : 500,
                       child: GridView.builder(
                         shrinkWrap: false,
                         itemCount: _images.isEmpty ? 1 : _images.length + 1,
@@ -239,23 +247,36 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                           return Column(
                             children: [
                               GestureDetector(
-                                onTap: () => getImageFromCamera(),
+                                onTap: () {
+                                  if (widget.presensi.status == 1) {
+                                    context.pushRoute(ReadPdfRoute(
+                                        pdfLink: widget.presensi.file_tugas));
+                                  } else {
+                                    getImageFromCamera();
+                                  }
+                                },
                                 child: Container(
-                                  height: 86,
+                                  height:
+                                      widget.presensi.status == 1 ? 150 : 80,
                                   width: 300,
                                   decoration: BoxDecoration(
                                       color: AppColors.neutral.ne03
                                           .withOpacity(0.2),
                                       borderRadius: BorderRadius.circular(12)),
-                                  child: const Center(
+                                  child: Center(
                                       child: Icon(
-                                    Icons.add_a_photo,
+                                    widget.presensi.status == 1
+                                        ? Icons.picture_as_pdf_outlined
+                                        : Icons.add_a_photo,
                                     color: Colors.blue,
                                   )),
                                 ),
                               ),
                               const SizedBox(height: 6),
-                              Text('Tambah Foto',
+                              Text(
+                                  widget.presensi.status == 0
+                                      ? 'Tambah Foto'
+                                      : 'Tugas Pertemuan ${widget.presensi.pertemuan}',
                                   style: AppTextStyle.body3.setMedium()),
                             ],
                           );
@@ -269,46 +290,48 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
           ]));
         },
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16),
-        child: _load == true
-            ? LoadingContainer(
-                pre: loadingPercentage,
-                isDone: (v) {
-                  if (v == true) {
-                    context.read<MapelBloc>().add(PostTugas(
-                        idAbsen: widget.presensi.id, file: File(path)));
-                    // WidgetsBinding.instance.addPostFrameCallback((_) {
-                    //   Navigator.pushReplacement(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //         builder: (_) => ReadPdfView(
-                    //           link: path,
-                    //         ),
-                    //       ));
-                    // });
-                    Future.delayed(const Duration(seconds: 2));
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      context.router.pushAndPopUntil(
-                        DetailMapelRoute(data: widget.pel),
-                        predicate: (route) => true,
-                      );
-                    });
-                    _load = false;
-                  }
-                },
-              )
-            : ButtonWidget(
-                isFilledButton: _filled,
-                customWidth: 200,
-                label: 'Kirim',
-                tapped: (value) async {
-                  _generatePdf();
+      bottomNavigationBar: widget.presensi.status == 1
+          ? const SizedBox()
+          : Padding(
+              padding: const EdgeInsets.all(16),
+              child: _load == true
+                  ? LoadingContainer(
+                      pre: loadingPercentage,
+                      isDone: (v) {
+                        if (v == true) {
+                          context.read<MapelBloc>().add(PostTugas(
+                              idAbsen: widget.presensi.id, file: File(path)));
+                          // WidgetsBinding.instance.addPostFrameCallback((_) {
+                          //   Navigator.pushReplacement(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //         builder: (_) => ReadPdfView(
+                          //           link: path,
+                          //         ),
+                          //       ));
+                          // });
+                          Future.delayed(const Duration(seconds: 2));
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            context.router.pushAndPopUntil(
+                              DetailMapelRoute(data: widget.pel),
+                              predicate: (route) => true,
+                            );
+                          });
+                          _load = false;
+                        }
+                      },
+                    )
+                  : ButtonWidget(
+                      isFilledButton: _filled,
+                      customWidth: 200,
+                      label: 'Kirim',
+                      tapped: (value) async {
+                        _generatePdf();
 
-                  // ignore: use_build_context_synchronously
-                },
-              ),
-      ),
+                        // ignore: use_build_context_synchronously
+                      },
+                    ),
+            ),
     );
   }
 }

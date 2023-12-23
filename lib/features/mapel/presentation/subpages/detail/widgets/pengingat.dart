@@ -5,9 +5,10 @@ import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 
 // ignore: must_be_immutable
 class Pengingat extends StatelessWidget {
+  String? type;
   MapelState state;
   bool shimmer;
-  Pengingat({super.key, required this.state, required this.shimmer});
+  Pengingat({super.key, required this.state, required this.shimmer, this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class Pengingat extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Pengingat !',
+                type == 'presensi' ? 'Pengingat !' : 'Semangat',
                 style: AppTextStyle.body2
                     .setSemiBold()
                     .copyWith(color: AppColors.primary.pr10),
@@ -34,7 +35,9 @@ class Pengingat extends StatelessWidget {
             ],
           ),
           Text(
-            state.messages,
+            type == 'presensi'
+                ? state.messages
+                : 'Karena mu bangsa ini menjadi besar',
             style: AppTextStyle.body3.copyWith(color: AppColors.primary.pr10),
           ),
         ],
