@@ -14,9 +14,6 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // await di.init(); // initialize service locator
-
-  // set dependency (repository, dt source, dll)
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -33,7 +30,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'LXP M-Knows',
+      title: 'Quisku Pintar',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
       routerConfig: _appRouter.config(),
