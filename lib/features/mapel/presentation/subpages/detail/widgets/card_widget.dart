@@ -137,7 +137,11 @@ class CardWidget extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            i.status == 0 ? 'Upload' : 'Mengumpulkan',
+                            i.status == 1
+                                ? 'Mengumpulkan'
+                                : i.is_tugas == 1
+                                    ? 'Upload'
+                                    : '-',
                             style: AppTextStyle.body4
                                 .setSemiBold()
                                 .copyWith(color: AppColors.primary.pr10),

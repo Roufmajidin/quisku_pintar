@@ -13,7 +13,7 @@ import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
-import 'package:quisku_pintar/features/mapel/presentation/subpages/lihat_materi/screen/readpdf_view.dart';
+import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/screen/detail_mapel_page.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/button_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pdf/pdf.dart';
@@ -310,12 +310,19 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                           //         ),
                           //       ));
                           // });
-                          Future.delayed(const Duration(seconds: 2));
+                          Future.delayed(const Duration(seconds: 6));
                           WidgetsBinding.instance.addPostFrameCallback((_) {
-                            context.router.pushAndPopUntil(
-                              DetailMapelRoute(data: widget.pel),
-                              predicate: (route) => true,
-                            );
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailMapelPage(data: widget.pel),
+                                ));
+                            // context.router.push(
+                            //   DetailMapelRoute(data: widget.pel),
+
+                            //   // prsedicate: (route) => true,
+                            // );
                           });
                           _load = false;
                         }
