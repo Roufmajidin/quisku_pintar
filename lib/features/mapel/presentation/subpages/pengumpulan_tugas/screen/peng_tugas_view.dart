@@ -13,6 +13,7 @@ import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
+import 'package:quisku_pintar/core/helpers/loading.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
@@ -308,15 +309,7 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
 
                   // ignore: unrelated_type_equality_checks
                   if (state.fetchDataProses == FetchStatus.loading)
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      color: Colors.white54,
-                      child: const Center(
-                          child: CircularProgressIndicator.adaptive(
-                        backgroundColor: Colors.white,
-                      )),
-                    ),
+                    const LoadingWidget(),
                 ],
               ),
             ]));

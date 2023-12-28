@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
+import 'package:quisku_pintar/core/helpers/loading.dart';
 import 'package:quisku_pintar/features/authentication/bloc/login_bloc.dart';
 import 'package:quisku_pintar/features/authentication/presentation/login/widgets/z.dart.dart';
 
@@ -50,15 +51,7 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               if (state.status == FormzStatus.submissionInProgress)
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  color: Colors.white54,
-                  child: const Center(
-                      child: CircularProgressIndicator.adaptive(
-                    backgroundColor: Colors.white,
-                  )),
-                ),
+                const LoadingWidget()
             ],
           );
         },
