@@ -7,7 +7,6 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quisku_pintar/common/extensions/extensions.dart';
 import 'package:quisku_pintar/common/gen/assets.gen.dart';
@@ -18,12 +17,10 @@ import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
-import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/screen/detail_mapel_page.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/button_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/widget/loading.dart';
 
 // ignore: must_be_immutable
 class PengumpulanTugasView extends StatefulWidget {
@@ -39,9 +36,8 @@ class PengumpulanTugasView extends StatefulWidget {
 class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
   // take pciture fungsi
   // File file
-  List<File> _images = [];
+  final List<File> _images = [];
   bool _filled = false;
-  bool _load = false;
   double loadingPercentage = 0.2;
   // late File _image;
   final picker = ImagePicker();
@@ -51,12 +47,10 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
     final pickedFile = await picker.pickImage(source: ImageSource.camera);
 
     setState(() {
-      _load = true;
       Future.delayed(const Duration(seconds: 3));
 
       if (pickedFile != null) {
         _images.add(File(pickedFile.path));
-        _load = false;
         _filled = true;
       }
     });
@@ -71,7 +65,6 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
 // generate pdf nya
   Future _generatePdf() async {
     // setState(() {
-    _load = true;
     simulateLoading();
     // });
     final pdf = pw.Document();
@@ -335,7 +328,6 @@ class _PengumpulanTugasViewState extends State<PengumpulanTugasView> {
                     label: 'Kirim',
                     tapped: (value) async {
                       await _generatePdf();
-                      // ignore: use_build_context_synchronously
                       context.read<MapelBloc>().add(PostTugas(
                           idAbsen: widget.presensi.id, file: File(path)));
                       // await
