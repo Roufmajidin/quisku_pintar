@@ -46,22 +46,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
 
       return emit(state.copyWith(user: r));
-
-      // log('emit ${state.user}');
     });
   }
 
   _loginSubmit(LoginSubmit event, Emitter<LoginState> emit) async {
     if (state.status.isValidated) {
-      log('sdsd');
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
       final loginResult = await loginUsesCase.loginUseCase(
         state.email.value,
         state.password.value,
       );
-
-      log('bloc ${loginResult.toString()}');
 
       await loginResult.fold(
         (failure) async {
@@ -71,24 +66,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           emit(state.copyWith(status: FormzStatus.submissionSuccess));
 
           final userResult = await loginUsesCase.getLogedUser(user.accesToken);
-          log(userResult.toString());
 
           await userResult.fold(
             (failure) async {},
             (user) async {
               emit(state.copyWith(user: user));
-              log(state.user.toString());
             },
           );
         },
       );
     }
   }
-
-  // void _getLogedUser(GetUserData event, Emitter<LoginState> emit) {
-  //   final token = event.userData;
-  //   emit(state.copyWith(user: s ))
-  // }
 
   void _emailChange(EmailChanged event, Emitter<LoginState> emit) {
     final email = Email.dirty(event.email);
@@ -98,14 +86,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         status: Formz.validate([state.password, email]),
       ),
     );
-    log('email ${state.status.toString()}');
   }
 
   void _passwordChange(PasswordChanged event, Emitter<LoginState> emit) {
     final password = Password.dirty(event.password);
     emit(state.copyWith(
         password: password, status: Formz.validate([password, state.email])));
-    log('password ${state.status.toString()}');
+    // log('password ${state.status.toString()}');
   }
 
   void _hidePassword(HiddenPassword event, Emitter<LoginState> emit) {
