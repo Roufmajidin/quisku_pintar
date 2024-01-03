@@ -11,6 +11,7 @@ import 'package:quisku_pintar/features/mapel/data/models/presensi.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/detail/widgets/widget.dart';
 import 'package:quisku_pintar/features/mapel/presentation/subpages/pengumpulan_tugas/screen/peng_tugas_page.dart';
 
+// ignore: must_be_immutable
 class CardWidget extends StatelessWidget {
   List<Presensi> data;
   Pelajaran pelajaran;

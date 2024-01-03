@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/core/navigation/app_router.gr.dart';
 import 'package:quisku_pintar/features/dashboard/data/models/pelajaran.dart';
@@ -81,7 +80,7 @@ class BuildContentWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 var i = presensiyangadatugas[index];
                 Color backgroundColor = index % 2 == 0
-                    ? Color.fromARGB(179, 253, 248, 248)
+                    ? const Color.fromARGB(179, 253, 248, 248)
                     : Colors.white;
                 return Padding(
                   padding:

@@ -4,7 +4,6 @@ import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/features/mapel/bloc/mapel_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'card_widget.dart';
 import 'garis-garis.dart';
 import 'pengingat.dart';
 import 'presensi.dart';
