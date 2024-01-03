@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -34,7 +33,7 @@ class LoadingContainer extends StatelessWidget {
           child: Text(
             pre.toString(),
             textAlign: TextAlign.end,
-            style: TextStyle(fontSize: 12, color: Colors.white),
+            style: const TextStyle(fontSize: 12, color: Colors.white),
           ),
         ),
       ),
