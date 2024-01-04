@@ -1099,6 +1099,7 @@ mixin _$LoginState {
   Password get password => throw _privateConstructorUsedError;
   String get errorMessages => throw _privateConstructorUsedError;
   bool get hidePassword => throw _privateConstructorUsedError;
+  FetchStatus get onLogoutProses => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1108,21 +1109,34 @@ mixin _$LoginState {
             Password password,
             String errorMessages,
             bool hidePassword,
+            FetchStatus onLogoutProses,
             User? user)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword, User? user)?
+    TResult? Function(
+            FormzStatus status,
+            Email email,
+            Password password,
+            String errorMessages,
+            bool hidePassword,
+            FetchStatus onLogoutProses,
+            User? user)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword, User? user)?
+    TResult Function(
+            FormzStatus status,
+            Email email,
+            Password password,
+            String errorMessages,
+            bool hidePassword,
+            FetchStatus onLogoutProses,
+            User? user)?
         initial,
     required TResult orElse(),
   }) =>
@@ -1161,6 +1175,7 @@ abstract class $LoginStateCopyWith<$Res> {
       Password password,
       String errorMessages,
       bool hidePassword,
+      FetchStatus onLogoutProses,
       User? user});
 
   $UserCopyWith<$Res>? get user;
@@ -1184,6 +1199,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? password = null,
     Object? errorMessages = null,
     Object? hidePassword = null,
+    Object? onLogoutProses = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1207,6 +1223,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.hidePassword
           : hidePassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      onLogoutProses: freezed == onLogoutProses
+          ? _value.onLogoutProses
+          : onLogoutProses // ignore: cast_nullable_to_non_nullable
+              as FetchStatus,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -1241,6 +1261,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       Password password,
       String errorMessages,
       bool hidePassword,
+      FetchStatus onLogoutProses,
       User? user});
 
   @override
@@ -1263,6 +1284,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? password = null,
     Object? errorMessages = null,
     Object? hidePassword = null,
+    Object? onLogoutProses = freezed,
     Object? user = freezed,
   }) {
     return _then(_$InitialImpl(
@@ -1286,6 +1308,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.hidePassword
           : hidePassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      onLogoutProses: freezed == onLogoutProses
+          ? _value.onLogoutProses
+          : onLogoutProses // ignore: cast_nullable_to_non_nullable
+              as FetchStatus,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -1303,6 +1329,7 @@ class _$InitialImpl implements _Initial {
       required this.password,
       required this.errorMessages,
       required this.hidePassword,
+      this.onLogoutProses = FetchStatus.initial,
       this.user});
 
   @override
@@ -1316,11 +1343,14 @@ class _$InitialImpl implements _Initial {
   @override
   final bool hidePassword;
   @override
+  @JsonKey()
+  final FetchStatus onLogoutProses;
+  @override
   final User? user;
 
   @override
   String toString() {
-    return 'LoginState.initial(status: $status, email: $email, password: $password, errorMessages: $errorMessages, hidePassword: $hidePassword, user: $user)';
+    return 'LoginState.initial(status: $status, email: $email, password: $password, errorMessages: $errorMessages, hidePassword: $hidePassword, onLogoutProses: $onLogoutProses, user: $user)';
   }
 
   @override
@@ -1336,12 +1366,21 @@ class _$InitialImpl implements _Initial {
                 other.errorMessages == errorMessages) &&
             (identical(other.hidePassword, hidePassword) ||
                 other.hidePassword == hidePassword) &&
+            const DeepCollectionEquality()
+                .equals(other.onLogoutProses, onLogoutProses) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, status, email, password, errorMessages, hidePassword, user);
+      runtimeType,
+      status,
+      email,
+      password,
+      errorMessages,
+      hidePassword,
+      const DeepCollectionEquality().hash(onLogoutProses),
+      user);
 
   @JsonKey(ignore: true)
   @override
@@ -1358,34 +1397,48 @@ class _$InitialImpl implements _Initial {
             Password password,
             String errorMessages,
             bool hidePassword,
+            FetchStatus onLogoutProses,
             User? user)
         initial,
   }) {
-    return initial(status, email, password, errorMessages, hidePassword, user);
+    return initial(status, email, password, errorMessages, hidePassword,
+        onLogoutProses, user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword, User? user)?
+    TResult? Function(
+            FormzStatus status,
+            Email email,
+            Password password,
+            String errorMessages,
+            bool hidePassword,
+            FetchStatus onLogoutProses,
+            User? user)?
         initial,
   }) {
-    return initial?.call(
-        status, email, password, errorMessages, hidePassword, user);
+    return initial?.call(status, email, password, errorMessages, hidePassword,
+        onLogoutProses, user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FormzStatus status, Email email, Password password,
-            String errorMessages, bool hidePassword, User? user)?
+    TResult Function(
+            FormzStatus status,
+            Email email,
+            Password password,
+            String errorMessages,
+            bool hidePassword,
+            FetchStatus onLogoutProses,
+            User? user)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(
-          status, email, password, errorMessages, hidePassword, user);
+      return initial(status, email, password, errorMessages, hidePassword,
+          onLogoutProses, user);
     }
     return orElse();
   }
@@ -1426,6 +1479,7 @@ abstract class _Initial implements LoginState {
       required final Password password,
       required final String errorMessages,
       required final bool hidePassword,
+      final FetchStatus onLogoutProses,
       final User? user}) = _$InitialImpl;
 
   @override
@@ -1438,6 +1492,8 @@ abstract class _Initial implements LoginState {
   String get errorMessages;
   @override
   bool get hidePassword;
+  @override
+  FetchStatus get onLogoutProses;
   @override
   User? get user;
   @override

@@ -6,5 +6,6 @@ class DashboardState with _$DashboardState {
     @Default(<Pelajaran>[]) List<Pelajaran> fetchMapel,
     @Default(<Ujian>[]) List<Ujian> fetchUjian,
     @Default(FetchStatus.initial) FetchStatus fetchMapelStatus,
+    @Default(FetchStatus.initial) FetchStatus onLogoutProses,
   }) = _Initial;
 }

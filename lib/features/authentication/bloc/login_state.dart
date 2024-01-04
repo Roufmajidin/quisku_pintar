@@ -8,6 +8,7 @@ class LoginState with _$LoginState {
     required Password password,
     required String errorMessages,
     required bool hidePassword,
+    @Default(FetchStatus.initial) FetchStatus onLogoutProses,
     User? user,
   }) = _Initial;
 }

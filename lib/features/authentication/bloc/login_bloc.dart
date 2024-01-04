@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quisku_pintar/common/validation/email.dart';
 import 'package:quisku_pintar/common/validation/password.dart';
+import 'package:quisku_pintar/core/error/utils/status.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/models/user.dart';
 import 'package:quisku_pintar/features/authentication/presentation/data/usecases/login_usecase.dart';
 
@@ -29,9 +32,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
   // token
   _logout(Logout event, Emitter<LoginState> emit) async {
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    emit(state.copyWith(onLogoutProses: FetchStatus.loading));
+    await Future.delayed(const Duration(seconds: 3));
     await loginUsesCase.logout();
-    emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    log('done');
+    emit(state.copyWith(onLogoutProses: FetchStatus.success));
   }
 
   _getLoginLocalUser(GetUserData event, Emitter<LoginState> emit) async {

@@ -427,24 +427,28 @@ mixin _$DashboardState {
   List<Pelajaran> get fetchMapel => throw _privateConstructorUsedError;
   List<Ujian> get fetchUjian => throw _privateConstructorUsedError;
   FetchStatus get fetchMapelStatus => throw _privateConstructorUsedError;
+  FetchStatus get onLogoutProses => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pelajaran> fetchMapel,
-            List<Ujian> fetchUjian, FetchStatus fetchMapelStatus)
+    required TResult Function(
+            List<Pelajaran> fetchMapel,
+            List<Ujian> fetchUjian,
+            FetchStatus fetchMapelStatus,
+            FetchStatus onLogoutProses)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Pelajaran> fetchMapel, List<Ujian> fetchUjian,
-            FetchStatus fetchMapelStatus)?
+            FetchStatus fetchMapelStatus, FetchStatus onLogoutProses)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Pelajaran> fetchMapel, List<Ujian> fetchUjian,
-            FetchStatus fetchMapelStatus)?
+            FetchStatus fetchMapelStatus, FetchStatus onLogoutProses)?
         initial,
     required TResult orElse(),
   }) =>
@@ -480,7 +484,8 @@ abstract class $DashboardStateCopyWith<$Res> {
   $Res call(
       {List<Pelajaran> fetchMapel,
       List<Ujian> fetchUjian,
-      FetchStatus fetchMapelStatus});
+      FetchStatus fetchMapelStatus,
+      FetchStatus onLogoutProses});
 }
 
 /// @nodoc
@@ -499,6 +504,7 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
     Object? fetchMapel = null,
     Object? fetchUjian = null,
     Object? fetchMapelStatus = null,
+    Object? onLogoutProses = null,
   }) {
     return _then(_value.copyWith(
       fetchMapel: null == fetchMapel
@@ -512,6 +518,10 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
       fetchMapelStatus: null == fetchMapelStatus
           ? _value.fetchMapelStatus
           : fetchMapelStatus // ignore: cast_nullable_to_non_nullable
+              as FetchStatus,
+      onLogoutProses: null == onLogoutProses
+          ? _value.onLogoutProses
+          : onLogoutProses // ignore: cast_nullable_to_non_nullable
               as FetchStatus,
     ) as $Val);
   }
@@ -528,7 +538,8 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {List<Pelajaran> fetchMapel,
       List<Ujian> fetchUjian,
-      FetchStatus fetchMapelStatus});
+      FetchStatus fetchMapelStatus,
+      FetchStatus onLogoutProses});
 }
 
 /// @nodoc
@@ -545,6 +556,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? fetchMapel = null,
     Object? fetchUjian = null,
     Object? fetchMapelStatus = null,
+    Object? onLogoutProses = null,
   }) {
     return _then(_$InitialImpl(
       fetchMapel: null == fetchMapel
@@ -559,6 +571,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.fetchMapelStatus
           : fetchMapelStatus // ignore: cast_nullable_to_non_nullable
               as FetchStatus,
+      onLogoutProses: null == onLogoutProses
+          ? _value.onLogoutProses
+          : onLogoutProses // ignore: cast_nullable_to_non_nullable
+              as FetchStatus,
     ));
   }
 }
@@ -569,7 +585,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl(
       {final List<Pelajaran> fetchMapel = const <Pelajaran>[],
       final List<Ujian> fetchUjian = const <Ujian>[],
-      this.fetchMapelStatus = FetchStatus.initial})
+      this.fetchMapelStatus = FetchStatus.initial,
+      this.onLogoutProses = FetchStatus.initial})
       : _fetchMapel = fetchMapel,
         _fetchUjian = fetchUjian;
 
@@ -594,10 +611,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @override
   @JsonKey()
   final FetchStatus fetchMapelStatus;
+  @override
+  @JsonKey()
+  final FetchStatus onLogoutProses;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DashboardState.initial(fetchMapel: $fetchMapel, fetchUjian: $fetchUjian, fetchMapelStatus: $fetchMapelStatus)';
+    return 'DashboardState.initial(fetchMapel: $fetchMapel, fetchUjian: $fetchUjian, fetchMapelStatus: $fetchMapelStatus, onLogoutProses: $onLogoutProses)';
   }
 
   @override
@@ -607,7 +627,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       ..add(DiagnosticsProperty('type', 'DashboardState.initial'))
       ..add(DiagnosticsProperty('fetchMapel', fetchMapel))
       ..add(DiagnosticsProperty('fetchUjian', fetchUjian))
-      ..add(DiagnosticsProperty('fetchMapelStatus', fetchMapelStatus));
+      ..add(DiagnosticsProperty('fetchMapelStatus', fetchMapelStatus))
+      ..add(DiagnosticsProperty('onLogoutProses', onLogoutProses));
   }
 
   @override
@@ -620,7 +641,9 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
             const DeepCollectionEquality()
                 .equals(other._fetchUjian, _fetchUjian) &&
             (identical(other.fetchMapelStatus, fetchMapelStatus) ||
-                other.fetchMapelStatus == fetchMapelStatus));
+                other.fetchMapelStatus == fetchMapelStatus) &&
+            (identical(other.onLogoutProses, onLogoutProses) ||
+                other.onLogoutProses == onLogoutProses));
   }
 
   @override
@@ -628,7 +651,8 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
       runtimeType,
       const DeepCollectionEquality().hash(_fetchMapel),
       const DeepCollectionEquality().hash(_fetchUjian),
-      fetchMapelStatus);
+      fetchMapelStatus,
+      onLogoutProses);
 
   @JsonKey(ignore: true)
   @override
@@ -639,33 +663,37 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Pelajaran> fetchMapel,
-            List<Ujian> fetchUjian, FetchStatus fetchMapelStatus)
+    required TResult Function(
+            List<Pelajaran> fetchMapel,
+            List<Ujian> fetchUjian,
+            FetchStatus fetchMapelStatus,
+            FetchStatus onLogoutProses)
         initial,
   }) {
-    return initial(fetchMapel, fetchUjian, fetchMapelStatus);
+    return initial(fetchMapel, fetchUjian, fetchMapelStatus, onLogoutProses);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<Pelajaran> fetchMapel, List<Ujian> fetchUjian,
-            FetchStatus fetchMapelStatus)?
+            FetchStatus fetchMapelStatus, FetchStatus onLogoutProses)?
         initial,
   }) {
-    return initial?.call(fetchMapel, fetchUjian, fetchMapelStatus);
+    return initial?.call(
+        fetchMapel, fetchUjian, fetchMapelStatus, onLogoutProses);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Pelajaran> fetchMapel, List<Ujian> fetchUjian,
-            FetchStatus fetchMapelStatus)?
+            FetchStatus fetchMapelStatus, FetchStatus onLogoutProses)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(fetchMapel, fetchUjian, fetchMapelStatus);
+      return initial(fetchMapel, fetchUjian, fetchMapelStatus, onLogoutProses);
     }
     return orElse();
   }
@@ -703,7 +731,8 @@ abstract class _Initial implements DashboardState {
   const factory _Initial(
       {final List<Pelajaran> fetchMapel,
       final List<Ujian> fetchUjian,
-      final FetchStatus fetchMapelStatus}) = _$InitialImpl;
+      final FetchStatus fetchMapelStatus,
+      final FetchStatus onLogoutProses}) = _$InitialImpl;
 
   @override
   List<Pelajaran> get fetchMapel;
@@ -711,6 +740,8 @@ abstract class _Initial implements DashboardState {
   List<Ujian> get fetchUjian;
   @override
   FetchStatus get fetchMapelStatus;
+  @override
+  FetchStatus get onLogoutProses;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
