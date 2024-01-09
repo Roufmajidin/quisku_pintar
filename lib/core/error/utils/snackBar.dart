@@ -16,15 +16,15 @@ class DcSnackBar extends SnackBar {
           content: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Flexible(
-                fit: FlexFit.loose,
-                child: Text(content,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: false,
-                    style: AppTextStyle.body4
-                        .copyWith(color: AppColors.neutral.ne01)),
-              ),
+              // Flexible(
+              //   fit: FlexFit.loose,
+              //   child: Text(content,
+              //       maxLines: 2,
+              //       overflow: TextOverflow.ellipsis,
+              //       softWrap: false,
+              //       style: AppTextStyle.body4
+              //           .copyWith(color: AppColors.neutral.ne01)),
+              // ),
               if (snackBarType != null) const SizedBox(width: 8.0),
               if (snackBarType == SnackBarType.success)
                 Icon(

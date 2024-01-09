@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
-import 'package:quisku_pintar/core/helpers/loading.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:quisku_pintar/core/helpers/show_snackbar_helper.dart';
+import 'package:quisku_pintar/core/utils/enums.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
@@ -45,11 +47,6 @@ class _ReadPdfViewState extends State<ReadPdfView> {
     });
   }
 
-  Future<String> _getAppDocumentsDirectory() async {
-    Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
-    return '${appDocumentsDirectory.path}/$_cleaned';
-  }
-
   Future<void> _downloadPDF(String pdfUrl) async {
     try {
       setState(() {
@@ -78,29 +75,25 @@ class _ReadPdfViewState extends State<ReadPdfView> {
         });
         log('lokasi file :${file} ');
         // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('PDF Selesai Terdownload'),
-          ),
+        ShowSnackBarHelper.show(
+          context,
+          message: 'Sukses Mendownload File',
+          snackBarType: SnackBarType.success,
         );
       } else {
         _isLoading = false;
         // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Error Mendownload, Cek koneksi mu !'),
-          ),
-        );
+        ShowSnackBarHelper.show(context,
+            message: "Error Mendownload, Cek Koneksi Internet !",
+            snackBarType: SnackBarType.warning);
       }
     } catch (error) {
       // Handle error secara umum
       print('Error: $error');
       // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Error downloading PDF'),
-        ),
-      );
+      ShowSnackBarHelper.show(context,
+          message: "Error Mendownload, Cek Koneksi Internet !",
+          snackBarType: SnackBarType.warning);
     }
   }
 
@@ -163,7 +156,7 @@ class _ReadPdfViewState extends State<ReadPdfView> {
                         child: CircularProgressIndicator.adaptive(
                       backgroundColor: Colors.white,
                     )),
-                    Text('Sedang Mendownload .. '),
+                    Text('Sedang Mendownload ... '),
                   ],
                 ),
               )
