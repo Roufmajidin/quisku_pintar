@@ -7,6 +7,7 @@ import 'package:quisku_pintar/common/extensions/font_weight.dart';
 import 'package:quisku_pintar/common/themes/themes.dart';
 import 'package:quisku_pintar/core/helpers/loading.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 // ignore: must_be_immutable
@@ -79,16 +80,15 @@ class _ReadPdfViewState extends State<ReadPdfView> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('PDF downloaded successfully'),
+            content: Text('PDF Selesai Terdownload'),
           ),
         );
       } else {
         _isLoading = false;
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-                'Error downloading PDF. Status Code: ${response.statusCode}'),
+          const SnackBar(
+            content: Text('Error Mendownload, Cek koneksi mu !'),
           ),
         );
       }
@@ -130,29 +130,45 @@ class _ReadPdfViewState extends State<ReadPdfView> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Ratu Cirendeu',
+          'Lihat File',
           style: AppTextStyle.body3.setSemiBold(),
         ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
-              Icons.bookmark,
+              _isFile == false ? Icons.download : Icons.download_done,
               color: AppColors.primary.pr10,
-              semanticLabel: 'Bookmark',
+              semanticLabel: 'Download File',
             ),
             onPressed: () async {
-              _downloadPDF(widget.link);
-              String appDocumentsDirectory = await _getAppDocumentsDirectory();
-              print('Lokasi file: $appDocumentsDirectory');
+              if (_isFile == true) {
+              } else {
+                _downloadPDF(widget.link);
+              }
             },
           ),
         ],
       ),
       body: Center(
         child: _isLoading
-            ? const LoadingWidget()
+            ? Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                color: Colors.white54,
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                        child: CircularProgressIndicator.adaptive(
+                      backgroundColor: Colors.white,
+                    )),
+                    Text('Sedang Mendownload .. '),
+                  ],
+                ),
+              )
             : _isFile == false
-                ? const Text("Hey, yuk download dlu")
+                ? const Text("Tekan Ikon Download")
                 : _localFilePath.isNotEmpty
                     ? SfPdfViewer.file(File(_localFilePath))
                     : SfPdfViewer.file(
